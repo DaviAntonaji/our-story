@@ -1,0 +1,355 @@
+import { useState, useEffect } from 'react'
+
+// Data de início do namoro: 04/03/2026 às 19:30
+const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0) // mês é 0-indexed
+
+function useTempoJuntos() {
+  const [tempo, setTempo] = useState({
+    meses: 0,
+    dias: 0,
+    horas: '00',
+    minutos: '00',
+    segundos: '00',
+    totalDias: 0
+  })
+
+  useEffect(() => {
+    const atualizar = () => {
+      const agora = new Date()
+      const diff = agora - INICIO_NAMORO
+
+      if (diff < 0) {
+        setTempo({
+          meses: 0,
+          dias: 0,
+          horas: '00',
+          minutos: '00',
+          segundos: '00',
+          totalDias: 0
+        })
+        return
+      }
+
+      const totalDias = Math.floor(diff / (1000 * 60 * 60 * 24))
+      const meses = Math.floor(totalDias / 30)
+      const dias = totalDias % 30
+
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24)
+        .toString()
+        .padStart(2, '0')
+      const minutos = Math.floor((diff / (1000 * 60)) % 60)
+        .toString()
+        .padStart(2, '0')
+      const segundos = Math.floor((diff / 1000) % 60)
+        .toString()
+        .padStart(2, '0')
+
+      setTempo({ meses, dias, horas, minutos, segundos, totalDias })
+    }
+
+    atualizar()
+    const id = setInterval(atualizar, 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  return tempo
+}
+
+// Cole o link da música do Spotify aqui (ex: https://open.spotify.com/track/...)
+const SPOTIFY_URL = ''
+
+// Adicione as URLs das suas fotos aqui
+const FOTOS = [
+]
+
+export default function App() {
+  const [revelado, setRevelado] = useState(false)
+  const [musicaRevelada, setMusicaRevelada] = useState(false)
+  const [fotoAtual, setFotoAtual] = useState(0)
+  const tempo = useTempoJuntos()
+
+  useEffect(() => {
+    if (!revelado) return
+    const id = setInterval(() => {
+      setFotoAtual((i) => (i + 1) % FOTOS.length)
+    }, 4000)
+    return () => clearInterval(id)
+  }, [revelado])
+
+  const HeartsBg = () => (
+    <div className="hearts-bg select-none">
+      {['❤️', '💕', '💗', '💖', '💓', '🩷', '💝', '🌹', '✨', '💕'].map((h, i) => (
+        <span key={i}>{h}</span>
+      ))}
+    </div>
+  )
+
+  if (!revelado) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-rose-950 via-pink-900 to-rose-950 text-rose-100 p-6 relative overflow-hidden">
+        <HeartsBg />
+        <div className="text-4xl md:text-5xl mb-4 animate-pulseSoft">💕</div>
+        <p className="text-xl md:text-2xl font-light tracking-wide text-rose-200/90 mb-6 text-center relative z-10">
+          Uma surpresa especial te espera
+        </p>
+        <button
+          onClick={() => setRevelado(true)}
+          className="px-10 py-4 rounded-full bg-rose-400/20 hover:bg-rose-400/30 border-2 border-rose-300/40 text-rose-100 font-medium text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-rose-900/30 relative z-10 flex items-center gap-2"
+        >
+          <span>💝</span>
+          Clique aqui, meu bem
+          <span>💝</span>
+        </button>
+        <p className="text-sm text-rose-300/60 mt-6 relative z-10 flex items-center gap-1">
+          <span>✨</span> Toque para revelar <span>✨</span>
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-rose-950 via-pink-900/95 to-rose-950 text-rose-100 relative overflow-x-hidden">
+      <HeartsBg />
+      <main className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12 sm:space-y-16 relative z-10 pb-20">
+        {/* Hero */}
+        <section className="text-center space-y-4 sm:space-y-6">
+          <div className="flex justify-center gap-2 text-3xl sm:text-4xl">
+            <span className="animate-heartBeat">💕</span>
+            <span className="animate-heartBeat [animation-delay:0.3s]">❤️</span>
+            <span className="animate-heartBeat [animation-delay:0.6s]">💗</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-rose-100 leading-tight px-2">
+            Para você, Maysa. Amor da minha vida 💝
+          </h1>
+          <p className="text-rose-200/80 text-sm sm:text-base">Juntos desde 04 de março de 2026 🌹</p>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 text-2xl font-mono">
+            <div className="flex flex-col items-center min-w-[3rem] sm:min-w-0">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.meses}</span>
+              <span className="text-sm text-rose-300/70">Meses</span>
+            </div>
+            <div className="flex flex-col items-center min-w-[3rem] sm:min-w-0">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.dias}</span>
+              <span className="text-sm text-rose-300/70">Dias</span>
+            </div>
+            <div className="flex flex-col items-center min-w-[2.5rem] sm:min-w-0">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.horas}</span>
+              <span className="text-sm text-rose-300/70">Horas</span>
+            </div>
+            <span className="text-xl sm:text-2xl text-rose-300/60 self-end">:</span>
+            <div className="flex flex-col items-center min-w-[2.5rem] sm:min-w-0">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.minutos}</span>
+              <span className="text-sm text-rose-300/70">Min</span>
+            </div>
+            <span className="text-xl sm:text-2xl text-rose-300/60 self-end">:</span>
+            <div className="flex flex-col items-center min-w-[2.5rem] sm:min-w-0">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.segundos}</span>
+              <span className="text-sm text-rose-300/70">Seg</span>
+            </div>
+          </div>
+          <p className="text-base sm:text-lg text-rose-300/90 font-medium">
+            São {tempo.totalDias} dias de amor contigo, meu bem 💕
+          </p>
+          <p className="text-2xl sm:text-3xl">✨ 🌹 ✨</p>
+        </section>
+
+        {/* Nossa Música */}
+        <section className="rounded-2xl overflow-hidden bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20">
+          {!musicaRevelada ? (
+            <button
+              onClick={() => setMusicaRevelada(true)}
+              className="w-full p-6 sm:p-8 md:p-12 text-center hover:bg-rose-800/20 transition-colors"
+            >
+              <span className="text-4xl block mb-2">🎵</span>
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-rose-100 mb-2">Nossa Música</h2>
+              <p className="text-rose-200/80 mb-4 text-sm sm:text-base">A trilha sonora do nosso amor 💕</p>
+              <span className="text-rose-300/90 underline underline-offset-2 text-sm sm:text-base">
+                Clique para descobrir ✨
+              </span>
+            </button>
+          ) : (
+            <div className="p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-rose-100 mb-2 text-center">
+                Nossa Música 🎵
+              </h2>
+              <p className="text-rose-200/80 mb-4 text-center text-sm sm:text-base">A trilha sonora do nosso amor 💗</p>
+              <div className="rounded-xl overflow-hidden aspect-square max-w-md mx-auto">
+                <iframe
+                  style={{ borderRadius: 12 }}
+                  src={SPOTIFY_URL}
+                  width="100%"
+                  height="352"
+                  frameBorder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Nossa música"
+                />
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* Frase de amor */}
+        <section className="rounded-2xl p-4 sm:p-6 md:p-8 bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20">
+          <p className="text-2xl text-center mb-4">💌</p>
+          <p className="text-rose-100/95 leading-relaxed text-base sm:text-lg italic">
+            Maysa, desde o primeiro dia que te vi soube que minha vida não seria mais a mesma. Cada momento com você é especial, cada sorriso seu me faz bem. Te amo mais do que consigo dizer.
+          </p>
+          <p className="text-2xl text-center mt-4">💕</p>
+        </section>
+
+        {/* Versículo */}
+        <section className="rounded-2xl p-4 sm:p-6 md:p-8 bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20">
+          <p className="text-2xl text-center mb-4">✝️</p>
+          <h2 className="text-lg sm:text-xl font-serif font-bold text-rose-100 text-center mb-4">
+            1 Coríntios 13:4-7
+          </h2>
+          <blockquote className="text-rose-200/90 leading-relaxed text-sm sm:text-base space-y-3">
+            <p><strong>4</strong> O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.</p>
+            <p><strong>5</strong> Não maltrata, não procura seus interesses, não se ira facilmente, não guarda rancor.</p>
+            <p><strong>6</strong> O amor não se alegra com a injustiça, mas se alegra com a verdade.</p>
+            <p><strong>7</strong> Tudo sofre, tudo crê, tudo espera, tudo suporta.</p>
+          </blockquote>
+          <p className="text-rose-300/70 text-center mt-4 text-sm italic">A palavra que nos inspira</p>
+        </section>
+
+        {/* Momentos - Carrossel de fotos */}
+        <section>
+          <h2 className="text-xl sm:text-2xl font-serif font-bold text-rose-100 text-center mb-2">
+            Momentos 📸
+          </h2>
+          <p className="text-rose-200/80 text-center mb-4 sm:mb-6 text-sm sm:text-base">
+            Memórias que guardamos no coração, Maysa 💖
+          </p>
+          <div className="relative rounded-2xl overflow-hidden bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20 aspect-[4/3] sm:max-h-80">
+            <img
+              key={fotoAtual}
+              src={FOTOS[fotoAtual]}
+              alt={`Momento ${fotoAtual + 1}`}
+              className="w-full h-full object-cover absolute inset-0 animate-fadeIn"
+            />
+            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 sm:gap-2">
+              {FOTOS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setFotoAtual(i)}
+                  className={`rounded-full transition-all ${
+                    i === fotoAtual ? 'bg-rose-300 w-3 h-3 sm:w-2.5 sm:h-2.5' : 'bg-rose-500/50 w-2 h-2 sm:w-2 sm:h-2 hover:bg-rose-400/70'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Nossa História */}
+        <section>
+          <h2 className="text-xl sm:text-2xl font-serif font-bold text-rose-100 text-center mb-2">
+            Nossa História 📖
+          </h2>
+          <p className="text-rose-200/80 text-center mb-8 sm:mb-10 text-sm sm:text-base">
+            Nossa história
+          </p>
+          <div className="space-y-6 sm:space-y-8">
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/40">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">13, 14 e 15 de fevereiro de 2026</h3>
+              <p className="text-rose-300/90 mt-1 font-medium">
+                Onde tudo começou
+              </p>
+              <p className="text-rose-200/80 mt-1 text-sm sm:text-base">
+                Onde começamos a nos aproximar no acampamento.
+              </p>
+            </div>
+
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/40">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">20 de fevereiro de 2026</h3>
+              <p className="text-rose-300/90 mt-1 font-medium">
+                Quando você se apaixonou por mim
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Eu não sabia o quão mal eu estava naquele dia... Você estava mal ao ponto de
+                qualquer coisa te fazer chorar...
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Você só disse: "estou meio desanimada hoje..." Não revelou o real peso que estava
+                sentindo...
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                E quando comecei a conversar com você sobre Deus, e passagens sobre não desanimar,
+                sobre cansar... E você me disse que chorou e foi ali que percebeu que estava
+                apaixonada por mim...
+              </p>
+            </div>
+
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/40">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">04 de março de 2026</h3>
+              <p className="text-rose-300/90 mt-1 font-medium">
+                Início do nosso namoro
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Começou quando combinamos de sair no João Julhão às 18h, e conseguimos estender até
+                as 20h. Com isso, eu já comecei a correr com as coisas durante o dia para deixar
+                tudo preparado.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Cheguei no JJ exatamente às 18:00 e já combinei com o garçom todo o roteiro do que
+                iria acontecer. Quando você chegou com a Talita, estava linda… e ali meu coração já
+                acelerou.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Fomos até a mesa que eu já tinha deixado separada, inclusive planejando deixar você
+                sentada de costas para a cozinha, para que não visse nada do que estava sendo
+                preparado.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Eu não tinha planejado muito bem como seria o papo… mas acabou sendo algo muito
+                natural e descontraído, principalmente com as perguntas que você começou a fazer.
+                Primeiro você perguntou sobre a minha família. Depois sobre o que era estabilidade
+                para mim. Também falamos sobre educação financeira… tudo isso enquanto comíamos
+                meia porção de filé mignon à parmegiana.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Até que chegou o momento que eu tinha combinado com os garçons. Terminamos de comer
+                e eu pedi para trazerem a sobremesa. Foi então que o garçom chegou trazendo junto o
+                buquê e as alianças.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Eu estava um pouco nervoso, mas te disse que já fazia um tempinho que eu queria fazer
+                aquilo. Disse também que, desde o primeiro momento em que conversamos, eu percebi
+                que ali havia algo diferente, e que orei muito a Deus por esse momento. Então eu te
+                perguntei se você aceitava namorar comigo.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Esse momento ficou gravado muito forte na minha mente. Seus olhos brilhando como se
+                quisesse chorar, sua bochecha tremendo de alegria… você estava tão feliz. E naquele
+                instante você me tornou o homem mais feliz do mundo.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Depois disso, te levei pela primeira vez até a sua casa a sós. Cumprimentei sua mãe
+                ali do lado de fora mesmo. E quando você me abraçou, eu senti que aquele abraço era
+                bom demais… e percebi que era exatamente ali que eu sempre quero estar.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Final */}
+        <section className="text-center py-12 sm:py-16">
+          <div className="text-4xl sm:text-5xl mb-4">💕 ❤️ 💗</div>
+          <p className="text-lg sm:text-xl font-serif text-rose-200/90 italic">
+            E no final...
+          </p>
+          <p className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-rose-100 mt-4 animate-pulseSoft">
+            Te amo para sempre, Maysa ♥
+          </p>
+          <p className="text-rose-300/80 mt-6 text-base sm:text-lg flex items-center justify-center gap-2 flex-wrap">
+            <span>🌹</span> Feliz Dia dos Namorados, amor <span>🌹</span>
+          </p>
+          <p className="text-3xl mt-6">💝</p>
+        </section>
+      </main>
+    </div>
+  )
+}
