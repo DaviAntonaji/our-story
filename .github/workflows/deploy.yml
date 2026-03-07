@@ -32,6 +32,8 @@ jobs:
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
           remote_path: ${{ secrets.SFTP_DIR }}
-          local_path: './dist'
+          local_path: '.'
           sftp_only: true
           delete_remote: true
+        env:
+          LOCAL_PATH: ${{ github.workspace }}/dist

@@ -130,28 +130,30 @@ export default function App() {
             Para você, Maysa. Amor da minha vida 💝
           </h1>
           <p className="text-rose-200/90 text-sm sm:text-base font-medium">Juntos desde 04 de março de 2026 🌹</p>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 text-2xl font-mono card-glass rounded-2xl p-5 sm:p-6 max-w-md mx-auto">
-            <div className="flex flex-col items-center min-w-[3rem] sm:min-w-0">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.meses}</span>
-              <span className="text-sm text-rose-300/70">Meses</span>
+          <div className="flex flex-nowrap justify-center items-end gap-1.5 sm:gap-2 md:gap-4 text-2xl font-mono card-glass rounded-2xl p-4 sm:p-5 md:p-6 max-w-md mx-auto overflow-x-auto">
+            <div className="flex flex-col items-center shrink-0">
+              <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.meses}</span>
+              <span className="text-xs sm:text-sm text-rose-300/70">Meses</span>
             </div>
-            <div className="flex flex-col items-center min-w-[3rem] sm:min-w-0">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.dias}</span>
-              <span className="text-sm text-rose-300/70">Dias</span>
+            <div className="flex flex-col items-center shrink-0">
+              <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.dias}</span>
+              <span className="text-xs sm:text-sm text-rose-300/70">Dias</span>
             </div>
-            <div className="flex flex-col items-center min-w-[2.5rem] sm:min-w-0">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.horas}</span>
-              <span className="text-sm text-rose-300/70">Horas</span>
-            </div>
-            <span className="text-xl sm:text-2xl text-rose-300/60 self-end">:</span>
-            <div className="flex flex-col items-center min-w-[2.5rem] sm:min-w-0">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.minutos}</span>
-              <span className="text-sm text-rose-300/70">Min</span>
-            </div>
-            <span className="text-xl sm:text-2xl text-rose-300/60 self-end">:</span>
-            <div className="flex flex-col items-center min-w-[2.5rem] sm:min-w-0">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200">{tempo.segundos}</span>
-              <span className="text-sm text-rose-300/70">Seg</span>
+            <div className="flex flex-nowrap items-end shrink-0 gap-1 sm:gap-2">
+              <div className="flex flex-col items-center shrink-0">
+                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.horas}</span>
+                <span className="text-xs sm:text-sm text-rose-300/70">Horas</span>
+              </div>
+              <span className="text-base sm:text-lg text-rose-300/60 pb-1 shrink-0">:</span>
+              <div className="flex flex-col items-center shrink-0">
+                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.minutos}</span>
+                <span className="text-xs sm:text-sm text-rose-300/70">Min</span>
+              </div>
+              <span className="text-base sm:text-lg text-rose-300/60 pb-1 shrink-0">:</span>
+              <div className="flex flex-col items-center shrink-0">
+                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.segundos}</span>
+                <span className="text-xs sm:text-sm text-rose-300/70">Seg</span>
+              </div>
             </div>
           </div>
           <p className="text-base sm:text-lg text-rose-200/95 font-medium">
