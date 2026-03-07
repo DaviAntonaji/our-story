@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },

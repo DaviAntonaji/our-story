@@ -2,49 +2,109 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Corações flutuantes no background */
-@keyframes float-heart {
-  0%, 100% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.4;
-  }
-  90% {
-    opacity: 0.4;
-  }
-  100% {
-    transform: translateY(-20vh) rotate(360deg);
-    opacity: 0;
-  }
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
 }
 
-.hearts-bg span {
+/* Background com profundidade: gradiente + orbs + decorações sutis */
+.page-bg {
+  background: linear-gradient(180deg, #881337 0%, #9d174d 35%, #831843 70%, #701a35 100%);
+}
+
+.page-bg::before {
+  content: '';
   position: fixed;
-  bottom: -20px;
-  font-size: 1.5rem;
-  animation: float-heart 12s linear infinite;
-  pointer-events: none;
+  inset: 0;
   z-index: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(251, 113, 133, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(244, 114, 182, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 40% at 50% 60%, rgba(249, 168, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 60% at 90% 40%, rgba(251, 113, 133, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse 40% 50% at 10% 85%, rgba(244, 114, 182, 0.07) 0%, transparent 45%);
 }
 
-.hearts-bg span:nth-child(1) { left: 5%; animation-delay: 0s; }
-.hearts-bg span:nth-child(2) { left: 15%; animation-delay: 2s; }
-.hearts-bg span:nth-child(3) { left: 25%; animation-delay: 4s; }
-.hearts-bg span:nth-child(4) { left: 35%; animation-delay: 1s; }
-.hearts-bg span:nth-child(5) { left: 45%; animation-delay: 3s; }
-.hearts-bg span:nth-child(6) { left: 55%; animation-delay: 5s; }
-.hearts-bg span:nth-child(7) { left: 65%; animation-delay: 2.5s; }
-.hearts-bg span:nth-child(8) { left: 75%; animation-delay: 1.5s; }
-.hearts-bg span:nth-child(9) { left: 85%; animation-delay: 4.5s; }
-.hearts-bg span:nth-child(10) { left: 95%; animation-delay: 0.5s; }
+/* Padrão de pontos sutis + vignette - decoração elegante, otimizado para mobile */
+.page-bg::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(ellipse 120% 120% at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.15) 100%),
+    radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px;
+  mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 25%, transparent 75%);
+}
 
-@media (max-width: 640px) {
-  .hearts-bg span {
-    font-size: 1.1rem;
-    animation-duration: 15s;
-  }
+.page-bg-landing {
+  background: linear-gradient(145deg, #881337 0%, #9d174d 40%, #831843 100%);
+}
+
+.page-bg-landing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse 70% 60% at 50% 30%, rgba(251, 113, 133, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(244, 114, 182, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 50% at 15% 70%, rgba(249, 168, 212, 0.06) 0%, transparent 45%);
+}
+
+/* Padrão de pontos + vignette na landing - foco no centro para mobile */
+.page-bg-landing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(ellipse 100% 100% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.12) 100%),
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 18px 18px;
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 35%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 35%, transparent 75%);
+}
+
+/* Botão principal (landing) */
+.btn-primary {
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.25) 0%, rgba(190, 24, 93, 0.3) 100%);
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  color: rgb(255, 228, 230);
+  box-shadow: 0 4px 20px -4px rgba(136, 19, 55, 0.4);
+  transition: all 0.25s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.35) 0%, rgba(190, 24, 93, 0.4) 100%);
+  border-color: rgba(251, 113, 133, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px -4px rgba(136, 19, 55, 0.5);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Cards com vidro suave */
+.card-glass {
+  background: rgba(136, 19, 55, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 114, 182, 0.15);
+  box-shadow: 
+    0 4px 24px -4px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-hover:hover {
+  box-shadow: 
+    0 8px 32px -8px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  border-color: rgba(244, 114, 182, 0.25);
 }
 
 /* Safe area para iPhone (notch, home indicator) */
