@@ -180,17 +180,18 @@ export default function App() {
                 Nossa Música 🎵
               </h2>
               <p className="text-rose-200/80 mb-4 text-center text-sm sm:text-base">A trilha sonora do nosso amor 💗</p>
-              <div className="rounded-xl overflow-hidden aspect-square max-w-md mx-auto">
-                <iframe
-                  style={{ borderRadius: 12 }}
-                  src={SPOTIFY_URL}
-                  width="100%"
-                  height="352"
-                  frameBorder="0"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  title="Nossa música"
-                />
+              <div className="rounded-xl overflow-visible max-w-md mx-auto w-full pb-2 sm:pb-0">
+                <div className="relative w-full" style={{ paddingBottom: '100%' }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full rounded-xl"
+                    style={{ borderRadius: 12, minHeight: 280 }}
+                    src={SPOTIFY_URL}
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    title="Nossa música"
+                  />
+                </div>
               </div>
             </div>
           )}
@@ -228,12 +229,12 @@ export default function App() {
           <p className="text-rose-200/80 text-center mb-4 sm:mb-6 text-sm sm:text-base">
             Memórias que guardamos no coração, Maysa 💖
           </p>
-          <div className="relative rounded-2xl overflow-hidden card-glass min-h-[320px] sm:min-h-[400px] flex items-center justify-center">
+          <div className="relative rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center">
             <img
               key={fotoAtual}
               src={FOTOS[fotoAtual]}
               alt={`Momento ${fotoAtual + 1}`}
-              className="max-w-full max-h-[70vh] w-auto h-auto object-contain animate-fadeIn"
+              className="max-w-full max-h-full w-auto h-auto object-contain animate-fadeIn"
             />
             <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1 sm:gap-2">
               {FOTOS.map((_, i) => (
