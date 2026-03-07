@@ -1,4 +1,12 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.5, ease: 'easeOut' }
+}
 
 // Data de início do namoro: 04/03/2026 às 19:30
 const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0) // mês é 0-indexed
@@ -96,21 +104,23 @@ export default function App() {
     return (
       <div className="min-h-screen min-h-[100dvh] flex flex-col items-center justify-center bg-gradient-to-br from-rose-950 via-pink-900 to-rose-950 text-rose-100 p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] relative overflow-hidden">
         <HeartsBg />
-        <div className="text-4xl md:text-5xl mb-4 animate-pulseSoft">💕</div>
-        <p className="text-xl md:text-2xl font-light tracking-wide text-rose-200/90 mb-6 text-center relative z-10">
+        <motion.div className="text-4xl md:text-5xl mb-4 animate-pulseSoft" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>💕</motion.div>
+        <motion.p className="text-xl md:text-2xl font-light tracking-wide text-rose-200/90 mb-6 text-center relative z-10" {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.15 }}>
           Uma surpresa especial te espera
-        </p>
-        <button
+        </motion.p>
+        <motion.button
           onClick={() => setRevelado(true)}
           className="min-h-[48px] px-10 py-4 rounded-full bg-rose-400/20 hover:bg-rose-400/30 active:bg-rose-400/30 border-2 border-rose-300/40 text-rose-100 font-medium text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-rose-900/30 relative z-10 flex items-center gap-2"
+          {...fadeInUp}
+          transition={{ ...fadeInUp.transition, delay: 0.3 }}
         >
           <span>💕</span>
           Clique aqui, meu bem
           <span>💕</span>
-        </button>
-        <p className="text-sm text-rose-300/60 mt-6 relative z-10 flex items-center gap-1">
+        </motion.button>
+        <motion.p className="text-sm text-rose-300/60 mt-6 relative z-10 flex items-center gap-1" {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.45 }}>
           <span>✨</span> Toque para revelar <span>✨</span>
-        </p>
+        </motion.p>
       </div>
     )
   }
@@ -120,7 +130,7 @@ export default function App() {
       <HeartsBg />
       <main className="max-w-2xl mx-auto px-5 sm:px-6 py-8 sm:py-12 pt-[env(safe-area-inset-top)] space-y-12 sm:space-y-16 relative z-10 pb-20 safe-bottom">
         {/* Hero */}
-        <section className="text-center space-y-4 sm:space-y-6">
+        <motion.section className="text-center space-y-4 sm:space-y-6" {...fadeInUp}>
           <div className="flex justify-center gap-2 text-3xl sm:text-4xl">
             <span className="animate-heartBeat">💕</span>
             <span className="animate-heartBeat [animation-delay:0.3s]">❤️</span>
@@ -158,10 +168,10 @@ export default function App() {
             São {tempo.totalDias} dias de amor contigo, meu bem 💕
           </p>
           <p className="text-2xl sm:text-3xl">✨ 🌹 ✨</p>
-        </section>
+        </motion.section>
 
         {/* Nossa Música */}
-        <section className="rounded-2xl overflow-hidden bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20">
+        <motion.section className="rounded-2xl overflow-hidden bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20" {...fadeInUp}>
           {!musicaRevelada ? (
             <button
               onClick={() => setMusicaRevelada(true)}
@@ -194,19 +204,19 @@ export default function App() {
               </div>
             </div>
           )}
-        </section>
+        </motion.section>
 
         {/* Frase de amor */}
-        <section className="rounded-2xl p-4 sm:p-6 md:p-8 bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20">
+        <motion.section className="rounded-2xl p-4 sm:p-6 md:p-8 bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20" {...fadeInUp}>
           <p className="text-2xl text-center mb-4">💌</p>
           <p className="text-rose-100/95 leading-relaxed text-base sm:text-lg italic">
             Maysa, desde o primeiro dia que te vi soube que minha vida não seria mais a mesma. Cada momento com você é especial, cada sorriso seu me faz bem. Te amo mais do que consigo dizer.
           </p>
           <p className="text-2xl text-center mt-4">💕</p>
-        </section>
+        </motion.section>
 
         {/* Versículo */}
-        <section className="rounded-2xl p-4 sm:p-6 md:p-8 bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20">
+        <motion.section className="rounded-2xl p-4 sm:p-6 md:p-8 bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20" {...fadeInUp}>
           <p className="text-2xl text-center mb-4">✝️</p>
           <h2 className="text-lg sm:text-xl font-serif font-bold text-rose-100 text-center mb-4">
             1 Coríntios 13:4-7
@@ -218,10 +228,10 @@ export default function App() {
             <p><strong>7</strong> Tudo sofre, tudo crê, tudo espera, tudo suporta.</p>
           </blockquote>
           <p className="text-rose-300/70 text-center mt-4 text-sm italic">A palavra que nos inspira</p>
-        </section>
+        </motion.section>
 
         {/* Momentos - Carrossel de fotos */}
-        <section>
+        <motion.section {...fadeInUp}>
           <h2 className="text-xl sm:text-2xl font-serif font-bold text-rose-100 text-center mb-2">
             Momentos 📸
           </h2>
@@ -248,10 +258,10 @@ export default function App() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Nossa História */}
-        <section>
+        <motion.section {...fadeInUp}>
           <div className="text-center mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
               <span className="text-2xl sm:text-3xl">🌹</span>
@@ -353,10 +363,10 @@ export default function App() {
               </p>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Final */}
-        <section className="text-center py-12 sm:py-16">
+        <motion.section className="text-center py-12 sm:py-16" {...fadeInUp}>
           <div className="text-4xl sm:text-5xl mb-4">💕 ❤️ 💗</div>
           <p className="text-lg sm:text-xl font-serif text-rose-200/90 italic">
             E assim continua nossa história...
@@ -374,7 +384,7 @@ export default function App() {
             <span>e amor por Davi Antonaji</span>
             <span className="text-rose-300/70">(seu amor)</span>
           </p>
-        </section>
+        </motion.section>
       </main>
     </div>
   )
