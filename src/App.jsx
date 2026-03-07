@@ -56,10 +56,18 @@ function useTempoJuntos() {
 }
 
 // Cole o link da música do Spotify aqui (ex: https://open.spotify.com/track/...)
-const SPOTIFY_URL = ''
+const SPOTIFY_URL = 'https://open.spotify.com/embed/track/5fVe54WPfSJBHh5LRN5mOd'
 
-// Adicione as URLs das suas fotos aqui
 const FOTOS = [
+  '/imgs/photos/1.jpg',
+  '/imgs/photos/2.jpg',
+  '/imgs/photos/3.jpg',
+  '/imgs/photos/4.jpg',
+  '/imgs/photos/5.jpg',
+  '/imgs/photos/6.jpg',
+  '/imgs/photos/7.jpg',
+  '/imgs/photos/8.jpg',
+  '/imgs/photos/9.jpg'
 ]
 
 export default function App() {
@@ -86,7 +94,7 @@ export default function App() {
 
   if (!revelado) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-rose-950 via-pink-900 to-rose-950 text-rose-100 p-6 relative overflow-hidden">
+      <div className="min-h-screen min-h-[100dvh] flex flex-col items-center justify-center bg-gradient-to-br from-rose-950 via-pink-900 to-rose-950 text-rose-100 p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] relative overflow-hidden">
         <HeartsBg />
         <div className="text-4xl md:text-5xl mb-4 animate-pulseSoft">💕</div>
         <p className="text-xl md:text-2xl font-light tracking-wide text-rose-200/90 mb-6 text-center relative z-10">
@@ -94,11 +102,11 @@ export default function App() {
         </p>
         <button
           onClick={() => setRevelado(true)}
-          className="px-10 py-4 rounded-full bg-rose-400/20 hover:bg-rose-400/30 border-2 border-rose-300/40 text-rose-100 font-medium text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-rose-900/30 relative z-10 flex items-center gap-2"
+          className="min-h-[48px] px-10 py-4 rounded-full bg-rose-400/20 hover:bg-rose-400/30 active:bg-rose-400/30 border-2 border-rose-300/40 text-rose-100 font-medium text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-rose-900/30 relative z-10 flex items-center gap-2"
         >
-          <span>💝</span>
+          <span>💕</span>
           Clique aqui, meu bem
-          <span>💝</span>
+          <span>💕</span>
         </button>
         <p className="text-sm text-rose-300/60 mt-6 relative z-10 flex items-center gap-1">
           <span>✨</span> Toque para revelar <span>✨</span>
@@ -108,9 +116,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-rose-950 via-pink-900/95 to-rose-950 text-rose-100 relative overflow-x-hidden">
+    <div className="min-h-screen min-h-[100dvh] bg-gradient-to-b from-rose-950 via-pink-900/95 to-rose-950 text-rose-100 relative overflow-x-hidden">
       <HeartsBg />
-      <main className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12 sm:space-y-16 relative z-10 pb-20">
+      <main className="max-w-2xl mx-auto px-5 sm:px-6 py-8 sm:py-12 pt-[env(safe-area-inset-top)] space-y-12 sm:space-y-16 relative z-10 pb-20 safe-bottom">
         {/* Hero */}
         <section className="text-center space-y-4 sm:space-y-6">
           <div className="flex justify-center gap-2 text-3xl sm:text-4xl">
@@ -220,21 +228,22 @@ export default function App() {
           <p className="text-rose-200/80 text-center mb-4 sm:mb-6 text-sm sm:text-base">
             Memórias que guardamos no coração, Maysa 💖
           </p>
-          <div className="relative rounded-2xl overflow-hidden bg-rose-900/30 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20 aspect-[4/3] sm:max-h-80">
+          <div className="relative rounded-2xl overflow-hidden bg-rose-900/50 border-2 border-rose-400/20 shadow-xl shadow-rose-900/20 min-h-[320px] sm:min-h-[400px] flex items-center justify-center">
             <img
               key={fotoAtual}
               src={FOTOS[fotoAtual]}
               alt={`Momento ${fotoAtual + 1}`}
-              className="w-full h-full object-cover absolute inset-0 animate-fadeIn"
+              className="max-w-full max-h-[70vh] w-auto h-auto object-contain animate-fadeIn"
             />
-            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 sm:gap-2">
+            <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1 sm:gap-2">
               {FOTOS.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setFotoAtual(i)}
-                  className={`rounded-full transition-all ${
-                    i === fotoAtual ? 'bg-rose-300 w-3 h-3 sm:w-2.5 sm:h-2.5' : 'bg-rose-500/50 w-2 h-2 sm:w-2 sm:h-2 hover:bg-rose-400/70'
+                  className={`rounded-full transition-all p-2.5 sm:p-1 ${
+                    i === fotoAtual ? 'bg-rose-300 w-3 h-3 sm:w-2.5 sm:h-2.5' : 'bg-rose-500/50 w-2.5 h-2.5 sm:w-2 sm:h-2 hover:bg-rose-400/70 active:bg-rose-400/70'
                   }`}
+                  aria-label={`Ver foto ${i + 1}`}
                 />
               ))}
             </div>
@@ -243,12 +252,23 @@ export default function App() {
 
         {/* Nossa História */}
         <section>
-          <h2 className="text-xl sm:text-2xl font-serif font-bold text-rose-100 text-center mb-2">
-            Nossa História 📖
-          </h2>
-          <p className="text-rose-200/80 text-center mb-8 sm:mb-10 text-sm sm:text-base">
-            Nossa história
-          </p>
+          <div className="text-center mb-8 sm:mb-10">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
+              <span className="text-2xl sm:text-3xl">🌹</span>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-rose-100">
+                Nossa História
+              </h2>
+              <span className="text-2xl sm:text-3xl">📖</span>
+            </div>
+            <p className="text-rose-200/80 text-sm sm:text-base">
+              Os momentos que marcaram nossa trajetória
+            </p>
+            <div className="flex items-center justify-center gap-2 mt-3 text-rose-400/60">
+              <span className="text-lg">✦</span>
+              <span className="text-lg">✧</span>
+              <span className="text-lg">✦</span>
+            </div>
+          </div>
           <div className="space-y-6 sm:space-y-8">
             <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/40">
               <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
@@ -277,8 +297,8 @@ export default function App() {
               </p>
               <p className="text-rose-200/80 mt-2">
                 E quando comecei a conversar com você sobre Deus, e passagens sobre não desanimar,
-                sobre cansar... E você me disse que chorou e foi ali que percebeu que estava
-                apaixonada por mim...
+                sobre cansar... Você chorou na hora - e foi só depois, já namorando, que você me
+                contou que foi ali que percebeu que estava apaixonada por mim...
               </p>
             </div>
 
@@ -339,15 +359,21 @@ export default function App() {
         <section className="text-center py-12 sm:py-16">
           <div className="text-4xl sm:text-5xl mb-4">💕 ❤️ 💗</div>
           <p className="text-lg sm:text-xl font-serif text-rose-200/90 italic">
-            E no final...
+            E assim continua nossa história...
           </p>
           <p className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-rose-100 mt-4 animate-pulseSoft">
             Te amo para sempre, Maysa ♥
           </p>
           <p className="text-rose-300/80 mt-6 text-base sm:text-lg flex items-center justify-center gap-2 flex-wrap">
-            <span>🌹</span> Feliz Dia dos Namorados, amor <span>🌹</span>
+            <span>🌹</span> Sempre contigo, amor <span>🌹</span>
           </p>
           <p className="text-3xl mt-6">💝</p>
+          <p className="text-rose-400/60 text-sm mt-8 sm:mt-10 flex items-center justify-center gap-1.5 flex-wrap">
+            <span>Feito com muito</span>
+            <span>☕</span>
+            <span>e amor por Davi Antonaji</span>
+            <span className="text-rose-300/70">(seu amor)</span>
+          </p>
         </section>
       </main>
     </div>

@@ -40,6 +40,30 @@
 .hearts-bg span:nth-child(9) { left: 85%; animation-delay: 4.5s; }
 .hearts-bg span:nth-child(10) { left: 95%; animation-delay: 0.5s; }
 
+@media (max-width: 640px) {
+  .hearts-bg span {
+    font-size: 1.1rem;
+    animation-duration: 15s;
+  }
+}
+
+/* Safe area para iPhone (notch, home indicator) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Toque mais suave em mobile */
+@media (hover: none) {
+  button, [role="button"] {
+    -webkit-tap-highlight-color: rgba(244, 114, 182, 0.2);
+  }
+}
+
 /* Evitar seleção de emojis */
 .select-none {
   user-select: none;
