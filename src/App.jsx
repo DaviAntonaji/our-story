@@ -371,6 +371,7 @@ export default function App() {
           <p className="text-rose-400/60 text-sm mt-8 sm:mt-10 flex items-center justify-center gap-1.5 flex-wrap">
             <span>Feito com muito</span>
             <span>☕</span>
+            <span>🍵</span>
             <span>e amor por Davi Antonaji</span>
             <span className="text-rose-300/70">(seu amor)</span>
           </p>
