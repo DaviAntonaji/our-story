@@ -75,7 +75,8 @@ const FOTOS = [
   '/imgs/photos/6.jpg',
   '/imgs/photos/7.jpg',
   '/imgs/photos/8.jpg',
-  '/imgs/photos/9.jpg'
+  '/imgs/photos/9.jpg',
+  '/imgs/photos/10.jpeg'
 ]
 
 export default function App() {
@@ -353,6 +354,45 @@ export default function App() {
                 Depois disso, te levei pela primeira vez até a sua casa a sós. Cumprimentei sua mãe
                 ali do lado de fora mesmo. E quando você me abraçou, eu senti que aquele abraço era
                 bom demais… e percebi que era exatamente ali que eu sempre quero estar.
+              </p>
+            </div>
+
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">08 de março de 2026</h3>
+
+              <p className="text-rose-300/90 mt-1 font-medium">
+                A noite com seus pais e o nosso primeiro beijo
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Foi a noite em que conversei com seus pais. Eles fizeram uma torta de frango que estava
+                simplesmente maravilhosa - com certeza uma das melhores que já comi na vida. Tivemos uma
+                conversa muito boa, e naquele momento eles nos autorizaram a namorar de verdade, estabelecendo
+                algumas regras. Foi um momento muito especial para mim.
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                E foi também nesse dia que demos o nosso primeiro beijo. Um momento simples, mas
+                inesquecível.
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Depois fomos ao aniversário do Wagner. Fomos recebidos ao som de "Aquilo que Parecia
+                Impossível", e aquilo deixou a noite ainda mais marcante e engraçada. Em seguida, você me levou até a casa
+                dos seus avós, onde ficamos conversando por mais um tempo.
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Lá encontrei também seu tio João Vitor, que estudou comigo na época da escola - foi muito
+                legal reencontrá-lo. Até jogamos um pouco de Mortal Kombat. E, pelo que percebi, sua família
+                gostou bastante de mim.
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Nesse dia também te entreguei seus presentes de Dia das Mulheres: um livro, dois
+                girassóis, um porta-retrato com nossa foto favorita do pedido de namoro, algumas fotos
+                reveladas e polaroides para você colocar na capinha do celular.
               </p>
             </div>
           </div>
