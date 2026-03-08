@@ -255,6 +255,27 @@ export default function App() {
             onTouchStart={onCarouselTouchStart}
             onTouchEnd={onCarouselTouchEnd}
           >
+            {/* Setas esquerda e direita */}
+            <button
+              type="button"
+              onClick={() => setFotoAtual((i) => (i - 1 + FOTOS.length) % FOTOS.length)}
+              className="absolute left-1 sm:left-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-rose-900/40 hover:bg-rose-800/50 active:bg-rose-700/60 border border-rose-500/30 transition-colors"
+              aria-label="Foto anterior"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-rose-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => setFotoAtual((i) => (i + 1) % FOTOS.length)}
+              className="absolute right-1 sm:right-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-rose-900/40 hover:bg-rose-800/50 active:bg-rose-700/60 border border-rose-500/30 transition-colors"
+              aria-label="Próxima foto"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-rose-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
             <img
               key={fotoAtual}
               src={FOTOS[fotoAtual]}
