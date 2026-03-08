@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: 'easeOut' }
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.4, ease: 'easeOut' }
 }
 
 // Data de início do namoro: 04/03/2026 às 19:30
@@ -82,10 +82,13 @@ const FOTOS = [
   '/imgs/photos/13.jpeg'
 ]
 
+const MIN_SWIPE = 50
+
 export default function App() {
   const [revelado, setRevelado] = useState(false)
   const [musicaRevelada, setMusicaRevelada] = useState(false)
   const [fotoAtual, setFotoAtual] = useState(0)
+  const touchStartX = useRef(0)
   const tempo = useTempoJuntos()
 
   useEffect(() => {
@@ -95,6 +98,18 @@ export default function App() {
     }, 4000)
     return () => clearInterval(id)
   }, [revelado])
+
+  const onCarouselTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+  const onCarouselTouchEnd = (e) => {
+    const endX = e.changedTouches[0].clientX
+    const diff = touchStartX.current - endX
+    if (Math.abs(diff) >= MIN_SWIPE) {
+      if (diff > 0) setFotoAtual((i) => (i + 1) % FOTOS.length)
+      else setFotoAtual((i) => (i - 1 + FOTOS.length) % FOTOS.length)
+    }
+  }
 
   if (!revelado) {
     return (
@@ -235,7 +250,11 @@ export default function App() {
           <p className="text-rose-200/80 text-center mb-4 sm:mb-6 text-sm sm:text-base">
             Memórias que guardamos no coração, Maysa 💖
           </p>
-          <div className="relative rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center">
+          <div
+            className="relative rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center touch-pan-y"
+            onTouchStart={onCarouselTouchStart}
+            onTouchEnd={onCarouselTouchEnd}
+          >
             <img
               key={fotoAtual}
               src={FOTOS[fotoAtual]}
