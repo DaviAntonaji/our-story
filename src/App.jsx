@@ -4,9 +4,10 @@ import { motion } from 'framer-motion'
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.4, ease: 'easeOut' }
+  viewport: { once: true, amount: 0.15 },
+  transition: { duration: 0.35, ease: 'easeOut' }
 }
+
 
 // Data de início do namoro: 04/03/2026 às 19:30
 const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0) // mês é 0-indexed
@@ -228,7 +229,7 @@ export default function App() {
         </motion.section>
 
         {/* Versículo */}
-        <motion.section className="rounded-2xl p-4 sm:p-6 md:p-8 card-glass card-hover" {...fadeInUp}>
+        <motion.section className="rounded-2xl p-4 sm:p-6 md:p-8 card-glass card-hover allow-select" {...fadeInUp}>
           <p className="text-2xl text-center mb-4">✝️</p>
           <h2 className="text-lg sm:text-xl font-display font-semibold text-rose-50 text-center mb-4">
             1 Coríntios 13:4-7
@@ -251,7 +252,7 @@ export default function App() {
             Memórias que guardamos no coração, Maysa 💖
           </p>
           <div
-            className="relative rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center touch-pan-y"
+            className="relative rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center"
             onTouchStart={onCarouselTouchStart}
             onTouchEnd={onCarouselTouchEnd}
           >
@@ -298,7 +299,7 @@ export default function App() {
         </motion.section>
 
         {/* Nossa História */}
-        <motion.section {...fadeInUp}>
+        <motion.section className="allow-select" {...fadeInUp}>
           <div className="text-center mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
               <span className="text-2xl sm:text-3xl">🌹</span>

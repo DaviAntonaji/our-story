@@ -3,11 +3,39 @@
 @tailwind utilities;
 
 html {
+  overflow-x: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
 }
 
 body {
   font-family: 'Outfit', system-ui, sans-serif;
+  min-height: 100%;
+}
+
+/* Mobile: scroll fluido e evita seleção acidental ao arrastar */
+@media (hover: none) {
+  html, body {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+  /* Permitir seleção em blocos de texto (versículo, história) */
+  .allow-select {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  /* Garantir que motion sections renderizem corretamente (evita glitch de “não renderizado”) */
+  main section {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+  }
 }
 
 /* Background especial: cores suaves + orbs + texturas + decorações */
