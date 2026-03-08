@@ -80,7 +80,9 @@ const FOTOS = [
   '/imgs/photos/10.jpeg',
   '/imgs/photos/11.jpeg',
   '/imgs/photos/12.jpeg',
-  '/imgs/photos/13.jpeg'
+  '/imgs/photos/13.jpeg',
+  '/imgs/photos/14.jpeg',
+  '/imgs/photos/15.jpeg'
 ]
 
 const MIN_SWIPE = 50
@@ -403,10 +405,10 @@ export default function App() {
 
             <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
               <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
-              <h3 className="font-bold text-rose-200 text-sm sm:text-base">08 de março de 2026</h3>
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">07 de março de 2026</h3>
 
               <p className="text-rose-300/90 mt-1 font-medium">
-                A noite com seus pais e o nosso primeiro beijo
+                Noite com seus pais e o nosso primeiro beijo
               </p>
 
               <p className="text-rose-200/80 mt-2">
@@ -437,6 +439,29 @@ export default function App() {
                 Nesse dia também te entreguei seus presentes de Dia das Mulheres: um livro, dois
                 girassóis, um porta-retrato com nossa foto favorita do pedido de namoro, algumas fotos
                 reveladas e polaroides para você colocar na capinha do celular.
+              </p>
+            </div>
+
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">08 de março de 2026</h3>
+
+              <p className="text-rose-300/90 mt-1 font-medium">
+                Dia que você conheceu meus pais
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Fomos ao shopping às 12h, comemos batata recheada e passeamos bastante. Vimos alguns
+                livros na livraria, a loja de itens coreanos, tomamos sorvete… foi um momento incrível
+                contigo. Meus pais te amaram, te acharam muito linda, carismática, e ficaram muito felizes
+                pelo nosso relacionamento.
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Na volta para casa, com meu pai dirigindo, consegui demonstrar um ato de carinho com você:
+                demonstrei cuidado e tentei te deixar confortável para tirar um cochilo. Fiquei arrumando
+                seu cabelo, dando apoio com o braço para você descansar e fazendo carinho… Cada momento
+                foi marcante, cada carinho, cada passeio de mãos dadas, cada beijinho, cada risada. Foi um dia incrível.
               </p>
             </div>
           </div>
