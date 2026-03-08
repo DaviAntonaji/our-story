@@ -76,7 +76,10 @@ const FOTOS = [
   '/imgs/photos/7.jpg',
   '/imgs/photos/8.jpg',
   '/imgs/photos/9.jpg',
-  '/imgs/photos/10.jpeg'
+  '/imgs/photos/10.jpeg',
+  '/imgs/photos/11.jpeg',
+  '/imgs/photos/12.jpeg',
+  '/imgs/photos/13.jpeg'
 ]
 
 export default function App() {
