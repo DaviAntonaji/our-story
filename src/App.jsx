@@ -81,8 +81,8 @@ const FOTOS = [
   '/imgs/photos/11.jpeg',
   '/imgs/photos/12.jpeg',
   '/imgs/photos/13.jpeg',
-  '/imgs/photos/14.jpeg',
-  '/imgs/photos/15.jpeg'
+  '/imgs/photos/14.jpg',
+  '/imgs/photos/15.jpg'
 ]
 
 const MIN_SWIPE = 50
