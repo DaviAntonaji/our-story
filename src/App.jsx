@@ -245,17 +245,21 @@ export default function App() {
               Amor da minha vida
             </h2>
           </div>
-          <div className="rounded-2xl overflow-hidden card-glass max-w-sm mx-auto aspect-[3/4] sm:aspect-square">
-            <img
-              src="/imgs/photos/15.jpg"
-              alt="Nós dois"
-              className="w-full h-full object-cover"
-            />
+          <div className="max-w-sm mx-auto p-2 bg-rose-50/10 rounded-2xl border border-amber-400/50 shadow-lg shadow-rose-950/20">
+            <div className="p-1 rounded-xl border border-amber-300/40 bg-rose-50/5">
+              <div className="rounded-lg overflow-hidden aspect-[3/4] sm:aspect-square">
+                <img
+                  src="/imgs/photos/15.jpg"
+                  alt="Nós dois"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
           <p className="text-rose-200/90 text-sm sm:text-base">Juntos desde 04 de março de 2026 🌹</p>
           <div className="space-y-4">
             <p className="text-rose-200/90 text-base sm:text-lg font-medium">Estamos juntos há</p>
-            <div className="flex flex-nowrap justify-center items-end gap-1.5 sm:gap-2 md:gap-4 text-2xl font-mono card-glass rounded-2xl p-5 sm:p-5 md:p-6 max-w-md mx-auto overflow-x-auto ring-2 ring-rose-400/20">
+            <div className="flex flex-nowrap justify-center items-end gap-1.5 sm:gap-2 md:gap-4 text-2xl font-mono card-glass rounded-2xl p-5 sm:p-5 md:p-6 max-w-md mx-auto overflow-x-auto ring-2 ring-amber-400/40">
               <div className="flex flex-col items-center shrink-0">
                 <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.meses}</span>
                 <span className="text-xs sm:text-sm text-rose-300/70">Meses</span>
@@ -285,10 +289,10 @@ export default function App() {
               {totalDiasAnimado} dias vivendo o melhor capítulo da minha vida ❤️
             </p>
           </div>
-          <p className="text-2xl sm:text-3xl text-rose-300/80 flex justify-center gap-1">
-            <span className="animate-softFloat">✨</span>
-            <span className="animate-softFloat [animation-delay:0.8s]">🌹</span>
-            <span className="animate-softFloat [animation-delay:1.6s]">✨</span>
+          <p className="text-2xl sm:text-3xl flex justify-center gap-1">
+            <span className="animate-softFloat text-amber-300/90">✨</span>
+            <span className="animate-softFloat [animation-delay:0.8s] text-amber-200/90">🌹</span>
+            <span className="animate-softFloat [animation-delay:1.6s] text-amber-300/90">✨</span>
           </p>
         </motion.section>
 
@@ -302,7 +306,7 @@ export default function App() {
               <span className="text-5xl block">🎵</span>
               <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50">Nossa Música</h2>
               <p className="text-rose-200/80 text-sm sm:text-base">A trilha sonora do nosso amor 💕</p>
-              <span className="inline-flex items-center gap-3 bg-rose-800/40 hover:bg-rose-700/50 px-6 py-4 rounded-xl font-medium text-rose-50 text-lg transition-colors border border-rose-500/30">
+              <span className="inline-flex items-center gap-3 bg-white/15 hover:bg-white/25 px-6 py-4 rounded-xl font-medium text-rose-50 text-lg transition-colors border border-amber-400/50">
                 <span className="text-2xl">▶</span>
                 Ouvir nossa música
               </span>
@@ -348,16 +352,16 @@ export default function App() {
             ❤️ Coisas que amo em você
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">✝️ Seu amor por Deus</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">💕 O jeito que você cuida de mim</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">🕊️ A paz que sinto ao seu lado</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">💪 Como você sempre me incentiva</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">❤️ Seu jeito único de demonstrar amor</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">✨ Como você torna tudo mais leve</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">👀 Seu olhar quando me vê</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">💗 Seu coração bondoso</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">😊 Seu sorriso e sua risada</span>
-            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">🌹 Seu jeito único de ser</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">✝️ Seu amor por Deus</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">💕 O jeito que você cuida de mim</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">🕊️ A paz que sinto ao seu lado</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">💪 Como você sempre me incentiva</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">❤️ Seu jeito único de demonstrar amor</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">✨ Como você torna tudo mais leve</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">👀 Seu olhar quando me vê</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">💗 Seu coração bondoso</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">😊 Seu sorriso e sua risada</span>
+            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">🌹 Seu jeito único de ser</span>
           </div>
         </motion.section>
 
@@ -395,7 +399,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => irParaFoto((fotoAtual - 1 + FOTOS.length) % FOTOS.length)}
-              className="absolute left-1 sm:left-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-rose-900/40 hover:bg-rose-800/50 active:bg-rose-700/60 border border-rose-500/30 transition-colors"
+              className="absolute left-1 sm:left-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 active:bg-white/20 border border-amber-400/50 transition-colors"
               aria-label="Foto anterior"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6 text-rose-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -405,7 +409,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => irParaFoto((fotoAtual + 1) % FOTOS.length)}
-              className="absolute right-1 sm:right-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-rose-900/40 hover:bg-rose-800/50 active:bg-rose-700/60 border border-rose-500/30 transition-colors"
+              className="absolute right-1 sm:right-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 active:bg-white/20 border border-amber-400/50 transition-colors"
               aria-label="Próxima foto"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6 text-rose-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -432,7 +436,7 @@ export default function App() {
                   key={i}
                   onClick={() => irParaFoto(i)}
                   className={`rounded-full transition-all p-2.5 sm:p-1 ${
-                    i === fotoAtual ? 'bg-rose-300 w-3 h-3 sm:w-2.5 sm:h-2.5' : 'bg-rose-500/50 w-2.5 h-2.5 sm:w-2 sm:h-2 hover:bg-rose-400/70 active:bg-rose-400/70'
+                    i === fotoAtual ? 'bg-amber-400 w-3 h-3 sm:w-2.5 sm:h-2.5' : 'bg-white/40 w-2.5 h-2.5 sm:w-2 sm:h-2 hover:bg-amber-400/60 active:bg-amber-400/60'
                   }`}
                   aria-label={`Ver foto ${i + 1}`}
                 />
@@ -455,15 +459,15 @@ export default function App() {
             <p className="text-rose-200/80 text-sm sm:text-base">
               Os momentos que marcaram nossa trajetória
             </p>
-            <div className="flex items-center justify-center gap-2 mt-3 text-rose-400/60">
+            <div className="flex items-center justify-center gap-2 mt-3 text-amber-300/80">
               <span className="text-lg">✦</span>
               <span className="text-lg">✧</span>
               <span className="text-lg">✦</span>
             </div>
           </div>
           <div className="space-y-6 sm:space-y-8">
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">13, 14 e 15 de fevereiro de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
                 Onde tudo começou
@@ -473,8 +477,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">20 de fevereiro de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
                 Quando você se apaixonou por mim
@@ -494,8 +498,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">04 de março de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
                 Início do nosso namoro
@@ -545,8 +549,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">07 de março de 2026</h3>
 
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -584,8 +588,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">08 de março de 2026</h3>
 
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -616,19 +620,19 @@ export default function App() {
           </h2>
           <ul className="space-y-4 text-rose-200/95 text-[15px] sm:text-base leading-relaxed">
             <li className="flex items-center gap-2">
-              <span className="text-xl">✨</span>
+              <span className="text-xl text-amber-300">✨</span>
               <span>Casar com você</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-xl">✨</span>
+              <span className="text-xl text-amber-300">✨</span>
               <span>Construir uma família</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-xl">✨</span>
+              <span className="text-xl text-amber-300">✨</span>
               <span>Servir a Deus juntos</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-xl">✨</span>
+              <span className="text-xl text-amber-300">✨</span>
               <span>Viver muitas histórias ainda</span>
             </li>
           </ul>
@@ -650,7 +654,7 @@ export default function App() {
           <p className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-rose-50 mt-4 animate-pulseSoft">
             Te amo para sempre, Maysa ♥
           </p>
-          <p className="text-rose-300/80 mt-6 text-base sm:text-lg flex items-center justify-center gap-2 flex-wrap">
+          <p className="text-amber-200/90 mt-6 text-base sm:text-lg flex items-center justify-center gap-2 flex-wrap">
             <span>🌹</span> Sempre contigo, amor <span>🌹</span>
           </p>
           <p className="text-3xl mt-6 animate-softPulse">💝</p>
@@ -662,7 +666,7 @@ export default function App() {
               Clique aqui se você chegou até o fim ❤️
             </button>
           ) : (
-            <div className="mt-8 p-6 rounded-2xl card-glass max-w-md mx-auto space-y-3">
+            <div className="mt-8 p-6 rounded-2xl card-glass max-w-md mx-auto space-y-3 border-amber-400/30">
               <p className="text-rose-100 text-base sm:text-lg italic">
                 Obrigado por viver essa história comigo.
               </p>
