@@ -667,7 +667,7 @@ export default function App() {
                 Obrigado por viver essa história comigo.
               </p>
               <p className="text-rose-200 font-medium">
-                Eu escolheria você todos os dias de novo.
+                Você é o amor que eu sempre sonhei.
               </p>
             </div>
           )}
