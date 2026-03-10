@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { createPortal } from 'react-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -11,6 +12,32 @@ const fadeInUp = {
 
 // Data de início do namoro: 04/03/2026 às 19:30
 const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0) // mês é 0-indexed
+
+function useCountUp(end, duration = 1200, startOn = true) {
+  const [value, setValue] = useState(0)
+  const startRef = useRef(null)
+
+  useEffect(() => {
+    if (!startOn || end === 0) {
+      setValue(end)
+      return
+    }
+    let raf
+    const start = performance.now()
+    const animate = (now) => {
+      if (!startRef.current) startRef.current = now
+      const elapsed = now - startRef.current
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = 1 - (1 - progress) ** 2
+      setValue(Math.floor(eased * end))
+      if (progress < 1) raf = requestAnimationFrame(animate)
+    }
+    raf = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(raf)
+  }, [end, duration, startOn])
+
+  return value
+}
 
 function useTempoJuntos() {
   const [tempo, setTempo] = useState({
@@ -86,21 +113,72 @@ const FOTOS = [
 ]
 
 const MIN_SWIPE = 50
+const INTERVALO_CARROSSEL = 7000
+
+function HeartsRain() {
+  const hearts = [
+    { emoji: '❤️', left: '5%', delay: '-4.5s', duration: 5 },
+    { emoji: '💕', left: '15%', delay: '-3.2s', duration: 5.5 },
+    { emoji: '💗', left: '25%', delay: '-1.8s', duration: 4.5 },
+    { emoji: '💖', left: '35%', delay: '-4s', duration: 6 },
+    { emoji: '💝', left: '45%', delay: '-2.5s', duration: 5.2 },
+    { emoji: '❤️', left: '55%', delay: '-0.5s', duration: 4.8 },
+    { emoji: '💕', left: '65%', delay: '-4.8s', duration: 5.8 },
+    { emoji: '💗', left: '75%', delay: '-3.5s', duration: 5.3 },
+    { emoji: '💖', left: '85%', delay: '-1.2s', duration: 5.5 },
+    { emoji: '💝', left: '95%', delay: '-2.8s', duration: 4.5 },
+    { emoji: '🤍', left: '10%', delay: '-4.2s', duration: 5 },
+    { emoji: '💓', left: '30%', delay: '-0.8s', duration: 5.4 },
+    { emoji: '❤️', left: '50%', delay: '-3.8s', duration: 5.6 },
+    { emoji: '💕', left: '70%', delay: '-1.5s', duration: 4.7 },
+    { emoji: '💗', left: '90%', delay: '-2.2s', duration: 5.2 },
+    { emoji: '💖', left: '8%', delay: '-3.6s', duration: 5.1 },
+    { emoji: '💝', left: '42%', delay: '-0.3s', duration: 5.7 },
+    { emoji: '💓', left: '62%', delay: '-4s', duration: 5.9 },
+    { emoji: '🤍', left: '78%', delay: '-2.9s', duration: 4.9 },
+  ]
+  return (
+    <div className="hearts-rain fixed inset-0 pointer-events-none z-[1]" aria-hidden style={{ overflow: 'hidden' }}>
+      {hearts.map((h, i) => (
+        <span
+          key={i}
+          style={{
+            left: h.left,
+            top: '-20px',
+            fontSize: '1.5rem',
+            animationDelay: h.delay,
+            animationDuration: `${h.duration}s`,
+          }}
+        >
+          {h.emoji}
+        </span>
+      ))}
+    </div>
+  )
+}
 
 export default function App() {
   const [revelado, setRevelado] = useState(false)
   const [musicaRevelada, setMusicaRevelada] = useState(false)
+  const [mensagemRevelada, setMensagemRevelada] = useState(false)
   const [fotoAtual, setFotoAtual] = useState(0)
+  const [timerKey, setTimerKey] = useState(0)
   const touchStartX = useRef(0)
   const tempo = useTempoJuntos()
+  const totalDiasAnimado = useCountUp(tempo.totalDias, 1400, revelado)
 
   useEffect(() => {
     if (!revelado) return
     const id = setInterval(() => {
       setFotoAtual((i) => (i + 1) % FOTOS.length)
-    }, 4000)
+    }, INTERVALO_CARROSSEL)
     return () => clearInterval(id)
-  }, [revelado])
+  }, [revelado, timerKey])
+
+  const irParaFoto = (indice) => {
+    setFotoAtual(indice)
+    setTimerKey((k) => k + 1)
+  }
 
   const onCarouselTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX
@@ -109,14 +187,16 @@ export default function App() {
     const endX = e.changedTouches[0].clientX
     const diff = touchStartX.current - endX
     if (Math.abs(diff) >= MIN_SWIPE) {
-      if (diff > 0) setFotoAtual((i) => (i + 1) % FOTOS.length)
-      else setFotoAtual((i) => (i - 1 + FOTOS.length) % FOTOS.length)
+      if (diff > 0) irParaFoto((fotoAtual + 1) % FOTOS.length)
+      else irParaFoto((fotoAtual - 1 + FOTOS.length) % FOTOS.length)
     }
   }
 
   if (!revelado) {
     return (
-      <div className="min-h-screen min-h-[100dvh] flex flex-col items-center justify-center text-rose-100 p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] relative overflow-hidden page-bg-landing">
+      <>
+        {typeof document !== 'undefined' && createPortal(<HeartsRain />, document.body)}
+        <div className="min-h-screen min-h-[100dvh] flex flex-col items-center justify-center text-rose-100 p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] relative overflow-hidden page-bg-landing">
         <motion.div className="text-5xl md:text-6xl mb-6 animate-pulseSoft" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>💕</motion.div>
         <motion.p className="text-xl md:text-2xl font-serif font-light tracking-wide text-rose-200/95 mb-8 text-center relative z-10" {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.15 }}>
           Uma surpresa especial te espera
@@ -135,67 +215,96 @@ export default function App() {
           <span>✨</span> Toque para revelar <span>✨</span>
         </motion.p>
       </div>
+      </>
     )
   }
 
   return (
     <div className="min-h-screen min-h-[100dvh] text-rose-100 relative overflow-x-hidden page-bg">
-      <main className="max-w-2xl mx-auto px-5 sm:px-6 py-8 sm:py-12 pt-[env(safe-area-inset-top)] space-y-12 sm:space-y-16 relative z-10 pb-20 safe-bottom">
+      <main className="max-w-2xl mx-auto px-5 sm:px-6 py-8 sm:py-12 pt-[env(safe-area-inset-top)] space-y-7 sm:space-y-16 relative z-10 pb-20 safe-bottom">
+        {/* Dica de scroll - mobile */}
+        <p className="text-rose-300/60 text-sm text-center animate-pulse pt-2 pb-1 sm:hidden">
+          Role para ver nossa história ↓
+        </p>
+
         {/* Hero */}
-        <motion.section className="text-center space-y-5 sm:space-y-6" {...fadeInUp}>
-          <div className="flex justify-center gap-3 text-3xl sm:text-4xl">
-            <span className="animate-heartBeat">💕</span>
-            <span className="animate-heartBeat [animation-delay:0.3s]">❤️</span>
-            <span className="animate-heartBeat [animation-delay:0.6s]">💗</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-rose-50 leading-tight px-2">
-            Para você, Maysa. Amor da minha vida 💝
-          </h1>
-          <p className="text-rose-200/90 text-sm sm:text-base font-medium">Juntos desde 04 de março de 2026 🌹</p>
-          <div className="flex flex-nowrap justify-center items-end gap-1.5 sm:gap-2 md:gap-4 text-2xl font-mono card-glass rounded-2xl p-4 sm:p-5 md:p-6 max-w-md mx-auto overflow-x-auto">
-            <div className="flex flex-col items-center shrink-0">
-              <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.meses}</span>
-              <span className="text-xs sm:text-sm text-rose-300/70">Meses</span>
-            </div>
-            <div className="flex flex-col items-center shrink-0">
-              <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.dias}</span>
-              <span className="text-xs sm:text-sm text-rose-300/70">Dias</span>
-            </div>
-            <div className="flex flex-nowrap items-end shrink-0 gap-1 sm:gap-2">
-              <div className="flex flex-col items-center shrink-0">
-                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.horas}</span>
-                <span className="text-xs sm:text-sm text-rose-300/70">Horas</span>
-              </div>
-              <span className="text-base sm:text-lg text-rose-300/60 pb-1 shrink-0">:</span>
-              <div className="flex flex-col items-center shrink-0">
-                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.minutos}</span>
-                <span className="text-xs sm:text-sm text-rose-300/70">Min</span>
-              </div>
-              <span className="text-base sm:text-lg text-rose-300/60 pb-1 shrink-0">:</span>
-              <div className="flex flex-col items-center shrink-0">
-                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.segundos}</span>
-                <span className="text-xs sm:text-sm text-rose-300/70">Seg</span>
-              </div>
-            </div>
-          </div>
-          <p className="text-base sm:text-lg text-rose-200/95 font-medium">
-            São {tempo.totalDias} dias de amor contigo, meu bem 💕
+        <motion.section className="text-center space-y-6 sm:space-y-8" {...fadeInUp}>
+          <p className="text-rose-200/80 text-sm sm:text-base italic font-body">
+            A história mais bonita que Deus já escreveu na minha vida.
           </p>
-          <p className="text-2xl sm:text-3xl text-rose-300/80">✨ 🌹 ✨</p>
+          <div className="flex justify-center gap-3 text-3xl sm:text-4xl">
+            <span className="animate-heartBeatSoft">❤️</span>
+            <span className="animate-heartBeatSoft [animation-delay:0.4s]">❤️</span>
+            <span className="animate-heartBeatSoft [animation-delay:0.8s]">❤️</span>
+          </div>
+          <div className="space-y-2">
+            <h1 className="text-[26px] sm:text-3xl md:text-4xl font-display font-semibold text-rose-50 leading-tight px-2">
+              Para você, Maysa ❤️
+            </h1>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-medium text-rose-200/95">
+              Amor da minha vida
+            </h2>
+          </div>
+          <div className="rounded-2xl overflow-hidden card-glass max-w-sm mx-auto aspect-[3/4] sm:aspect-square">
+            <img
+              src="/imgs/photos/15.jpg"
+              alt="Nós dois"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <p className="text-rose-200/90 text-sm sm:text-base">Juntos desde 04 de março de 2026 🌹</p>
+          <div className="space-y-4">
+            <p className="text-rose-200/90 text-base sm:text-lg font-medium">Estamos juntos há</p>
+            <div className="flex flex-nowrap justify-center items-end gap-1.5 sm:gap-2 md:gap-4 text-2xl font-mono card-glass rounded-2xl p-5 sm:p-5 md:p-6 max-w-md mx-auto overflow-x-auto ring-2 ring-rose-400/20">
+              <div className="flex flex-col items-center shrink-0">
+                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.meses}</span>
+                <span className="text-xs sm:text-sm text-rose-300/70">Meses</span>
+              </div>
+              <div className="flex flex-col items-center shrink-0">
+                <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.dias}</span>
+                <span className="text-xs sm:text-sm text-rose-300/70">Dias</span>
+              </div>
+              <div className="flex flex-nowrap items-end shrink-0 gap-1 sm:gap-2">
+                <div className="flex flex-col items-center shrink-0">
+                  <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.horas}</span>
+                  <span className="text-xs sm:text-sm text-rose-300/70">Horas</span>
+                </div>
+                <span className="text-base sm:text-lg text-rose-300/60 pb-1 shrink-0">:</span>
+                <div className="flex flex-col items-center shrink-0">
+                  <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.minutos}</span>
+                  <span className="text-xs sm:text-sm text-rose-300/70">Min</span>
+                </div>
+                <span className="text-base sm:text-lg text-rose-300/60 pb-1 shrink-0">:</span>
+                <div className="flex flex-col items-center shrink-0">
+                  <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.segundos}</span>
+                  <span className="text-xs sm:text-sm text-rose-300/70">Seg</span>
+                </div>
+              </div>
+            </div>
+            <p className="text-base sm:text-lg text-rose-200/95 font-medium leading-relaxed">
+              {totalDiasAnimado} dias vivendo o melhor capítulo da minha vida ❤️
+            </p>
+          </div>
+          <p className="text-2xl sm:text-3xl text-rose-300/80 flex justify-center gap-1">
+            <span className="animate-softFloat">✨</span>
+            <span className="animate-softFloat [animation-delay:0.8s]">🌹</span>
+            <span className="animate-softFloat [animation-delay:1.6s]">✨</span>
+          </p>
         </motion.section>
 
         {/* Nossa Música */}
-        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover" {...fadeInUp}>
+        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover card-breath" {...fadeInUp}>
           {!musicaRevelada ? (
             <button
               onClick={() => setMusicaRevelada(true)}
-              className="w-full p-6 sm:p-8 md:p-12 text-center hover:bg-rose-800/15 transition-colors"
+              className="w-full p-8 sm:p-10 md:p-12 text-center hover:bg-rose-800/15 transition-colors flex flex-col items-center gap-4"
             >
-              <span className="text-4xl block mb-3">🎵</span>
-              <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 mb-2">Nossa Música</h2>
-              <p className="text-rose-200/80 mb-4 text-sm sm:text-base">A trilha sonora do nosso amor 💕</p>
-              <span className="text-rose-300/90 underline underline-offset-2 text-sm sm:text-base">
-                Clique para descobrir ✨
+              <span className="text-5xl block">🎵</span>
+              <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50">Nossa Música</h2>
+              <p className="text-rose-200/80 text-sm sm:text-base">A trilha sonora do nosso amor 💕</p>
+              <span className="inline-flex items-center gap-3 bg-rose-800/40 hover:bg-rose-700/50 px-6 py-4 rounded-xl font-medium text-rose-50 text-lg transition-colors border border-rose-500/30">
+                <span className="text-2xl">▶</span>
+                Ouvir nossa música
               </span>
             </button>
           ) : (
@@ -222,27 +331,50 @@ export default function App() {
         </motion.section>
 
         {/* Frase de amor */}
-        <motion.section className="rounded-2xl p-4 sm:p-6 md:p-8 card-glass card-hover" {...fadeInUp}>
-          <p className="text-2xl text-center mb-4">💌</p>
-          <p className="text-rose-50/95 leading-relaxed text-base sm:text-lg italic font-body">
-            Maysa, desde o primeiro dia que te vi soube que minha vida não seria mais a mesma. Cada momento com você é especial, cada sorriso seu me faz bem. Te amo mais do que consigo dizer.
-          </p>
-          <p className="text-2xl text-center mt-4">💕</p>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath" {...fadeInUp}>
+          <p className="text-2xl text-center mb-4 animate-softPulse">💌</p>
+          <div className="text-rose-50/95 text-[15px] sm:text-base leading-[1.7] italic font-body space-y-4">
+            <p>Maysa,</p>
+            <p>desde o primeiro dia eu senti que algo em você era diferente.</p>
+            <p>Cada momento com você é especial, e cada sorriso seu me faz bem.</p>
+            <p>Te amo mais do que consigo dizer.</p>
+          </div>
+          <p className="text-2xl text-center mt-4 animate-softPulse [animation-delay:1s]">💕</p>
+        </motion.section>
+
+        {/* Coisas que amo em você */}
+        <motion.section className="rounded-2xl p-6 sm:p-8 card-glass card-hover card-breath" {...fadeInUp}>
+          <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center mb-6">
+            ❤️ Coisas que amo em você
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">✝️ Seu amor por Deus</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">💕 O jeito que você cuida de mim</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">🕊️ A paz que sinto ao seu lado</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">💪 Como você sempre me incentiva</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">❤️ Seu jeito único de demonstrar amor</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">✨ Como você torna tudo mais leve</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">👀 Seu olhar quando me vê</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">💗 Seu coração bondoso</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">😊 Seu sorriso e sua risada</span>
+            <span className="px-5 py-3 rounded-2xl bg-rose-900/35 border border-rose-500/30 text-rose-100 text-base">🌹 Seu jeito único de ser</span>
+          </div>
         </motion.section>
 
         {/* Versículo */}
-        <motion.section className="rounded-2xl p-4 sm:p-6 md:p-8 card-glass card-hover allow-select" {...fadeInUp}>
-          <p className="text-2xl text-center mb-4">✝️</p>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover allow-select card-breath" {...fadeInUp}>
+          <p className="text-2xl text-center mb-4 animate-softPulse [animation-delay:0.5s]">✝️</p>
           <h2 className="text-lg sm:text-xl font-display font-semibold text-rose-50 text-center mb-4">
             1 Coríntios 13:4-7
           </h2>
-          <blockquote className="text-rose-200/90 leading-relaxed text-sm sm:text-base space-y-3">
+          <blockquote className="text-rose-200/90 leading-[1.7] text-[15px] sm:text-base space-y-3">
             <p><strong>4</strong> O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.</p>
             <p><strong>5</strong> Não maltrata, não procura seus interesses, não se ira facilmente, não guarda rancor.</p>
             <p><strong>6</strong> O amor não se alegra com a injustiça, mas se alegra com a verdade.</p>
             <p><strong>7</strong> Tudo sofre, tudo crê, tudo espera, tudo suporta.</p>
           </blockquote>
-          <p className="text-rose-300/70 text-center mt-4 text-sm italic">A palavra que nos inspira</p>
+          <p className="text-rose-300/70 text-center mt-2 text-sm italic">— 1 Coríntios 13</p>
+          <p className="text-rose-400/80 text-center mt-3 text-sm">Esse versículo sempre me lembra você.</p>
         </motion.section>
 
         {/* Momentos - Carrossel de fotos */}
@@ -253,15 +385,16 @@ export default function App() {
           <p className="text-rose-200/80 text-center mb-4 sm:mb-6 text-sm sm:text-base">
             Memórias que guardamos no coração, Maysa 💖
           </p>
-          <div
-            className="relative rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center"
+          <div className="-mx-5 sm:mx-0">
+            <div
+              className="relative rounded-[14px] sm:rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center w-full"
             onTouchStart={onCarouselTouchStart}
             onTouchEnd={onCarouselTouchEnd}
           >
             {/* Setas esquerda e direita */}
             <button
               type="button"
-              onClick={() => setFotoAtual((i) => (i - 1 + FOTOS.length) % FOTOS.length)}
+              onClick={() => irParaFoto((fotoAtual - 1 + FOTOS.length) % FOTOS.length)}
               className="absolute left-1 sm:left-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-rose-900/40 hover:bg-rose-800/50 active:bg-rose-700/60 border border-rose-500/30 transition-colors"
               aria-label="Foto anterior"
             >
@@ -271,7 +404,7 @@ export default function App() {
             </button>
             <button
               type="button"
-              onClick={() => setFotoAtual((i) => (i + 1) % FOTOS.length)}
+              onClick={() => irParaFoto((fotoAtual + 1) % FOTOS.length)}
               className="absolute right-1 sm:right-2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-rose-900/40 hover:bg-rose-800/50 active:bg-rose-700/60 border border-rose-500/30 transition-colors"
               aria-label="Próxima foto"
             >
@@ -279,17 +412,25 @@ export default function App() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <img
-              key={fotoAtual}
-              src={FOTOS[fotoAtual]}
-              alt={`Momento ${fotoAtual + 1}`}
-              className="max-w-full max-h-full w-auto h-auto object-contain animate-fadeIn"
-            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={fotoAtual}
+                  src={FOTOS[fotoAtual]}
+                  alt={`Momento ${fotoAtual + 1}`}
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                />
+              </AnimatePresence>
+            </div>
             <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1 sm:gap-2">
               {FOTOS.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setFotoAtual(i)}
+                  onClick={() => irParaFoto(i)}
                   className={`rounded-full transition-all p-2.5 sm:p-1 ${
                     i === fotoAtual ? 'bg-rose-300 w-3 h-3 sm:w-2.5 sm:h-2.5' : 'bg-rose-500/50 w-2.5 h-2.5 sm:w-2 sm:h-2 hover:bg-rose-400/70 active:bg-rose-400/70'
                   }`}
@@ -297,6 +438,7 @@ export default function App() {
                 />
               ))}
             </div>
+          </div>
           </div>
         </motion.section>
 
@@ -320,7 +462,7 @@ export default function App() {
             </div>
           </div>
           <div className="space-y-6 sm:space-y-8">
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
               <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">13, 14 e 15 de fevereiro de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -331,7 +473,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
               <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">20 de fevereiro de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -352,7 +494,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
               <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">04 de março de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -403,7 +545,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
               <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">07 de março de 2026</h3>
 
@@ -442,7 +584,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-4 sm:p-5 ml-1">
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-rose-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
               <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-rose-400 ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">08 de março de 2026</h3>
 
@@ -467,11 +609,43 @@ export default function App() {
           </div>
         </motion.section>
 
+        {/* O futuro que sonho com você */}
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath" {...fadeInUp}>
+          <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center mb-6">
+            O futuro que sonho com você
+          </h2>
+          <ul className="space-y-4 text-rose-200/95 text-[15px] sm:text-base leading-relaxed">
+            <li className="flex items-center gap-2">
+              <span className="text-xl">✨</span>
+              <span>Casar com você</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-xl">✨</span>
+              <span>Construir uma família</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-xl">✨</span>
+              <span>Servir a Deus juntos</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-xl">✨</span>
+              <span>Viver muitas histórias ainda</span>
+            </li>
+          </ul>
+        </motion.section>
+
         {/* Final */}
         <motion.section className="text-center py-12 sm:py-16" {...fadeInUp}>
-          <div className="text-4xl sm:text-5xl mb-4">💕 ❤️ 💗</div>
+          <div className="text-4xl sm:text-5xl mb-4 flex justify-center gap-2">
+            <span className="animate-softFloat">💕</span>
+            <span className="animate-softFloat [animation-delay:0.6s]">❤️</span>
+            <span className="animate-softFloat [animation-delay:1.2s]">💗</span>
+          </div>
+          <p className="text-base sm:text-lg text-rose-200/90 mb-4">
+            Essa é só a primeira página da nossa história.
+          </p>
           <p className="text-lg sm:text-xl font-display text-rose-200/95 italic">
-            E assim continua nossa história...
+            E assim continua...
           </p>
           <p className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-rose-50 mt-4 animate-pulseSoft">
             Te amo para sempre, Maysa ♥
@@ -479,7 +653,24 @@ export default function App() {
           <p className="text-rose-300/80 mt-6 text-base sm:text-lg flex items-center justify-center gap-2 flex-wrap">
             <span>🌹</span> Sempre contigo, amor <span>🌹</span>
           </p>
-          <p className="text-3xl mt-6">💝</p>
+          <p className="text-3xl mt-6 animate-softPulse">💝</p>
+          {!mensagemRevelada ? (
+            <button
+              onClick={() => setMensagemRevelada(true)}
+              className="mt-8 text-rose-300/80 hover:text-rose-200 text-sm sm:text-base underline underline-offset-2 transition-colors"
+            >
+              Clique aqui se você chegou até o fim ❤️
+            </button>
+          ) : (
+            <div className="mt-8 p-6 rounded-2xl card-glass max-w-md mx-auto space-y-3">
+              <p className="text-rose-100 text-base sm:text-lg italic">
+                Obrigado por viver essa história comigo.
+              </p>
+              <p className="text-rose-200 font-medium">
+                Eu escolheria você todos os dias de novo.
+              </p>
+            </div>
+          )}
           <p className="text-rose-400/60 text-sm mt-8 sm:mt-10 flex items-center justify-center gap-1.5 flex-wrap">
             <span>Feito com muito</span>
             <span>☕</span>
