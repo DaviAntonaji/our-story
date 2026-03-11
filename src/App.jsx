@@ -610,6 +610,32 @@ export default function App() {
                 foi marcante, cada carinho, cada passeio de mãos dadas, cada beijinho, cada risada. Foi um dia incrível.
               </p>
             </div>
+
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">09 de março de 2026</h3>
+
+              <p className="text-rose-300/90 mt-1 font-medium">
+                Um cuidado simples ❤️
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                No domingo à noite você começou a sentir uma dorzinha. Na segunda, comentou comigo que
+                estava incomodando bastante, mas estava com vergonha de me dizer exatamente o que era.
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Quando você falou isso, conhecendo a mulher que namoro, eu já imaginei e perguntei se poderia passar aí depois do serviço,
+                só pra te ver um pouquinho. E passei rapidinho: levei uma caixinha de bombom, ficamos
+                conversando, abracei você, dei alguns beijinhos e fiz carinho.
+              </p>
+
+              <p className="text-rose-200/80 mt-2">
+                Foi um momento simples, mas muito especial. Você mesma disse que foi um momento muito
+                feliz e que te ajudou a se sentir um pouco melhor. Às vezes são os gestos pequenos que
+                mostram o quanto a gente se importa.
+              </p>
+            </div>
           </div>
         </motion.section>
 
