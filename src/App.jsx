@@ -117,41 +117,76 @@ const MIN_SWIPE = 50
 const INTERVALO_CARROSSEL = 7000
 
 function HeartsRain() {
-  const hearts = [
+  const items = [
     { emoji: '❤️', left: '5%', delay: '-4.5s', duration: 5 },
+    { emoji: '🦋', left: '12%', delay: '-2s', duration: 7, class: 'text-lg' },
     { emoji: '💕', left: '15%', delay: '-3.2s', duration: 5.5 },
     { emoji: '💗', left: '25%', delay: '-1.8s', duration: 4.5 },
+    { emoji: '🦋', left: '32%', delay: '-5s', duration: 8 },
     { emoji: '💖', left: '35%', delay: '-4s', duration: 6 },
     { emoji: '💝', left: '45%', delay: '-2.5s', duration: 5.2 },
     { emoji: '❤️', left: '55%', delay: '-0.5s', duration: 4.8 },
+    { emoji: '🦋', left: '60%', delay: '-3.5s', duration: 9 },
     { emoji: '💕', left: '65%', delay: '-4.8s', duration: 5.8 },
     { emoji: '💗', left: '75%', delay: '-3.5s', duration: 5.3 },
+    { emoji: '🦋', left: '82%', delay: '-1s', duration: 6 },
     { emoji: '💖', left: '85%', delay: '-1.2s', duration: 5.5 },
     { emoji: '💝', left: '95%', delay: '-2.8s', duration: 4.5 },
     { emoji: '🤍', left: '10%', delay: '-4.2s', duration: 5 },
     { emoji: '💓', left: '30%', delay: '-0.8s', duration: 5.4 },
     { emoji: '❤️', left: '50%', delay: '-3.8s', duration: 5.6 },
-    { emoji: '💕', left: '70%', delay: '-1.5s', duration: 4.7 },
+    { emoji: '🦋', left: '70%', delay: '-4.5s', duration: 7.5 },
     { emoji: '💗', left: '90%', delay: '-2.2s', duration: 5.2 },
-    { emoji: '💖', left: '8%', delay: '-3.6s', duration: 5.1 },
-    { emoji: '💝', left: '42%', delay: '-0.3s', duration: 5.7 },
-    { emoji: '💓', left: '62%', delay: '-4s', duration: 5.9 },
     { emoji: '🤍', left: '78%', delay: '-2.9s', duration: 4.9 },
   ]
   return (
     <div className="hearts-rain fixed inset-0 pointer-events-none z-[1]" aria-hidden style={{ overflow: 'hidden' }}>
-      {hearts.map((h, i) => (
+      {items.map((h, i) => (
         <span
           key={i}
+          className={h.class}
           style={{
             left: h.left,
             top: '-20px',
-            fontSize: '1.5rem',
+            fontSize: h.emoji === '🦋' ? '1.4rem' : '1.5rem',
             animationDelay: h.delay,
             animationDuration: `${h.duration}s`,
           }}
         >
           {h.emoji}
+        </span>
+      ))}
+    </div>
+  )
+}
+
+function ButterfliesFloating() {
+  const butterflies = [
+    { left: '8%', top: '15%', delay: '0s', duration: 12 },
+    { left: '22%', top: '40%', delay: '-3s', duration: 14 },
+    { left: '45%', top: '25%', delay: '-6s', duration: 11 },
+    { left: '68%', top: '55%', delay: '-2s', duration: 16 },
+    { left: '85%', top: '20%', delay: '-4s', duration: 13 },
+    { left: '15%', top: '70%', delay: '-8s', duration: 15 },
+    { left: '55%', top: '75%', delay: '-1s', duration: 12 },
+    { left: '92%', top: '65%', delay: '-5s', duration: 14 },
+    { left: '35%', top: '85%', delay: '-7s', duration: 11 },
+  ]
+  return (
+    <div className="butterflies-float fixed inset-0 pointer-events-none z-[1]" aria-hidden style={{ overflow: 'hidden' }}>
+      {butterflies.map((b, i) => (
+        <span
+          key={i}
+          className={i % 3 === 0 ? 'butterfly-float-slow' : ''}
+          style={{
+            left: b.left,
+            top: '-20px',
+            fontSize: i % 2 === 0 ? '1.1rem' : '1.4rem',
+            animationDelay: b.delay,
+            animationDuration: `${b.duration}s`,
+          }}
+        >
+          🦋
         </span>
       ))}
     </div>
@@ -198,10 +233,14 @@ export default function App() {
       <>
         {typeof document !== 'undefined' && createPortal(<HeartsRain />, document.body)}
         <div className="min-h-screen min-h-[100dvh] flex flex-col items-center justify-center text-rose-100 p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] relative overflow-hidden page-bg-landing">
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 text-amber-200/40 text-xs tracking-[0.4em] font-display">✦ ✧ ✦</div>
         <motion.div className="text-5xl md:text-6xl mb-6 animate-pulseSoft" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>💕</motion.div>
-        <motion.p className="text-xl md:text-2xl font-serif font-light tracking-wide text-rose-200/95 mb-8 text-center relative z-10" {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.15 }}>
+        <motion.p className="text-xl md:text-2xl font-display font-light tracking-wide text-rose-200/95 mb-6 text-center relative z-10" {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.15 }}>
           Uma surpresa especial te espera
         </motion.p>
+        <div className="section-divider mb-6">
+          <span className="ornament">❀ ❀ ❀</span>
+        </div>
         <motion.button
           onClick={() => setRevelado(true)}
           className="btn-primary min-h-[52px] px-12 py-4 rounded-2xl font-serif text-lg relative z-10 flex items-center gap-3"
@@ -222,6 +261,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen min-h-[100dvh] text-rose-100 relative overflow-x-hidden page-bg">
+      {typeof document !== 'undefined' && createPortal(<ButterfliesFloating />, document.body)}
       <main className="max-w-2xl mx-auto px-5 sm:px-6 py-8 sm:py-12 pt-[env(safe-area-inset-top)] space-y-7 sm:space-y-16 relative z-10 pb-20 safe-bottom">
         {/* Dica de scroll - mobile */}
         <p className="text-rose-300/60 text-sm text-center animate-pulse pt-2 pb-1 sm:hidden">
@@ -238,7 +278,9 @@ export default function App() {
             <span className="animate-heartBeatSoft [animation-delay:0.4s]">❤️</span>
             <span className="animate-heartBeatSoft [animation-delay:0.8s]">❤️</span>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 relative">
+            <span className="butterflies-static absolute -left-2 top-0 text-xl opacity-70" style={{ animationDelay: '0s' }} aria-hidden>🦋</span>
+            <span className="butterflies-static absolute -right-2 top-0 text-lg opacity-60" style={{ animationDelay: '1.5s' }} aria-hidden>🦋</span>
             <h1 className="text-[26px] sm:text-3xl md:text-4xl font-display font-semibold text-rose-50 leading-tight px-2">
               Para você, Maysa ❤️
             </h1>
@@ -246,9 +288,9 @@ export default function App() {
               Amor da minha vida
             </h2>
           </div>
-          <div className="max-w-sm mx-auto p-2 bg-rose-50/10 rounded-2xl border border-amber-400/50 shadow-lg shadow-rose-950/20">
-            <div className="p-1 rounded-xl border border-amber-300/40 bg-rose-50/5">
-              <div className="rounded-lg overflow-hidden aspect-[3/4] sm:aspect-square">
+          <div className="max-w-sm mx-auto p-3 bg-rose-50/10 rounded-2xl border border-amber-400/40 hero-photo-frame bg-gradient-to-br from-rose-900/20 to-transparent">
+            <div className="p-1.5 rounded-xl border border-amber-300/30 bg-rose-50/5">
+              <div className="rounded-lg overflow-hidden aspect-[3/4] sm:aspect-square ring-1 ring-white/5">
                 <img
                   src="/imgs/photos/15.jpg"
                   alt="Nós dois"
@@ -260,7 +302,7 @@ export default function App() {
           <p className="text-rose-200/90 text-sm sm:text-base">Juntos desde 04 de março de 2026 🌹</p>
           <div className="space-y-4">
             <p className="text-rose-200/90 text-base sm:text-lg font-medium">Estamos juntos há</p>
-            <div className="flex flex-nowrap justify-center items-end gap-1.5 sm:gap-2 md:gap-4 text-2xl font-mono card-glass rounded-2xl p-5 sm:p-5 md:p-6 max-w-md mx-auto overflow-x-auto ring-2 ring-amber-400/40">
+            <div className="flex flex-nowrap justify-center items-end gap-1.5 sm:gap-2 md:gap-4 text-2xl font-mono card-glass timer-glow rounded-2xl p-5 sm:p-5 md:p-6 max-w-md mx-auto overflow-x-auto ring-2 ring-amber-400/30 border-amber-400/20">
               <div className="flex flex-col items-center shrink-0">
                 <span className="text-xl sm:text-2xl md:text-4xl font-bold text-rose-200">{tempo.meses}</span>
                 <span className="text-xs sm:text-sm text-rose-300/70">Meses</span>
@@ -290,15 +332,21 @@ export default function App() {
               {totalDiasAnimado} dias vivendo o melhor capítulo da minha vida ❤️
             </p>
           </div>
-          <p className="text-2xl sm:text-3xl flex justify-center gap-1">
+          <p className="text-2xl sm:text-3xl flex justify-center gap-2 items-center">
             <span className="animate-softFloat text-amber-300/90">✨</span>
+            <span className="animate-softFloat [animation-delay:0.8s] butterflies-static text-base" style={{ opacity: 0.8 }} aria-hidden>🦋</span>
             <span className="animate-softFloat [animation-delay:0.8s] text-amber-200/90">🌹</span>
+            <span className="animate-softFloat [animation-delay:1.2s] butterflies-static text-base" style={{ opacity: 0.7 }} aria-hidden>🦋</span>
             <span className="animate-softFloat [animation-delay:1.6s] text-amber-300/90">✨</span>
           </p>
         </motion.section>
 
+        <div className="section-divider py-2">
+          <span className="ornament">~ ✦ ~</span>
+        </div>
+
         {/* Nossa Música */}
-        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover card-breath" {...fadeInUp}>
+        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
           {!musicaRevelada ? (
             <button
               onClick={() => setMusicaRevelada(true)}
@@ -335,10 +383,18 @@ export default function App() {
           )}
         </motion.section>
 
+        <div className="section-divider py-2">
+          <span className="ornament">❦ ❦ ❦</span>
+        </div>
+
         {/* Frase de amor */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath" {...fadeInUp}>
-          <p className="text-2xl text-center mb-4 animate-softPulse">💌</p>
-          <div className="text-rose-50/95 text-[15px] sm:text-base leading-[1.7] italic font-body space-y-4">
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
+          <div className="flex justify-center gap-2 mb-3">
+            <span className="text-amber-300/50 text-sm">—</span>
+            <span className="text-2xl animate-softPulse">💌</span>
+            <span className="text-amber-300/50 text-sm">—</span>
+          </div>
+          <div className="text-rose-50/95 text-[15px] sm:text-base leading-[1.8] italic font-body space-y-4">
             <p>Maysa,</p>
             <p>desde o primeiro dia eu senti que algo em você era diferente.</p>
             <p>Cada momento com você é especial, e cada sorriso seu me faz bem.</p>
@@ -348,27 +404,37 @@ export default function App() {
         </motion.section>
 
         {/* Coisas que amo em você */}
-        <motion.section className="rounded-2xl p-6 sm:p-8 card-glass card-hover card-breath" {...fadeInUp}>
-          <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center mb-6">
-            ❤️ Coisas que amo em você
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">✝️ Seu amor por Deus</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">💕 O jeito que você cuida de mim</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">🕊️ A paz que sinto ao seu lado</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">💪 Como você sempre me incentiva</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">❤️ Seu jeito único de demonstrar amor</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">✨ Como você torna tudo mais leve</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">👀 Seu olhar quando me vê</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">💗 Seu coração bondoso</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">😊 Seu sorriso e sua risada</span>
-            <span className="px-5 py-3 rounded-2xl bg-white/10 border border-amber-400/50 text-rose-50 text-base">🌹 Seu jeito único de ser</span>
+        <motion.section className="rounded-2xl p-6 sm:p-8 card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
+          <div className="section-header flex flex-col items-center mb-6">
+            <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center">
+              ❤️ Coisas que amo em você <span className="butterflies-static text-lg ml-1" aria-hidden>🦋</span>
+            </h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">✝️ Seu amor por Deus</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">💕 O jeito que você cuida de mim</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">🕊️ A paz que sinto ao seu lado</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">💪 Como você sempre me incentiva</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">❤️ Seu jeito único de demonstrar amor</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">✨ Como você torna tudo mais leve</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">👀 Seu olhar quando me vê</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">💗 Seu coração bondoso</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">😊 Seu sorriso e sua risada</span>
+            <span className="px-5 py-3 rounded-2xl tag-glow text-rose-50 text-base transition-all duration-300">🌹 Seu jeito único de ser</span>
           </div>
         </motion.section>
 
+        <div className="section-divider py-2">
+          <span className="ornament">✧ ✿ ✧</span>
+        </div>
+
         {/* Versículo */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover allow-select card-breath" {...fadeInUp}>
-          <p className="text-2xl text-center mb-4 animate-softPulse [animation-delay:0.5s]">✝️</p>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover allow-select card-breath card-gradient-border" {...fadeInUp}>
+          <div className="flex justify-center gap-3 mb-2">
+            <span className="text-amber-300/40 text-lg">❧</span>
+            <span className="text-2xl animate-softPulse [animation-delay:0.5s]">✝️</span>
+            <span className="text-amber-300/40 text-lg">❧</span>
+          </div>
           <h2 className="text-lg sm:text-xl font-display font-semibold text-rose-50 text-center mb-4">
             1 Coríntios 13:4-7
           </h2>
@@ -382,17 +448,23 @@ export default function App() {
           <p className="text-rose-400/80 text-center mt-3 text-sm">Esse versículo sempre me lembra você.</p>
         </motion.section>
 
+        <div className="section-divider py-2">
+          <span className="ornament">~ 🌹 ~</span>
+        </div>
+
         {/* Momentos - Carrossel de fotos */}
         <motion.section {...fadeInUp}>
-          <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center mb-2">
-            Momentos 📸
-          </h2>
-          <p className="text-rose-200/80 text-center mb-4 sm:mb-6 text-sm sm:text-base">
+          <div className="section-header flex flex-col items-center gap-1 mb-4">
+            <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center">
+              Momentos 📸
+            </h2>
+            <p className="text-rose-200/80 text-center text-sm sm:text-base">
             Memórias que guardamos no coração, Maysa 💖
           </p>
+          </div>
           <div className="-mx-5 sm:mx-0">
             <div
-              className="relative rounded-[14px] sm:rounded-2xl overflow-hidden card-glass h-[360px] sm:h-[420px] flex items-center justify-center w-full"
+              className="relative rounded-[14px] sm:rounded-2xl overflow-hidden card-glass card-gradient-border h-[360px] sm:h-[420px] flex items-center justify-center w-full"
             onTouchStart={onCarouselTouchStart}
             onTouchEnd={onCarouselTouchEnd}
           >
@@ -447,28 +519,30 @@ export default function App() {
           </div>
         </motion.section>
 
+        <div className="section-divider py-4">
+          <span className="ornament">✦ ✧ ✦ ✧ ✦</span>
+        </div>
+
         {/* Nossa História */}
         <motion.section className="allow-select" {...fadeInUp}>
-          <div className="text-center mb-8 sm:mb-10">
+          <div className="section-header text-center mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
-              <span className="text-2xl sm:text-3xl">🌹</span>
+              <span className="text-2xl sm:text-3xl animate-softFloat">🌹</span>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-rose-50">
                 Nossa História
               </h2>
-              <span className="text-2xl sm:text-3xl">📖</span>
+              <span className="text-2xl sm:text-3xl animate-softFloat [animation-delay:0.4s]">📖</span>
             </div>
             <p className="text-rose-200/80 text-sm sm:text-base">
               Os momentos que marcaram nossa trajetória
             </p>
-            <div className="flex items-center justify-center gap-2 mt-3 text-amber-300/80">
-              <span className="text-lg">✦</span>
-              <span className="text-lg">✧</span>
-              <span className="text-lg">✦</span>
+            <div className="flex items-center justify-center gap-3 mt-4 text-amber-300/70 tracking-widest">
+              <span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span>
             </div>
           </div>
           <div className="space-y-6 sm:space-y-8">
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 timeline-connector border-l-2 border-amber-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath card-gradient-border">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 timeline-dot ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">13, 14 e 15 de fevereiro de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
                 Onde tudo começou
@@ -478,8 +552,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 timeline-connector border-l-2 border-amber-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath card-gradient-border">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 timeline-dot ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">20 de fevereiro de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
                 Quando você se apaixonou por mim
@@ -499,8 +573,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 timeline-connector border-l-2 border-amber-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath card-gradient-border">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 timeline-dot ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">04 de março de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
                 Início do nosso namoro
@@ -550,8 +624,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 timeline-connector border-l-2 border-amber-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath card-gradient-border">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 timeline-dot ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">07 de março de 2026</h3>
 
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -589,8 +663,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 timeline-connector border-l-2 border-amber-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath card-gradient-border">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 timeline-dot ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">08 de março de 2026</h3>
 
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -612,8 +686,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 timeline-connector border-l-2 border-amber-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath card-gradient-border">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 timeline-dot ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">09 de março de 2026</h3>
 
               <p className="text-rose-300/90 mt-1 font-medium">
@@ -638,8 +712,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
-              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+            <div className="relative pl-5 sm:pl-6 timeline-connector border-l-2 border-amber-400/50 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath card-gradient-border">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 timeline-dot ring-2 ring-rose-900/50" />
               <h3 className="font-bold text-rose-200 text-sm sm:text-base">11 de março de 2026</h3>
               <p className="text-rose-300/90 mt-1 font-medium">
                 Nossa primeira Santa Ceia juntos
@@ -663,8 +737,12 @@ export default function App() {
           </div>
         </motion.section>
 
+        <div className="section-divider py-4">
+          <span className="ornament">~ ✿ ~</span>
+        </div>
+
         {/* O futuro que sonho com você */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath" {...fadeInUp}>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
           <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center mb-6">
             O futuro que sonho com você
           </h2>
@@ -689,7 +767,8 @@ export default function App() {
         </motion.section>
 
         {/* Final */}
-        <motion.section className="text-center py-12 sm:py-16" {...fadeInUp}>
+        <motion.section className="text-center py-12 sm:py-16 relative" {...fadeInUp}>
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 text-amber-200/30 text-sm tracking-[0.5em]">✦ ✧ ✦ ✧ ✦</div>
           <div className="text-4xl sm:text-5xl mb-4 flex justify-center gap-2">
             <span className="animate-softFloat">💕</span>
             <span className="animate-softFloat [animation-delay:0.6s]">❤️</span>
@@ -705,9 +784,13 @@ export default function App() {
             Te amo para sempre, Maysa ♥
           </p>
           <p className="text-amber-200/90 mt-6 text-base sm:text-lg flex items-center justify-center gap-2 flex-wrap">
-            <span>🌹</span> Sempre contigo, amor <span>🌹</span>
+            <span>🌹</span> Sempre contigo, amor <span className="butterflies-static inline-block text-sm">🦋</span> <span>🌹</span>
           </p>
-          <p className="text-3xl mt-6 animate-softPulse">💝</p>
+          <div className="flex justify-center gap-4 mt-6 text-amber-300/50">
+            <span className="text-lg">—</span>
+            <span className="text-3xl animate-softPulse">💝</span>
+            <span className="text-lg">—</span>
+          </div>
           {!mensagemRevelada ? (
             <button
               onClick={() => setMensagemRevelada(true)}
@@ -716,7 +799,7 @@ export default function App() {
               Clique aqui se você chegou até o fim ❤️
             </button>
           ) : (
-            <div className="mt-8 p-6 rounded-2xl card-glass max-w-md mx-auto space-y-3 border-amber-400/30">
+            <div className="mt-8 p-6 rounded-2xl card-glass card-gradient-border max-w-md mx-auto space-y-3 border-amber-400/30">
               <p className="text-rose-100 text-base sm:text-lg italic">
                 Obrigado por viver essa história comigo.
               </p>

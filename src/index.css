@@ -240,3 +240,176 @@ body {
   pointer-events: none;
 }
 
+/* Borboletas flutuantes - movimento sutil de "bater asas" */
+@keyframes butterflyFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(3px, -4px) rotate(4deg);
+  }
+  50% {
+    transform: translate(-2px, -6px) rotate(-2deg);
+  }
+  75% {
+    transform: translate(4px, -3px) rotate(2deg);
+  }
+}
+
+@keyframes butterflyFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(110vh) rotate(180deg);
+    opacity: 0.25;
+  }
+}
+
+.butterflies-float span {
+  position: absolute;
+  animation: butterflyFall 12s linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.2));
+}
+
+.butterflies-float .butterfly-float-slow {
+  animation-duration: 16s;
+  animation-delay: -2s;
+}
+
+.butterflies-static {
+  animation: butterflyFloat 4s ease-in-out infinite;
+  pointer-events: none;
+  display: inline-block;
+}
+
+/* Divisores ornamentais */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  opacity: 0.85;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.5), transparent);
+}
+.section-divider .ornament {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: rgba(251, 191, 36, 0.7);
+}
+
+/* Frame ornamental para fotos e cards especiais */
+.frame-ornate {
+  position: relative;
+  padding: 0.75rem;
+}
+.frame-ornate::before {
+  content: '✦ ✧ ✦';
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  color: rgba(251, 191, 36, 0.5);
+  white-space: nowrap;
+}
+
+/* Tags com gradiente sutil */
+.tag-glow {
+  background: linear-gradient(135deg, rgba(251, 113, 133, 0.15) 0%, rgba(212, 175, 55, 0.12) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.15);
+}
+.tag-glow:hover {
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 4px 16px -4px rgba(251, 191, 36, 0.2);
+}
+
+/* Header de seção estilizado */
+.section-header {
+  position: relative;
+  padding: 1rem 1.5rem;
+}
+.section-header::before,
+.section-header::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.35));
+}
+.section-header::before {
+  left: 0;
+}
+.section-header::after {
+  right: 0;
+  background: linear-gradient(270deg, transparent, rgba(251, 191, 36, 0.35));
+}
+
+/* Timeline - linha conectora com brilho */
+.timeline-connector {
+  border-left: 2px solid rgba(251, 191, 36, 0.35);
+  background: linear-gradient(180deg, transparent, rgba(251, 191, 36, 0.03) 50%, transparent);
+}
+.timeline-dot {
+  box-shadow: 0 0 0 3px rgba(92, 45, 66, 0.8), 0 0 12px 2px rgba(251, 191, 36, 0.25);
+}
+
+/* Card com borda gradiente sutil */
+.card-gradient-border {
+  position: relative;
+}
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), transparent 40%, transparent 60%, rgba(244, 114, 182, 0.25));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Brilho sutil no hover do timer */
+.timer-glow {
+  box-shadow: 
+    0 4px 24px -4px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 30px -8px rgba(251, 191, 36, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.timer-glow:hover {
+  box-shadow: 
+    0 8px 32px -6px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(251, 191, 36, 0.2) inset,
+    0 0 40px -6px rgba(251, 191, 36, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Borda da foto hero */
+.hero-photo-frame {
+  box-shadow: 
+    0 0 0 1px rgba(251, 191, 36, 0.2),
+    0 8px 32px -8px rgba(0, 0, 0, 0.35),
+    0 0 40px -10px rgba(251, 191, 36, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+

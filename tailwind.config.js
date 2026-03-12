@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body: ['Lora', 'Georgia', 'serif'],
         sans: ['Outfit', 'system-ui', 'sans-serif'],
       },
       keyframes: {
