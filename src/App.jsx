@@ -109,7 +109,8 @@ const FOTOS = [
   '/imgs/photos/12.jpeg',
   '/imgs/photos/13.jpeg',
   '/imgs/photos/14.jpg',
-  '/imgs/photos/15.jpg'
+  '/imgs/photos/15.jpg',
+  '/imgs/photos/16.jpg'
 ]
 
 const MIN_SWIPE = 50
@@ -634,6 +635,29 @@ export default function App() {
                 Foi um momento simples, mas muito especial. Você mesma disse que foi um momento muito
                 feliz e que te ajudou a se sentir um pouco melhor. Às vezes são os gestos pequenos que
                 mostram o quanto a gente se importa.
+              </p>
+            </div>
+
+            <div className="relative pl-5 sm:pl-6 border-l-2 border-amber-400/60 card-glass rounded-r-2xl p-5 sm:p-5 ml-1 card-breath">
+              <div className="absolute -left-[9px] top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-amber-400 ring-2 ring-rose-900/50" />
+              <h3 className="font-bold text-rose-200 text-sm sm:text-base">11 de março de 2026</h3>
+              <p className="text-rose-300/90 mt-1 font-medium">
+                Nossa primeira Santa Ceia juntos
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Esse dia foi muito especial para nós. Tivemos um alinhamento com todos os ministérios da igreja e, durante o encontro, aconteceu também a Santa Ceia. Sem ter sido algo planejado, acabou sendo a primeira Santa Ceia que participamos juntos.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Durante o dia eu estava preocupado pensando em como poderia te levar, porque estava chovendo o dia inteiro. Fiquei pensando em formas de respeitar o que seus pais pediram e ao mesmo tempo conseguir ir com você. Cheguei até a sugerir algumas alternativas, como irmos com você no banco de trás e em chamada de vídeo com sua mãe ou sua irmã caso a Duda não pudesse ir. Mas, no fim, seu pai nos deu um voto de confiança e deixou irmos normalmente, o que tornou tudo ainda mais especial.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Poder estar ali com você, participando de um momento tão importante na presença de Deus, marcou muito o meu coração.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                E teve também um detalhe simples, mas que ficou guardado com muito carinho para mim. Teve até uma "briguinha" porque eu não deixei você abrir a porta do carro, eu queria abrir para você. Eu saí todo animado para abrir a porta e segurar sua mão quando você desceu. Foi um gesto pequeno, mas muito especial para mim, porque cuidar de você assim me deixa muito feliz.
+              </p>
+              <p className="text-rose-200/80 mt-2">
+                Foi um dia cheio de significado, fé e pequenos gestos que mostraram o quanto estamos construindo algo bonito juntos. ❤️
               </p>
             </div>
           </div>
