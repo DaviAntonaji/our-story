@@ -271,7 +271,9 @@ body {
   filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.08));
 }
 
-.butterflies-static {
+/* Emojis com movimento suave de "flutuar" */
+.butterflies-static,
+.float-emoji {
   animation: butterflyFloat 4s ease-in-out infinite;
   pointer-events: none;
   display: inline-block;
