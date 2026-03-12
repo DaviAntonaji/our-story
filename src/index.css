@@ -258,28 +258,23 @@ body {
 
 @keyframes butterflyFall {
   0% {
-    transform: translateY(-10vh) rotate(0deg);
+    transform: translateY(-15vh) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    opacity: 0.6;
+  8% {
+    opacity: 0.28;
   }
   100% {
-    transform: translateY(110vh) rotate(180deg);
-    opacity: 0.25;
+    transform: translateY(115vh) rotate(180deg);
+    opacity: 0.1;
   }
 }
 
 .butterflies-float span {
   position: absolute;
-  animation: butterflyFall 12s linear infinite;
+  animation: butterflyFall linear infinite;
   pointer-events: none;
-  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.2));
-}
-
-.butterflies-float .butterfly-float-slow {
-  animation-duration: 16s;
-  animation-delay: -2s;
+  filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.08));
 }
 
 .butterflies-static {

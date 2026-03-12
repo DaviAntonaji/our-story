@@ -162,26 +162,28 @@ function HeartsRain() {
 
 function ButterfliesFloating() {
   const butterflies = [
-    { left: '8%', top: '15%', delay: '0s', duration: 12 },
-    { left: '22%', top: '40%', delay: '-3s', duration: 14 },
-    { left: '45%', top: '25%', delay: '-6s', duration: 11 },
-    { left: '68%', top: '55%', delay: '-2s', duration: 16 },
-    { left: '85%', top: '20%', delay: '-4s', duration: 13 },
-    { left: '15%', top: '70%', delay: '-8s', duration: 15 },
-    { left: '55%', top: '75%', delay: '-1s', duration: 12 },
-    { left: '92%', top: '65%', delay: '-5s', duration: 14 },
-    { left: '35%', top: '85%', delay: '-7s', duration: 11 },
+    { left: '5%', delay: '-18s', duration: 22 },
+    { left: '18%', delay: '-8s', duration: 18 },
+    { left: '32%', delay: '-25s', duration: 24 },
+    { left: '48%', delay: '-3s', duration: 20 },
+    { left: '62%', delay: '-14s', duration: 19 },
+    { left: '78%', delay: '-22s', duration: 23 },
+    { left: '92%', delay: '-11s', duration: 21 },
+    { left: '12%', delay: '-5s', duration: 17 },
+    { left: '42%', delay: '-19s', duration: 25 },
+    { left: '58%', delay: '-2s', duration: 16 },
+    { left: '72%', delay: '-26s', duration: 22 },
+    { left: '88%', delay: '-9s', duration: 20 },
   ]
   return (
     <div className="butterflies-float fixed inset-0 pointer-events-none z-[1]" aria-hidden style={{ overflow: 'hidden' }}>
       {butterflies.map((b, i) => (
         <span
           key={i}
-          className={i % 3 === 0 ? 'butterfly-float-slow' : ''}
           style={{
             left: b.left,
             top: '-20px',
-            fontSize: i % 2 === 0 ? '1.1rem' : '1.4rem',
+            fontSize: i % 2 === 0 ? '1rem' : '1.25rem',
             animationDelay: b.delay,
             animationDuration: `${b.duration}s`,
           }}
