@@ -31,12 +31,6 @@ body {
     -webkit-user-select: text;
     user-select: text;
   }
-  /* Garantir que motion sections renderizem corretamente (evita glitch de “não renderizado”) */
-  main section {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform: translateZ(0);
-  }
 }
 
 /* Paleta branco + dourado (ela ama!) */
@@ -381,6 +375,15 @@ body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+/* Mobile: fallback sem mask-composite (suporte limitado em alguns browsers) */
+@media (max-width: 768px) {
+  .card-gradient-border::before {
+    display: none;
+  }
+  .card-gradient-border {
+    box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.15);
+  }
 }
 
 /* Brilho sutil no hover do timer */

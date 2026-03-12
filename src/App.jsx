@@ -5,7 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.15 },
+  viewport: { once: true, amount: 0.05 },
+  transition: { duration: 0.35, ease: 'easeOut' }
+}
+
+/* No mobile: sempre visível - Intersection Observer falha ao scroll em muitos celulares */
+const sectionVisible = {
+  initial: { opacity: 1, y: 0 },
+  animate: { opacity: 1, y: 0 },
   transition: { duration: 0.35, ease: 'easeOut' }
 }
 
@@ -161,6 +168,14 @@ function HeartsRain() {
 }
 
 function ButterfliesFloating() {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    setIsMobile(mq.matches)
+    const handler = () => setIsMobile(mq.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
   const butterflies = [
     { left: '5%', delay: '-18s', duration: 22 },
     { left: '18%', delay: '-8s', duration: 18 },
@@ -175,9 +190,10 @@ function ButterfliesFloating() {
     { left: '72%', delay: '-26s', duration: 22 },
     { left: '88%', delay: '-9s', duration: 20 },
   ]
+  const visible = isMobile ? butterflies.slice(0, 4) : butterflies
   return (
     <div className="butterflies-float fixed inset-0 pointer-events-none z-[1]" aria-hidden style={{ overflow: 'hidden' }}>
-      {butterflies.map((b, i) => (
+      {visible.map((b, i) => (
         <span
           key={i}
           style={{
@@ -201,9 +217,18 @@ export default function App() {
   const [mensagemRevelada, setMensagemRevelada] = useState(false)
   const [fotoAtual, setFotoAtual] = useState(0)
   const [timerKey, setTimerKey] = useState(0)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768)
   const touchStartX = useRef(0)
   const tempo = useTempoJuntos()
   const totalDiasAnimado = useCountUp(tempo.totalDias, 1400, revelado)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    setIsMobile(mq.matches)
+    const h = () => setIsMobile(mq.matches)
+    mq.addEventListener('change', h)
+    return () => mq.removeEventListener('change', h)
+  }, [])
 
   useEffect(() => {
     if (!revelado) return
@@ -271,7 +296,7 @@ export default function App() {
         </p>
 
         {/* Hero */}
-        <motion.section className="text-center space-y-6 sm:space-y-8" {...fadeInUp}>
+        <motion.section className="text-center space-y-6 sm:space-y-8" {...(isMobile ? sectionVisible : fadeInUp)}>
           <p className="text-rose-200/80 text-sm sm:text-base italic font-body">
             A história mais bonita que Deus já escreveu na minha vida.
           </p>
@@ -348,7 +373,7 @@ export default function App() {
         </div>
 
         {/* Nossa Música */}
-        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
+        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           {!musicaRevelada ? (
             <button
               onClick={() => setMusicaRevelada(true)}
@@ -390,7 +415,7 @@ export default function App() {
         </div>
 
         {/* Frase de amor */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="flex justify-center gap-2 mb-3">
             <span className="text-amber-300/50 text-sm">—</span>
             <span className="text-2xl animate-softPulse">💌</span>
@@ -406,7 +431,7 @@ export default function App() {
         </motion.section>
 
         {/* Coisas que amo em você */}
-        <motion.section className="rounded-2xl p-6 sm:p-8 card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
+        <motion.section className="rounded-2xl p-6 sm:p-8 card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="section-header flex flex-col items-center mb-6">
             <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center">
               ❤️ Coisas que amo em você <span className="butterflies-static text-lg ml-1" aria-hidden>🦋</span>
@@ -431,7 +456,7 @@ export default function App() {
         </div>
 
         {/* Versículo */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover allow-select card-breath card-gradient-border" {...fadeInUp}>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover allow-select card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="flex justify-center gap-3 mb-2">
             <span className="text-amber-300/40 text-lg">❧</span>
             <span className="text-2xl animate-softPulse [animation-delay:0.5s]">✝️</span>
@@ -455,7 +480,7 @@ export default function App() {
         </div>
 
         {/* Momentos - Carrossel de fotos */}
-        <motion.section {...fadeInUp}>
+        <motion.section {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="section-header flex flex-col items-center gap-1 mb-4">
             <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center">
               Momentos 📸
@@ -526,7 +551,7 @@ export default function App() {
         </div>
 
         {/* Nossa História */}
-        <motion.section className="allow-select" {...fadeInUp}>
+        <motion.section className="allow-select" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="section-header text-center mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
               <span className="text-2xl sm:text-3xl animate-softFloat">🌹</span>
@@ -744,7 +769,7 @@ export default function App() {
         </div>
 
         {/* O futuro que sonho com você */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...fadeInUp}>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center mb-6">
             O futuro que sonho com você
           </h2>
@@ -769,7 +794,7 @@ export default function App() {
         </motion.section>
 
         {/* Final */}
-        <motion.section className="text-center py-12 sm:py-16 relative" {...fadeInUp}>
+        <motion.section className="text-center py-12 sm:py-16 relative" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="absolute top-6 left-1/2 -translate-x-1/2 text-amber-200/30 text-sm tracking-[0.5em]">✦ ✧ ✦ ✧ ✦</div>
           <div className="text-4xl sm:text-5xl mb-4 flex justify-center gap-2">
             <span className="animate-softFloat">💕</span>
