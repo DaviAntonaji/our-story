@@ -306,8 +306,7 @@ export default function App() {
             <span className="animate-heartBeatSoft [animation-delay:0.8s]">❤️</span>
           </div>
           <div className="space-y-2 relative">
-            <span className="float-emoji absolute -left-2 top-0 text-xl opacity-70" style={{ animationDelay: '0s' }} aria-hidden>🦋</span>
-            <span className="float-emoji absolute -right-2 top-0 text-lg opacity-60" style={{ animationDelay: '1s' }} aria-hidden>💕</span>
+            <span className="float-emoji absolute -left-2 top-0 text-xl opacity-60" style={{ animationDelay: '0s' }} aria-hidden>🦋</span>
             <h1 className="text-[26px] sm:text-3xl md:text-4xl font-display font-semibold text-rose-50 leading-tight px-2">
               Para você, Maysa ❤️
             </h1>
@@ -359,31 +358,20 @@ export default function App() {
               {totalDiasAnimado} dias vivendo o melhor capítulo da minha vida ❤️
             </p>
           </div>
-          <p className="text-2xl sm:text-3xl flex justify-center gap-2 items-center flex-wrap">
-            <span className="float-emoji text-amber-300/90" style={{ opacity: 0.9, animationDelay: '0s' }} aria-hidden>✨</span>
-            <span className="float-emoji text-base" style={{ opacity: 0.8, animationDelay: '0.5s' }} aria-hidden>🦋</span>
-            <span className="float-emoji text-amber-200/90" style={{ opacity: 0.9, animationDelay: '0.2s' }} aria-hidden>🌹</span>
-            <span className="float-emoji text-base" style={{ opacity: 0.85, animationDelay: '1s' }} aria-hidden>💕</span>
-            <span className="float-emoji text-amber-200/90" style={{ opacity: 0.9, animationDelay: '0.7s' }} aria-hidden>❤️</span>
-            <span className="float-emoji text-base" style={{ opacity: 0.7, animationDelay: '1.5s' }} aria-hidden>🦋</span>
-            <span className="float-emoji text-amber-300/90" style={{ opacity: 0.9, animationDelay: '1.2s' }} aria-hidden>✨</span>
+          <p className="text-2xl sm:text-3xl flex justify-center gap-2 items-center">
+            <span className="float-emoji text-amber-300/90" style={{ animationDelay: '0s' }} aria-hidden>✨</span>
+            <span className="float-emoji text-base opacity-80" style={{ animationDelay: '0.5s' }} aria-hidden>🦋</span>
+            <span className="float-emoji text-amber-200/90" style={{ animationDelay: '0.2s' }} aria-hidden>🌹</span>
+            <span className="float-emoji text-amber-300/90" style={{ animationDelay: '0.4s' }} aria-hidden>✨</span>
           </p>
         </motion.section>
 
         <div className="section-divider py-2">
-          <span className="ornament">
-            <span className="float-emoji" style={{ animationDelay: '0s' }}>✦</span>
-            <span className="float-emoji" style={{ animationDelay: '0.5s' }}> 🦋 </span>
-            <span className="float-emoji" style={{ animationDelay: '1s' }}>✦</span>
-          </span>
+          <span className="ornament">~ ✦ ~</span>
         </div>
 
         {/* Nossa Música */}
-        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover card-breath card-gradient-border relative" {...(isMobile ? sectionVisible : fadeInUp)}>
-          <span className="float-emoji absolute top-4 left-4 text-lg opacity-60" style={{ animationDelay: '0.3s' }} aria-hidden>🎵</span>
-          <span className="float-emoji absolute top-4 right-4 text-base opacity-50" style={{ animationDelay: '1.2s' }} aria-hidden>💕</span>
-          <span className="float-emoji absolute bottom-4 left-6 text-sm opacity-50" style={{ animationDelay: '2s' }} aria-hidden>❤️</span>
-          <span className="float-emoji absolute bottom-4 right-6 text-sm opacity-50" style={{ animationDelay: '0.8s' }} aria-hidden>🦋</span>
+        <motion.section className="rounded-2xl overflow-hidden card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           {!musicaRevelada ? (
             <button
               onClick={() => setMusicaRevelada(true)}
@@ -425,12 +413,10 @@ export default function App() {
         </div>
 
         {/* Frase de amor */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border relative" {...(isMobile ? sectionVisible : fadeInUp)}>
-          <span className="float-emoji absolute top-4 right-6 text-lg opacity-50" style={{ animationDelay: '0.5s' }} aria-hidden>💗</span>
-          <span className="float-emoji absolute top-4 left-6 text-base opacity-50" style={{ animationDelay: '1.5s' }} aria-hidden>💕</span>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="flex justify-center gap-2 mb-3">
             <span className="text-amber-300/50 text-sm">—</span>
-            <span className="float-emoji text-2xl" style={{ animationDelay: '0s' }} aria-hidden>💌</span>
+            <span className="text-2xl animate-softPulse">💌</span>
             <span className="text-amber-300/50 text-sm">—</span>
           </div>
           <div className="text-rose-50/95 text-[15px] sm:text-base leading-[1.8] italic font-body space-y-4">
@@ -439,20 +425,14 @@ export default function App() {
             <p>Cada momento com você é especial, e cada sorriso seu me faz bem.</p>
             <p>Te amo mais do que consigo dizer.</p>
           </div>
-          <div className="flex justify-center gap-2 mt-4">
-            <span className="float-emoji text-lg" style={{ opacity: 0.8, animationDelay: '0.2s' }} aria-hidden>💕</span>
-            <span className="float-emoji text-lg" style={{ opacity: 0.7, animationDelay: '1s' }} aria-hidden>❤️</span>
-            <span className="float-emoji text-base" style={{ opacity: 0.6, animationDelay: '0.6s' }} aria-hidden>🦋</span>
-          </div>
+          <p className="text-2xl text-center mt-4 animate-softPulse [animation-delay:1s]">💕</p>
         </motion.section>
 
         {/* Coisas que amo em você */}
-        <motion.section className="rounded-2xl p-6 sm:p-8 card-glass card-hover card-breath card-gradient-border relative" {...(isMobile ? sectionVisible : fadeInUp)}>
-          <span className="float-emoji absolute top-6 right-8 text-base opacity-50" style={{ animationDelay: '0.4s' }} aria-hidden>✨</span>
-          <span className="float-emoji absolute top-6 left-8 text-base opacity-50" style={{ animationDelay: '1.3s' }} aria-hidden>🌹</span>
+        <motion.section className="rounded-2xl p-6 sm:p-8 card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="section-header flex flex-col items-center mb-6">
             <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center">
-              <span className="float-emoji inline-block" style={{ animationDelay: '0s' }} aria-hidden>❤️</span> Coisas que amo em você <span className="float-emoji text-lg ml-1" style={{ animationDelay: '0.8s' }} aria-hidden>🦋</span>
+              ❤️ Coisas que amo em você <span className="float-emoji text-lg ml-1" style={{ animationDelay: '0.5s' }} aria-hidden>🦋</span>
             </h2>
           </div>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
@@ -474,12 +454,10 @@ export default function App() {
         </div>
 
         {/* Versículo */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover allow-select card-breath card-gradient-border relative" {...(isMobile ? sectionVisible : fadeInUp)}>
-          <span className="float-emoji absolute top-4 left-6 text-base opacity-40" style={{ animationDelay: '0.2s' }} aria-hidden>🕊️</span>
-          <span className="float-emoji absolute top-4 right-6 text-base opacity-40" style={{ animationDelay: '1s' }} aria-hidden>💗</span>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover allow-select card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="flex justify-center gap-3 mb-2">
             <span className="text-amber-300/40 text-lg">❧</span>
-            <span className="float-emoji text-2xl" style={{ opacity: 0.9, animationDelay: '0.5s' }} aria-hidden>✝️</span>
+            <span className="text-2xl animate-softPulse [animation-delay:0.5s]">✝️</span>
             <span className="text-amber-300/40 text-lg">❧</span>
           </div>
           <h2 className="text-lg sm:text-xl font-display font-semibold text-rose-50 text-center mb-4">
@@ -500,12 +478,10 @@ export default function App() {
         </div>
 
         {/* Momentos - Carrossel de fotos */}
-        <motion.section className="relative" {...(isMobile ? sectionVisible : fadeInUp)}>
-          <span className="float-emoji absolute -top-1 left-4 text-base opacity-60 sm:left-8" style={{ animationDelay: '0.6s' }} aria-hidden>📸</span>
-          <span className="float-emoji absolute -top-1 right-4 text-sm opacity-50 sm:right-8" style={{ animationDelay: '1.4s' }} aria-hidden>💖</span>
+        <motion.section {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="section-header flex flex-col items-center gap-1 mb-4">
             <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center">
-              Momentos <span className="float-emoji inline-block" style={{ animationDelay: '0s' }} aria-hidden>📸</span>
+              Momentos 📸
             </h2>
             <p className="text-rose-200/80 text-center text-sm sm:text-base">
             Memórias que guardamos no coração, Maysa 💖
@@ -569,24 +545,18 @@ export default function App() {
         </motion.section>
 
         <div className="section-divider py-4">
-          <span className="float-emoji text-sm opacity-70" style={{ animationDelay: '0s' }} aria-hidden>✦</span>
-          <span className="float-emoji text-sm opacity-70" style={{ animationDelay: '0.3s' }} aria-hidden>✧</span>
-          <span className="float-emoji text-sm opacity-70" style={{ animationDelay: '0.6s' }} aria-hidden>🦋</span>
-          <span className="float-emoji text-sm opacity-70" style={{ animationDelay: '0.9s' }} aria-hidden>✧</span>
-          <span className="float-emoji text-sm opacity-70" style={{ animationDelay: '1.2s' }} aria-hidden>✦</span>
+          <span className="ornament">✦ ✧ ✦ ✧ ✦</span>
         </div>
 
         {/* Nossa História */}
-        <motion.section className="allow-select relative" {...(isMobile ? sectionVisible : fadeInUp)}>
-          <span className="float-emoji absolute -top-2 left-4 text-lg opacity-60 sm:left-8" style={{ animationDelay: '0.3s' }} aria-hidden>🦋</span>
-          <span className="float-emoji absolute -top-2 right-4 text-base opacity-50 sm:right-8" style={{ animationDelay: '1.1s' }} aria-hidden>💕</span>
+        <motion.section className="allow-select" {...(isMobile ? sectionVisible : fadeInUp)}>
           <div className="section-header text-center mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
-              <span className="float-emoji text-2xl sm:text-3xl" style={{ animationDelay: '0s' }} aria-hidden>🌹</span>
+              <span className="text-2xl sm:text-3xl">🌹</span>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-rose-50">
                 Nossa História
               </h2>
-              <span className="float-emoji text-2xl sm:text-3xl" style={{ animationDelay: '0.5s' }} aria-hidden>📖</span>
+              <span className="text-2xl sm:text-3xl">📖</span>
             </div>
             <p className="text-rose-200/80 text-sm sm:text-base">
               Os momentos que marcaram nossa trajetória
@@ -797,11 +767,7 @@ export default function App() {
         </div>
 
         {/* O futuro que sonho com você */}
-        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border relative" {...(isMobile ? sectionVisible : fadeInUp)}>
-          <span className="float-emoji absolute top-4 left-6 text-base opacity-50" style={{ animationDelay: '0.2s' }} aria-hidden>✨</span>
-          <span className="float-emoji absolute top-4 right-6 text-base opacity-50" style={{ animationDelay: '0.9s' }} aria-hidden>💕</span>
-          <span className="float-emoji absolute bottom-4 left-6 text-sm opacity-45" style={{ animationDelay: '1.6s' }} aria-hidden>🌟</span>
-          <span className="float-emoji absolute bottom-4 right-6 text-sm opacity-45" style={{ animationDelay: '0.5s' }} aria-hidden>💗</span>
+        <motion.section className="rounded-2xl p-5 sm:p-6 md:p-8 card-glass card-hover card-breath card-gradient-border" {...(isMobile ? sectionVisible : fadeInUp)}>
           <h2 className="text-xl sm:text-2xl font-display font-semibold text-rose-50 text-center mb-6">
             O futuro que sonho com você
           </h2>
@@ -830,8 +796,8 @@ export default function App() {
           <div className="absolute top-6 left-1/2 -translate-x-1/2 text-amber-200/30 text-sm tracking-[0.5em]">✦ ✧ ✦ ✧ ✦</div>
           <div className="text-4xl sm:text-5xl mb-4 flex justify-center gap-2">
             <span className="float-emoji" style={{ animationDelay: '0s' }} aria-hidden>💕</span>
-            <span className="float-emoji" style={{ animationDelay: '0.4s' }} aria-hidden>❤️</span>
-            <span className="float-emoji" style={{ animationDelay: '0.8s' }} aria-hidden>💗</span>
+            <span className="float-emoji" style={{ animationDelay: '0.5s' }} aria-hidden>❤️</span>
+            <span className="float-emoji" style={{ animationDelay: '1s' }} aria-hidden>💗</span>
           </div>
           <p className="text-base sm:text-lg text-rose-200/90 mb-4">
             Essa é só a primeira página da nossa história.
@@ -843,17 +809,9 @@ export default function App() {
             Te amo para sempre, Maysa ♥
           </p>
           <p className="text-amber-200/90 mt-6 text-base sm:text-lg flex items-center justify-center gap-2 flex-wrap">
-            <span className="float-emoji" style={{ animationDelay: '0s' }} aria-hidden>🌹</span>
-            Sempre contigo, amor
-            <span className="float-emoji inline-block text-sm" style={{ animationDelay: '0.3s' }} aria-hidden>🦋</span>
-            <span className="float-emoji" style={{ animationDelay: '0.6s' }} aria-hidden>💕</span>
-            <span className="float-emoji" style={{ animationDelay: '0.9s' }} aria-hidden>🌹</span>
+            <span>🌹</span> Sempre contigo, amor <span className="float-emoji inline-block text-sm" style={{ animationDelay: '0.3s' }} aria-hidden>🦋</span> <span>🌹</span>
           </p>
-          <div className="flex justify-center gap-4 mt-6 text-amber-300/50">
-            <span className="text-lg">—</span>
-            <span className="float-emoji text-3xl" style={{ animationDelay: '0s' }} aria-hidden>💝</span>
-            <span className="text-lg">—</span>
-          </div>
+          <p className="text-3xl mt-6 animate-softPulse">💝</p>
           {!mensagemRevelada ? (
             <button
               onClick={() => setMensagemRevelada(true)}
