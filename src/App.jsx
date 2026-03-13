@@ -228,15 +228,18 @@ function NavDots({ active }) {
 }
 
 // ─── Slide wrapper ─────────────────────────────────────────
-function Slide({ id, bg, children, center = true, amount = 0.25 }) {
+function Slide({ id, bg, children, center = true, amount = 0.5 }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: false, amount })
   return (
     <section id={id} ref={ref} className={`snap-slide ${bg}`}>
-      <div className={`flex flex-col ${center ? 'items-center justify-center' : 'items-start justify-start'} w-full px-5 sm:px-8 py-10 sm:py-12 min-h-[100dvh]`}
-        style={{ paddingTop: center ? undefined : 'max(2.5rem, env(safe-area-inset-top, 2.5rem))' }}
-      >
-        {children(inView)}
+      <div className="slide-inner">
+        <div
+          className={`flex flex-col ${center ? 'items-center justify-center min-h-full' : 'items-start justify-start'} w-full px-5 sm:px-8 py-10 sm:py-12`}
+          style={{ paddingTop: center ? undefined : 'max(2.5rem, env(safe-area-inset-top, 2.5rem))' }}
+        >
+          {children(inView)}
+        </div>
       </div>
     </section>
   )
@@ -634,7 +637,7 @@ export default function App() {
         </Slide>
 
         {/* ── 08 NOSSA HISTÓRIA (TIMELINE) ─────────────────── */}
-        <Slide id="historia" bg="slide-bg-story" center={false} amount={0.03}>
+        <Slide id="historia" bg="slide-bg-story" center={false}>
           {(inView) => (
             <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
               className="flex flex-col gap-6 w-full max-w-sm mx-auto allow-select"
@@ -678,7 +681,7 @@ export default function App() {
         </Slide>
 
         {/* ── 15 PROMESSAS ─────────────────────────────────── */}
-        <Slide id="promessas" bg="slide-bg-teal" center={false} amount={0.05}>
+        <Slide id="promessas" bg="slide-bg-teal" center={false}>
           {(inView) => (
             <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
               className="flex flex-col gap-4 w-full max-w-sm mx-auto"
@@ -718,7 +721,7 @@ export default function App() {
         </Slide>
 
         {/* ── 16 FUTURO ────────────────────────────────────── */}
-        <Slide id="futuro" bg="slide-bg-blue" center={false} amount={0.05}>
+        <Slide id="futuro" bg="slide-bg-blue" center={false}>
           {(inView) => (
             <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
               className="flex flex-col gap-4 w-full max-w-sm mx-auto"
