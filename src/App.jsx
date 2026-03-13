@@ -750,9 +750,9 @@ export default function App() {
               <MI v={fadeV}><p className="text-center text-rose-200/80 text-sm font-medium">E os seus sonhos — que acredito com você 💪</p></MI>
               <div className="space-y-2 w-full">
                 {[
-                  { icon: '🎵', text: 'Louvar no grupo do louvor', note: 'Sua voz, seus instrumentos — tudo foi dado por Deus. Use.' },
                   { icon: '👩‍🏫', text: 'Dar palestras em público', note: 'Você tem muito a dizer. O mundo precisa te ouvir.' },
                   { icon: '✝️', text: 'Dar palavras na igreja', note: 'Deus vai te preparar. Eu estarei na primeira fila.' },
+                  { icon: '🧠', text: 'Psicologia', note: 'Sua sensibilidade e inteligência emocional já são presentes natos pra isso.' },
                 ].map(({ icon, text, note }) => (
                   <MI key={text}>
                     <div className="flex items-start gap-3 px-3 py-3 rounded-2xl bg-white/[0.05] border border-blue-400/12">
