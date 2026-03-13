@@ -32,19 +32,30 @@ body {
   inset: 0;
   overflow-y: scroll;
   overflow-x: hidden;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
 }
 
 .snap-slide {
-  min-height: 100dvh;
+  height: 100dvh;
   scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+
+/* Scroll interno para slides com conteúdo longo */
+.slide-inner {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+.slide-inner::-webkit-scrollbar { display: none; }
 
 /* ─── Slide Backgrounds ─────────────────────────────── */
 .slide-bg-rose {
