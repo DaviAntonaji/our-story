@@ -228,18 +228,16 @@ function NavDots({ active }) {
 }
 
 // ─── Slide wrapper ─────────────────────────────────────────
-function Slide({ id, bg, children, center = true, amount = 0.5 }) {
+function Slide({ id, bg, children, center = true }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: false, amount })
+  const inView = useInView(ref, { once: true, amount: 0.15 })
   return (
     <section id={id} ref={ref} className={`snap-slide ${bg}`}>
-      <div className="slide-inner">
-        <div
-          className={`flex flex-col ${center ? 'items-center justify-center min-h-full' : 'items-start justify-start'} w-full px-5 sm:px-8 py-10 sm:py-12`}
-          style={{ paddingTop: center ? undefined : 'max(2.5rem, env(safe-area-inset-top, 2.5rem))' }}
-        >
-          {children(inView)}
-        </div>
+      <div
+        className={`flex flex-col ${center ? 'items-center justify-center min-h-[100dvh]' : 'items-start justify-start'} w-full px-5 sm:px-8 py-10 sm:py-12`}
+        style={{ paddingTop: center ? undefined : 'max(2.5rem, env(safe-area-inset-top, 2.5rem))' }}
+      >
+        {children(inView)}
       </div>
     </section>
   )
@@ -282,13 +280,13 @@ export default function App() {
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach(e => {
-          if (e.isIntersecting && e.intersectionRatio >= 0.4) {
+          if (e.isIntersecting) {
             const idx = SLIDE_IDS.indexOf(e.target.id)
             if (idx !== -1) setActiveSlide(idx)
           }
         })
       },
-      { threshold: 0.4 },
+      { threshold: 0.3 },
     )
     SLIDE_IDS.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el) })
     return () => obs.disconnect()
@@ -364,7 +362,7 @@ export default function App() {
       {typeof document !== 'undefined' && createPortal(<ButterfliesFloating isMobile={isMobile} />, document.body)}
       {typeof document !== 'undefined' && createPortal(<NavDots active={activeSlide} />, document.body)}
 
-      <div className="snap-container">
+      <div>
 
         {/* ── 01 INTRO ─────────────────────────────────────── */}
         <Slide id="intro" bg="slide-bg-rose">

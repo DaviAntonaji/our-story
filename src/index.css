@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 /* ─── Base ─────────────────────────────────────────── */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%;
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
 body {
   font-family: 'Outfit', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 @media (hover: none) {
@@ -26,36 +26,14 @@ body {
   }
 }
 
-/* ─── Snap Container ────────────────────────────────── */
-.snap-container {
-  position: fixed;
-  inset: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-}
-
+/* ─── Story Slides ──────────────────────────────────── */
 .snap-slide {
-  height: 100dvh;
-  scroll-snap-align: start;
+  min-height: 100dvh;
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-
-/* Scroll interno para slides com conteúdo longo */
-.slide-inner {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-  scrollbar-width: none;
-}
-.slide-inner::-webkit-scrollbar { display: none; }
 
 /* ─── Slide Backgrounds ─────────────────────────────── */
 .slide-bg-rose {
