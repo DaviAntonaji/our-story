@@ -13,6 +13,7 @@ const FOTOS = [
   '/imgs/photos/10.jpeg', '/imgs/photos/11.jpeg', '/imgs/photos/12.jpeg',
   '/imgs/photos/13.jpeg', '/imgs/photos/14.jpg', '/imgs/photos/15.jpg',
   '/imgs/photos/16.jpg',
+  '/imgs/photos/17.jpg',
 ]
 
 const SLIDE_IDS = [
