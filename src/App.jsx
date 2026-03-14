@@ -14,6 +14,11 @@ const FOTOS = [
   '/imgs/photos/13.jpeg', '/imgs/photos/14.jpg', '/imgs/photos/15.jpg',
   '/imgs/photos/16.jpg',
   '/imgs/photos/17.jpg',
+  '/imgs/photos/18.jpg',
+  '/imgs/photos/19.jpg',
+  '/imgs/photos/20.jpg',
+  '/imgs/photos/21.jpg',
+  '/imgs/photos/22.jpg',
 ]
 
 const SLIDE_IDS = [
@@ -39,7 +44,7 @@ const TIMELINE = [
     paras: [
       'Eu não sabia o quão mal você estava naquele dia... Você estava mal ao ponto de qualquer coisa te fazer chorar...',
       'Você só disse: "estou meio desanimada hoje..." Não revelou o real peso que estava sentindo...',
-      'E quando comecei a conversar com você sobre Deus, e passagens sobre não desanimar, sobre cansar... Você chorou na hora — e foi só depois, já namorando, que você me contou que foi ali que percebeu que estava apaixonada por mim.',
+      'E quando comecei a conversar com você sobre Deus, e passagens sobre não desanimar, sobre cansar... Você chorou na hora - e foi só depois, já namorando, que você me contou que foi ali que percebeu que estava apaixonada por mim.',
     ],
   },
   {
@@ -49,7 +54,7 @@ const TIMELINE = [
     paras: [
       'Começou quando combinamos de sair no João Julhão às 18h. Cheguei exatamente às 18:00 e já combinei com o garçom todo o roteiro do que iria acontecer. Quando você chegou com a Talita, estava linda… e ali meu coração já acelerou.',
       'Fomos até a mesa que eu já tinha deixado separada, planejando deixar você sentada de costas para a cozinha, para que não visse nada do que estava sendo preparado.',
-      'Foi uma conversa natural e descontraída, principalmente com as perguntas que você começou a fazer — sobre família, estabilidade, educação financeira… tudo isso enquanto comíamos filé mignon à parmegiana.',
+      'Foi uma conversa natural e descontraída, principalmente com as perguntas que você começou a fazer - sobre família, estabilidade, educação financeira… tudo isso enquanto comíamos filé mignon à parmegiana.',
       'Até que chegou o momento que eu tinha combinado com os garçons. Terminamos de comer, pedi a sobremesa, e o garçom chegou trazendo junto o buquê e as alianças.',
       'Seus olhos brilhando como se quisesse chorar, sua bochecha tremendo de alegria… você estava tão feliz. E naquele instante você me tornou o homem mais feliz do mundo.',
       'Depois disso, te levei pela primeira vez até a sua casa a sós. Quando você me abraçou, eu senti que aquele abraço era bom demais… e percebi que era exatamente ali que eu sempre quero estar.',
@@ -60,9 +65,9 @@ const TIMELINE = [
     titulo: 'Nosso primeiro beijo',
     icon: '🌹',
     paras: [
-      'Foi a noite em que conversei com seus pais. Eles fizeram uma torta de frango que estava simplesmente maravilhosa — com certeza uma das melhores que já comi na vida.',
+      'Foi a noite em que conversei com seus pais. Eles fizeram uma torta de frango que estava simplesmente maravilhosa - com certeza uma das melhores que já comi na vida.',
       'Tivemos uma conversa muito boa, e naquele momento eles nos autorizaram a namorar de verdade. Foi um momento muito especial para mim. E foi também nesse dia que demos o nosso primeiro beijo.',
-      'Depois fomos ao aniversário do Wagner. Fomos recebidos ao som de "Aquilo que Parecia Impossível" — aquilo deixou a noite ainda mais marcante.',
+      'Depois fomos ao aniversário do Wagner. Fomos recebidos ao som de "Aquilo que Parecia Impossível" - aquilo deixou a noite ainda mais marcante.',
       'Nesse dia também te entreguei seus presentes de Dia das Mulheres: um livro, dois girassóis, um porta-retrato com nossa foto favorita do pedido, fotos reveladas e polaroides para a capinha do celular.',
     ],
   },
@@ -92,9 +97,21 @@ const TIMELINE = [
     icon: '✝️',
     paras: [
       'Tivemos um alinhamento com todos os ministérios da igreja e, durante o encontro, aconteceu também a Santa Ceia. Sem ter sido algo planejado, acabou sendo a primeira Santa Ceia que participamos juntos.',
-      'Durante o dia eu estava preocupado pensando em como te levar, pois estava chovendo o dia inteiro. No fim, seu pai nos deu um voto de confiança e deixou irmos normalmente — o que tornou tudo ainda mais especial.',
+      'Durante o dia eu estava preocupado pensando em como te levar, pois estava chovendo o dia inteiro. No fim, seu pai nos deu um voto de confiança e deixou irmos normalmente - o que tornou tudo ainda mais especial.',
       'Poder estar ali com você, participando de um momento tão importante na presença de Deus, marcou muito o meu coração.',
-      'E teve também uma "briguinha" porque eu não deixei você abrir a porta do carro — eu queria abrir para você. Saí todo animado para abrir a porta e segurar sua mão quando você desceu. Foi um gesto pequeno, mas cuidar de você assim me deixa muito feliz. ❤️',
+      'E teve também uma "briguinha" porque eu não deixei você abrir a porta do carro - eu queria abrir para você. Saí todo animado para abrir a porta e segurar sua mão quando você desceu. Foi um gesto pequeno, mas cuidar de você assim me deixa muito feliz. ❤️',
+    ],
+  },
+  {
+    data: '14 de março de 2026',
+    titulo: 'Nossa primeira cafeteria ☕',
+    icon: '☕',
+    paras: [
+      'Fui te buscar de carro num sábado à tarde, do jeito que eu gosto, estar com você, te levar e cuidar de você. E ainda foi a nossa primeira vez indo juntos numa cafeteria.',
+      'Passamos um pouco de frio por causa do ar-condicionado gelado kkk, mas até isso acabou sendo bom pra ficar mais pertinho. Tomamos cappuccino, dividimos um pão com manteiga na chapa e um pão com requeijão e bacon na chapa também. Pra fechar, uma panqueca de Nutella com morango que tava boa demais.',
+      'Depois, fomos pra praça da igreja e ficamos num banquinho, abraçados, conversando, fazendo carinho e rindo juntos. Foi daqueles momentos simples, mas que fazem tudo valer a pena.',
+      'Na volta, ainda passamos no The Best Açaí e montamos um copo pra Duda. Quando fomos entregar, ela ficou tímida, mas depois você me contou que ela gostou muito e agradeceu. Achei isso muito bonitinho.' 
+    
     ],
   },
 ]
@@ -700,7 +717,7 @@ export default function App() {
                   ['🛡️', 'Cuidar de você com atenção e carinho'],
                   ['✝️', 'Te aproximar de Cristo todos os dias'],
                   ['🙏', 'Conduzir tudo com temor a Deus'],
-                  ['⏳', 'Não apressar etapas — seu tempo é sagrado'],
+                  ['⏳', 'Não apressar etapas - seu tempo é sagrado'],
                   ['🧱', 'Provar com atitudes, não só palavras'],
                   ['🌊', 'Manter constância emocional ao seu lado'],
                   ['🏔️', 'Construir uma base firme com Cristo no centro'],
@@ -749,7 +766,7 @@ export default function App() {
                 ))}
               </div>
               <MI v={fadeV}><Divider char="✦ ✧ ✦" /></MI>
-              <MI v={fadeV}><p className="text-center text-rose-200/80 text-sm font-medium">E os seus sonhos — que acredito com você 💪</p></MI>
+              <MI v={fadeV}><p className="text-center text-rose-200/80 text-sm font-medium">E os seus sonhos - que acredito com você 💪</p></MI>
               <div className="space-y-2 w-full">
                 {[
                   { icon: '👩‍🏫', text: 'Dar palestras em público', note: 'Você tem muito a dizer. O mundo precisa te ouvir.' },
