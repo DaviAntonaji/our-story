@@ -723,7 +723,6 @@ export default function App() {
                   ['🏔️', 'Construir uma base firme com Cristo no centro'],
                   ['🔝', 'Sempre dar o melhor de mim por nós'],
                   ['💬', 'Me expressar com você - sempre, mesmo quando for difícil'],
-                  ['🫂', 'Cuidar de você assim como quero que cuide de mim'],
                   ['👁️', 'Ser transparente, de verdade, em tudo'],
                   ['💛', 'Ser compreensível nos seus momentos difíceis'],
                 ].map(([icon, text]) => (
