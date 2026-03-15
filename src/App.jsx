@@ -722,6 +722,10 @@ export default function App() {
                   ['🌊', 'Manter constância emocional ao seu lado'],
                   ['🏔️', 'Construir uma base firme com Cristo no centro'],
                   ['🔝', 'Sempre dar o melhor de mim por nós'],
+                  ['💬', 'Me expressar com você - sempre, mesmo quando for difícil'],
+                  ['🫂', 'Cuidar de você assim como quero que cuide de mim'],
+                  ['👁️', 'Ser transparente, de verdade, em tudo'],
+                  ['💛', 'Ser compreensível nos seus momentos difíceis'],
                 ].map(([icon, text]) => (
                   <MI key={text}>
                     <div className="flex items-center gap-3 px-3 py-2.5 rounded-2xl bg-white/[0.05] border border-emerald-400/12">
