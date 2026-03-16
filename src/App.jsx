@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useInView } from 'framer-motion'
 
 // ─── Constantes ────────────────────────────────────────────
 const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0)
-const SPOTIFY_URL = 'https://open.spotify.com/embed/track/7FOPTUmEJ3ByYW9ag9cZJ3'
+const SPOTIFY_URL = 'https://open.spotify.com/embed/track/3pinR9iFoRAZvqirrRm4os'
 
 const FOTOS = [
   '/imgs/photos/1.jpg', '/imgs/photos/2.jpg', '/imgs/photos/3.jpg',
