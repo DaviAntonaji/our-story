@@ -12,13 +12,9 @@ const FOTOS = [
   '/imgs/photos/7.jpg', '/imgs/photos/8.jpg', '/imgs/photos/9.jpg',
   '/imgs/photos/10.jpeg', '/imgs/photos/11.jpeg', '/imgs/photos/12.jpeg',
   '/imgs/photos/13.jpeg', '/imgs/photos/14.jpg', '/imgs/photos/15.jpg',
-  '/imgs/photos/16.jpg',
-  '/imgs/photos/17.jpg',
-  '/imgs/photos/18.jpg',
-  '/imgs/photos/19.jpg',
-  '/imgs/photos/20.jpg',
-  '/imgs/photos/21.jpg',
-  '/imgs/photos/22.jpg',
+  '/imgs/photos/16.jpg', '/imgs/photos/17.jpg', '/imgs/photos/18.jpg',
+  '/imgs/photos/19.jpg', '/imgs/photos/20.jpg', '/imgs/photos/22.jpg',
+  '/imgs/photos/23.jpg',
 ]
 
 const SLIDE_IDS = [
@@ -110,8 +106,18 @@ const TIMELINE = [
       'Fui te buscar de carro num sábado à tarde, do jeito que eu gosto, estar com você, te levar e cuidar de você. E ainda foi a nossa primeira vez indo juntos numa cafeteria.',
       'Passamos um pouco de frio por causa do ar-condicionado gelado kkk, mas até isso acabou sendo bom pra ficar mais pertinho. Tomamos cappuccino, dividimos um pão com manteiga na chapa e um pão com requeijão e bacon na chapa também. Pra fechar, uma panqueca de Nutella com morango que tava boa demais.',
       'Depois, fomos pra praça da igreja e ficamos num banquinho, abraçados, conversando, fazendo carinho e rindo juntos. Foi daqueles momentos simples, mas que fazem tudo valer a pena.',
-      'Na volta, ainda passamos no The Best Açaí e montamos um copo pra Duda. Quando fomos entregar, ela ficou tímida, mas depois você me contou que ela gostou muito e agradeceu. Achei isso muito bonitinho.' 
-    
+      'Na volta, ainda passamos no The Best Açaí e montamos um copo pra Duda. Quando fomos entregar, ela ficou tímida, mas depois você me contou que ela gostou muito e agradeceu. Achei isso muito bonitinho.',
+    ],
+  },
+  {
+    data: '15 de março de 2026',
+    titulo: 'Nosso primeiro pós-culto 🙏',
+    icon: '✝️',
+    paras: [
+      'Foi um culto muito abençoado. E foi a primeira vez que fui buscar você e a Duda de carro para irmos juntos à igreja.',
+      'Tivemos a Santa Ceia, e dessa vez conseguimos trocar o pão e o suco direitinho, sem ninguém atrapalhar kkk.',
+      'O culto terminou um pouco mais tarde, você avisou seus pais e então tivemos nosso primeiro pós-culto juntos: eu, você e nossa chaveirinho kkkkk. Fomos no Tips perto da igreja e comemos em um churrasco e conversando e rindo juntos.',
+      'Foi especial de um jeito único - o primeiro de muitos pós-cultos!',
     ],
   },
 ]
