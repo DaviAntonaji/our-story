@@ -13,7 +13,7 @@ const FOTOS = [
   '/imgs/photos/10.jpeg', '/imgs/photos/11.jpeg', '/imgs/photos/12.jpeg',
   '/imgs/photos/13.jpeg', '/imgs/photos/14.jpg', '/imgs/photos/15.jpg',
   '/imgs/photos/16.jpg', '/imgs/photos/17.jpg', '/imgs/photos/18.jpg',
-  '/imgs/photos/19.jpg', '/imgs/photos/20.jpg', '/imgs/photos/22.jpg',
+  '/imgs/photos/19.jpg', '/imgs/photos/20.jpg', '/imgs/photos/21.jpg', '/imgs/photos/22.jpg',
   '/imgs/photos/23.jpg',
 ]
 
