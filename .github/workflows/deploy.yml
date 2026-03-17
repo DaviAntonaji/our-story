@@ -35,3 +35,18 @@ jobs:
           local_path: './dist/'
           sftp_only: true
           delete_remote: true
+
+      - name: Purge Cloudflare cache
+        run: |
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"hosts":["ourstory.antonaji.com.br"]}' \
+            | tee /tmp/cf_purge.json
+          if [ "$(cat /tmp/cf_purge.json | python3 -c "import sys,json; print(json.load(sys.stdin)['success'])")" != "True" ]; then
+            echo "Cloudflare purge FAILED"
+            cat /tmp/cf_purge.json
+            exit 1
+          fi
+          echo "Cloudflare cache purged successfully"
