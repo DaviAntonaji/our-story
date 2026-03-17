@@ -119,7 +119,7 @@ const TIMELINE = [
     paras: [
       'Foi um culto muito abençoado. E foi a primeira vez que fui buscar você e a Duda de carro para irmos juntos à igreja. Quando cheguei na sua casa, você me deu um presente lindo, feito completamente a mão - um livrinho feito a mão que se vira página por página, cheio de mensagens fofas, com desenhos seus em cada parte... E dentro ainda tinha uma carta enorme que abria em sanfona, palavra por palavra escrita com tanto amor. Li cada trecho com um carinho imenso, e fiquei tão feliz - porque dinheiro nenhum no mundo compra um presente assim. Tão perfeito, tão detalhado, tão você. Só de lembrar daquele momento eu me emociono. Guardei cada detalhe no coração.',
       'Tivemos a Santa Ceia, e dessa vez conseguimos trocar o pão e o suco direitinho, sem ninguém atrapalhar kkk.',
-      'O culto terminou um pouco mais tarde, você avisou seus pais e então tivemos nosso primeiro pós-culto juntos: eu, você e nossa chaveirinho kkkkk. Fomos no Tips perto da igreja, cada um pediu seu lanche, e ficamos lá comendo, conversando e rindo muito juntos.',
+      'O culto terminou um pouco mais tarde, você avisou seus pais e então tivemos nosso primeiro pós-culto juntos: eu, você e nossa chaveirinho kkkkk. Fomos no Tips perto da igreja, escolhemos nossos lanches e pedimos juntos, e ficamos lá comendo, conversando e rindo muito juntos.',
       'Foi especial de um jeito único - o primeiro de muitos pós-cultos!',
     ],
   },
@@ -400,9 +400,9 @@ export default function App() {
             >
               <MI v={fadeV} className="chapter-label">Nossa história</MI>
               <MI v={scaleV} className="flex gap-3 text-4xl">
-                <span style={{ animation: 'heartBeatSoft 2.5s ease-in-out infinite' }}>❤️</span>
-                <span style={{ animation: 'heartBeatSoft 2.5s ease-in-out infinite 0.4s' }}>❤️</span>
-                <span style={{ animation: 'heartBeatSoft 2.5s ease-in-out infinite 0.8s' }}>❤️</span>
+                <span style={{ animation: 'heartBeat 1.5s ease-in-out infinite' }}>❤️</span>
+                <span style={{ animation: 'heartBeat 1.5s ease-in-out infinite 0.3s' }}>❤️</span>
+                <span style={{ animation: 'heartBeat 1.5s ease-in-out infinite 0.6s' }}>❤️</span>
               </MI>
               <MI className="photo-frame w-full max-w-[200px] sm:max-w-[240px] mx-auto">
                 <div className="aspect-[3/4] overflow-hidden rounded-[18px]">
@@ -410,7 +410,7 @@ export default function App() {
                 </div>
               </MI>
               <MI className="space-y-1">
-                <h1 className="text-hero font-display font-semibold text-rose-50">Para você, Maysa ❤️</h1>
+                <h1 className="text-hero font-display font-semibold text-rose-50">Para você, Maysa <span className="inline-block animate-heartBeat">❤️</span></h1>
                 <p className="font-display text-xl text-rose-200/85">Amor da minha vida</p>
               </MI>
               <MI>
