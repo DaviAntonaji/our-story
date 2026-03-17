@@ -604,8 +604,8 @@ export default function App() {
                   ['😊', 'Seu sorriso e sua risada'],
                   ['🌹', 'Seu jeito único de ser'],
                 ].map(([emoji, text]) => (
-                  <MI key={text}>
-                    <div className="tag-item">
+                  <MI key={text} className="h-full">
+                    <div className="tag-item h-full">
                       <span className="text-lg shrink-0">{emoji}</span>
                       <span className="text-sm leading-snug">{text}</span>
                     </div>
