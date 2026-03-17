@@ -4,7 +4,10 @@ import { motion, AnimatePresence, useInView } from 'framer-motion'
 
 // ─── Constantes ────────────────────────────────────────────
 const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0)
-const SPOTIFY_URL = 'https://open.spotify.com/embed/track/3pinR9iFoRAZvqirrRm4os'
+const SPOTIFY_URLS = [
+  'https://open.spotify.com/embed/track/3pinR9iFoRAZvqirrRm4os',
+  'https://open.spotify.com/embed/track/7FOPTUmEJ3ByYW9ag9cZJ3',
+]
 
 const FOTOS = [
   '/imgs/photos/1.jpg', '/imgs/photos/2.jpg', '/imgs/photos/3.jpg',
@@ -463,7 +466,7 @@ export default function App() {
           )}
         </Slide>
 
-        {/* ── 03 NOSSA MÚSICA ──────────────────────────────── */}
+        {/* ── 03 NOSSAS MÚSICAS ─────────────────────────────── */}
         <Slide id="musica" bg="slide-bg-purple">
           {(inView) => (
             <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
@@ -472,7 +475,7 @@ export default function App() {
               <MI v={fadeV} className="chapter-label">A nossa trilha sonora</MI>
               <MI v={scaleV} className="text-5xl sm:text-6xl">🎵</MI>
               <MI className="space-y-1">
-                <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">Nossa Música</h2>
+                <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">Nossas Músicas</h2>
                 <p className="text-rose-200/65 text-sm">A trilha sonora do nosso amor 💕</p>
               </MI>
               <MI className="w-full">
@@ -482,22 +485,26 @@ export default function App() {
                     className="w-full flex flex-col items-center gap-3 py-6 px-4 rounded-2xl card-surface border border-amber-400/20"
                   >
                     <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 border border-amber-400/40 text-rose-100 text-sm font-medium">
-                      <span>▶</span> Ouvir nossa música
+                      <span>▶</span> Ouvir nossas músicas
                     </span>
                   </button>
                 ) : (
-                  <div className="w-full rounded-2xl overflow-hidden card-surface">
-                    <div className="relative w-full" style={{ paddingBottom: '80%' }}>
-                      <iframe
-                        className="absolute inset-0 w-full h-full"
-                        style={{ minHeight: 260 }}
-                        src={SPOTIFY_URL}
-                        frameBorder="0"
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
-                        title="Nossa música"
-                      />
-                    </div>
+                  <div className="w-full flex flex-col gap-4">
+                    {SPOTIFY_URLS.map((url, i) => (
+                      <div key={i} className="w-full rounded-2xl overflow-hidden card-surface">
+                        <div className="relative w-full" style={{ paddingBottom: '80%' }}>
+                          <iframe
+                            className="absolute inset-0 w-full h-full"
+                            style={{ minHeight: 260 }}
+                            src={url}
+                            frameBorder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                            title={`Nossa música ${i + 1}`}
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
               </MI>
