@@ -116,11 +116,12 @@ const TIMELINE = [
     paras: [
       'Foi um culto muito abençoado. E foi a primeira vez que fui buscar você e a Duda de carro para irmos juntos à igreja. Quando cheguei na sua casa, você me deu um presente lindo, feito completamente a mão - um livrinho feito a mão que se vira página por página, cheio de mensagens fofas, com desenhos seus em cada parte... E dentro ainda tinha uma carta enorme que abria em sanfona, palavra por palavra escrita com tanto amor. Li cada trecho com um carinho imenso, e fiquei tão feliz - porque dinheiro nenhum no mundo compra um presente assim. Tão perfeito, tão detalhado, tão você. Só de lembrar daquele momento eu me emociono. Guardei cada detalhe no coração.',
       'Tivemos a Santa Ceia, e dessa vez conseguimos trocar o pão e o suco direitinho, sem ninguém atrapalhar kkk.',
-      'O culto terminou um pouco mais tarde, você avisou seus pais e então tivemos nosso primeiro pós-culto juntos: eu, você e nossa chaveirinho kkkkk. Fomos no Tips perto da igreja e comemos em um churrasco e conversando e rindo juntos.',
+      'O culto terminou um pouco mais tarde, você avisou seus pais e então tivemos nosso primeiro pós-culto juntos: eu, você e nossa chaveirinho kkkkk. Fomos no Tips perto da igreja, cada um pediu seu lanche, e ficamos lá comendo, conversando e rindo muito juntos.',
       'Foi especial de um jeito único - o primeiro de muitos pós-cultos!',
     ],
   },
 ]
+
 
 // ─── Framer Motion variants ────────────────────────────────
 const staggerV = {
