@@ -159,7 +159,7 @@ function useCountUp(end, duration = 1400, startOn = true) {
     const animate = (now) => {
       if (!startRef.current) startRef.current = now
       const progress = Math.min((now - startRef.current) / duration, 1)
-      const eased = 1 - (1 - progress) ** 3
+      const eased = progress < 0.7 ? progress * 1.2 : 0.84 + (progress - 0.7) * (0.16 / 0.3)
       setValue(Math.floor(eased * end))
       if (progress < 1) raf = requestAnimationFrame(animate)
     }
@@ -292,7 +292,8 @@ export default function App() {
   const touchStartX = useRef(0)
   const timerKeyRef = useRef(0)
   const tempo = useTempoJuntos()
-  const totalDiasAnimado = useCountUp(tempo.totalDias, 1600, revelado)
+  const [timerInView, setTimerInView] = useState(false)
+  const totalDiasAnimado = useCountUp(tempo.totalDias, 900, timerInView)
   const isMobile = useIsMobile()
 
   // Carousel auto-advance
@@ -428,7 +429,9 @@ export default function App() {
 
         {/* ── 02 TIMER ─────────────────────────────────────── */}
         <Slide id="timer" bg="slide-bg-maroon">
-          {(inView) => (
+          {(inView) => {
+            if (inView && !timerInView) setTimerInView(true)
+            return (
             <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
               className="flex flex-col items-center gap-5 text-center w-full max-w-sm mx-auto"
             >
@@ -463,7 +466,8 @@ export default function App() {
                 <span className="badge-pill">🌹 {tempo.meses} {tempo.meses === 1 ? 'mês' : 'meses'} e {tempo.dias} dias</span>
               </MI>
             </motion.div>
-          )}
+            )
+          }}
         </Slide>
 
         {/* ── 03 NOSSAS MÚSICAS ─────────────────────────────── */}
@@ -690,7 +694,7 @@ export default function App() {
                       <div className="absolute left-[3px] top-4 bottom-[-1.25rem] w-px bg-gradient-to-b from-amber-400/40 to-transparent" />
                     )}
                     {/* dot */}
-                    <div className="absolute left-0 top-0.5 w-[7px] h-[7px] rounded-full bg-amber-400 ring-2 ring-[#1a1020]/90 shadow-[0_0_8px_1px_rgba(212,175,55,0.35)]" />
+                    <div className="absolute left-0 top-0.5 w-[7px] h-[7px] rounded-full bg-amber-400 ring-2 ring-[#1a1020]/90" style={{ animation: 'pulseSoft 2.5s ease-in-out infinite', boxShadow: '0 0 8px 2px rgba(212,175,55,0.5)' }} />
                     {/* card */}
                     <div className="rounded-2xl p-4 bg-white/[0.05] border border-amber-400/12">
                       <span className="timeline-date-pill">{item.data}</span>
@@ -761,7 +765,7 @@ export default function App() {
             >
               <div className="text-center">
                 <MI v={fadeV} className="chapter-label">O que está por vir</MI>
-                <MI v={scaleV} className="text-4xl mt-2">🌅</MI>
+                <MI v={scaleV} className="text-4xl mt-2" style={{ animation: 'softFloat 5s ease-in-out infinite' }}>🌅</MI>
                 <MI className="mt-2">
                   <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">O futuro que sonho com você</h2>
                 </MI>
@@ -823,7 +827,7 @@ export default function App() {
               </MI>
               <MI>
                 <p className="font-display font-semibold text-rose-50 leading-tight" style={{ fontSize: 'clamp(26px, 7.5vw, 44px)' }}>
-                  Te amo para sempre, Maysa ♥
+                  Te amo para sempre, Maysa <span className="inline-block animate-heartBeat">♥</span>
                 </p>
               </MI>
               <MI v={fadeV}>
