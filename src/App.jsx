@@ -824,6 +824,9 @@ export default function App() {
                   </MI>
                 ))}
               </div>
+              <MI v={fadeV}>
+                <p className="text-center text-rose-200/70 text-xs sm:text-sm italic">Quando formos construir nossa casa, ela terá um ipê branco na frente. 🌸</p>
+              </MI>
               <MI v={fadeV}><Divider char="✦ ✧ ✦" /></MI>
               <MI v={fadeV}><p className="text-center text-rose-200/80 text-sm font-medium">E os seus sonhos - que acredito com você 💪</p></MI>
               <div className="space-y-2 w-full">
