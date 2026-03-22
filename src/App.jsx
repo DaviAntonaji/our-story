@@ -17,7 +17,8 @@ const FOTOS = [
   '/imgs/photos/13.jpeg', '/imgs/photos/14.jpg', '/imgs/photos/15.jpg',
   '/imgs/photos/16.jpg', '/imgs/photos/17.jpg', '/imgs/photos/18.jpg',
   '/imgs/photos/19.jpg', '/imgs/photos/20.jpg', '/imgs/photos/21.jpg', '/imgs/photos/22.jpg',
-  '/imgs/photos/23.jpg',
+  '/imgs/photos/23.jpg', '/imgs/photos/24.jpg', '/imgs/photos/25.jpg', '/imgs/photos/26.jpg',
+  '/imgs/photos/27.jpg', '/imgs/photos/28.jpg', '/imgs/photos/29.jpg', '/imgs/photos/30.jpg',
 ]
 
 const SLIDE_IDS = [
