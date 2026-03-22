@@ -901,6 +901,9 @@ export default function App() {
                 <span>Feito com muito</span> <span>☕</span> <span>e amor por Davi Antonaji</span>
                 <span className="text-rose-300/40">(seu amor)</span>
               </MI>
+              <MI v={fadeV} className="text-rose-500/40 text-[10px] sm:text-xs mt-3">
+                © {new Date().getFullYear() === 2026 ? '2026' : `2026–${new Date().getFullYear()}`} Davi de Melo Antonaji e Maysa Sophia Ferreira da Silva. Todos os direitos reservados.
+              </MI>
             </motion.div>
           )}
         </Slide>
