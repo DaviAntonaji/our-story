@@ -7,6 +7,7 @@ const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0)
 const SPOTIFY_URLS = [
   'https://open.spotify.com/embed/track/3pinR9iFoRAZvqirrRm4os',
   'https://open.spotify.com/embed/track/7FOPTUmEJ3ByYW9ag9cZJ3',
+  'https://open.spotify.com/embed/track/0uwaiApk6k7k9POyFjTKeR',
 ]
 
 const FOTOS = [
@@ -19,7 +20,10 @@ const FOTOS = [
   '/imgs/photos/19.jpg', '/imgs/photos/20.jpg', '/imgs/photos/21.jpg', '/imgs/photos/22.jpg',
   '/imgs/photos/23.jpg', '/imgs/photos/24.jpg', '/imgs/photos/25.jpg', '/imgs/photos/26.jpg',
   '/imgs/photos/27.jpg', '/imgs/photos/28.jpg', '/imgs/photos/29.jpg', '/imgs/photos/30.jpg',
-  '/imgs/photos/31.jpg', '/imgs/photos/32.jpg', '/imgs/photos/33.jpg'
+  '/imgs/photos/31.jpg', '/imgs/photos/32.jpg', '/imgs/photos/33.jpg', "/imgs/photos/34.jpg",
+  '/imgs/photos/35.jpg', '/imgs/photos/36.jpg', '/imgs/photos/37.jpg', "/imgs/photos/38.jpg",
+  '/imgs/photos/39.jpg', '/imgs/photos/40.jpg', '/imgs/photos/41.jpg', "/imgs/photos/42.jpg",
+  '/imgs/photos/43.jpg'
 ]
 
 const SLIDE_IDS = [
@@ -123,6 +127,18 @@ const TIMELINE = [
       'Tivemos a Santa Ceia, e dessa vez conseguimos trocar o pão e o suco direitinho, sem ninguém atrapalhar kkk.',
       'O culto terminou um pouco mais tarde, você avisou seus pais e então tivemos nosso primeiro pós-culto juntos: eu, você e nossa chaveirinho kkkkk. Fomos no Tips perto da igreja, escolhemos nossos lanches e pedimos juntos, e ficamos lá comendo, conversando e rindo muito juntos.',
       'Foi especial de um jeito único - o primeiro de muitos pós-cultos!',
+    ],
+  },
+  {
+    data: '22 de março de 2026',
+    titulo: 'Um dia cheio de graça',
+    icon: '🙏',
+    paras: [
+      'O dia começou de forma especial: passamos praticamente o dia todo na casa dos seus avós, num almoço que foi muito divertido, engraçado e cheio de alegria. Comida boa, boas risadas, exatamente o tipo de dia que faz tudo valer a pena.',
+      'No culto, teve uma mensagem que te marcou muito... Percebi que você estava quase chorando, abalada por dentro. Te abracei e oramos juntos ali mesmo - foi um momento lindo e muito real entre nós.',
+      'No final do culto, tivemos uma conversa com o pastor: explicamos como o nosso relacionamento começou, e ele orou e abençoou o que estamos construindo juntos. Sentir essa aprovação e cobertura espiritual foi algo que ficou gravado no meu coração.',
+      'Depois fomos ao The Best Açaí com as duas chaveirinhas - Amanda e Duda. As duas ficaram bem amigas nesse dia, e foi tão gostoso ver isso acontecer. Tomamos açaí, nos divertimos muito, e foi daqueles momentos simples que guardam um calor especial.',
+      'Na volta, percebi você bem preocupada... Você preferiu conversar comigo pelo WhatsApp depois, e fiz o possível pra te consolar. A preocupação era sobre o tempo, a sensação de não estar dando conta de tudo. Fico feliz por poder estar do seu lado mesmo nessas horas - e por você confiar em mim com o que sente.',
     ],
   },
 ]
