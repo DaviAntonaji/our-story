@@ -143,6 +143,22 @@ const TIMELINE = [
     ],
   },
   {
+    data: '28 de março de 2026',
+    titulo: 'Um dia de primeiras vezes',
+    icon: '🏠',
+    paras: [
+      'Hoje foi um dia muito especial, cheio de primeiras vezes e momentos simples que acabaram se tornando inesquecíveis.',
+      'Foi a primeira vez que você veio na minha casa. A gente tomou um café da tarde com meus pais, conversou, riu… aquele clima leve, gostoso, que dá uma sensação boa só de lembrar. E ainda trouxemos a Duda pra ficar brincando com a Amanda, o que deixou tudo ainda mais divertido.',
+      'Mais tarde, fomos visitar o culto de jovens da IPI, da Naomi. Não foi só uma visita… foi daqueles momentos que marcam por dentro.',
+      'A palavra foi em Isaías 59:1-4, e falava sobre como nada pode nos separar do amor de Deus, a não ser o pecado. Foi forte ouvir e lembrar que Deus continua o mesmo, que a mão dEle não está encolhida e que Ele sempre ouve nosso clamor… mas que o pecado pode, sim, nos afastar da presença dEle.',
+      'Falou também sobre o que é o pecado — tudo aquilo que fazemos ou deixamos de fazer que entristece o coração de Deus. E mesmo sabendo o que é certo, muitas vezes a gente escolhe errado. Mas também trouxe algo muito importante: sempre existe o caminho de volta.',
+      'Arrependimento de verdade, reconhecer que precisamos dEle, e voltar pra presença… porque é lá que a gente encontra tudo. Foi um culto que mexeu muito comigo. Senti Deus tocando meu coração de uma forma muito real.',
+      'Depois disso, fomos comer pastel… e foi um momento leve depois de algo tão profundo. Eu pedi de frango com queijo e você de palmito com queijo. Foi engraçado (e fofo) ver você queimando a boca no pastel no começo, mesmo tentando disfarçar depois kkkkk.',
+      'No final, a gente até aprendeu uma lição: pastel de palmito com queijo pode ser meio enjoativo mesmo 😅',
+      'Foi um dia completo. Começou leve, ficou profundo, terminou divertido… e tudo isso ao seu lado.',
+    ],
+  },
+  {
     data: '29 de março de 2026',
     titulo: 'Nossa primeira viagem com a família',
     icon: '🌊',
