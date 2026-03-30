@@ -23,7 +23,8 @@ const FOTOS = [
   '/imgs/photos/31.jpg', '/imgs/photos/32.jpg', '/imgs/photos/33.jpg', "/imgs/photos/34.jpg",
   '/imgs/photos/35.jpg', '/imgs/photos/36.jpg', '/imgs/photos/37.jpg', "/imgs/photos/38.jpg",
   '/imgs/photos/39.jpg', '/imgs/photos/40.jpg', '/imgs/photos/41.jpg', "/imgs/photos/42.jpg",
-  '/imgs/photos/43.jpg'
+  '/imgs/photos/43.jpg', '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
+  '/imgs/photos/47.jpg'
 ]
 
 const SLIDE_IDS = [
@@ -139,6 +140,20 @@ const TIMELINE = [
       'No final do culto, tivemos uma conversa com o pastor: explicamos como o nosso relacionamento começou, e ele orou e abençoou o que estamos construindo juntos. Sentir essa aprovação e cobertura espiritual foi algo que ficou gravado no meu coração.',
       'Depois fomos ao The Best Açaí com as duas chaveirinhas - Amanda e Duda. As duas ficaram bem amigas nesse dia, e foi tão gostoso ver isso acontecer. Tomamos açaí, nos divertimos muito, e foi daqueles momentos simples que guardam um calor especial.',
       'Na volta, percebi você bem preocupada... Você preferiu conversar comigo pelo WhatsApp depois, e fiz o possível pra te consolar. A preocupação era sobre o tempo, a sensação de não estar dando conta de tudo. Fico feliz por poder estar do seu lado mesmo nessas horas - e por você confiar em mim com o que sente.',
+    ],
+  },
+  {
+    data: '29 de março de 2026',
+    titulo: 'Nossa primeira viagem com a família',
+    icon: '🌊',
+    paras: [
+      'Hoje foi um daqueles dias que a gente sabe, no fundo, que vai guardar pra sempre.',
+      'E o mais louco é que tudo aconteceu do nada. Por volta das 11:00 você me mandou mensagem avisando que iam viajar e perguntou se eu queria ir também. Falei que ia ver com meus pais, resolvi tudo rápido, e quando vi já estava aí às 12:00, pronto pra ir. Sem pensar muito… e, com certeza, foi a melhor decisão que eu tomei hoje.',
+      'Foi a nossa primeira viagem juntos com a sua família. Estavam seus pais, a Valentina, seu tio e seus avós em um carro… e no outro, eu, você e a Duda. Só isso já fazia tudo parecer especial, mas o dia conseguiu ser ainda mais.',
+      'Passamos a tarde na represa de Sandovalina, e foi simplesmente incrível. Teve risada, teve vôlei, teve aqueles momentos simples que, quando é com a pessoa certa, viram tudo.',
+      'Mas, sem dúvida, uma das partes mais bonitas do dia foi lá na água… quando você ganhou seus giros de princesa. Pode parecer algo pequeno pra quem vê de fora, mas pra mim foi um daqueles momentos que ficam marcados. Ver seu sorriso, leve, feliz, sendo você… é o tipo de coisa que faz tudo valer a pena.',
+      'Foi um dia leve, divertido, cheio de vida… e que com certeza merece um espaço especial na nossa história.',
+      'Um dia simples, inesperado… mas perfeito do jeito que tinha que ser: com você.',
     ],
   },
 ]
