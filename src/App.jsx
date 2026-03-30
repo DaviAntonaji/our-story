@@ -307,7 +307,9 @@ function NavDots({ active }) {
 // ─── Slide wrapper ─────────────────────────────────────────
 function Slide({ id, bg, children, center = true }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.15 })
+  // "some" = qualquer parte visível. Com amount numérico (ex. 0.15), seções muito altas
+  // (ex.: linha do tempo longa) nunca atingem o limiar — o conteúdo fica invisível.
+  const inView = useInView(ref, { once: true, amount: 'some' })
   return (
     <section id={id} ref={ref} className={`snap-slide ${bg}`}>
       <div
