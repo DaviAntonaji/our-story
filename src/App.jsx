@@ -183,6 +183,7 @@ const TIMELINE = [
       'Foi a nossa primeira viagem juntos com a sua família. Estavam seus pais, a Valentina, seu tio e seus avós em um carro… e no outro, eu, você e a Duda. Só isso já fazia tudo parecer especial, mas o dia conseguiu ser ainda mais.',
       'Passamos a tarde na represa de Sandovalina, e foi simplesmente incrível. Teve risada, teve vôlei, teve aqueles momentos simples que, quando é com a pessoa certa, viram tudo.',
       'Mas, sem dúvida, uma das partes mais bonitas do dia foi lá na água… quando você ganhou seus giros de princesa. Pode parecer algo pequeno pra quem vê de fora, mas pra mim foi um daqueles momentos que ficam marcados. Ver seu sorriso, leve, feliz, sendo você… é o tipo de coisa que faz tudo valer a pena.',
+      'À noite rolou nosso primeiro pós-culto com a turma toda: fomos na Pizzadoro comer porção de frango, peixe, arroz, vinagrete e o resto que a mesa pediu. Simples, gostoso, com todo mundo junto.',
       'Foi um dia leve, divertido, cheio de vida… e que com certeza merece um espaço especial na nossa história.',
       'Um dia simples, inesperado… mas perfeito do jeito que tinha que ser: com você.',
     ],
