@@ -34,6 +34,21 @@ const SLIDE_IDS = [
   'promessas', 'futuro', 'final',
 ]
 
+/** Emoji de ambiente por slide (mesma ordem que SLIDE_IDS). glow = bruma na cor do gradiente do fundo. */
+const SLIDE_AMBIENCE = [
+  { emoji: '🌹', glow: 'rgba(251, 113, 133, 0.42)' },
+  { emoji: '⏳', glow: 'rgba(212, 175, 55, 0.38)' },
+  { emoji: '🎵', glow: 'rgba(167, 139, 250, 0.4)' },
+  { emoji: '💌', glow: 'rgba(252, 211, 77, 0.38)' },
+  { emoji: '✨', glow: 'rgba(244, 114, 182, 0.4)' },
+  { emoji: '✝️', glow: 'rgba(129, 140, 248, 0.42)' },
+  { emoji: '📸', glow: 'rgba(167, 139, 250, 0.28)' },
+  { emoji: '📖', glow: 'rgba(212, 175, 55, 0.36)' },
+  { emoji: '🌿', glow: 'rgba(52, 211, 153, 0.38)' },
+  { emoji: '🌅', glow: 'rgba(59, 130, 246, 0.4)' },
+  { emoji: '💝', glow: 'rgba(251, 113, 133, 0.45)' },
+]
+
 const TIMELINE = [
   {
     data: '13–15 de fevereiro de 2026',
@@ -287,6 +302,56 @@ function ButterfliesFloating({ isMobile }) {
   )
 }
 
+/** Um emoji “da tela” — repete poucas vezes caindo, troca com o slide ativo, cor aproximada ao fundo via hue. */
+function SlideThemedAmbience({ activeIndex, isMobile }) {
+  const cfg = SLIDE_AMBIENCE[activeIndex] ?? SLIDE_AMBIENCE[0]
+  const slots = isMobile
+    ? [
+        { l: '18%', d: '-6s', dur: 36, size: '1.35rem' },
+        { l: '82%', d: '-22s', dur: 42, size: '1.2rem' },
+      ]
+    : [
+        { l: '8%', d: '-4s', dur: 34, size: '1.45rem' },
+        { l: '38%', d: '-18s', dur: 40, size: '1.25rem' },
+        { l: '62%', d: '-10s', dur: 38, size: '1.35rem' },
+        { l: '92%', d: '-26s', dur: 44, size: '1.2rem' },
+      ]
+  return (
+    <div
+      className="slide-themed-ambience fixed inset-0 pointer-events-none z-[2] overflow-hidden"
+      aria-hidden
+      style={{ ['--ambience-glow']: cfg.glow }}
+    >
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={activeIndex}
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          {slots.map((s, i) => (
+            <span
+              key={`${activeIndex}-${i}`}
+              className="slide-themed-ambience-emoji"
+              style={{
+                left: s.l,
+                top: '-24px',
+                fontSize: s.size,
+                animationDelay: s.d,
+                animationDuration: `${s.dur}s`,
+              }}
+            >
+              {cfg.emoji}
+            </span>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  )
+}
+
 // ─── Nav Dots ──────────────────────────────────────────────
 function NavDots({ active }) {
   const navigate = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -440,6 +505,7 @@ export default function App() {
   return (
     <>
       {typeof document !== 'undefined' && createPortal(<ButterfliesFloating isMobile={isMobile} />, document.body)}
+      {typeof document !== 'undefined' && createPortal(<SlideThemedAmbience activeIndex={activeSlide} isMobile={isMobile} />, document.body)}
       {typeof document !== 'undefined' && createPortal(<NavDots active={activeSlide} />, document.body)}
 
       <div>

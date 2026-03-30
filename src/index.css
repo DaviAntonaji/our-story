@@ -314,6 +314,28 @@ body {
   animation: butterflyFall linear infinite;
   pointer-events: none;
 }
+
+/* Emoji temático por slide (camada acima das borboletas, bem suave) */
+@keyframes slideThemeFall {
+  0%   { transform: translateY(-18vh) translateX(0) rotate(-8deg); opacity: 0; }
+  10%  { opacity: 0.14; }
+  100% { transform: translateY(118vh) translateX(12px) rotate(12deg); opacity: 0.05; }
+}
+.slide-themed-ambience-emoji {
+  position: absolute;
+  animation: slideThemeFall linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 0 14px var(--ambience-glow, rgba(212, 175, 55, 0.35)));
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-themed-ambience-emoji {
+    animation: none !important;
+    opacity: 0.12;
+    top: 18% !important;
+    transform: none;
+  }
+}
 .float-emoji {
   animation: butterflyFloat 4s ease-in-out infinite;
   pointer-events: none;
