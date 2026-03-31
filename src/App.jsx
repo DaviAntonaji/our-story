@@ -921,6 +921,7 @@ export default function App() {
                   ['🔝', 'Sempre dar o melhor de mim por nós'],
                   ['💬', 'Me expressar com você - sempre, mesmo quando for difícil'],
                   ['👁️', 'Ser transparente, de verdade, em tudo'],
+                  ['🕊️', 'Nunca elevar a voz: sempre conversar com calma, te entender e expor meu ponto com amor'],
                   ['💛', 'Ser compreensível nos seus momentos difíceis'],
                   ['🌸', 'Te fazer pelo menos um pouquinho feliz todos os dias'],
                 ].map(([icon, text]) => (
