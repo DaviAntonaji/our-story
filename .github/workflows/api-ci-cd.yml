@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - 'api/**'
-      - 'docker-compose.yml'
       - '.github/workflows/api-ci-cd.yml'
   workflow_dispatch:
 
@@ -20,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: docker compose build
-        run: docker compose build our-story-api
+      - name: docker build
+        run: docker build -t our-story-api:latest ./api
 
   cd:
     name: CD
@@ -79,7 +78,16 @@ jobs:
               printf '%s\n' "ALLOWED_ORIGINS=https://ourstory.antonaji.com.br"
             } > api/.env
             chmod 600 api/.env
-            docker compose build our-story-api
-            docker compose stop our-story-api || true
-            docker compose rm -f our-story-api || true
-            docker compose up -d our-story-api
+            IMG=our-story-api:latest
+            CNT=our-story-api
+            docker build -t "$IMG" ./api
+            for c in repo-our-story-api-1 "$CNT"; do
+              docker stop "$c" 2>/dev/null || true
+              docker rm "$c" 2>/dev/null || true
+            done
+            docker run -d \
+              --name "$CNT" \
+              --restart always \
+              -p 127.0.0.1:7000:7000 \
+              --env-file api/.env \
+              "$IMG"
