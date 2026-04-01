@@ -5,7 +5,7 @@ import rateLimit from 'express-rate-limit'
 
 import { validateRecado } from './validate.js'
 import { verifyTurnstile } from './turnstile.js'
-import { createMailTransport, sendRecadoMail } from './mail.js'
+import { createMailTransport, sendRecadoMail, firstSiteOriginFromEnv } from './mail.js'
 
 const PORT = parseInt(process.env.PORT || '7000', 10)
 const IS_PROD = process.env.NODE_ENV === 'production'
@@ -134,6 +134,7 @@ app.post('/api/recados', recadosLimiter, async (req, res) => {
       mailTransport,
       { name: v.name, email: v.email, message: v.message },
       { from: mailFrom, to: mailTo },
+      { siteOrigin: firstSiteOriginFromEnv(process.env) },
     )
   } catch (e) {
     console.error('Envio SMTP falhou:', e instanceof Error ? e.message : 'unknown')
