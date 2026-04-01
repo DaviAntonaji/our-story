@@ -1,0 +1,82 @@
+name: API — CI & CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'api/**'
+      - 'docker-compose.yml'
+      - '.github/workflows/api-ci-cd.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: api-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: CI — Docker build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: docker compose build
+        run: docker compose build our-story-api
+
+  cd:
+    name: CD
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.5
+        env:
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+          MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
+          MAIL_PORT: ${{ secrets.MAIL_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          ALLOWED_ORIGINS: ${{ secrets.ALLOWED_ORIGINS }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          command_timeout: 45m
+          script_stop: true
+          envs: TURNSTILE_SECRET_KEY,MAIL_SERVER,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,ALLOWED_ORIGINS,MAIL_FROM,MAIL_TO
+          script: |
+            set -eu
+            REPO="${{ secrets.REPO_DIRECTORY }}"
+            REPO="${REPO%/}"
+            cd "$REPO"
+            MF="${MAIL_FROM:-$MAIL_USERNAME}"
+            MT="${MAIL_TO:-$MAIL_USERNAME}"
+            umask 077
+            {
+              printf '%s\n' "NODE_ENV=production"
+              printf '%s\n' "PORT=7000"
+              printf '%s\n' "TRUST_PROXY=1"
+              printf '%s\n' "TURNSTILE_SECRET_KEY=$TURNSTILE_SECRET_KEY"
+              printf '%s\n' "MAIL_SERVER=$MAIL_SERVER"
+              printf '%s\n' "MAIL_PORT=$MAIL_PORT"
+              printf '%s\n' "MAIL_USERNAME=$MAIL_USERNAME"
+              printf '%s\n' "MAIL_PASSWORD=$MAIL_PASSWORD"
+              printf '%s\n' "MAIL_FROM=$MF"
+              printf '%s\n' "MAIL_TO=$MT"
+              printf '%s\n' "ALLOWED_ORIGINS=$ALLOWED_ORIGINS"
+            } > api/.env
+            chmod 600 api/.env
+            git fetch origin main
+            if ! git checkout main 2>/dev/null; then
+              git checkout -b main origin/main
+            fi
+            git pull origin main
+            docker compose build our-story-api
+            docker compose stop our-story-api || true
+            docker compose rm -f our-story-api || true
+            docker compose up -d our-story-api

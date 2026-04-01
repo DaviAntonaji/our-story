@@ -27,7 +27,7 @@ export const SLIDE_IDS = [
   'intro', 'timer', 'musica', 'carta', 'tags',
   'versiculo', 'momentos',
   'historia',
-  'promessas', 'futuro', 'final',
+  'promessas', 'futuro', 'recado', 'final',
 ]
 
 /** Emoji de ambiente por slide (mesma ordem que SLIDE_IDS). glow = bruma na cor do gradiente do fundo. */
@@ -42,6 +42,7 @@ export const SLIDE_AMBIENCE = [
   { emoji: '📖', glow: 'rgba(212, 175, 55, 0.36)' },
   { emoji: '🌿', glow: 'rgba(52, 211, 153, 0.38)' },
   { emoji: '🌅', glow: 'rgba(59, 130, 246, 0.4)' },
+  { emoji: '💬', glow: 'rgba(244, 114, 182, 0.35)' },
   { emoji: '💝', glow: 'rgba(251, 113, 133, 0.45)' },
 ]
 
@@ -203,4 +204,4 @@ export const scaleV = {
 export const fadeV = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { duration: 0.5 } },
-}
+}

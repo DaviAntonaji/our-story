@@ -19,6 +19,7 @@ import MomentosSlide from './components/slides/MomentosSlide';
 import HistoriaSlide from './components/slides/HistoriaSlide';
 import PromessasSlide from './components/slides/PromessasSlide';
 import FuturoSlide from './components/slides/FuturoSlide';
+import RecadoSlide from './components/slides/RecadoSlide';
 import FinalSlide from './components/slides/FinalSlide';
 
 export default function App() {
@@ -65,6 +66,7 @@ export default function App() {
         <HistoriaSlide />
         <PromessasSlide />
         <FuturoSlide />
+        <RecadoSlide />
         <FinalSlide />
       </div>
     </>
