@@ -13,8 +13,6 @@ Aqui vive uma página que fiz especialmente para a **Maysa**, o amor da minha vi
 
 Se você está lendo isso e não é ela... bem-vindo ao repositório de um cara completamente apaixonado. 🥹
 
-**🌐 Acesse:** [ourstory.antonaji.com.br](https://ourstory.antonaji.com.br/)
-
 ---
 
 ## O que tem aqui dentro 💌
@@ -44,9 +42,8 @@ Porque até a stack foi escolhida com amor:
 - ⚛️ **React + Vite** — rápido como meu coração quando ela aparece
 - 🎨 **Tailwind CSS** — estiloso como ela
 - 🎞️ **Framer Motion** — com animações tão suaves quanto o jeito dela de ser
-- ☁️ **Cloudflare** — porque nosso amor merece um CDN de respeito
-
 ---
+
 
 ## Estrutura do Projeto
 
@@ -98,10 +95,6 @@ npm run build
 ```
 
 ---
-
-## Deploy
-
-Push na `main` → build automático → deploy via SFTP → cache da Cloudflare limpo automaticamente. ✨
 
 ---
 

@@ -22,7 +22,19 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        env:
+          RECADOS_API_URL: ${{ secrets.RECADOS_API_URL }}
+          VITE_TURNSTILE_SITE_KEY: ${{ secrets.TURNSTILE_SITE_KEY }}
+        run: |
+          set -e
+          if [ -z "${RECADOS_API_URL:-}" ]; then
+            echo "::error::Defina o secret RECADOS_API_URL (host e caminho, sem https://)"
+            exit 1
+          fi
+          R="${RECADOS_API_URL#https://}"
+          R="${R#http://}"
+          export VITE_RECADOS_API_URL="https://${R}"
+          npm run build
 
       - name: Deploy via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -37,14 +49,22 @@ jobs:
           delete_remote: true
 
       - name: Purge Cloudflare cache
+        env:
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_PURGE_CACHE_JSON: ${{ secrets.CF_PURGE_CACHE_JSON }}
         run: |
+          if [ -z "${CF_PURGE_CACHE_JSON:-}" ]; then
+            echo "CF_PURGE_CACHE_JSON não definido; pulando purge."
+            exit 0
+          fi
           curl -s -X POST \
-            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
-            -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
             -H "Content-Type: application/json" \
-            --data '{"hosts":["ourstory.antonaji.com.br"]}' \
+            --data "${CF_PURGE_CACHE_JSON}" \
             | tee /tmp/cf_purge.json
-          if [ "$(cat /tmp/cf_purge.json | python3 -c "import sys,json; print(json.load(sys.stdin)['success'])")" != "True" ]; then
+          if [ "$(python3 -c "import json; print(json.load(open('/tmp/cf_purge.json')).get('success', False))")" != "True" ]; then
             echo "Cloudflare purge FAILED"
             cat /tmp/cf_purge.json
             exit 1
