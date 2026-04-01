@@ -38,7 +38,6 @@ jobs:
           MAIL_PORT: ${{ secrets.MAIL_PORT }}
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-          ALLOWED_ORIGINS: ${{ secrets.ALLOWED_ORIGINS }}
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
         with:
@@ -48,7 +47,7 @@ jobs:
           port: ${{ secrets.SFTP_PORT }}
           command_timeout: 45m
           script_stop: true
-          envs: TURNSTILE_SECRET_KEY,MAIL_SERVER,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,ALLOWED_ORIGINS,MAIL_FROM,MAIL_TO
+          envs: TURNSTILE_SECRET_KEY,MAIL_SERVER,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_FROM,MAIL_TO
           script: |
             set -eu
             REPO="${{ secrets.REPO_DIRECTORY }}"
@@ -77,7 +76,7 @@ jobs:
               printf '%s\n' "MAIL_PASSWORD=$MAIL_PASSWORD"
               printf '%s\n' "MAIL_FROM=$MF"
               printf '%s\n' "MAIL_TO=$MT"
-              printf '%s\n' "ALLOWED_ORIGINS=$ALLOWED_ORIGINS"
+              printf '%s\n' "ALLOWED_ORIGINS=https://ourstory.antonaji.com.br"
             } > api/.env
             chmod 600 api/.env
             docker compose build our-story-api
