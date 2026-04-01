@@ -88,6 +88,6 @@ jobs:
             docker run -d \
               --name "$CNT" \
               --restart always \
-              -p 127.0.0.1:7000:7000 \
+              -p 0.0.0.0:7000:7000 \
               --env-file api/.env \
               "$IMG"
