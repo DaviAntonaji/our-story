@@ -54,6 +54,15 @@ jobs:
             REPO="${{ secrets.REPO_DIRECTORY }}"
             REPO="${REPO%/}"
             cd "$REPO"
+            git fetch origin main
+            if ! git checkout main 2>/dev/null; then
+              git checkout -b main origin/main
+            fi
+            git pull origin main
+            if [ ! -d api ]; then
+              echo "Diretório api/ ausente após git pull. Confira REPO_DIRECTORY."
+              exit 1
+            fi
             MF="${MAIL_FROM:-$MAIL_USERNAME}"
             MT="${MAIL_TO:-$MAIL_USERNAME}"
             umask 077
@@ -71,11 +80,6 @@ jobs:
               printf '%s\n' "ALLOWED_ORIGINS=$ALLOWED_ORIGINS"
             } > api/.env
             chmod 600 api/.env
-            git fetch origin main
-            if ! git checkout main 2>/dev/null; then
-              git checkout -b main origin/main
-            fi
-            git pull origin main
             docker compose build our-story-api
             docker compose stop our-story-api || true
             docker compose rm -f our-story-api || true
