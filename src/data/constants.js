@@ -19,7 +19,7 @@ export const FOTOS = [
   '/imgs/photos/31.jpg', '/imgs/photos/32.jpg', '/imgs/photos/33.jpg', "/imgs/photos/34.jpg",
   '/imgs/photos/35.jpg', '/imgs/photos/36.jpg', '/imgs/photos/37.jpg', "/imgs/photos/38.jpg",
   '/imgs/photos/39.jpg', '/imgs/photos/40.jpg', '/imgs/photos/41.jpg', "/imgs/photos/42.jpg",
-  '/imgs/photos/43.jpg', '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
+  '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
   '/imgs/photos/47.jpg'
 ]
 
