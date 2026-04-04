@@ -19,8 +19,8 @@ export const FOTOS = [
   '/imgs/photos/31.jpg', '/imgs/photos/32.jpg', '/imgs/photos/33.jpg', "/imgs/photos/34.jpg",
   '/imgs/photos/35.jpg', '/imgs/photos/36.jpg', '/imgs/photos/37.jpg', "/imgs/photos/38.jpg",
   '/imgs/photos/39.jpg', '/imgs/photos/40.jpg', '/imgs/photos/41.jpg', "/imgs/photos/42.jpg",
-  '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
-  '/imgs/photos/47.jpg'
+  '/imgs/photos/43.jpg', '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
+  '/imgs/photos/47.jpg', '/imgs/photos/48.jpg', '/imgs/photos/49.jpg'
 ]
 
 export const SLIDE_IDS = [
@@ -183,6 +183,19 @@ export const TIMELINE = [
       'À noite rolou nosso primeiro pós-culto com a turma toda: fomos na Pizzadoro comer porção de frango, peixe, arroz, vinagrete e o resto que a mesa pediu. Simples, gostoso, com todo mundo junto.',
       'Foi um dia leve, divertido, cheio de vida… e que com certeza merece um espaço especial na nossa história.',
       'Um dia simples, inesperado… mas perfeito do jeito que tinha que ser: com você.',
+    ],
+  },
+  {
+    data: '03 de abril de 2026',
+    titulo: 'Nosso primeiro cinema juntos <3',
+    icon: '🎬',
+    paras: [
+      'Hoje foi um daqueles dias que dá vontade de guardar pra sempre 🤍',
+      'Comecei te buscando às 14:00, e já ali o coração tava feliz só de te ver. Te entreguei seus presentinhos de Páscoa e também do nosso primeiro mês-versário (mesmo sendo no dia seguinte hehe). Preparei tudo com carinho: uma cestinha com ursinho de pelúcia, flores artificiais pra durarem bastante (igual o que eu quero com a gente), chocolates, um chaveiro combinando com nossas iniciais e a data do nosso começo… e claro, um ovo de Páscoa 🍫',
+      'Depois ficamos um tempinho na praça da entrada da cidade, conversando e curtindo aquele momento tranquilo juntos. Lá pelas 15:00 fomos pro Prudenshopping, onde andamos bastante, passamos no Carrefour e tomamos uma casquinha mista 🍦',
+      'Mais tarde, às 16:30, fomos pegar pipoca e refri pra viver um momento especial: nosso primeiro cinema juntos 🎬 Assistimos Super Mario Galaxy com a família da Talita e da Kelli também por lá, o que deixou tudo ainda mais leve e divertido.',
+      'Depois do filme, demos mais uma voltinha (já que o Carrefour era praticamente a única loja aberta por conta do feriado), e então voltamos pra Pirapó. Pra fechar o dia, ficamos na praça do centro conversando com a turma, comendo um churros e aproveitando cada segundo.',
+      'Foi um dia simples, mas ao mesmo tempo incrível… cheio de risadas, carinho e momentos que fizeram tudo valer a pena. 🤍',
     ],
   },
 ]
