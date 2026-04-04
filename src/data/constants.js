@@ -20,7 +20,8 @@ export const FOTOS = [
   '/imgs/photos/35.jpg', '/imgs/photos/36.jpg', '/imgs/photos/37.jpg', "/imgs/photos/38.jpg",
   '/imgs/photos/39.jpg', '/imgs/photos/40.jpg', '/imgs/photos/41.jpg', "/imgs/photos/42.jpg",
   '/imgs/photos/43.jpg', '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
-  '/imgs/photos/47.jpg', '/imgs/photos/48.jpg', '/imgs/photos/49.jpg'
+  '/imgs/photos/47.jpg', '/imgs/photos/48.jpg', '/imgs/photos/49.jpg',
+  '/imgs/photos/50.jpg', '/imgs/photos/51.jpg', '/imgs/photos/52.jpg', '/imgs/photos/53.jpg',
 ]
 
 export const SLIDE_IDS = [
@@ -163,7 +164,7 @@ export const TIMELINE = [
       'Foi a primeira vez que você veio na minha casa. A gente tomou um café da tarde com meus pais, conversou, riu… aquele clima leve, gostoso, que dá uma sensação boa só de lembrar. E ainda trouxemos a Duda pra ficar brincando com a Amanda, o que deixou tudo ainda mais divertido.',
       'Mais tarde, fomos visitar o culto de jovens da IPI, da Naomi. Não foi só uma visita… foi daqueles momentos que marcam por dentro.',
       'A palavra foi em Isaías 59:1-4, e falava sobre como nada pode nos separar do amor de Deus, a não ser o pecado. Foi forte ouvir e lembrar que Deus continua o mesmo, que a mão dEle não está encolhida e que Ele sempre ouve nosso clamor… mas que o pecado pode, sim, nos afastar da presença dEle.',
-      'Falou também sobre o que é o pecado — tudo aquilo que fazemos ou deixamos de fazer que entristece o coração de Deus. E mesmo sabendo o que é certo, muitas vezes a gente escolhe errado. Mas também trouxe algo muito importante: sempre existe o caminho de volta.',
+      'Falou também sobre o que é o pecado - tudo aquilo que fazemos ou deixamos de fazer que entristece o coração de Deus. E mesmo sabendo o que é certo, muitas vezes a gente escolhe errado. Mas também trouxe algo muito importante: sempre existe o caminho de volta.',
       'Arrependimento de verdade, reconhecer que precisamos dEle, e voltar pra presença… porque é lá que a gente encontra tudo. Foi um culto que mexeu muito comigo. Senti Deus tocando meu coração de uma forma muito real.',
       'Depois disso, fomos comer pastel… e foi um momento leve depois de algo tão profundo. Eu pedi de frango com queijo e você de palmito com queijo. Foi engraçado (e fofo) ver você queimando a boca no pastel no começo, mesmo tentando disfarçar depois kkkkk.',
       'No final, a gente até aprendeu uma lição: pastel de palmito com queijo pode ser meio enjoativo mesmo 😅',
@@ -196,6 +197,23 @@ export const TIMELINE = [
       'Mais tarde, às 16:30, fomos pegar pipoca e refri pra viver um momento especial: nosso primeiro cinema juntos 🎬 Assistimos Super Mario Galaxy com a família da Talita e da Kelli também por lá, o que deixou tudo ainda mais leve e divertido.',
       'Depois do filme, demos mais uma voltinha (já que o Carrefour era praticamente a única loja aberta por conta do feriado), e então voltamos pra Pirapó. Pra fechar o dia, ficamos na praça do centro conversando com a turma, comendo um churros e aproveitando cada segundo.',
       'Foi um dia simples, mas ao mesmo tempo incrível… cheio de risadas, carinho e momentos que fizeram tudo valer a pena. 🤍',
+    ],
+  },
+  {
+    data: '04 de abril de 2026',
+    titulo: 'Nosso primeiro mês juntos 🤍',
+    icon: '🤍',
+    paras: [
+      'Hoje foi um dia especial… nosso primeiro mês juntos. E, mais uma vez, eu só consigo começar agradecendo a Deus por tudo que a gente viveu hoje - pelas coisas boas, pelos aprendizados e até pelos momentos mais difíceis, que também fizeram parte do nosso crescimento.',
+      'O dia começou comigo te buscando às 9:00 pra gente fazer nosso piquenique na praça da entrada da cidade. Já ali começaram nossos "imprevistos" kkkkk… eu esqueci o perfume que a gente tinha combinado de usar no ursinho pra ficar com meu cheiro, e quando estávamos chegando você percebeu que tinha esquecido a aliança.',
+      'Voltamos pra sua casa pra buscar, e naquele momento eu vi que você ficou mal… ainda mais com a reação da sua mãe. Mas ali, conversando com você, eu só queria que você entendesse uma coisa: a aliança nunca foi sobre algo físico. Ela é um símbolo, mas o mais importante é o que a gente carrega no coração - nosso compromisso, nossa promessa e aquilo que a gente tem diante de Deus. E se alguém "poderia" ficar chateado com isso, seria eu… mas eu não estava. Ver seu sorriso depois disso aqueceu muito meu coração 🤍',
+      'Depois voltamos e montamos nosso piquenique. E mais uma vez, o Davi aqui deu seus jeitos kkkkk… na hora de fazer o chá, eu simplesmente trouxe a erva errada (pra coar, em vez de sachê). Resultado: fui correndo no restaurante ali perto buscar uma coca de 1 litro pra salvar nosso momento 😂 Mesmo assim, deu tudo certo. Comemos nosso pão de brioche com alface, tomate, presunto e queijo, e aproveitamos aquele tempinho juntos.',
+      'E então veio um dos momentos mais especiais do meu dia… o presente que você me deu. A "Bíblia carregada". Sério… eu nunca recebi algo tão significativo na minha vida. Uma Bíblia personalizada, com a nossa foto, com versículos marcados, com intenção, com cuidado… com amor. Mesmo você achando que não estava "pronta", pra mim ela já era perfeita.',
+      'E o nosso combinado de você "carregar" ela durante a semana, e a gente trocar antes e depois dos cultos… isso é simplesmente lindo. Porque mostra que o nosso relacionamento não é só sobre a gente, é sobre Deus no centro de tudo. E o momento que tivemos ali, compartilhando a Palavra um com o outro, foi único.',
+      'Também tivemos um momento mais delicado… mas que, ao mesmo tempo, mostrou muito sobre quem a gente é e quem queremos ser. A gente percebeu, a tempo, e escolheu fazer o certo. E mais do que isso, escolhemos a verdade. Quando você me perguntou se devia contar ou não, pra mim ficou muito claro: tudo que é escondido pode gerar uma quebra muito maior lá na frente. E o nosso relacionamento não foi feito pra ser baseado em medo, mas em verdade, respeito e transparência.',
+      'Eu fiquei muito preocupado naquele momento… mas ali também aconteceu algo muito especial: foi a primeira vez que a gente se consolou pessoalmente. E isso me marcou muito. Porque mostrou que, mesmo nas dificuldades, a gente cuida um do outro, se apoia e permanece junto.',
+      'Hoje não foi um dia "perfeito"… mas foi real. E talvez seja exatamente isso que torna tudo tão especial. Porque não é sobre viver só momentos bons, mas sobre viver tudo juntos, com Deus no centro, aprendendo, crescendo e se fortalecendo a cada dia.',
+      'Obrigado por esse primeiro mês. Obrigado por ser quem você é. E obrigado, Deus, por me permitir viver tudo isso com você 🤍',
     ],
   },
 ]
