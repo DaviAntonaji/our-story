@@ -22,6 +22,8 @@ export const FOTOS = [
   '/imgs/photos/43.jpg', '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
   '/imgs/photos/47.jpg', '/imgs/photos/48.jpg', '/imgs/photos/49.jpg',
   '/imgs/photos/50.jpg', '/imgs/photos/51.jpg', '/imgs/photos/52.jpg', '/imgs/photos/53.jpg',
+  '/imgs/photos/54.jpg', '/imgs/photos/55.jpg', '/imgs/photos/56.jpg', '/imgs/photos/57.jpg',
+  '/imgs/photos/58.jpg'
 ]
 
 export const SLIDE_IDS = [
