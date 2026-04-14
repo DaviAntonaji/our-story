@@ -283,7 +283,8 @@ export const TIMELINE = [
       'Comecei te buscando às 14:00, e já ali o coração tava feliz só de te ver. Te entreguei seus presentinhos de Páscoa e também do nosso primeiro mês-versário (mesmo sendo no dia seguinte hehe). Preparei tudo com carinho: uma cestinha com ursinho de pelúcia, flores artificiais pra durarem bastante (igual o que eu quero com a gente), chocolates, um chaveiro combinando com nossas iniciais e a data do nosso começo… e claro, um ovo de Páscoa 🍫',
       'Depois ficamos um tempinho na praça da entrada da cidade, conversando e curtindo aquele momento tranquilo juntos. Lá pelas 15:00 fomos pro Prudenshopping, onde andamos bastante, passamos no Carrefour e tomamos uma casquinha mista 🍦',
       'Mais tarde, às 16:30, fomos pegar pipoca e refri pra viver um momento especial: nosso primeiro cinema juntos 🎬 Assistimos Super Mario Galaxy com a família da Talita e da Kelli também por lá, o que deixou tudo ainda mais leve e divertido.',
-      'Depois do filme, demos mais uma voltinha (já que o Carrefour era praticamente a única loja aberta por conta do feriado), e então voltamos pra Pirapó. Pra fechar o dia, ficamos na praça do centro conversando com a turma, comendo um churros e aproveitando cada segundo.',
+      'Depois do filme, demos mais uma voltinha (já que o Carrefour era praticamente a única loja aberta por conta do feriado), e então voltamos pra Pirapó. O combinado inicial era você estar em casa às 21:30, mas conversando com sua mãe ela autorizou a gente ficar até as 23:00 - com uma condição especial: levar um lanche de 30cm do Subway pra ela kkkkk.',
+      'Pra fechar o dia, ficamos na praça do centro conversando com a turma, comendo um churros e aproveitando cada segundo.',
       'Foi um dia simples, mas ao mesmo tempo incrível… cheio de risadas, carinho e momentos que fizeram tudo valer a pena. 🤍',
     ],
   },
@@ -302,6 +303,18 @@ export const TIMELINE = [
       'Eu fiquei muito preocupado naquele momento… mas ali também aconteceu algo muito especial: foi a primeira vez que a gente se consolou pessoalmente. E isso me marcou muito. Porque mostrou que, mesmo nas dificuldades, a gente cuida um do outro, se apoia e permanece junto.',
       'Hoje não foi um dia "perfeito"… mas foi real. E talvez seja exatamente isso que torna tudo tão especial. Porque não é sobre viver só momentos bons, mas sobre viver tudo juntos, com Deus no centro, aprendendo, crescendo e se fortalecendo a cada dia.',
       'Obrigado por esse primeiro mês. Obrigado por ser quem você é. E obrigado, Deus, por me permitir viver tudo isso com você 🤍',
+    ],
+  },
+  {
+    data: '06 de abril de 2026',
+    titulo: 'Nosso propósito de crescimento espiritual',
+    icon: '📖',
+    paras: [
+      'Nesse dia, começamos um propósito espiritual juntos: uma decisão intencional de crescer com Deus em parceria, fortalecendo nossa fé individual e o nosso relacionamento ao mesmo tempo.',
+      'Assumimos isso como uma aliança espiritual, não apenas emocional. Nosso objetivo ficou claro: viver o namoro com Deus no centro, com fundamento e direção.',
+      'Definimos um propósito de 40 dias (06/04/2026 a 15/05/2026), com devocional em conjunto, jejum aos sábados e domingos (das 7h às 9h), oração diária às 3h da madrugada e gratidão no fim de cada dia.',
+      'Também colocamos nossos temas de oração: intimidade com Deus, comunhão entre nós, santidade, futuro, propósito, princípios, constância, blindagem espiritual, cura de feridas e cuidado um com o outro.',
+      'E deixamos dois combinados no coração: se falharmos em algum dia, recomeçamos no dia seguinte; e isso não seria só por 40 dias, mas o começo de um estilo de vida com Deus no centro.',
     ],
   },
   {

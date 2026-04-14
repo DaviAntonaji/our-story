@@ -20,7 +20,7 @@ export default function FinalSlide() {
             <span className="float-emoji" style={{ animationDelay: '0.9s' }}>💗</span>
           </MI>
           <MI className="space-y-2">
-            <p className="text-rose-200/80 text-base sm:text-lg">Essa é só a primeira página da nossa história.</p>
+            <p className="text-rose-200/80 text-base sm:text-lg">A gente continua escrevendo a nossa história todos os dias, com amor e com Deus no centro.</p>
             <p className="font-display text-lg sm:text-xl text-rose-200/90 italic">E assim continua...</p>
           </MI>
           <MI>

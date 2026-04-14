@@ -41,7 +41,10 @@ export default function FuturoSlide() {
               </p>
               <p className="text-center text-[11px] sm:text-xs text-rose-200/80 mb-3 leading-relaxed px-1">
                 a brincadeira era um nome gigante - desse tamanho{' '}
-                <span className="whitespace-nowrap" aria-hidden>🫸🏻 🫷🏻</span>
+                <span className="inline-flex items-center gap-10 whitespace-nowrap" aria-hidden>
+                  <span>🫸🏻</span>
+                  <span>🫷🏻</span>
+                </span>
               </p>
               <p
                 className="font-display text-center font-medium text-rose-50 leading-snug px-1"
