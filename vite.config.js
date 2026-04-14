@@ -13,6 +13,8 @@ export default defineConfig({
     }),
   ],
   build: {
+    /** Compatível com o Chromium antigo do react-snap (pré-render pós-build). */
+    target: 'es2015',
     rollupOptions: {
       output: {
         manualChunks: {

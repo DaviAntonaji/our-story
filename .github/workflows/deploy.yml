@@ -21,15 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Gerar sitemap
-        env:
-          SITE_URL: ${{ secrets.SITE_URL }}
-        run: npm run generate-sitemap
-
-      - name: Build (Vite)
+      - name: Build (sitemap + Vite + prerender)
         env:
           RECADOS_API_URL: ${{ secrets.RECADOS_API_URL }}
           VITE_TURNSTILE_SITE_KEY: ${{ secrets.TURNSTILE_SITE_KEY }}
+          SITE_URL: ${{ secrets.SITE_URL }}
         run: |
           set -e
           if [ -z "${RECADOS_API_URL:-}" ]; then
@@ -39,7 +35,7 @@ jobs:
           R="${RECADOS_API_URL#https://}"
           R="${R#http://}"
           export VITE_RECADOS_API_URL="https://${R}"
-          npx vite build
+          npm run build
 
       - name: Deploy via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4

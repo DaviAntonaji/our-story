@@ -9,7 +9,19 @@
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "prebuild": "npm run generate-sitemap",
     "build": "vite build",
+    "postbuild": "react-snap",
     "preview": "vite preview"
+  },
+  "reactSnap": {
+    "source": "dist",
+    "include": ["/"],
+    "fixWebpackChunksIssue": false,
+    "skipThirdPartyRequests": true,
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    }
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.11",
@@ -24,6 +36,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
+    "react-snap": "^1.23.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.16",
     "vite": "^6.4.2",
