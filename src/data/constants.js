@@ -1,7 +1,7 @@
 // src/data/constants.js
 
 /** URL pública do site (https://dominio.com, sem barra no final). Fallback do sitemap se SITE_URL não estiver no .env / CI. */
-export const SITE_ORIGIN = ''
+export const SITE_ORIGIN = 'https://ourstory.antonaji.com.br'
 
 export const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0)
 export const SPOTIFY_URLS = [
