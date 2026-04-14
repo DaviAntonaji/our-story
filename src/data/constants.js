@@ -337,6 +337,17 @@ export const TIMELINE = [
       'Ali, a gente não só se conheceu melhor… a gente começou a se cuidar de verdade. Fortalecendo algo que já tava nascendo forte: nós.',
     ],
   },
+  {
+    data: '12 de abril de 2026',
+    titulo: 'Nosso primeiro pós-culto com seus pais',
+    icon: '🍕',
+    paras: [
+      'Depois do culto, tivemos nosso primeiro momento juntos com seus pais… e foi leve do jeitinho que tinha que ser. A gente saiu, foi na pizzaria, riu bastante e aproveitou cada segundo.',
+      'Teve pizza de catufrango, pizzadoro… mas o melhor mesmo foi o clima. Sua irmã caçula mais preocupada em brincar no pula-pula do que comer deixou tudo ainda mais engraçado e especial.',
+      'Foi uma noite simples, mas muito boa. Daquelas que aquecem o coração sem esforço.',
+      'E pra melhorar, ainda ganhamos uns minutinhos a mais juntos… era pra você estar em casa 22:30, mas ficamos até 23:05 hehe. Pequenos detalhes que fizeram tudo ficar ainda mais especial.',
+    ],
+  },
 ]
 
 
