@@ -1,17 +1,59 @@
 /**
  * Gera public/sitemap.xml com extensão de imagens do Google.
- * Requer SITE_URL (https://seu-dominio.com) para URLs absolutas em <image:loc>.
+ * Base da URL: SITE_URL (env) ou variáveis no .env / SITE_ORIGIN em constants.js.
  * @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps
  */
-import { writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { FOTOS } from '../src/data/constants.js'
+import { FOTOS, SITE_ORIGIN } from '../src/data/constants.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const outPath = join(__dirname, '../public/sitemap.xml')
 
-const raw = process.env.SITE_URL?.trim()
+/** Carrega SITE_URL / VITE_SITE_URL do .env e depois .env.local (este sobrescreve). */
+function loadSiteUrlFromEnvFiles() {
+  const root = join(__dirname, '..')
+  for (const name of ['.env', '.env.local']) {
+    const p = join(root, name)
+    if (!existsSync(p)) continue
+    const text = readFileSync(p, 'utf8')
+    for (const line of text.split('\n')) {
+      const t = line.trim()
+      if (!t || t.startsWith('#')) continue
+      const eq = t.indexOf('=')
+      if (eq === -1) continue
+      const key = t.slice(0, eq).trim()
+      if (key !== 'SITE_URL' && key !== 'VITE_SITE_URL') continue
+      let val = t.slice(eq + 1).trim()
+      if (
+        (val.startsWith('"') && val.endsWith('"')) ||
+        (val.startsWith("'") && val.endsWith("'"))
+      ) {
+        val = val.slice(1, -1)
+      }
+      if (val) process.env.SITE_URL = val
+    }
+  }
+}
+
+function siteUrlFromPackageJson() {
+  try {
+    const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf8'))
+    const h = typeof pkg.homepage === 'string' ? pkg.homepage.trim() : ''
+    if (h && /^https?:\/\//i.test(h)) return h.replace(/\/$/, '')
+  } catch {
+    /* ignore */
+  }
+  return ''
+}
+
+loadSiteUrlFromEnvFiles()
+
+const raw =
+  process.env.SITE_URL?.trim() ||
+  (typeof SITE_ORIGIN === 'string' ? SITE_ORIGIN.trim() : '') ||
+  siteUrlFromPackageJson()
 const base = raw ? raw.replace(/\/$/, '') : ''
 
 function escapeXml(s) {
@@ -37,8 +79,8 @@ if (base) {
   }
 } else {
   console.warn(
-    '[generate-sitemap] SITE_URL não definido: sitemap sem blocos <image:image>. ' +
-      'Defina SITE_URL (ex.: no .env ou secret do CI) para listar as fotos para o Google.'
+    '[generate-sitemap] Nenhuma base de URL: defina SITE_URL no .env, secret SITE_URL no CI, ' +
+      'ou SITE_ORIGIN em src/data/constants.js — senão o sitemap fica sem <image:image>.'
   )
 }
 
