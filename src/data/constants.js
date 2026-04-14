@@ -3,6 +3,15 @@
 /** URL pública do site (https://dominio.com, sem barra no final). Fallback do sitemap se SITE_URL não estiver no .env / CI. */
 export const SITE_ORIGIN = 'https://ourstory.antonaji.com.br'
 
+/** Nome dela hoje (textos legais, créditos). */
+export const NOME_ELA_COMPLETO = 'Maysa Sophia Ferreira da Silva'
+
+/**
+ * Nome que vocês já combinaram (ex.: pra quando casarem).
+ * Usado no slide “Futuro” e onde quiser celebrar esse combinado.
+ */
+export const NOME_ELA_FUTURO = 'Maysa Sophia Ferreira da Silva Antonaji'
+
 export const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0)
 export const SPOTIFY_URLS = [
   'https://open.spotify.com/embed/track/3pinR9iFoRAZvqirrRm4os',

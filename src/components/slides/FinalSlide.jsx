@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
-import { staggerV, fadeV, scaleV } from '../../data/constants'
+import { staggerV, fadeV, scaleV, NOME_ELA_COMPLETO } from '../../data/constants'
 
 export default function FinalSlide() {
   const [mensagemRevelada, setMensagemRevelada] = useState(false)
@@ -58,7 +58,7 @@ export default function FinalSlide() {
             <span className="text-rose-300/40">(seu amor)</span>
           </MI>
           <MI v={fadeV} className="text-rose-500/40 text-[10px] sm:text-xs mt-3">
-            © {new Date().getFullYear() === 2026 ? '2026' : `2026–${new Date().getFullYear()}`} Davi de Melo Antonaji e Maysa Sophia Ferreira da Silva. Todos os direitos reservados.
+            © {new Date().getFullYear() === 2026 ? '2026' : `2026–${new Date().getFullYear()}`} Davi de Melo Antonaji e {NOME_ELA_COMPLETO}. Todos os direitos reservados.
           </MI>
         </motion.div>
       )}

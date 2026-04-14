@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import Divider from '../ui/Divider'
-import { staggerV, fadeV, scaleV } from '../../data/constants'
+import { staggerV, fadeV, scaleV, NOME_ELA_FUTURO } from '../../data/constants'
 
 export default function FuturoSlide() {
   return (
@@ -34,6 +34,24 @@ export default function FuturoSlide() {
               </MI>
             ))}
           </div>
+          <MI v={fadeV}>
+            <div className="mt-1 px-4 py-5 rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-amber-200/20 shadow-lg shadow-rose-950/25 ring-1 ring-white/[0.04]">
+              <p className="text-center text-xs sm:text-sm text-amber-200/90 mb-2 font-medium leading-snug px-1">
+                A gente já combinou brincando - e fechou nesse nome kkk
+              </p>
+              <p className="text-center text-[11px] sm:text-xs text-rose-200/80 mb-3 leading-relaxed px-1">
+                a brincadeira era um nome gigante - desse tamanho{' '}
+                <span className="whitespace-nowrap" aria-hidden>🫸 🫷</span>
+              </p>
+              <p
+                className="font-display text-center font-medium text-rose-50 leading-snug px-1"
+                style={{ fontSize: 'clamp(15px, 3.9vw, 20px)' }}
+              >
+                {NOME_ELA_FUTURO}
+              </p>
+              <p className="text-center text-rose-300/55 text-xs mt-3 italic">foi brincando, mas foi sério — o combinado vale 💍</p>
+            </div>
+          </MI>
           <MI v={fadeV}>
             <p className="text-center text-rose-200/70 text-xs sm:text-sm italic">Quando formos construir nossa casa, ela terá um ipê branco na frente. 🌸</p>
           </MI>
