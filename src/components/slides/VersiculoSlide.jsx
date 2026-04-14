@@ -89,7 +89,7 @@ export default function VersiculoSlide() {
             </MI>
             <MI v={fadeV}>
               <p className="text-rose-200/55 text-xs mt-1.5 max-w-[280px] mx-auto">
-                Trechos que sustentam a nossa história — fé e amor juntos
+                Trechos que sustentam a nossa história - fé e amor juntos
               </p>
             </MI>
           </div>

@@ -30,7 +30,7 @@ export const MESESVERSARIOS = [
   },
 ]
 
-/** Passagens exibidas no slide “Versículo” — `tipo`: numerados | destaque */
+/** Passagens exibidas no slide “Versículo” - `tipo`: numerados | destaque */
 export const PASSAGENS_BIBLICAS = [
   {
     id: '1cor13',
@@ -316,7 +316,7 @@ export const TIMELINE = [
     icon: '🤝',
     paras: [
       'Nesses dias, a gente deu um passo importante.',
-      'Na madrugada de sexta pra sábado, tivemos nossa ligação mais longa até então… 2h e meia juntos, até 03:09. Foi um momento intenso, meio difícil no começo, mas necessário. Mesmo com medo e inseguranças, a gente não correu — a gente ficou.',
+      'Na madrugada de sexta pra sábado, tivemos nossa ligação mais longa até então… 2h e meia juntos, até 03:09. Foi um momento intenso, meio difícil no começo, mas necessário. Mesmo com medo e inseguranças, a gente não correu - a gente ficou.',
       'E na madrugada seguinte, fomos ainda mais longe… até quase 5h da manhã, abrindo nossos passados, nossas dores, e principalmente, nossa vontade de fazer dar certo.',
       'Ali, a gente não só se conheceu melhor… a gente começou a se cuidar de verdade. Fortalecendo algo que já tava nascendo forte: nós.',
     ],
