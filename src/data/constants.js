@@ -301,6 +301,26 @@ export const TIMELINE = [
       'Obrigado por esse primeiro mês. Obrigado por ser quem você é. E obrigado, Deus, por me permitir viver tudo isso com você 🤍',
     ],
   },
+  {
+    data: '09 de abril de 2026',
+    titulo: 'Quando a voz virou lar',
+    icon: '📞',
+    paras: [
+      'Nesse dia, você tava um pouco preocupada… e o nosso boa noite foi diferente. Em vez de mensagem, a gente ficou em ligação, ouvindo a voz um do outro.',
+      'Foi simples, mas teve algo especial ali. A calma veio, o carinho ficou… e sem perceber, a partir desse dia, nossos boa noites nunca mais foram só digitados. Viraram rotina em ligação, deixando tudo ainda mais próximo, mais nosso.',
+    ],
+  },
+  {
+    data: '10–12 de abril de 2026',
+    titulo: 'Quando a gente escolheu confiar',
+    icon: '🤝',
+    paras: [
+      'Nesses dias, a gente deu um passo importante.',
+      'Na madrugada de sexta pra sábado, tivemos nossa ligação mais longa até então… 2h e meia juntos, até 03:09. Foi um momento intenso, meio difícil no começo, mas necessário. Mesmo com medo e inseguranças, a gente não correu — a gente ficou.',
+      'E na madrugada seguinte, fomos ainda mais longe… até quase 5h da manhã, abrindo nossos passados, nossas dores, e principalmente, nossa vontade de fazer dar certo.',
+      'Ali, a gente não só se conheceu melhor… a gente começou a se cuidar de verdade. Fortalecendo algo que já tava nascendo forte: nós.',
+    ],
+  },
 ]
 
 
