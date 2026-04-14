@@ -42,7 +42,7 @@ export const PASSAGENS_BIBLICAS = [
       { n: '6', texto: 'O amor não se alegra com a injustiça, mas se alegra com a verdade.' },
       { n: '7', texto: 'Tudo sofre, tudo crê, tudo espera, tudo suporta.' },
     ],
-    nota: 'Esse trecho sempre me lembra você.',
+    nota: 'Esse é um dos versículos mais importantes da nossa história, gravado na nossa aliança.',
   },
   {
     id: 'ec4',
