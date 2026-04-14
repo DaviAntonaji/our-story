@@ -54,6 +54,7 @@ export const PASSAGENS_BIBLICAS = [
       { n: '11', texto: 'Também, se dois dormirem juntos, eles se aquentarão; mas um só, como se aquentará?' },
       { n: '12', texto: 'E, se alguém prevalecer contra um, os dois lhe resistirão; e o cordão de três dobras não se quebra tão depressa.' },
     ],
+    nota: 'Com você, eu nunca caminho sozinho. Somos mais fortes juntos.',
   },
   {
     id: 'col314',
@@ -67,6 +68,7 @@ export const PASSAGENS_BIBLICAS = [
     titulo: 'Efésios 5:28',
     tipo: 'destaque',
     citacao: 'Assim devem os maridos amar as suas próprias mulheres, como a seus próprios corpos. Quem ama a sua mulher, ama-se a si mesmo.',
+    reflexao: 'Minha promessa é te amar como Cristo amou a Igreja, com entrega, cuidado e fidelidade.',
   },
   {
     id: 'sl128',
@@ -78,6 +80,7 @@ export const PASSAGENS_BIBLICAS = [
       { n: '3', texto: 'A tua mulher será como a videira frutífera aos lados da tua casa; os teus filhos como plantas de oliveira à roda da tua mesa.' },
       { n: '4', texto: 'Eis que assim será abençoado o homem que teme ao Senhor.' },
     ],
+    nota: 'Quando leio isso, só consigo imaginar nosso futuro com Deus no centro.',
   },
 ]
 
