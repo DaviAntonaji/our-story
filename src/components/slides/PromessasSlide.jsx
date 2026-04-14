@@ -35,6 +35,15 @@ export default function PromessasSlide() {
               ['🕊️', 'Nunca elevar a voz: sempre conversar com calma, te entender e expor meu ponto com amor'],
               ['💛', 'Ser compreensível nos seus momentos difíceis'],
               ['🌸', 'Te fazer pelo menos um pouquinho feliz todos os dias'],
+              ['🩹', 'Ajudar a curar, com amor e paciência, todo mal que já fizeram a você'],
+              ['🧷', 'Nunca desistir de nós'],
+              ['💍', 'Ser totalmente fiel a você'],
+              ['🔒', 'Nunca quebrar sua confiança'],
+              ['🤣', 'Não fugir quando te ver toda descabelada (depois do casamento kkk)'],
+              ['🏃‍♂️‍➡️', 'Cuidar da minha saúde e da sua, para vivermos bem cada fase'],
+              ['🤲', 'Você nunca vai carregar nada sozinha: sempre vamos carregar juntos'],
+              ['⚔️', 'Independente dos problemas, continuarei te escolhendo e me entregando por nós, como Cristo amou a Igreja'],
+              ['🏡', 'Quando tivermos nosso lar, não será apenas morar juntos, mas viver juntos de verdade'],
             ].map(([icon, text]) => (
               <MI key={text}>
                 <div className="flex items-center gap-3 px-3 py-2.5 rounded-2xl bg-white/[0.05] border border-emerald-400/12">
