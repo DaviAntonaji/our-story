@@ -90,6 +90,7 @@ export const SPOTIFY_URLS = [
   'https://open.spotify.com/embed/track/0uwaiApk6k7k9POyFjTKeR',
   'https://open.spotify.com/embed/track/6ccKu0LwJzOhLAxBwP2PTk',
   'https://open.spotify.com/embed/track/2WViLEKp7hWDJQbowxqzba',
+  'https://open.spotify.com/embed/track/0A8K5i1KBtY3ztMETimVCK',
 ]
 
 export const FOTOS = [
