@@ -7,7 +7,7 @@
 
 > *"Desde o primeiro dia eu senti que algo em você era diferente."*
 
-Esse repositório não é só código — é amor compilado, commit por commit.
+Esse repositório não é só código - é amor compilado, commit por commit.
 
 Aqui vive uma página que fiz especialmente para a **Maysa**, o amor da minha vida. Cada linha foi escrita pensando nela, em cada momento que vivemos juntos, em cada sorriso que me fez bem.
 
@@ -22,17 +22,17 @@ Cada seção da página foi pensada com carinho:
 | Seção | Conteúdo |
 |-------|----------|
 | 🌹 **Intro** | A primeira coisa que ela vê ao abrir |
-| ⏳ **Timer** | Contagem em tempo real — dias, horas, minutos e segundos juntos |
+| ⏳ **Timer** | Contagem em tempo real - dias, horas, minutos e segundos juntos |
 | 🎵 **Músicas** | As trilhas sonoras do nosso amor (via Spotify) |
 | 💌 **Carta** | Uma carta escrita do coração, pra ser lida com calma |
 | ✨ **Sobre ela** | As coisas que mais amo nela |
-| ✝️ **Versículo** | 1 Coríntios 13 — a base de tudo |
+| ✝️ **Versículo** | 1 Coríntios 13 - a base de tudo |
 | 📸 **Momentos** | Um carrossel com nossas fotos juntos |
 | 📖 **Nossa história** | Cada momento marcante desde o começo |
 | 🤍 **Promessas** | Compromissos reais, feitos pra durar |
 | 🌅 **Futuro** | Os sonhos que quero construir ao lado dela |
 | 💬 **Recado** | Formulário para amigos e família deixarem mensagem (Turnstile + API) |
-| 💝 **Final** | O encerramento — com uma surpresa pra quem chegar até lá |
+| 💝 **Final** | O encerramento - com uma surpresa pra quem chegar até lá |
 
 ---
 
@@ -40,9 +40,9 @@ Cada seção da página foi pensada com carinho:
 
 Quem chega até o final da história pode enviar **nome, e-mail e mensagem**. O envio é tratado por uma **API em Node** na pasta `api/`: validação, **Cloudflare Turnstile** no servidor, CORS fechado, rate limit e e-mail em **HTML** (com visual alinhado ao site e imagem de capa servida do próprio site). O modo texto puro continua sendo enviado junto para clientes que não renderizam HTML.
 
-**Front (Vite):** variáveis em `.env` na raiz — veja [.env.example](.env.example) (`VITE_RECADOS_API_URL`, `VITE_TURNSTILE_SITE_KEY`).
+**Front (Vite):** variáveis em `.env` na raiz - veja [.env.example](.env.example) (`VITE_RECADOS_API_URL`, `VITE_TURNSTILE_SITE_KEY`).
 
-**API:** variáveis em `api/.env` — veja [api/.env.example](api/.env.example). Resumo técnico em [api/README.md](api/README.md).
+**API:** variáveis em `api/.env` - veja [api/.env.example](api/.env.example). Resumo técnico em [api/README.md](api/README.md).
 
 **CI:** o deploy do site estático injeta as variáveis do front a partir dos *secrets* do repositório; o fluxo da API é separado. Segredos e URLs reais não ficam documentados aqui (repo público).
 
@@ -52,11 +52,11 @@ Quem chega até o final da história pode enviar **nome, e-mail e mensagem**. O 
 
 Porque até a stack foi escolhida com amor:
 
-- ⚛️ **React + Vite** — rápido como meu coração quando ela aparece
-- 🎨 **Tailwind CSS** — estiloso como ela
-- 🎞️ **Framer Motion** — com animações tão suaves quanto o jeito dela de ser
-- 💬 **Cloudflare Turnstile** — captcha no formulário de recados
-- 📧 **Node (Express) + Nodemailer** — API de recados e e-mail formatado
+- ⚛️ **React + Vite** - rápido como meu coração quando ela aparece
+- 🎨 **Tailwind CSS** - estiloso como ela
+- 🎞️ **Framer Motion** - com animações tão suaves quanto o jeito dela de ser
+- 💬 **Cloudflare Turnstile** - captcha no formulário de recados
+- 📧 **Node (Express) + Nodemailer** - API de recados e e-mail formatado
 
 ---
 
@@ -76,7 +76,7 @@ src/
     │   ├── ButterfliesFloating.jsx
     │   └── SlideThemedAmbience.jsx
     ├── ui/
-    │   ├── MI.jsx                 # Motion Item — wrapper de animação
+    │   ├── MI.jsx                 # Motion Item - wrapper de animação
     │   ├── Slide.jsx              # Wrapper de seção com InView
     │   ├── Divider.jsx
     │   └── NavDots.jsx
@@ -133,7 +133,7 @@ Recomenda-se definir antes as variáveis `VITE_*` do `.env` (ou equivalente no C
 
 Feito com muito ☕, algumas noites sem dormir, e um amor enorme
 
-por **Davi Antonaji** — para a **Maysa**, que tornou tudo isso real 🌹
+por **Davi Antonaji** - para a **Maysa**, que tornou tudo isso real 🌹
 
 *Juntos desde 04 de março de 2026*
 

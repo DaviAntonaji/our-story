@@ -1,4 +1,4 @@
-name: API — CI & CD
+name: API - CI & CD
 
 on:
   push:
@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   ci:
-    name: CI — Docker build
+    name: CI - Docker build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

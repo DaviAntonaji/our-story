@@ -20,8 +20,66 @@ export function useCountUp(end, duration = 1400, startOn = true) {
   return value
 }
 
+/** Próxima data no mesmo dia do mês do início (mêsversário). */
+function proximoMesversario(inicio, agora) {
+  const d = inicio.getDate()
+  const t = {
+    h: inicio.getHours(),
+    m: inicio.getMinutes(),
+    s: inicio.getSeconds(),
+    ms: inicio.getMilliseconds(),
+  }
+  let c = new Date(agora.getFullYear(), agora.getMonth(), d, t.h, t.m, t.s, t.ms)
+  if (c.getTime() <= agora.getTime()) {
+    c = new Date(agora.getFullYear(), agora.getMonth() + 1, d, t.h, t.m, t.s, t.ms)
+  }
+  return c
+}
+
+/** Próximo aniversário de namoro (mesmo dia/mês do início, todo ano). */
+function proximoAniversario(inicio, agora) {
+  const month = inicio.getMonth()
+  const d = inicio.getDate()
+  const t = {
+    h: inicio.getHours(),
+    m: inicio.getMinutes(),
+    s: inicio.getSeconds(),
+    ms: inicio.getMilliseconds(),
+  }
+  let y = agora.getFullYear()
+  let c = new Date(y, month, d, t.h, t.m, t.s, t.ms)
+  if (c.getTime() <= agora.getTime()) {
+    c = new Date(y + 1, month, d, t.h, t.m, t.s, t.ms)
+  }
+  return c
+}
+
+function diffParaAlvo(alvo, agora) {
+  const ms = Math.max(0, alvo - agora)
+  const dias = Math.floor(ms / 86400000)
+  const horas = Math.floor((ms % 86400000) / 3600000)
+  return { dias, horas, ms }
+}
+
+const fmtDataMarco = (d) =>
+  d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })
+
 export function useTempoJuntos() {
-  const [t, setT] = useState({ meses: 0, dias: 0, horas: '00', minutos: '00', segundos: '00', totalDias: 0 })
+  const [t, setT] = useState({
+    meses: 0,
+    dias: 0,
+    horas: '00',
+    minutos: '00',
+    segundos: '00',
+    totalDias: 0,
+    diasAteMesversario: 0,
+    horasAteMesversario: 0,
+    dataMesversarioFmt: '',
+    diasAteAniversario: 0,
+    horasAteAniversario: 0,
+    dataAniversarioFmt: '',
+    mesversarioEhAniversario: false,
+  })
   useEffect(() => {
     const tick = () => {
       const now = new Date()
@@ -52,6 +110,12 @@ export function useTempoJuntos() {
         meses += 12
       }
 
+      const alvoMes = proximoMesversario(INICIO_NAMORO, now)
+      const alvoAno = proximoAniversario(INICIO_NAMORO, now)
+      const dm = diffParaAlvo(alvoMes, now)
+      const da = diffParaAlvo(alvoAno, now)
+      const mesmoMarco = alvoMes.getTime() === alvoAno.getTime()
+
       setT({
         meses: anos * 12 + meses,
         dias: dias,
@@ -59,6 +123,13 @@ export function useTempoJuntos() {
         minutos: Math.floor((diff / 60000) % 60).toString().padStart(2, '0'),
         segundos: Math.floor((diff / 1000) % 60).toString().padStart(2, '0'),
         totalDias,
+        diasAteMesversario: dm.dias,
+        horasAteMesversario: dm.horas,
+        dataMesversarioFmt: fmtDataMarco(alvoMes),
+        diasAteAniversario: da.dias,
+        horasAteAniversario: da.horas,
+        dataAniversarioFmt: fmtDataMarco(alvoAno),
+        mesversarioEhAniversario: mesmoMarco,
       })
     }
     tick()

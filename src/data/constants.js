@@ -12,11 +12,81 @@ export const NOME_ELA_COMPLETO = 'Maysa Sophia Ferreira da Silva'
  */
 export const NOME_ELA_FUTURO = 'Maysa Sophia Ferreira da Silva Antonaji'
 
-export const INICIO_NAMORO = new Date(2026, 2, 4, 19, 30, 0)
+/** Contador: 04/03/2026 00:00 (meia-noite do dia do namoro). */
+export const INICIO_NAMORO = new Date(2026, 2, 4, 0, 0, 0)
+
+/**
+ * Memórias dos mêsversários (aparecem no slide do tempo depois da data).
+ * Inclua novos blocos conforme forem acontecendo.
+ */
+export const MESESVERSARIOS = [
+  {
+    id: 1,
+    data: new Date(2026, 3, 4, 0, 0, 0, 0),
+    titulo: '1º mês 🤍',
+    resumo: [
+      'Sábado de manhã, piquenique na praça da entrada da cidade - só nós dois, comida boa e aquele clima leve que a gente ama.',
+    ],
+  },
+]
+
+/** Passagens exibidas no slide “Versículo” — `tipo`: numerados | destaque */
+export const PASSAGENS_BIBLICAS = [
+  {
+    id: '1cor13',
+    titulo: '1 Coríntios 13:4–7',
+    tipo: 'numerados',
+    versiculos: [
+      { n: '4', texto: 'O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.' },
+      { n: '5', texto: 'Não maltrata, não procura seus interesses, não se ira facilmente, não guarda rancor.' },
+      { n: '6', texto: 'O amor não se alegra com a injustiça, mas se alegra com a verdade.' },
+      { n: '7', texto: 'Tudo sofre, tudo crê, tudo espera, tudo suporta.' },
+    ],
+    nota: 'Esse trecho sempre me lembra você.',
+  },
+  {
+    id: 'ec4',
+    titulo: 'Eclesiastes 4:9–12',
+    tipo: 'numerados',
+    versiculos: [
+      { n: '9', texto: 'Melhor é serem dois do que um, porque têm melhor paga do seu trabalho.' },
+      { n: '10', texto: 'Porque, se um cair, o outro levanta o seu companheiro; mas ai do que estiver só; pois, caindo, não haverá outro que o levante.' },
+      { n: '11', texto: 'Também, se dois dormirem juntos, eles se aquentarão; mas um só, como se aquentará?' },
+      { n: '12', texto: 'E, se alguém prevalecer contra um, os dois lhe resistirão; e o cordão de três dobras não se quebra tão depressa.' },
+    ],
+  },
+  {
+    id: 'col314',
+    titulo: 'Colossenses 3:14',
+    tipo: 'destaque',
+    citacao: 'Acima de tudo, revistam-se do amor, que é o elo perfeito.',
+    reflexao: 'O amor como aquilo que sustenta e mantém o relacionamento firme.',
+  },
+  {
+    id: 'ef528',
+    titulo: 'Efésios 5:28',
+    tipo: 'destaque',
+    citacao: 'Assim devem os maridos amar as suas próprias mulheres, como a seus próprios corpos. Quem ama a sua mulher, ama-se a si mesmo.',
+  },
+  {
+    id: 'sl128',
+    titulo: 'Salmos 128:1–4',
+    tipo: 'numerados',
+    versiculos: [
+      { n: '1', texto: 'Bem-aventurado aquele que teme ao Senhor e anda nos seus caminhos.' },
+      { n: '2', texto: 'Pois comerás do trabalho das tuas mãos; feliz serás, e te irá bem.' },
+      { n: '3', texto: 'A tua mulher será como a videira frutífera aos lados da tua casa; os teus filhos como plantas de oliveira à roda da tua mesa.' },
+      { n: '4', texto: 'Eis que assim será abençoado o homem que teme ao Senhor.' },
+    ],
+  },
+]
+
 export const SPOTIFY_URLS = [
   'https://open.spotify.com/embed/track/3pinR9iFoRAZvqirrRm4os',
   'https://open.spotify.com/embed/track/7FOPTUmEJ3ByYW9ag9cZJ3',
   'https://open.spotify.com/embed/track/0uwaiApk6k7k9POyFjTKeR',
+  'https://open.spotify.com/embed/track/6ccKu0LwJzOhLAxBwP2PTk',
+  'https://open.spotify.com/embed/track/2WViLEKp7hWDJQbowxqzba',
 ]
 
 export const FOTOS = [

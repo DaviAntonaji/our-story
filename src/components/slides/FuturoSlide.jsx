@@ -41,7 +41,7 @@ export default function FuturoSlide() {
               </p>
               <p className="text-center text-[11px] sm:text-xs text-rose-200/80 mb-3 leading-relaxed px-1">
                 a brincadeira era um nome gigante - desse tamanho{' '}
-                <span className="whitespace-nowrap" aria-hidden>🫸 🫷</span>
+                <span className="whitespace-nowrap" aria-hidden>🫸🏻 🫷🏻</span>
               </p>
               <p
                 className="font-display text-center font-medium text-rose-50 leading-snug px-1"
@@ -49,7 +49,7 @@ export default function FuturoSlide() {
               >
                 {NOME_ELA_FUTURO}
               </p>
-              <p className="text-center text-rose-300/55 text-xs mt-3 italic">foi brincando, mas foi sério — o combinado vale 💍</p>
+              <p className="text-center text-rose-300/55 text-xs mt-3 italic">foi brincando, mas foi sério - o combinado vale 💍</p>
             </div>
           </MI>
           <MI v={fadeV}>

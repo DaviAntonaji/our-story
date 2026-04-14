@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
-import { createRoot, hydrateRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 
-// Self-hosted fonts — sem request externo ao Google Fonts
+// Self-hosted fonts - sem request externo ao Google Fonts
 import '@fontsource/outfit/300.css'
 import '@fontsource/outfit/400.css'
 import '@fontsource/outfit/500.css'
@@ -19,16 +19,8 @@ import '@fontsource/cormorant-garamond/700.css'
 import './index.css'
 import App from './App.jsx'
 
-const container = document.getElementById('root')
-const app = (
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-  </StrictMode>
+  </StrictMode>,
 )
-
-/** Produção com HTML pré-renderizado (react-snap): hidrata em vez de montar do zero. */
-if (container.hasChildNodes()) {
-  hydrateRoot(container, app)
-} else {
-  createRoot(container).render(app)
-}

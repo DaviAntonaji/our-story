@@ -61,7 +61,7 @@ function buildRecadoHtml({ name, email, message }, siteOrigin) {
               <p style="margin:0;color:#fecdd3;font-size:13px;letter-spacing:0.02em;">✨ 💌 ✨</p>
               <p style="margin:10px 0 0;color:#fda4af;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:0.95;">Um cantinho do nosso site</p>
               <h1 style="margin:12px 0 0;color:#fff5f5;font-size:26px;font-weight:400;line-height:1.35;">Chegou um carinho pra nós 💕</h1>
-              <p style="margin:14px 0 0;color:#fbcfe8;font-size:15px;line-height:1.65;font-style:italic;">Alguém leu a nossa história com o coração e quis deixar um pedacinho de carinho aqui.<br />Guarde juntos com carinho — cada palavra é sobre o nosso casal.</p>
+              <p style="margin:14px 0 0;color:#fbcfe8;font-size:15px;line-height:1.65;font-style:italic;">Alguém leu a nossa história com o coração e quis deixar um pedacinho de carinho aqui.<br />Guarde juntos com carinho - cada palavra é sobre o nosso casal.</p>
             </td>
           </tr>
           <tr>
@@ -89,12 +89,12 @@ function buildRecadoHtml({ name, email, message }, siteOrigin) {
           <tr>
             <td style="padding:22px 26px 26px;text-align:center;">
               <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(251,191,36,0.3),transparent);margin:0 0 18px;"></div>
-              <p style="margin:0 0 8px;color:#e9b4c0;font-size:14px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;font-style:italic;">Se quiser agradecer, é só responder este e-mail — a mensagem volta direto pra quem mandou.</p>
+              <p style="margin:0 0 8px;color:#e9b4c0;font-size:14px;line-height:1.55;font-family:Georgia,'Times New Roman',serif;font-style:italic;">Se quiser agradecer, é só responder este e-mail - a mensagem volta direto pra quem mandou.</p>
               <p style="margin:16px 0 0;color:#fda4af;font-size:13px;line-height:1.5;font-family:Georgia,'Times New Roman',serif;">Com todo o meu amor,<br /><span style="color:#fff7f7;">Davi</span> <span style="font-size:11px;opacity:0.85;">💕</span></p>
             </td>
           </tr>
         </table>
-        <p style="margin:22px 20px 0;max-width:520px;color:#8b5a6b;font-size:11px;line-height:1.55;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;text-align:center;">Este e-mail foi gerado com carinho pelo formulário do nosso site. É só entre nós — trate o recado e os dados de quem escreveu com delicadeza.</p>
+        <p style="margin:22px 20px 0;max-width:520px;color:#8b5a6b;font-size:11px;line-height:1.55;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;text-align:center;">Este e-mail foi gerado com carinho pelo formulário do nosso site. É só entre nós - trate o recado e os dados de quem escreveu com delicadeza.</p>
       </td>
     </tr>
   </table>
@@ -111,7 +111,7 @@ function buildRecadoHtml({ name, email, message }, siteOrigin) {
 export async function sendRecadoMail(transporter, { name, email, message }, { from, to }, opts = {}) {
   const siteOrigin = opts.siteOrigin || ''
   const subject = `💌 Recadinho pro nosso cantinho · ${asciiSafeSubjectSnippet(name)}`
-  const text = `Oi, amores — chegou um recadinho no nosso site.\n\nDe: ${name}\nE-mail (pra responder): ${email}\n\n---\n\n${message}\n\n---\n\nCom amor,\n(o site que o Davi fez com carinho pra gente)\n`
+  const text = `Oi, amores - chegou um recadinho no nosso site.\n\nDe: ${name}\nE-mail (pra responder): ${email}\n\n---\n\n${message}\n\n---\n\nCom amor,\n(o site que o Davi fez com carinho pra gente)\n`
   const html = buildRecadoHtml({ name, email, message }, siteOrigin)
 
   await transporter.sendMail({

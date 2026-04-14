@@ -64,7 +64,7 @@ function escapeXml(s) {
     .replace(/"/g, '&quot;')
 }
 
-const title = 'Foto — Nossa história'
+const title = 'Foto - Nossa história'
 
 let imageBlocks = ''
 if (base) {
@@ -80,7 +80,7 @@ if (base) {
 } else {
   console.warn(
     '[generate-sitemap] Nenhuma base de URL: defina SITE_URL no .env, secret SITE_URL no CI, ' +
-      'ou SITE_ORIGIN em src/data/constants.js — senão o sitemap fica sem <image:image>.'
+      'ou SITE_ORIGIN em src/data/constants.js - senão o sitemap fica sem <image:image>.'
   )
 }
 
