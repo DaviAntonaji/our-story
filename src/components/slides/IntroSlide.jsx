@@ -18,7 +18,17 @@ export default function IntroSlide() {
           </MI>
           <MI className="photo-frame w-full max-w-[200px] sm:max-w-[240px] mx-auto">
             <div className="aspect-[3/4] overflow-hidden rounded-[18px]">
-              <img src="/imgs/photos/15.jpg" alt="Nós dois" className="w-full h-full object-cover" />
+              <img
+                src="/imgs/photos/15.jpg"
+                alt="Nós dois"
+                width={600}
+                height={800}
+                sizes="(max-width: 640px) 200px, 240px"
+                className="h-full w-full object-cover"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+              />
             </div>
           </MI>
           <MI className="space-y-1">

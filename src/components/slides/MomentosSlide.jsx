@@ -61,7 +61,12 @@ export default function MomentosSlide() {
                     key={fotoAtual}
                     src={FOTOS[fotoAtual]}
                     alt={`Momento ${fotoAtual + 1}`}
-                    className="max-w-full max-h-full w-auto h-auto object-contain"
+                    width={1600}
+                    height={1200}
+                    sizes="(max-width: 768px) 100vw, min(640px, 90vw)"
+                    className="h-auto max-h-full w-auto max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

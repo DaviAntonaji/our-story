@@ -7,6 +7,7 @@ import { useIsMobile } from './hooks';
 import ButterfliesFloating from './components/animations/ButterfliesFloating';
 import SlideThemedAmbience from './components/animations/SlideThemedAmbience';
 import NavDots from './components/ui/NavDots';
+import CookieConsent from './components/ui/CookieConsent';
 
 import LandingPage from './components/slides/LandingPage';
 import IntroSlide from './components/slides/IntroSlide';
@@ -45,30 +46,33 @@ export default function App() {
     return () => obs.disconnect();
   }, [revelado]);
 
-  if (!revelado) {
-    return <LandingPage onReveal={setRevelado} />;
-  }
-
   return (
     <>
-      {typeof document !== 'undefined' && createPortal(<ButterfliesFloating isMobile={isMobile} />, document.body)}
-      {typeof document !== 'undefined' && createPortal(<SlideThemedAmbience activeIndex={activeSlide} isMobile={isMobile} />, document.body)}
-      {typeof document !== 'undefined' && createPortal(<NavDots active={activeSlide} />, document.body)}
+      <CookieConsent />
+      {!revelado ? (
+        <LandingPage onReveal={setRevelado} />
+      ) : (
+        <>
+          {typeof document !== 'undefined' && createPortal(<ButterfliesFloating isMobile={isMobile} />, document.body)}
+          {typeof document !== 'undefined' && createPortal(<SlideThemedAmbience activeIndex={activeSlide} isMobile={isMobile} />, document.body)}
+          {typeof document !== 'undefined' && createPortal(<NavDots active={activeSlide} />, document.body)}
 
-      <div>
-        <IntroSlide />
-        <TimerSlide />
-        <MusicaSlide />
-        <CartaSlide />
-        <TagsSlide />
-        <VersiculoSlide />
-        <MomentosSlide />
-        <HistoriaSlide />
-        <PromessasSlide />
-        <FuturoSlide />
-        <RecadoSlide />
-        <FinalSlide />
-      </div>
+          <div>
+            <IntroSlide />
+            <TimerSlide />
+            <MusicaSlide />
+            <CartaSlide />
+            <TagsSlide />
+            <VersiculoSlide />
+            <MomentosSlide />
+            <HistoriaSlide />
+            <PromessasSlide />
+            <FuturoSlide />
+            <RecadoSlide />
+            <FinalSlide />
+          </div>
+        </>
+      )}
     </>
   );
 }
