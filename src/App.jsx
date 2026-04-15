@@ -11,6 +11,7 @@ import CookieConsent from './components/ui/CookieConsent';
 
 import LandingPage from './components/slides/LandingPage';
 import IntroSlide from './components/slides/IntroSlide';
+import AntesDepoisSlide from './components/slides/AntesDepoisSlide';
 import TimerSlide from './components/slides/TimerSlide';
 import MusicaSlide from './components/slides/MusicaSlide';
 import CartaSlide from './components/slides/CartaSlide';
@@ -59,6 +60,7 @@ export default function App() {
 
           <div>
             <IntroSlide />
+            <AntesDepoisSlide />
             <TimerSlide />
             <MusicaSlide />
             <CartaSlide />

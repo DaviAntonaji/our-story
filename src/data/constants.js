@@ -114,15 +114,37 @@ export const FOTOS = [
 ]
 
 export const SLIDE_IDS = [
-  'intro', 'timer', 'musica', 'carta', 'tags',
+  'intro', 'antesdepois', 'timer', 'musica', 'carta', 'tags',
   'versiculo', 'momentos',
   'historia',
   'promessas', 'futuro', 'recado', 'final',
 ]
 
+/** Bloco Antes de Você / Depois de Você (slide dedicado). */
+export const ANTES_DEPOIS = {
+  antesTitulo: 'Antes de Você',
+  depoisTitulo: 'Depois de Você',
+  antes: [
+    'Corria atrás dos meus objetivos, mas muitas vezes no automático',
+    'A fé existia, mas nem sempre guiava minhas decisões',
+    'Conquistas eram importantes, mas faltava algo que preenchesse de verdade',
+    'Dias bons… mas sem alguém pra dividir tudo de forma completa',
+    'Sabia onde queria chegar, mas não com quem construir',
+  ],
+  depois: [
+    'Minha vida ganhou sentido, direção e propósito de verdade',
+    'Passei a viver com Deus no centro e com o coração mais alinhado',
+    'Não é mais só sobre conquistar… é sobre construir juntos',
+    'Encontrei paz, leveza e um amor que me aproxima de quem eu quero ser',
+    'Hoje eu não caminho sozinho… eu tenho você, e isso muda tudo',
+    'Sonhos deixaram de ser só meus - agora são nossos 💍',
+  ],
+}
+
 /** Emoji de ambiente por slide (mesma ordem que SLIDE_IDS). glow = bruma na cor do gradiente do fundo. */
 export const SLIDE_AMBIENCE = [
   { emoji: '🌹', glow: 'rgba(251, 113, 133, 0.42)' },
+  { emoji: '🌗', glow: 'rgba(52, 211, 153, 0.42)' },
   { emoji: '⏳', glow: 'rgba(212, 175, 55, 0.38)' },
   { emoji: '🎵', glow: 'rgba(167, 139, 250, 0.4)' },
   { emoji: '💌', glow: 'rgba(252, 211, 77, 0.38)' },

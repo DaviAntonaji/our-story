@@ -22,6 +22,7 @@ Cada seção da página foi pensada com carinho:
 | Seção | Conteúdo |
 |-------|----------|
 | 🌹 **Intro** | A primeira coisa que ela vê ao abrir |
+| 🌗 **Antes & depois** | “Antes de Você” × “Depois de Você” - em duas colunas |
 | ⏳ **Timer** | Contagem em tempo real - dias, horas, minutos e segundos juntos |
 | 🎵 **Músicas** | As trilhas sonoras do nosso amor (via Spotify) |
 | 💌 **Carta** | Uma carta escrita do coração, pra ser lida com calma |
@@ -53,21 +54,21 @@ Quem chega até o final da história pode enviar **nome, e-mail e mensagem**. O 
 No push na `main`, o workflow:
 
 1. `npm ci`
-2. **Gerar ícones PWA** — `npm run generate-pwa-icons` (a partir de `public/imgs/og-cover.jpg`)
-3. **Gerar imagem de preview social** — `npm run generate-og-share` → `public/imgs/og-share.jpg` (1200×630, leve; usada em `og:image` para WhatsApp / Telegram não falharem com a foto 4K)
-4. **Gerar sitemap** — `npm run generate-sitemap` (usa o secret `SITE_URL`)
-5. **Build** — `npx vite build` com as variáveis abaixo injetadas no ambiente
+2. **Gerar ícones PWA** - `npm run generate-pwa-icons` (a partir de `public/imgs/og-cover.jpg`)
+3. **Gerar imagem de preview social** - `npm run generate-og-share` → `public/imgs/og-share.jpg` (1200×630, leve; usada em `og:image` para WhatsApp / Telegram não falharem com a foto 4K)
+4. **Gerar sitemap** - `npm run generate-sitemap` (usa o secret `SITE_URL`)
+5. **Build** - `npx vite build` com as variáveis abaixo injetadas no ambiente
 
 ### Secrets do repositório (site estático)
 
 | Secret | Uso |
 |--------|-----|
-| `SITE_URL` | URL canônica do site (ex.: `https://ourstory.antonaji.com.br`) — sitemap com imagens |
+| `SITE_URL` | URL canônica do site (ex.: `https://ourstory.antonaji.com.br`) - sitemap com imagens |
 | `RECADOS_API_URL` | Host + caminho da API de recados **sem** `https://` (o workflow monta `VITE_RECADOS_API_URL`) |
 | `VITE_TURNSTILE_SITE_KEY` | Site key do Turnstile (front) |
-| `VITE_GA_MEASUREMENT_ID` | Opcional — ID de medição (ex.: `G-…`). Se vazio, não há banner de cookies nem script de analytics |
+| `VITE_GA_MEASUREMENT_ID` | Opcional - ID de medição (ex.: `G-…`). Se vazio, não há banner de cookies nem script de analytics |
 | SFTP (`SFTP_HOST`, `SFTP_USER`, `SFTP_PASSWORD`, `SFTP_PORT`, `SFTP_DIR`) | Upload da pasta `dist/` |
-| Cloudflare (opcional) | `CF_ZONE_ID`, `CF_API_TOKEN`, `CF_PURGE_CACHE_JSON` — purge de cache após deploy |
+| Cloudflare (opcional) | `CF_ZONE_ID`, `CF_API_TOKEN`, `CF_PURGE_CACHE_JSON` - purge de cache após deploy |
 
 Variáveis locais: copie [.env.example](.env.example) para `.env` na raiz.
 
@@ -116,6 +117,7 @@ src/
     └── slides/
         ├── LandingPage.jsx
         ├── IntroSlide.jsx
+        ├── AntesDepoisSlide.jsx
         ├── TimerSlide.jsx
         ├── MusicaSlide.jsx
         ├── CartaSlide.jsx

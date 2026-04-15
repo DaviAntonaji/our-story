@@ -88,6 +88,12 @@ body {
     radial-gradient(ellipse 80% 60% at 30% 30%, rgba(59,130,246,0.16) 0%, transparent 55%),
     linear-gradient(155deg, #0e1838 0%, #181e52 50%, #0a1028 100%);
 }
+.slide-bg-forest {
+  background:
+    radial-gradient(ellipse 85% 55% at 25% 15%, rgba(52,211,153,0.14) 0%, transparent 52%),
+    radial-gradient(ellipse 70% 50% at 85% 85%, rgba(16,185,129,0.10) 0%, transparent 50%),
+    linear-gradient(165deg, #062018 0%, #0f2e22 45%, #041210 100%);
+}
 .slide-bg-final {
   background:
     radial-gradient(ellipse 80% 60% at 50% 20%, rgba(251,113,133,0.24) 0%, transparent 55%),
