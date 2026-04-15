@@ -9,7 +9,18 @@ export default function TimerSlide() {
   const tempo = useTempoJuntos()
   const [timerInView, setTimerInView] = useState(false)
   const totalDiasAnimado = useCountUp(tempo.totalDias, 900, timerInView)
+  const saudadePct = useCountUp(100, 3800, timerInView)
   const mesversariosVividos = MESESVERSARIOS.filter((m) => new Date() >= m.data)
+  const fraseSaudade =
+    saudadePct < 30
+      ? 'Comecou de leve...'
+      : saudadePct < 60
+        ? 'Ja ta batendo forte 💗'
+        : saudadePct < 90
+          ? 'Quase no limite...'
+          : saudadePct < 100
+            ? 'Socorro, que saudade de voce 😭'
+            : '100%: Te ver é obrigatório ❤️'
 
   return (
     <Slide id="timer" bg="slide-bg-maroon">
@@ -48,6 +59,23 @@ export default function TimerSlide() {
             </MI>
             <MI v={fadeV}>
               <span className="badge-pill">🌹 {tempo.meses} {tempo.meses === 1 ? 'mês' : 'meses'} e {tempo.dias} dias</span>
+            </MI>
+            <MI v={fadeV} className="w-full">
+              <div className="rounded-2xl border border-rose-300/25 bg-white/[0.06] px-4 py-3.5 space-y-2">
+                <p className="text-[10px] uppercase tracking-[0.18em] text-rose-200/65 text-left">
+                  Nível de saudade
+                </p>
+                <div className="h-2.5 w-full rounded-full bg-rose-200/12 overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-rose-300 via-pink-300 to-amber-300 transition-[width] duration-500 ease-linear"
+                    style={{ width: `${saudadePct}%` }}
+                  />
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs text-rose-100/90 text-left">{fraseSaudade}</p>
+                  <span className="font-mono text-sm tabular-nums text-amber-200">{saudadePct}%</span>
+                </div>
+              </div>
             </MI>
             {mesversariosVividos.length > 0 && (
               <MI v={fadeV} className="w-full space-y-3 text-left">

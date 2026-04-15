@@ -114,7 +114,7 @@ export const FOTOS = [
 ]
 
 export const SLIDE_IDS = [
-  'intro', 'antesdepois', 'timer', 'musica', 'carta', 'tags',
+  'intro', 'timer', 'antesdepois', 'musica', 'carta', 'tags',
   'versiculo', 'momentos',
   'historia',
   'promessas', 'futuro', 'recado', 'final',
@@ -144,8 +144,8 @@ export const ANTES_DEPOIS = {
 /** Emoji de ambiente por slide (mesma ordem que SLIDE_IDS). glow = bruma na cor do gradiente do fundo. */
 export const SLIDE_AMBIENCE = [
   { emoji: '🌹', glow: 'rgba(251, 113, 133, 0.42)' },
-  { emoji: '🌗', glow: 'rgba(52, 211, 153, 0.42)' },
   { emoji: '⏳', glow: 'rgba(212, 175, 55, 0.38)' },
+  { emoji: '🌗', glow: 'rgba(52, 211, 153, 0.42)' },
   { emoji: '🎵', glow: 'rgba(167, 139, 250, 0.4)' },
   { emoji: '💌', glow: 'rgba(252, 211, 77, 0.38)' },
   { emoji: '✨', glow: 'rgba(244, 114, 182, 0.4)' },

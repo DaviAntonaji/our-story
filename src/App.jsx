@@ -60,8 +60,8 @@ export default function App() {
 
           <div>
             <IntroSlide />
-            <AntesDepoisSlide />
             <TimerSlide />
+            <AntesDepoisSlide />
             <MusicaSlide />
             <CartaSlide />
             <TagsSlide />
