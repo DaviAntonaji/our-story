@@ -18,8 +18,8 @@ function loadGtag(measurementId) {
 }
 
 /**
- * Só renderiza se `VITE_GA_MEASUREMENT_ID` estiver definido (Google Analytics 4).
- * O script só carrega após o visitante aceitar.
+ * Só renderiza se `VITE_GA_MEASUREMENT_ID` estiver definido.
+ * O script de medição só carrega após o visitante aceitar.
  */
 export default function CookieConsent() {
   const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID
@@ -64,18 +64,16 @@ export default function CookieConsent() {
     >
       <div className="pointer-events-auto mx-auto max-w-lg rounded-2xl border border-white/15 bg-[#2a1520]/95 px-4 py-3 shadow-lg shadow-black/40 backdrop-blur-md">
         <p id="cookie-consent-title" className="text-[13px] leading-snug text-rose-100/90">
-          Usamos o{' '}
-          <strong className="font-medium text-rose-50">Google Analytics</strong> (cookies de terceiros) para
-          estatísticas anônimas. Ao aceitar, você concorda com o uso conforme a{' '}
+          Usamos cookies de terceiros para medir visitas de forma agregada e melhorar o site. Ao aceitar, você
+          concorda com esse uso.{' '}
           <a
             href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
             className="text-amber-300/90 underline underline-offset-2 hover:text-amber-200"
           >
-            política de privacidade do Google
+            Privacidade
           </a>
-          .
         </p>
         <div className="mt-3 flex justify-end">
           <button
