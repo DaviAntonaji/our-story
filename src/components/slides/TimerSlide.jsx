@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useInView } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import { staggerV, fadeV, scaleV, MESESVERSARIOS } from '../../data/constants'
@@ -9,7 +9,9 @@ export default function TimerSlide() {
   const tempo = useTempoJuntos()
   const [timerInView, setTimerInView] = useState(false)
   const totalDiasAnimado = useCountUp(tempo.totalDias, 900, timerInView)
-  const saudadePct = useCountUp(100, 3800, timerInView)
+  const saudadeRef = useRef(null)
+  const saudadeVisivel = useInView(saudadeRef, { once: true, amount: 0.55 })
+  const saudadePct = useCountUp(100, 3800, saudadeVisivel)
   const mesversariosVividos = MESESVERSARIOS.filter((m) => new Date() >= m.data)
   const fraseSaudade =
     saudadePct < 30
@@ -61,7 +63,7 @@ export default function TimerSlide() {
               <span className="badge-pill">🌹 {tempo.meses} {tempo.meses === 1 ? 'mês' : 'meses'} e {tempo.dias} dias</span>
             </MI>
             <MI v={fadeV} className="w-full">
-              <div className="rounded-2xl border border-rose-300/25 bg-white/[0.06] px-4 py-3.5 space-y-2">
+              <div ref={saudadeRef} className="rounded-2xl border border-rose-300/25 bg-white/[0.06] px-4 py-3.5 space-y-2">
                 <p className="text-[10px] uppercase tracking-[0.18em] text-rose-200/65 text-left">
                   Nível de saudade
                 </p>
