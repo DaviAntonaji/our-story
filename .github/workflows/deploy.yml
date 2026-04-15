@@ -24,6 +24,9 @@ jobs:
       - name: Gerar ícones PWA
         run: npm run generate-pwa-icons
 
+      - name: Gerar imagem Open Graph (WhatsApp / preview)
+        run: npm run generate-og-share
+
       - name: Gerar sitemap
         env:
           SITE_URL: ${{ secrets.SITE_URL }}

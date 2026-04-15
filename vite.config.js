@@ -14,7 +14,13 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png'],
+      includeAssets: [
+        'favicon.ico',
+        'apple-touch-icon.png',
+        'pwa-192x192.png',
+        'pwa-512x512.png',
+        'imgs/og-share.jpg',
+      ],
       manifest: {
         name: 'Davi & Maysa — Nossa História',
         short_name: 'Nossa História',

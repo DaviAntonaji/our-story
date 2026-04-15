@@ -28,7 +28,7 @@ export function firstSiteOriginFromEnv(env) {
  * @param {string} siteOrigin URL base do site (ex.: https://exemplo.com)
  */
 function buildRecadoHtml({ name, email, message }, siteOrigin) {
-  const coverSrc = siteOrigin ? `${siteOrigin}/imgs/og-cover.jpg` : ''
+  const coverSrc = siteOrigin ? `${siteOrigin}/imgs/og-share.jpg` : ''
   const nameH = escapeHtml(name)
   const emailH = escapeHtml(email)
   const messageH = escapeHtml(message).replace(/\r\n/g, '\n').replace(/\n/g, '<br />')

@@ -48,6 +48,36 @@ Quem chega até o final da história pode enviar **nome, e-mail e mensagem**. O 
 
 ---
 
+## Deploy do site (GitHub Actions → SFTP)
+
+No push na `main`, o workflow:
+
+1. `npm ci`
+2. **Gerar ícones PWA** — `npm run generate-pwa-icons` (a partir de `public/imgs/og-cover.jpg`)
+3. **Gerar imagem de preview social** — `npm run generate-og-share` → `public/imgs/og-share.jpg` (1200×630, leve; usada em `og:image` para WhatsApp / Telegram não falharem com a foto 4K)
+4. **Gerar sitemap** — `npm run generate-sitemap` (usa o secret `SITE_URL`)
+5. **Build** — `npx vite build` com as variáveis abaixo injetadas no ambiente
+
+### Secrets do repositório (site estático)
+
+| Secret | Uso |
+|--------|-----|
+| `SITE_URL` | URL canônica do site (ex.: `https://ourstory.antonaji.com.br`) — sitemap com imagens |
+| `RECADOS_API_URL` | Host + caminho da API de recados **sem** `https://` (o workflow monta `VITE_RECADOS_API_URL`) |
+| `VITE_TURNSTILE_SITE_KEY` | Site key do Turnstile (front) |
+| `VITE_GA_MEASUREMENT_ID` | Opcional — ID de medição (ex.: `G-…`). Se vazio, não há banner de cookies nem script de analytics |
+| SFTP (`SFTP_HOST`, `SFTP_USER`, `SFTP_PASSWORD`, `SFTP_PORT`, `SFTP_DIR`) | Upload da pasta `dist/` |
+| Cloudflare (opcional) | `CF_ZONE_ID`, `CF_API_TOKEN`, `CF_PURGE_CACHE_JSON` — purge de cache após deploy |
+
+Variáveis locais: copie [.env.example](.env.example) para `.env` na raiz.
+
+### Preview de link (WhatsApp, iMessage, etc.)
+
+- O HTML aponta `og:image` para **`/imgs/og-share.jpg`** (gerada no build). Não use a `og-cover.jpg` original nas meta tags: arquivos muito grandes costumam fazer o WhatsApp **não mostrar** a miniatura.
+- Depois de publicar, o cache dos apps pode demorar. Para forçar re-scrape: [Ferramenta de depuração do Facebook](https://developers.facebook.com/tools/debug/) (cole a URL e use **Buscar novamente**).
+
+---
+
 ## Tecnologias
 
 Porque até a stack foi escolhida com amor:
@@ -79,7 +109,8 @@ src/
     │   ├── MI.jsx                 # Motion Item - wrapper de animação
     │   ├── Slide.jsx              # Wrapper de seção com InView
     │   ├── Divider.jsx
-    │   └── NavDots.jsx
+    │   ├── NavDots.jsx
+    │   └── CookieConsent.jsx      # Cookies / medição (só se VITE_GA_MEASUREMENT_ID)
     ├── recados/
     │   └── RecadoForm.jsx    # Formulário + Turnstile
     └── slides/
@@ -96,6 +127,13 @@ src/
         ├── FuturoSlide.jsx
         ├── RecadoSlide.jsx
         └── FinalSlide.jsx
+```
+
+```
+scripts/
+├── generate-sitemap.mjs
+├── generate-pwa-icons.mjs
+└── generate-og-share.mjs      # og-share.jpg 1200×630 a partir de og-cover.jpg
 ```
 
 ```
@@ -125,7 +163,9 @@ Para testar o fluxo completo dos recados no dev, suba também a API (`cd api`, c
 npm run build
 ```
 
-Recomenda-se definir antes as variáveis `VITE_*` do `.env` (ou equivalente no CI) para o formulário de recados funcionar no build que for publicado.
+O `prebuild` roda automaticamente: ícones PWA, **`og-share.jpg`** (preview social) e sitemap. Exige `public/imgs/og-cover.jpg` como fonte.
+
+Recomenda-se definir antes as variáveis `VITE_*` do `.env` (ou equivalente no CI) para o formulário de recados (e analytics, se usar) no build publicado.
 
 ---
 
