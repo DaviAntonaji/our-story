@@ -22,7 +22,7 @@ export default defineConfig({
         'imgs/og-share.jpg',
       ],
       manifest: {
-        name: 'Davi & Maysa — Nossa História',
+        name: 'Davi & Maysa - Nossa História',
         short_name: 'Nossa História',
         description:
           'Nossa história: momentos, promessas, versículo e tudo que constrói o nosso amor.',
