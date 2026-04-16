@@ -1,9 +1,17 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import { staggerV, fadeV, scaleV, MESESVERSARIOS } from '../../data/constants'
 import { useTempoJuntos, useCountUp } from '../../hooks'
+
+const SAUDADE_DUR_MS = 3800
+const SAUDADE_PAUSA_NO_100_MS = 5000
+
+function easeSaudade(t) {
+  const p = Math.min(Math.max(t, 0), 1)
+  return p < 0.7 ? p * 1.2 : 0.84 + (p - 0.7) * (0.16 / 0.3)
+}
 
 export default function TimerSlide() {
   const tempo = useTempoJuntos()
@@ -11,7 +19,41 @@ export default function TimerSlide() {
   const totalDiasAnimado = useCountUp(tempo.totalDias, 900, timerInView)
   const saudadeRef = useRef(null)
   const saudadeVisivel = useInView(saudadeRef, { once: true, amount: 0.55 })
-  const saudadePct = useCountUp(100, 3800, saudadeVisivel)
+  const [saudadePct, setSaudadePct] = useState(0)
+
+  useEffect(() => {
+    if (!saudadeVisivel) return
+    let rafId = 0
+    let timeoutId = 0
+    let cancelled = false
+
+    function subir() {
+      const t0 = performance.now()
+      function frame(now) {
+        if (cancelled) return
+        const u = (now - t0) / SAUDADE_DUR_MS
+        if (u < 1) {
+          setSaudadePct(Math.min(99, Math.floor(easeSaudade(u) * 100)))
+          rafId = requestAnimationFrame(frame)
+        } else {
+          setSaudadePct(100)
+          timeoutId = window.setTimeout(() => {
+            if (cancelled) return
+            setSaudadePct(0)
+            subir()
+          }, SAUDADE_PAUSA_NO_100_MS)
+        }
+      }
+      rafId = requestAnimationFrame(frame)
+    }
+
+    subir()
+    return () => {
+      cancelled = true
+      cancelAnimationFrame(rafId)
+      clearTimeout(timeoutId)
+    }
+  }, [saudadeVisivel])
   const mesversariosVividos = MESESVERSARIOS.filter((m) => new Date() >= m.data)
   const fraseSaudade =
     saudadePct < 30
