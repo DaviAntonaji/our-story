@@ -371,6 +371,17 @@ export const TIMELINE = [
       'E pra melhorar, ainda ganhamos uns minutinhos a mais juntos… era pra você estar em casa 22:30, mas ficamos até 23:05 hehe. Pequenos detalhes que fizeram tudo ficar ainda mais especial.',
     ],
   },
+  {
+    data: '20 de abril de 2026',
+    titulo: 'Nosso primeiro filminho juntos em casa',
+    icon: '🤍',
+    paras: [
+      'Assistimos Como Eu Era Antes de Você, com pipoca de microondas, refri, fini… e um brigadeiro simplesmente absurdo de bom que você fez (e que eu, claro, dei um sumiço em metade em 2 segundos 😅).',
+      'O filme foi lindo… só aquele final que pegou pesado né kkkkk, mas mesmo assim ficou ainda mais especial por ser com você.',
+      'Enquanto isso, nossas irmãs fazendo festa do pijama, deixando tudo ainda mais leve e cheio de alegria.',
+      'Foi simples, foi tranquilo… mas foi perfeito. Filminho de romance com o meu amor, com beijinhos e comidinha gostosa — do jeitinho que eu gosto, do jeitinho que a gente é. 🤍',
+    ],
+  },
 ]
 
 
