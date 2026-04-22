@@ -139,10 +139,80 @@ export const FOTOS = [
   '/imgs/photos/58.jpg'
 ]
 
+/**
+ * Flores que ele deu pra ela — cada item = data, texto e foto(s) das flores.
+ * - `imagem`: string (uma foto no bloco).
+ * - `imagens`: array de 2–4 URLs (mesmo espaço, grid automático: 2 colunas; 3 = duas em cima e uma embaixo; 4 = grade 2×2).
+ * Se os dois existirem, `imagens` tem prioridade.
+ * `data` (opcional): linha de data exibida acima do título.
+ */
+export const SESSAO_FOTOS_PRESENTE = {
+  titulo: 'Flores pra você',
+  subtitulo:
+    'Presentes meus em forma de flor — cada buquê com um significado. É só o começo: eu quero te dar muitas flores ainda.',
+  itens: [
+    {
+      id: 'sf1',
+      data: '4 de março de 2026',
+      imagens: ['/imgs/flowers/Rosa%201.jpeg', '/imgs/flowers/Rosa%202.jpeg'],
+      titulo: 'Rosas vermelhas',
+      paras: [
+        'As rosas vermelhas dizem o que às vezes a gente só sente no peito: amor profundo, paixão, desejo e admiração romântica. São o símbolo clássico do romance - aquela mensagem de "eu te amo", de encanto e de respeito, com gratidão e vontade de recomeçar juntos.',
+        'Paixão intensa, admiração de verdade, amor que pretende durar: presente de quem celebra o outro de coração. O vermelho vivo fala de desejo e entrega; o tom mais fechado, de paixão que vai fundo.',
+        'E o que importa pra nós: esse foi o buquê do pedido de namoro - um dos momentos mais especiais da nossa história.',
+      ],
+    },
+    {
+      id: 'sf2',
+      data: '7 de março de 2026',
+      imagens: [
+        '/imgs/flowers/Girassol%201.jpeg',
+        '/imgs/flowers/Girassol%202.jpeg',
+        '/imgs/flowers/Girassol%203.jpeg',
+        '/imgs/flowers/Girassol%204.jpeg',
+      ],
+      titulo: 'Dois girassóis',
+      paras: [
+        'Dois girassóis falam de amor recíproco, lealdade profunda e união. Há uma ideia linda por trás: quando falta luz, eles se voltam um para o outro em vez de só buscar o sol - companheirismo, apoio mútuo e presença nos dias mais difíceis.',
+        'Reciprocidade de verdade: em vez de um girassol sozinho mirando o alto, os dois virados um ao outro dizem que vocês viram luz um no outro quando o cenário escureceu. Adoração, fidelidade, cumplicidade - amor incondicional ou amizade que escolhe ficar.',
+        'Dois juntos (às vezes até no mesmo caule) lembram união rara: força, energia boa e vida compartilhada.',
+        'Esse presente foi no Dia das Mulheres - e foi também o dia em que eu fui conversar com seus pais sobre o namoro. Dois marcos no mesmo dia.',
+      ],
+    },
+    {
+      id: 'sf3',
+      data: '13 de março de 2026',
+      imagens: ['/imgs/flowers/Orquidea%201.jpeg', '/imgs/flowers/Orquidea%202.jpeg'],
+      titulo: 'Orquídea branca',
+      paras: [
+        'A orquídea branca carrega pureza, paz, inocência, elegância e um ar de sofisticação leve. Fala de eternidade, amor duradouro e sinceridade - gratidão e carinho puro, sem artifício.',
+        'Esse presente foi num dia comum, sem data especial no calendário - só pra ver a sua alegria.',
+      ],
+    },
+    {
+      id: 'sf4',
+      data: '10 de abril de 2026',
+      imagens: [
+        '/imgs/flowers/Azaleia%201.jpeg',
+        '/imgs/flowers/Azaleia%202.jpeg',
+        '/imgs/flowers/Azaleia%203.jpeg',
+        '/imgs/flowers/Azaleia%204.jpeg',
+      ],
+      titulo: 'Azaleia rosa',
+      paras: [
+        'A azaleia rosa fala de delicadeza, graça, feminilidade, amor à natureza e afeto terno. É um jeito bonito de dizer admiração e apreço sincero - e ainda remete a equilíbrio emocional e renovação.',
+        'No Feng Shui, costuma associar-se à suavidade; por aqui ela também aparece bastante nos jardins, leve e viva.',
+        'Essa também foi num dia comum, sem ocasião especial no calendário.',
+      ],
+    },
+  ],
+}
+
 export const SLIDE_IDS = [
   'intro', 'timer', 'antesdepois', 'musica', 'carta', 'tags',
   'versiculo', 'momentos',
   'historia',
+  'presentefotos',
   'promessas', 'futuro', 'recado', 'final',
 ]
 
@@ -178,6 +248,7 @@ export const SLIDE_AMBIENCE = [
   { emoji: '✝️', glow: 'rgba(129, 140, 248, 0.42)' },
   { emoji: '📸', glow: 'rgba(167, 139, 250, 0.28)' },
   { emoji: '📖', glow: 'rgba(212, 175, 55, 0.36)' },
+  { emoji: '💐', glow: 'rgba(251, 182, 193, 0.36)' },
   { emoji: '🌿', glow: 'rgba(52, 211, 153, 0.38)' },
   { emoji: '🌅', glow: 'rgba(59, 130, 246, 0.4)' },
   { emoji: '💬', glow: 'rgba(244, 114, 182, 0.35)' },

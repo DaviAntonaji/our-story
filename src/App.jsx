@@ -19,6 +19,7 @@ import TagsSlide from './components/slides/TagsSlide';
 import VersiculoSlide from './components/slides/VersiculoSlide';
 import MomentosSlide from './components/slides/MomentosSlide';
 import HistoriaSlide from './components/slides/HistoriaSlide';
+import PresenteFotosSlide from './components/slides/PresenteFotosSlide';
 import PromessasSlide from './components/slides/PromessasSlide';
 import FuturoSlide from './components/slides/FuturoSlide';
 import RecadoSlide from './components/slides/RecadoSlide';
@@ -68,6 +69,7 @@ export default function App() {
             <VersiculoSlide />
             <MomentosSlide />
             <HistoriaSlide />
+            <PresenteFotosSlide />
             <PromessasSlide />
             <FuturoSlide />
             <RecadoSlide />
