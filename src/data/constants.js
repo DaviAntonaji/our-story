@@ -71,6 +71,32 @@ export const PASSAGENS_BIBLICAS = [
     reflexao: 'Minha promessa é te amar como Cristo amou a Igreja, com entrega, cuidado e fidelidade.',
   },
   {
+    id: 'pv1914',
+    titulo: 'Provérbios 19:14',
+    tipo: 'destaque',
+    citacao: 'A casa e os bens são herança dos pais; porém do Senhor vem a esposa prudente.',
+    reflexao:
+      'O que se herda pode ser medido; o que Deus une não. Você não é um acaso na minha vida - é presente dEle, sabedoria que abençoa o lar e o caminho. Gratidão por cuidar do nosso amor com o coração e com a fé.',
+  },
+  {
+    id: 'gn224',
+    titulo: 'Gênesis 2:24',
+    tipo: 'destaque',
+    citacao:
+      'Portanto deixará o homem o seu pai e a sua mãe, e apegar-se-á à sua mulher, e serão ambos uma carne.',
+    reflexao:
+      'O desenho de Deus para o amor: prioridade um no outro, vínculo que não se divide. É isso que eu quero viver com você - unidade de verdade, com Cristo no centro.',
+  },
+  {
+    id: '1pe37',
+    titulo: '1 Pedro 3:7',
+    tipo: 'destaque',
+    citacao:
+      'Do mesmo modo vocês, maridos, sejam sábios no convívio com suas mulheres e tratem-nas com honra, como parte mais frágil e co-herdeiras do dom da graça da vida, de forma que não sejam interrompidas as suas orações.',
+    reflexao:
+      'Honra e cuidado não são opcionais - são o jeito de amar que abre espaço pra Deus no meio da gente. Quero ser esse marido: presente, respeitoso e grato por caminhar contigo na mesma herança.',
+  },
+  {
     id: 'sl128',
     titulo: 'Salmos 128:1–4',
     tipo: 'numerados',
@@ -379,7 +405,7 @@ export const TIMELINE = [
       'Assistimos Como Eu Era Antes de Você, com pipoca de microondas, refri, fini… e um brigadeiro simplesmente absurdo de bom que você fez (e que eu, claro, dei um sumiço em metade em 2 segundos 😅).',
       'O filme foi lindo… só aquele final que pegou pesado né kkkkk, mas mesmo assim ficou ainda mais especial por ser com você.',
       'Enquanto isso, nossas irmãs fazendo festa do pijama, deixando tudo ainda mais leve e cheio de alegria.',
-      'Foi simples, foi tranquilo… mas foi perfeito. Filminho de romance com o meu amor, com beijinhos e comidinha gostosa — do jeitinho que eu gosto, do jeitinho que a gente é. 🤍',
+      'Foi simples, foi tranquilo… mas foi perfeito. Filminho de romance com o meu amor, com beijinhos e comidinha gostosa - do jeitinho que eu gosto, do jeitinho que a gente é. 🤍',
     ],
   },
 ]
