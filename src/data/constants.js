@@ -173,9 +173,9 @@ export const SESSAO_FOTOS_PRESENTE = {
       ],
       titulo: 'Dois girassóis',
       paras: [
-        'Eu te dei dois girassóis porque eles falam de amor recíproco, lealdade e união. Eu amo essa ideia: quando falta luz, a gente se vira um pro outro em vez de só buscar o sol- companheirismo, apoio e presença nos dias mais difíceis.',
-        'Eu quis te dizer reciprocidade de verdade: que eu te escolho como luz quando o cenário escurece. Adoração, fidelidade, cumplicidade- amor que fica.',
-        'Dois juntos lembram união rara, força e vida compartilhada- e foi assim que eu quis te presentear.',
+        'Eu te dei dois girassóis- duas flores de propósito, porque o número importava: dois pra dizer amor recíproco, lealdade e união.',
+        'Tem a "teoria do girassol": na ausência de sol, elas se voltam uma pra outra em vez de ficarem só mirando o alto. Presentear com dois girassóis carrega isso- lealdade e parceria. O significado que eu quis te passar é esse: mesmo na escuridão, você é a minha luz. A gente se apoia e se ilumina nos dias mais difíceis.',
+        'Quando falta luz, eu me viro pra você- e quero que você saiba que pode virar pra mim. Adoração, fidelidade, cumplicidade; reciprocidade de verdade e amor que fica. Dois juntos lembram união rara, força e vida compartilhada- foi assim que eu quis te presentear.',
         'Eu te dei no Dia das Mulheres- no mesmo dia em que eu fui conversar com seus pais sobre o namoro. Dois marcos que eu guardei no mesmo dia.',
       ],
     },
