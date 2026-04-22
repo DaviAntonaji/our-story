@@ -202,7 +202,7 @@ export const SESSAO_FOTOS_PRESENTE = {
       paras: [
         'Eu te dei azaleia rosa porque ela fala de delicadeza, graça, feminilidade, amor à natureza e afeto terno. Eu quis te dizer admiração e apreço sincero- e um pouco de equilíbrio e renovação.',
         'No Feng Shui ela costuma associar-se à suavidade; por aqui ela aparece bastante nos jardins- leve e viva, como eu queria que chegasse até você.',
-        'Eu te dei num dia comum também, sem ocasião especial no calendário- só porque eu quis.',
+        'Eu te dei num dia comum também, sem ocasião especial no calendário.',
       ],
     },
   ],
