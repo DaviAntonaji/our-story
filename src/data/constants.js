@@ -140,16 +140,16 @@ export const FOTOS = [
 ]
 
 /**
- * Flores que ele deu pra ela — cada item = data, texto e foto(s) das flores.
+ * Flores que eu te dei- cada item = data, texto em 1ª pessoa e foto(s).
  * - `imagem`: string (uma foto no bloco).
  * - `imagens`: array de 2–4 URLs (mesmo espaço, grid automático: 2 colunas; 3 = duas em cima e uma embaixo; 4 = grade 2×2).
  * Se os dois existirem, `imagens` tem prioridade.
  * `data` (opcional): linha de data exibida acima do título.
  */
 export const SESSAO_FOTOS_PRESENTE = {
-  titulo: 'Flores pra você',
+  titulo: 'Flores que eu te dei',
   subtitulo:
-    'Presentes meus em forma de flor — cada buquê com um significado. É só o começo: eu quero te dar muitas flores ainda.',
+    'Eu te dei cada buquê com um significado. É só o começo- eu quero te dar muitas flores ainda.',
   itens: [
     {
       id: 'sf1',
@@ -157,9 +157,9 @@ export const SESSAO_FOTOS_PRESENTE = {
       imagens: ['/imgs/flowers/Rosa%201.jpeg', '/imgs/flowers/Rosa%202.jpeg'],
       titulo: 'Rosas vermelhas',
       paras: [
-        'As rosas vermelhas dizem o que às vezes a gente só sente no peito: amor profundo, paixão, desejo e admiração romântica. São o símbolo clássico do romance - aquela mensagem de "eu te amo", de encanto e de respeito, com gratidão e vontade de recomeçar juntos.',
-        'Paixão intensa, admiração de verdade, amor que pretende durar: presente de quem celebra o outro de coração. O vermelho vivo fala de desejo e entrega; o tom mais fechado, de paixão que vai fundo.',
-        'E o que importa pra nós: esse foi o buquê do pedido de namoro - um dos momentos mais especiais da nossa história.',
+        'Eu te dei rosas vermelhas porque elas dizem o que muitas vezes eu só consigo sentir no peito: amor profundo, paixão, desejo e admiração. É o símbolo clássico do romance- "eu te amo", encanto, respeito e gratidão.',
+        'Eu quis que você soubesse da minha paixão de verdade e do amor que eu pretendo fazer durar. O vermelho vivo é desejo e entrega; o mais fechado, a paixão que eu sinto fundo em mim.',
+        'Esse buquê foi o do pedido de namoro- um dos momentos mais especiais da nossa história, e eu te dei de coração.',
       ],
     },
     {
@@ -173,10 +173,10 @@ export const SESSAO_FOTOS_PRESENTE = {
       ],
       titulo: 'Dois girassóis',
       paras: [
-        'Dois girassóis falam de amor recíproco, lealdade profunda e união. Há uma ideia linda por trás: quando falta luz, eles se voltam um para o outro em vez de só buscar o sol - companheirismo, apoio mútuo e presença nos dias mais difíceis.',
-        'Reciprocidade de verdade: em vez de um girassol sozinho mirando o alto, os dois virados um ao outro dizem que vocês viram luz um no outro quando o cenário escureceu. Adoração, fidelidade, cumplicidade - amor incondicional ou amizade que escolhe ficar.',
-        'Dois juntos (às vezes até no mesmo caule) lembram união rara: força, energia boa e vida compartilhada.',
-        'Esse presente foi no Dia das Mulheres - e foi também o dia em que eu fui conversar com seus pais sobre o namoro. Dois marcos no mesmo dia.',
+        'Eu te dei dois girassóis porque eles falam de amor recíproco, lealdade e união. Eu amo essa ideia: quando falta luz, a gente se vira um pro outro em vez de só buscar o sol- companheirismo, apoio e presença nos dias mais difíceis.',
+        'Eu quis te dizer reciprocidade de verdade: que eu te escolho como luz quando o cenário escurece. Adoração, fidelidade, cumplicidade- amor que fica.',
+        'Dois juntos lembram união rara, força e vida compartilhada- e foi assim que eu quis te presentear.',
+        'Eu te dei no Dia das Mulheres- no mesmo dia em que eu fui conversar com seus pais sobre o namoro. Dois marcos que eu guardei no mesmo dia.',
       ],
     },
     {
@@ -185,8 +185,8 @@ export const SESSAO_FOTOS_PRESENTE = {
       imagens: ['/imgs/flowers/Orquidea%201.jpeg', '/imgs/flowers/Orquidea%202.jpeg'],
       titulo: 'Orquídea branca',
       paras: [
-        'A orquídea branca carrega pureza, paz, inocência, elegância e um ar de sofisticação leve. Fala de eternidade, amor duradouro e sinceridade - gratidão e carinho puro, sem artifício.',
-        'Esse presente foi num dia comum, sem data especial no calendário - só pra ver a sua alegria.',
+        'Eu te dei orquídea branca porque ela carrega pureza, paz, inocência, elegância e um ar de sofisticação leve. Eu quis te dizer eternidade, amor duradouro e sinceridade- gratidão e carinho puro, sem artifício.',
+        'Foi num dia comum, sem data especial no calendário- eu te dei só porque eu queria ver sua alegria.',
       ],
     },
     {
@@ -200,9 +200,9 @@ export const SESSAO_FOTOS_PRESENTE = {
       ],
       titulo: 'Azaleia rosa',
       paras: [
-        'A azaleia rosa fala de delicadeza, graça, feminilidade, amor à natureza e afeto terno. É um jeito bonito de dizer admiração e apreço sincero - e ainda remete a equilíbrio emocional e renovação.',
-        'No Feng Shui, costuma associar-se à suavidade; por aqui ela também aparece bastante nos jardins, leve e viva.',
-        'Essa também foi num dia comum, sem ocasião especial no calendário.',
+        'Eu te dei azaleia rosa porque ela fala de delicadeza, graça, feminilidade, amor à natureza e afeto terno. Eu quis te dizer admiração e apreço sincero- e um pouco de equilíbrio e renovação.',
+        'No Feng Shui ela costuma associar-se à suavidade; por aqui ela aparece bastante nos jardins- leve e viva, como eu queria que chegasse até você.',
+        'Eu te dei num dia comum também, sem ocasião especial no calendário- só porque eu quis.',
       ],
     },
   ],

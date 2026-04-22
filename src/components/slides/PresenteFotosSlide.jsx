@@ -118,7 +118,7 @@ export default function PresenteFotosSlide() {
           className="flex flex-col gap-6 w-full max-w-sm mx-auto allow-select pb-14"
         >
           <div className="text-center pt-2">
-            <MI v={fadeV} className="chapter-label">Flores</MI>
+            <MI v={fadeV} className="chapter-label">Eu te dei</MI>
             <MI className="mt-2 flex items-center justify-center gap-2">
               <span className="text-2xl" style={{ animation: 'softFloat 5s ease-in-out infinite' }}>💐</span>
               <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">{titulo}</h2>
