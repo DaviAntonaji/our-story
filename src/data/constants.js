@@ -28,6 +28,14 @@ export const MESESVERSARIOS = [
       'Sábado de manhã, piquenique na praça da entrada da cidade - só nós dois, comida boa e aquele clima leve que a gente ama.',
     ],
   },
+  {
+    id: 2,
+    data: new Date(2026, 4, 1, 0, 0, 0, 0),
+    titulo: '2º mês 🤍',
+    resumo: [
+      'Sexta-feira na praça da entrada - adiantamos três dias pra comemorar. Troca de presentes com muito significado: flores, cartinha feita a mão, docinhos e um anel solitário como promessa. Você me deu um potinho cheio de beijinhos marcados e uma cartinha linda. Tapioca na avenida, docinhos e canteiro central pra fechar o dia.',
+    ],
+  },
 ]
 
 /** Passagens exibidas no slide “Versículo” - `tipo`: numerados | destaque */
@@ -120,23 +128,58 @@ export const SPOTIFY_URLS = [
 ]
 
 export const FOTOS = [
-  '/imgs/photos/1.jpg', '/imgs/photos/2.jpg', '/imgs/photos/3.jpg',
-  '/imgs/photos/4.jpg', '/imgs/photos/5.jpg', '/imgs/photos/6.jpg',
-  '/imgs/photos/7.jpg', '/imgs/photos/8.jpg', '/imgs/photos/9.jpg',
-  '/imgs/photos/10.jpeg', '/imgs/photos/11.jpeg', '/imgs/photos/12.jpeg',
-  '/imgs/photos/13.jpeg', '/imgs/photos/14.jpg', '/imgs/photos/15.jpg',
-  '/imgs/photos/16.jpg', '/imgs/photos/17.jpg', '/imgs/photos/18.jpg',
-  '/imgs/photos/19.jpg', '/imgs/photos/20.jpg', '/imgs/photos/21.jpg', '/imgs/photos/22.jpg',
-  '/imgs/photos/23.jpg', '/imgs/photos/24.jpg', '/imgs/photos/25.jpg', '/imgs/photos/26.jpg',
-  '/imgs/photos/27.jpg', '/imgs/photos/28.jpg', '/imgs/photos/29.jpg', '/imgs/photos/30.jpg',
-  '/imgs/photos/31.jpg', '/imgs/photos/32.jpg', '/imgs/photos/33.jpg', "/imgs/photos/34.jpg",
-  '/imgs/photos/35.jpg', '/imgs/photos/36.jpg', '/imgs/photos/37.jpg', "/imgs/photos/38.jpg",
-  '/imgs/photos/39.jpg', '/imgs/photos/40.jpg', '/imgs/photos/41.jpg', "/imgs/photos/42.jpg",
-  '/imgs/photos/43.jpg', '/imgs/photos/44.jpg', '/imgs/photos/45.jpg', '/imgs/photos/46.jpg',
-  '/imgs/photos/47.jpg', '/imgs/photos/48.jpg', '/imgs/photos/49.jpg',
-  '/imgs/photos/50.jpg', '/imgs/photos/51.jpg', '/imgs/photos/52.jpg', '/imgs/photos/53.jpg',
-  '/imgs/photos/54.jpg', '/imgs/photos/55.jpg', '/imgs/photos/56.jpg', '/imgs/photos/57.jpg',
-  '/imgs/photos/58.jpg'
+  // Pedido de namoro
+  '/imgs/photos/pedido_namoro/1.jpg', '/imgs/photos/pedido_namoro/2.jpg', '/imgs/photos/pedido_namoro/3.jpg',
+  '/imgs/photos/pedido_namoro/4.jpg', '/imgs/photos/pedido_namoro/5.jpg', '/imgs/photos/pedido_namoro/6.jpg',
+  '/imgs/photos/pedido_namoro/7.jpg', '/imgs/photos/pedido_namoro/8.jpg', '/imgs/photos/pedido_namoro/9.jpg',
+  // Conversa com seus pais
+  '/imgs/photos/conversa_com_seus_pais/10.jpeg', '/imgs/photos/conversa_com_seus_pais/11.jpeg',
+  '/imgs/photos/conversa_com_seus_pais/12.jpeg', '/imgs/photos/conversa_com_seus_pais/13.jpeg',
+  // Shopping com meus pais
+  '/imgs/photos/shopping_com_meus_pais/14.jpg', '/imgs/photos/shopping_com_meus_pais/15.jpg',
+  // Primeira Santa Ceia
+  '/imgs/photos/primeira_santa_ceia/16.jpg',
+  // Momentos aleatórios
+  '/imgs/photos/momentos_aleatorios/17.jpg',
+  // Cafeteria Koike
+  '/imgs/photos/cafeteria_koike/18.jpg', '/imgs/photos/cafeteria_koike/19.jpg',
+  '/imgs/photos/cafeteria_koike/20.jpg', '/imgs/photos/cafeteria_koike/21.jpg', '/imgs/photos/cafeteria_koike/22.jpg',
+  // Primeiro pós-culto
+  '/imgs/photos/primeiro-pos-culto/23.jpg',
+  // Primeira vez no Tips / Pizzaria juntos
+  '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/24.jpg', '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/25.jpg',
+  '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/26.jpg', '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/27.jpg',
+  '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/28.jpg', '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/29.jpg',
+  '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/30.jpg', '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/31.jpg',
+  '/imgs/photos/primeira-vez-no-tips-pizzaria-juntos/32.jpg',
+  // Almoço nos seus avós
+  '/imgs/photos/almoco_nos_seus_avos/33.jpg',
+  // Pós-culto com nossas irmãs
+  '/imgs/photos/pos_culto_com_nossas_irmas/34.jpg', '/imgs/photos/pos_culto_com_nossas_irmas/35.jpg',
+  '/imgs/photos/pos_culto_com_nossas_irmas/36.jpg', '/imgs/photos/pos_culto_com_nossas_irmas/37.jpg',
+  '/imgs/photos/pos_culto_com_nossas_irmas/38.jpg', '/imgs/photos/pos_culto_com_nossas_irmas/39.jpg',
+  '/imgs/photos/pos_culto_com_nossas_irmas/40.jpg', '/imgs/photos/pos_culto_com_nossas_irmas/41.jpg',
+  '/imgs/photos/pos_culto_com_nossas_irmas/42.jpg',
+  // Primeira visita sua na minha casa
+  '/imgs/photos/primeira_visita_sua_na_minha_casa/43.jpg', '/imgs/photos/primeira_visita_sua_na_minha_casa/44.jpg',
+  // Visita culto IPI
+  '/imgs/photos/visita_culto_ipi/45.jpg', '/imgs/photos/visita_culto_ipi/46.jpg',
+  // Primeiro cinema
+  '/imgs/photos/primeiro_cinema/47.jpg', '/imgs/photos/primeiro_cinema/48.jpg', '/imgs/photos/primeiro_cinema/49.jpg',
+  // Primeiro mêsversário - piquenique
+  '/imgs/photos/primeiro_mesversario_piquinique/50.jpg', '/imgs/photos/primeiro_mesversario_piquinique/51.jpg',
+  '/imgs/photos/primeiro_mesversario_piquinique/52.jpg', '/imgs/photos/primeiro_mesversario_piquinique/53.jpg',
+  // Pós-culto combinando na praça
+  '/imgs/photos/posculto_combinando_na_praca/54.jpg', '/imgs/photos/posculto_combinando_na_praca/55.jpg',
+  '/imgs/photos/posculto_combinando_na_praca/56.jpg', '/imgs/photos/posculto_combinando_na_praca/57.jpg',
+  '/imgs/photos/posculto_combinando_na_praca/58.jpg', '/imgs/photos/posculto_combinando_na_praca/59.jpg',
+  '/imgs/photos/posculto_combinando_na_praca/60.jpg',
+  // 2º mêsversário
+  '/imgs/photos/segundo_mesversario/IMG_2835.jpg', '/imgs/photos/segundo_mesversario/IMG_2849.jpg',
+  // 2º mêsversário - dia 2
+  '/imgs/photos/segundo_mesversario_dia2/IMG_2868.jpg', '/imgs/photos/segundo_mesversario_dia2/IMG_2870.jpg',
+  '/imgs/photos/segundo_mesversario_dia2/IMG_2872.jpg', '/imgs/photos/segundo_mesversario_dia2/IMG_2879.jpg',
+  '/imgs/photos/segundo_mesversario_dia2/IMG_2882.jpg',
 ]
 
 /**
@@ -477,6 +520,20 @@ export const TIMELINE = [
       'O filme foi lindo… só aquele final que pegou pesado né kkkkk, mas mesmo assim ficou ainda mais especial por ser com você.',
       'Enquanto isso, nossas irmãs fazendo festa do pijama, deixando tudo ainda mais leve e cheio de alegria.',
       'Foi simples, foi tranquilo… mas foi perfeito. Filminho de romance com o meu amor, com beijinhos e comidinha gostosa - do jeitinho que eu gosto, do jeitinho que a gente é. 🤍',
+    ],
+  },
+  {
+    data: '01 de maio de 2026',
+    titulo: 'Nosso 2º mêsversário 🤍',
+    icon: '💍',
+    paras: [
+      'Nosso segundo mês completaria no dia 04 de maio, mas resolvemos comemorar na sexta-feira, dia 01 - adiantamos três dias pra não esperar até segunda. E foi a melhor decisão.',
+      'Começamos na praça da entrada da cidade, onde fizemos a troca dos presentes. Ali a gente parou, conversou, respirou junto… foi um desses momentos simples que carregam muito peso.',
+      'Eu te entreguei uma caixinha cheia de significado: flores, uma cartinha escrita a mão - a minha primeira - um monte de docinhos e, no fundo de tudo, o seu anel solitário. Uma promessa real de que você é única, e que eu te escolho todos os dias.',
+      'Você me deu um presente que eu jamais vou esquecer: uma cartinha cheia de amor e um potinho cheio de beijinhos seus, marcados em papéis com mensagens fofas. Simples, cuidadoso, completamente você - eu amei cada detalhe.',
+      'Depois fomos até a avenida comer tapioca, ainda naquele clima leve de quem acabou de trocar algo tão especial. Eu ainda passei e comprei uns docinhos pra você, porque você merece.',
+      'Fechamos o dia na praça, no canteiro central da avenida - só a gente, o fim de tarde e tudo aquilo que a gente já construiu em dois meses.',
+      'Dois meses que parecem muito mais pelo que a gente já viveu. E esse anel no seu dedo é só o começo de tudo que ainda vem por aí. 🤍',
     ],
   },
 ]

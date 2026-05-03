@@ -19,7 +19,7 @@ export default function IntroSlide() {
           <MI className="photo-frame w-full max-w-[200px] sm:max-w-[240px] mx-auto">
             <div className="aspect-[3/4] overflow-hidden rounded-[18px]">
               <img
-                src="/imgs/photos/15.jpg"
+                src="/imgs/photos/shopping_com_meus_pais/15.jpg"
                 alt="Nós dois"
                 width={600}
                 height={800}
