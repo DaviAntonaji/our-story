@@ -170,7 +170,7 @@ export default function RecadoForm({ onSuccess }) {
       </button>
 
       <p className="text-rose-400/50 text-[11px] text-center leading-relaxed">
-        Seus dados são enviados de forma segura; não publicamos mensagens no site. Protegido por Cloudflare Turnstile.
+        Seu nome e mensagem ficam visíveis no quadrinho acima. O e-mail é privado e nunca é exibido. Protegido por Cloudflare Turnstile.
       </p>
     </form>
   )
