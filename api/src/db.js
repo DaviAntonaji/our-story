@@ -127,6 +127,7 @@ export async function getRecados({ limit = 50, offset = 0 } = {}, p = pool) {
      LIMIT ${safeLimit} OFFSET ${safeOffset}`,
   )
 
+  console.log(`[DB:getRecados] limit=${safeLimit} offset=${safeOffset} → ${/** @type {any[]} */(rows).length} rows`)
   return /** @type {any[]} */ (rows)
 }
 
@@ -141,5 +142,7 @@ export async function countRecados(p = pool) {
   const [rows] = await p.query(
     'SELECT COUNT(*) AS total FROM recados WHERE visible = 1',
   )
-  return Number(/** @type {any[]} */ (rows)[0]?.total ?? 0)
+  const total = Number(/** @type {any[]} */ (rows)[0]?.total ?? 0)
+  console.log(`[DB:countRecados] → ${total}`)
+  return total
 }

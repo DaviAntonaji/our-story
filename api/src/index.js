@@ -200,6 +200,19 @@ app.get('/health', (_req, res) => {
   res.status(200).json({ ok: true, ts: Date.now() })
 })
 
+// Diagnóstico temporário — remove após confirmar a causa raiz
+app.get('/health/db', async (_req, res) => {
+  if (!dbPool) return res.json({ pool: null })
+  try {
+    const [[info]] = await dbPool.query('SELECT DATABASE() AS db, VERSION() AS ver')
+    const [[allRows]] = await dbPool.query('SELECT COUNT(*) AS n FROM recados')
+    const [[visRows]] = await dbPool.query('SELECT COUNT(*) AS n FROM recados WHERE visible = 1')
+    return res.json({ db: info.db, ver: info.ver, total: Number(allRows.n), visible: Number(visRows.n) })
+  } catch (e) {
+    return res.json({ error: e instanceof Error ? e.message : String(e) })
+  }
+})
+
 /**
  * Erros de servidor (5xx) nunca expõem detalhes internos.
  * O motivo real fica apenas nos logs do processo.
