@@ -237,6 +237,7 @@ app.get('/api/recados', listLimiter, async (req, res) => {
       getRecados({ limit, offset }, dbPool),
       countRecados(dbPool),
     ])
+    res.set('Cache-Control', 'no-store')
     return res.status(200).json({ ok: true, recados, total, limit, offset })
   } catch (e) {
     return serverErr(res, 500, `[recados:list] ${e instanceof Error ? e.message : 'unknown'}`)
