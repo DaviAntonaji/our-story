@@ -72,12 +72,24 @@ export async function initDb(p = pool) {
 export async function saveRecado({ name, email, message, ipHash = '' }, p = pool) {
   if (!p) return null
 
+  // visible=0: recado fica pendente até aprovação via link no e-mail
   const [result] = await p.execute(
-    'INSERT INTO recados (name, email, message, ip_hash) VALUES (?, ?, ?, ?)',
+    'INSERT INTO recados (name, email, message, ip_hash, visible) VALUES (?, ?, ?, ?, 0)',
     [name, email, message, ipHash],
   )
 
   return /** @type {import('mysql2').ResultSetHeader} */ (result).insertId
+}
+
+/**
+ * Torna um recado visível publicamente (aprovação via link no e-mail).
+ *
+ * @param {number} id
+ * @param {import('mysql2/promise').Pool} [p]
+ */
+export async function approveRecado(id, p = pool) {
+  if (!p) return
+  await p.execute('UPDATE recados SET visible = 1 WHERE id = ?', [id])
 }
 
 /**

@@ -26,16 +26,30 @@ export function firstSiteOriginFromEnv(env) {
 /**
  * @param {{ name: string, email: string, message: string }} payload
  * @param {string} siteOrigin URL base do site (ex.: https://exemplo.com)
+ * @param {string} [approvalUrl] Link de aprovação (gerado com HMAC no servidor)
  */
-function buildRecadoHtml({ name, email, message }, siteOrigin) {
+function buildRecadoHtml({ name, email, message }, siteOrigin, approvalUrl) {
   const coverSrc = siteOrigin ? `${siteOrigin}/imgs/og-share.jpg` : ''
   const nameH = escapeHtml(name)
   const emailH = escapeHtml(email)
   const messageH = escapeHtml(message).replace(/\r\n/g, '\n').replace(/\n/g, '<br />')
+  const approvalUrlH = approvalUrl ? escapeHtml(approvalUrl) : ''
 
   const hero = coverSrc
     ? `<img src="${escapeHtml(coverSrc)}" alt="" width="560" style="display:block;width:100%;max-width:560px;height:auto;border:0;line-height:0;" />`
     : ''
+
+  const approvalBlock = approvalUrlH ? `
+          <tr>
+            <td style="padding:20px 26px 8px;text-align:center;">
+              <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(251,191,36,0.35),transparent);margin:0 0 20px;"></div>
+              <p style="margin:0 0 12px;color:#f9a8d4;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;">Aprovar exibição no site</p>
+              <a href="${approvalUrlH}" style="display:inline-block;padding:13px 32px;background:linear-gradient(135deg,#9d174d,#be185d);color:#fff;text-decoration:none;border-radius:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;box-shadow:0 4px 16px rgba(190,24,93,0.35);">
+                💕 Publicar recadinho no site
+              </a>
+              <p style="margin:10px 0 0;color:#8b5a6b;font-size:11px;line-height:1.5;">Clicando, o recadinho aparece no quadro do site para todos verem.</p>
+            </td>
+          </tr>` : ''
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -93,6 +107,7 @@ function buildRecadoHtml({ name, email, message }, siteOrigin) {
               <p style="margin:16px 0 0;color:#fda4af;font-size:13px;line-height:1.5;font-family:Georgia,'Times New Roman',serif;">Com todo o meu amor,<br /><span style="color:#fff7f7;">Davi</span> <span style="font-size:11px;opacity:0.85;">💕</span></p>
             </td>
           </tr>
+          ${approvalBlock}
         </table>
         <p style="margin:22px 20px 0;max-width:520px;color:#8b5a6b;font-size:11px;line-height:1.55;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;text-align:center;">Este e-mail foi gerado com carinho pelo formulário do nosso site. É só entre nós - trate o recado e os dados de quem escreveu com delicadeza.</p>
       </td>
@@ -106,13 +121,15 @@ function buildRecadoHtml({ name, email, message }, siteOrigin) {
  * @param {import('nodemailer').Transporter} transporter
  * @param {{ name: string, email: string, message: string }} payload
  * @param {{ from: string, to: string }} cfg
- * @param {{ siteOrigin: string }} opts – base URL do site (ALLOWED_ORIGINS) para imagens
+ * @param {{ siteOrigin?: string, approvalUrl?: string }} opts
  */
 export async function sendRecadoMail(transporter, { name, email, message }, { from, to }, opts = {}) {
   const siteOrigin = opts.siteOrigin || ''
+  const approvalUrl = opts.approvalUrl || ''
   const subject = `💌 Recadinho pro nosso cantinho · ${asciiSafeSubjectSnippet(name)}`
-  const text = `Oi, amores - chegou um recadinho no nosso site.\n\nDe: ${name}\nE-mail (pra responder): ${email}\n\n---\n\n${message}\n\n---\n\nCom amor,\n(o site que o Davi fez com carinho pra gente)\n`
-  const html = buildRecadoHtml({ name, email, message }, siteOrigin)
+  const approvalLine = approvalUrl ? `\n\n── Aprovar exibição no site ──\n${approvalUrl}\n` : ''
+  const text = `Oi, amores - chegou um recadinho no nosso site.\n\nDe: ${name}\nE-mail (pra responder): ${email}\n\n---\n\n${message}\n\n---${approvalLine}\nCom amor,\n(o site que o Davi fez com carinho pra gente)\n`
+  const html = buildRecadoHtml({ name, email, message }, siteOrigin, approvalUrl)
 
   await transporter.sendMail({
     from,

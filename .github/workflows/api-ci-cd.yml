@@ -46,6 +46,8 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
           IP_HASH_SECRET: ${{ secrets.IP_HASH_SECRET }}
+          APPROVE_SECRET: ${{ secrets.APPROVE_SECRET }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
         with:
           host: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
@@ -53,7 +55,7 @@ jobs:
           port: ${{ secrets.SFTP_PORT }}
           command_timeout: 45m
           script_stop: true
-          envs: TURNSTILE_SECRET_KEY,MAIL_SERVER,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_FROM,MAIL_TO,ALLOWED_ORIGINS,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_NAME,IP_HASH_SECRET
+          envs: TURNSTILE_SECRET_KEY,MAIL_SERVER,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_FROM,MAIL_TO,ALLOWED_ORIGINS,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_NAME,IP_HASH_SECRET,APPROVE_SECRET,API_BASE_URL
           script: |
             set -eu
             REPO="${{ secrets.REPO_DIRECTORY }}"
@@ -90,6 +92,8 @@ jobs:
               [ -n "${DB_PASSWORD:-}" ] && printf '%s\n' "DB_PASSWORD=$DB_PASSWORD"
               [ -n "${DB_NAME:-}" ]     && printf '%s\n' "DB_NAME=$DB_NAME"
               [ -n "${IP_HASH_SECRET:-}" ] && printf '%s\n' "IP_HASH_SECRET=$IP_HASH_SECRET"
+              [ -n "${APPROVE_SECRET:-}" ]  && printf '%s\n' "APPROVE_SECRET=$APPROVE_SECRET"
+              [ -n "${API_BASE_URL:-}" ]    && printf '%s\n' "API_BASE_URL=$API_BASE_URL"
             } > api/.env
             chmod 600 api/.env
             IMG=our-story-api:latest
