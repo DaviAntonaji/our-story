@@ -129,6 +129,7 @@ export default function RecadoBoard({ fetchKey = 0 }) {
   const [recados, setRecados] = useState([])
   const [loading, setLoading] = useState(true)
   const [total, setTotal] = useState(0)
+  const [fetchError, setFetchError] = useState(false)
 
   useEffect(() => {
     if (!API_URL) {
@@ -137,18 +138,37 @@ export default function RecadoBoard({ fetchKey = 0 }) {
     }
 
     setLoading(true)
+    setFetchError(false)
     fetch(`${API_URL}?limit=20`)
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.json()
+      })
       .then((data) => {
         setRecados(data.recados ?? [])
         setTotal(data.total ?? 0)
       })
-      .catch(() => {})
+      .catch((err) => {
+        console.error('[RecadoBoard] falha ao buscar recados:', err?.message ?? err)
+        setFetchError(true)
+      })
       .finally(() => setLoading(false))
   }, [fetchKey])
 
-  // Não renderiza nada se a API não estiver configurada ou não houver recados ainda
-  if (!API_URL || (!loading && recados.length === 0)) return null
+  // Sem API configurada: não renderiza nada
+  if (!API_URL) return null
+
+  // Erro de rede/CORS/servidor: aviso sutil, não some em silêncio
+  if (!loading && fetchError) {
+    return (
+      <p className="text-rose-400/40 text-xs text-center py-2 select-none">
+        Não foi possível carregar os recados agora.
+      </p>
+    )
+  }
+
+  // Carregou, sem erros, mas realmente vazio: não renderiza o quadro
+  if (!loading && !fetchError && recados.length === 0) return null
 
   return (
     <div className="w-full">

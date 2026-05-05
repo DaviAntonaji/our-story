@@ -94,14 +94,16 @@ export async function getRecados({ limit = 50, offset = 0 } = {}, p = pool) {
   const safeLimit = Math.min(Math.max(1, parseInt(String(limit), 10) || 50), 100)
   const safeOffset = Math.max(0, parseInt(String(offset), 10) || 0)
 
-  const [rows] = await p.execute(
+  // query() em vez de execute() para evitar problema do MySQL 5.7
+  // com prepared statements binários no LIMIT/OFFSET.
+  // safeLimit e safeOffset são inteiros garantidos — sem risco de injection.
+  const [rows] = await p.query(
     `SELECT id, name, message,
             DATE_FORMAT(created_at, '%Y-%m-%dT%H:%i:%sZ') AS created_at
      FROM recados
      WHERE visible = 1
      ORDER BY created_at DESC
-     LIMIT ? OFFSET ?`,
-    [safeLimit, safeOffset],
+     LIMIT ${safeLimit} OFFSET ${safeOffset}`,
   )
 
   return /** @type {any[]} */ (rows)
@@ -115,7 +117,7 @@ export async function getRecados({ limit = 50, offset = 0 } = {}, p = pool) {
  */
 export async function countRecados(p = pool) {
   if (!p) return 0
-  const [rows] = await p.execute(
+  const [rows] = await p.query(
     'SELECT COUNT(*) AS total FROM recados WHERE visible = 1',
   )
   return Number(/** @type {any[]} */ (rows)[0]?.total ?? 0)
