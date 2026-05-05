@@ -25,7 +25,6 @@ export function createPool(env) {
     password: env.DB_PASSWORD ?? '',
     database,
     charset: 'utf8mb4',
-    timezone: 'Z',
     multipleStatements: false,
     connectTimeout: 10_000,
     waitForConnections: true,
@@ -58,6 +57,16 @@ export async function initDb(p = pool) {
       INDEX idx_visible_created (visible, created_at)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `)
+
+  // Diagnóstico de startup: confirma qual banco e quantos recados visíveis há
+  try {
+    const [[info]] = await p.query(
+      'SELECT DATABASE() AS db, (SELECT COUNT(*) FROM recados WHERE visible = 1) AS cnt',
+    )
+    console.log(`[DB] conectado em "${info.db}" | recados visíveis: ${info.cnt}`)
+  } catch (e) {
+    console.error('[DB] erro no diagnóstico de startup:', e instanceof Error ? e.message : e)
+  }
 }
 
 /**
