@@ -15,6 +15,13 @@ const COLORS = [
 // Rotações determinísticas pelo id — parecem aleatórias mas são estáveis
 const ROTATIONS = [-2.5, 1.5, -1, 2, -1.5, 1, 2.5, -0.5, 1.8, -2.2]
 
+/** Exibe só o primeiro e o último nome. Ex.: "Ana Clara Souza Lima" → "Ana Lima" */
+function shortName(full) {
+  const parts = String(full).trim().split(/\s+/).filter(Boolean)
+  if (parts.length <= 2) return parts.join(' ')
+  return `${parts[0]} ${parts[parts.length - 1]}`
+}
+
 function formatDate(isoStr) {
   try {
     return new Date(isoStr).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })
@@ -67,7 +74,7 @@ function PostIt({ recado, index }) {
           className="font-semibold text-[13px] mb-1.5 font-sans allow-select leading-snug"
           style={{ color: color.text }}
         >
-          {recado.name}
+          {shortName(recado.name)}
           <span className="ml-1 text-[11px] opacity-70">💕</span>
         </p>
 
