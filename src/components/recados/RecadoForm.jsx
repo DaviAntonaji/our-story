@@ -4,7 +4,7 @@ import { Turnstile } from '@marsidev/react-turnstile'
 const apiUrl = import.meta.env.VITE_RECADOS_API_URL
 const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY
 
-export default function RecadoForm() {
+export default function RecadoForm({ onSuccess }) {
   const turnstileRef = useRef(null)
   const [token, setToken] = useState(null)
   const [name, setName] = useState('')
@@ -46,8 +46,7 @@ export default function RecadoForm() {
           invalid_name: 'Verifique o nome.',
           invalid_email: 'Verifique o e-mail.',
           invalid_message: 'Escreva uma mensagem (não muito longa).',
-          delivery_failed: 'Não foi possível enviar agora. Tente mais tarde.',
-          server_misconfigured: 'Serviço temporariamente indisponível.',
+          service_unavailable: 'Serviço temporariamente indisponível. Tente mais tarde.',
         }
         setFeedback({
           type: 'err',
@@ -66,6 +65,7 @@ export default function RecadoForm() {
       turnstileRef.current?.reset()
       setToken(null)
       setStatus('idle')
+      onSuccess?.()
     } catch {
       setFeedback({ type: 'err', text: 'Sem conexão ou servidor fora do ar. Tente de novo.' })
       turnstileRef.current?.reset()

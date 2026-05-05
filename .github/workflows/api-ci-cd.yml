@@ -39,6 +39,12 @@ jobs:
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          IP_HASH_SECRET: ${{ secrets.IP_HASH_SECRET }}
         with:
           host: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
@@ -46,7 +52,7 @@ jobs:
           port: ${{ secrets.SFTP_PORT }}
           command_timeout: 45m
           script_stop: true
-          envs: TURNSTILE_SECRET_KEY,MAIL_SERVER,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_FROM,MAIL_TO
+          envs: TURNSTILE_SECRET_KEY,MAIL_SERVER,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_FROM,MAIL_TO,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_NAME,IP_HASH_SECRET
           script: |
             set -eu
             REPO="${{ secrets.REPO_DIRECTORY }}"
@@ -76,6 +82,13 @@ jobs:
               printf '%s\n' "MAIL_FROM=$MF"
               printf '%s\n' "MAIL_TO=$MT"
               printf '%s\n' "ALLOWED_ORIGINS=https://ourstory.antonaji.com.br"
+              # DB — opcionais: se não configurados, a API só envia e-mail
+              [ -n "${DB_HOST:-}" ]     && printf '%s\n' "DB_HOST=$DB_HOST"
+              [ -n "${DB_PORT:-}" ]     && printf '%s\n' "DB_PORT=$DB_PORT"
+              [ -n "${DB_USER:-}" ]     && printf '%s\n' "DB_USER=$DB_USER"
+              [ -n "${DB_PASSWORD:-}" ] && printf '%s\n' "DB_PASSWORD=$DB_PASSWORD"
+              [ -n "${DB_NAME:-}" ]     && printf '%s\n' "DB_NAME=$DB_NAME"
+              [ -n "${IP_HASH_SECRET:-}" ] && printf '%s\n' "IP_HASH_SECRET=$IP_HASH_SECRET"
             } > api/.env
             chmod 600 api/.env
             IMG=our-story-api:latest

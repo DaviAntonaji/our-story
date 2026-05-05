@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import RecadoForm from '../recados/RecadoForm'
+import RecadoBoard from '../recados/RecadoBoard'
 import { fadeV, staggerV, upV } from '../../data/constants'
 
 export default function RecadoSlide() {
+  const [boardKey, setBoardKey] = useState(0)
+
   return (
     <Slide id="recado" bg="slide-bg-magenta">
       {(inView) => (
@@ -12,8 +16,9 @@ export default function RecadoSlide() {
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-6 text-center w-full max-w-lg mx-auto"
+          className="flex flex-col items-center gap-6 text-center w-full max-w-2xl mx-auto"
         >
+          {/* Cabeçalho */}
           <MI v={fadeV} className="chapter-label">
             Um recadinho
           </MI>
@@ -22,12 +27,19 @@ export default function RecadoSlide() {
               Quer deixar um recado pra gente?
             </h2>
             <p className="text-rose-200/75 text-sm sm:text-base max-w-md mx-auto">
-              Se você chegou até aqui como amigo, família ou visitante: fique à vontade. Conto essa história do meu jeito,
-              e adoramos saber que passaram por aqui.
+              Se você chegou até aqui como amigo, família ou visitante: fique à vontade. Conto essa
+              história do meu jeito, e adoramos saber que passaram por aqui.
             </p>
           </MI>
+
+          {/* Quadro de post-its — recarrega com boardKey após novo envio */}
+          <MI v={fadeV} className="w-full">
+            <RecadoBoard fetchKey={boardKey} />
+          </MI>
+
+          {/* Formulário */}
           <MI v={upV} className="w-full card-surface p-5 sm:p-6 card-gold-border">
-            <RecadoForm />
+            <RecadoForm onSuccess={() => setBoardKey((k) => k + 1)} />
           </MI>
         </motion.div>
       )}

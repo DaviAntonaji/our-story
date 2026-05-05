@@ -2,10 +2,25 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import rateLimit from 'express-rate-limit'
+import { createHash, createHmac } from 'node:crypto'
 
 import { validateRecado } from './validate.js'
 import { verifyTurnstile } from './turnstile.js'
 import { createMailTransport, sendRecadoMail, firstSiteOriginFromEnv } from './mail.js'
+import { sanitizeText, sanitizeLine } from './sanitize.js'
+import { createPool, initDb, saveRecado, getRecados, countRecados } from './db.js'
+
+/**
+ * Gera hash do IP para armazenamento — nunca armazena o raw.
+ * Com IP_HASH_SECRET usa HMAC-SHA256 (irreversível mesmo por rainbow table).
+ * Sem segredo cai para SHA-256 puro (ainda anônimo, mas reversível por força bruta em IPv4).
+ */
+function hashIp(ip, secret) {
+  if (!ip) return ''
+  return secret
+    ? createHmac('sha256', secret).update(ip).digest('hex')
+    : createHash('sha256').update(ip).digest('hex')
+}
 
 const PORT = parseInt(process.env.PORT || '7000', 10)
 const IS_PROD = process.env.NODE_ENV === 'production'
@@ -44,6 +59,12 @@ function assertConfigOrExit() {
 
 assertConfigOrExit()
 
+// -- DB (opcional: graceful degradation se não configurado) --
+const dbPool = createPool(process.env)
+if (!dbPool) {
+  console.warn('[DB] Variáveis DB_HOST / DB_USER / DB_NAME ausentes — persistência desativada.')
+}
+
 const app = express()
 
 if (process.env.TRUST_PROXY === '1') {
@@ -71,7 +92,7 @@ app.use(
       if (allowedOrigins.includes(origin)) return callback(null, true)
       return callback(null, false)
     },
-    methods: ['POST', 'OPTIONS'],
+    methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type'],
     maxAge: 86400,
   }),
@@ -86,6 +107,15 @@ const recadosLimiter = rateLimit({
   ...(process.env.TRUST_PROXY === '1' ? { validate: { trustProxy: true } } : {}),
 })
 
+const listLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: IS_PROD ? 60 : 300,
+  message: { error: 'rate_limited' },
+  standardHeaders: true,
+  legacyHeaders: false,
+  ...(process.env.TRUST_PROXY === '1' ? { validate: { trustProxy: true } } : {}),
+})
+
 const mailTransport = createMailTransport(process.env)
 const mailFrom = requiredEnv('MAIL_FROM') || requiredEnv('MAIL_USERNAME') || ''
 const mailTo = requiredEnv('MAIL_TO') || requiredEnv('MAIL_USERNAME') || ''
@@ -94,23 +124,61 @@ app.get('/health', (_req, res) => {
   res.status(200).json({ ok: true, ts: Date.now() })
 })
 
+/**
+ * Erros de servidor (5xx) nunca expõem detalhes internos.
+ * O motivo real fica apenas nos logs do processo.
+ */
+function serverErr(res, status, logMsg) {
+  if (logMsg) console.error(logMsg)
+  return res.status(status).json({ error: 'service_unavailable' })
+}
+
+// GET /api/recados — lista pública de recados (sem e-mail)
+app.get('/api/recados', listLimiter, async (req, res) => {
+  // Se o banco não estiver configurado, retorna lista vazia sem revelar o motivo
+  if (!dbPool) {
+    return res.status(200).json({ ok: true, recados: [], total: 0, limit: 50, offset: 0 })
+  }
+
+  const limit = Math.min(Math.max(1, parseInt(String(req.query.limit || '50'), 10) || 50), 100)
+  const offset = Math.max(0, parseInt(String(req.query.offset || '0'), 10) || 0)
+
+  try {
+    const [recados, total] = await Promise.all([
+      getRecados({ limit, offset }, dbPool),
+      countRecados(dbPool),
+    ])
+    return res.status(200).json({ ok: true, recados, total, limit, offset })
+  } catch (e) {
+    return serverErr(res, 500, `[recados:list] ${e instanceof Error ? e.message : 'unknown'}`)
+  }
+})
+
+// POST /api/recados — envio de recado (e-mail + persistência)
 app.post('/api/recados', recadosLimiter, async (req, res) => {
   const secret = process.env.TURNSTILE_SECRET_KEY
 
   if (!secret) {
-    console.error('TURNSTILE_SECRET_KEY ausente')
-    return res.status(503).json({ error: 'server_misconfigured' })
+    return serverErr(res, 503, '[recados:post] TURNSTILE_SECRET_KEY ausente')
   }
 
   if (!mailTransport || !mailFrom || !mailTo) {
-    console.error('Mail não configurado (MAIL_* / MAIL_FROM / MAIL_TO)')
-    return res.status(503).json({ error: 'server_misconfigured' })
+    return serverErr(res, 503, '[recados:post] transporte de mail não configurado')
   }
 
   const v = validateRecado(req.body)
   if (!v.ok) {
     return res.status(400).json({ error: v.code })
   }
+
+  // Sanitização anti-XSS — executada após validação de tamanho/formato
+  const name = sanitizeLine(v.name)
+  const email = sanitizeLine(v.email)
+  const message = sanitizeText(v.message)
+
+  // Revalida após sanitização (tags removidas podem esvaziar o campo)
+  if (!name) return res.status(400).json({ error: 'invalid_name' })
+  if (!message) return res.status(400).json({ error: 'invalid_message' })
 
   const ip =
     req.ip ||
@@ -121,8 +189,8 @@ app.post('/api/recados', recadosLimiter, async (req, res) => {
   let captchaOk
   try {
     captchaOk = await verifyTurnstile(v.turnstileToken, secret, ip)
-  } catch {
-    return res.status(502).json({ error: 'captcha_verify_failed' })
+  } catch (e) {
+    return serverErr(res, 502, `[recados:captcha] verificação falhou: ${e instanceof Error ? e.message : 'unknown'}`)
   }
 
   if (!captchaOk) {
@@ -132,27 +200,44 @@ app.post('/api/recados', recadosLimiter, async (req, res) => {
   try {
     await sendRecadoMail(
       mailTransport,
-      { name: v.name, email: v.email, message: v.message },
+      { name, email, message },
       { from: mailFrom, to: mailTo },
       { siteOrigin: firstSiteOriginFromEnv(process.env) },
     )
   } catch (e) {
-    console.error('Envio SMTP falhou:', e instanceof Error ? e.message : 'unknown')
-    return res.status(502).json({ error: 'delivery_failed' })
+    return serverErr(res, 502, `[recados:mail] envio falhou: ${e instanceof Error ? e.message : 'unknown'}`)
+  }
+
+  // Persistência no banco (best-effort — falha não bloqueia resposta ao cliente)
+  if (dbPool) {
+    try {
+      const ipHash = hashIp(ip, process.env.IP_HASH_SECRET || '')
+      await saveRecado({ name, email, message, ipHash }, dbPool)
+    } catch (e) {
+      console.error(`[recados:db] falha ao salvar: ${e instanceof Error ? e.message : 'unknown'}`)
+    }
   }
 
   return res.status(200).json({ ok: true })
 })
 
 app.use((_req, res) => {
-  res.status(404).json({ error: 'not_found' })
+  res.status(404).end()
 })
 
 app.use((err, _req, res, _next) => {
-  console.error(err)
-  res.status(500).json({ error: 'internal_error' })
+  console.error('[unhandled]', err)
+  res.status(500).json({ error: 'service_unavailable' })
 })
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', async () => {
+  if (dbPool) {
+    try {
+      await initDb(dbPool)
+      console.log('[DB] Tabela recados pronta.')
+    } catch (e) {
+      console.error('[DB] Falha ao inicializar tabela:', e instanceof Error ? e.message : 'unknown')
+    }
+  }
   console.log(`our-story-api listening on :${PORT}`)
 })
