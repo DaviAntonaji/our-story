@@ -98,7 +98,7 @@ jobs:
             chmod 600 api/.env
             IMG=our-story-api:latest
             CNT=our-story-api
-            docker build -t "$IMG" ./api
+            docker build -t --no-cache "$IMG" ./api
             for c in repo-our-story-api-1 "$CNT"; do
               docker stop "$c" 2>/dev/null || true
               docker rm "$c" 2>/dev/null || true
