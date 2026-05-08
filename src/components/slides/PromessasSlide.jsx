@@ -25,6 +25,7 @@ export default function PromessasSlide() {
               ['🛡️', 'Cuidar de você com atenção e carinho'],
               ['✝️', 'Te aproximar de Cristo todos os dias'],
               ['🙏', 'Conduzir tudo com temor a Deus'],
+              ['🕊️', 'Viver santidade no nosso namoro, honrando a Deus em cada escolha'],
               ['⏳', 'Não apressar etapas - seu tempo é sagrado'],
               ['🧱', 'Provar com atitudes, não só palavras'],
               ['🌊', 'Manter constância emocional ao seu lado'],
