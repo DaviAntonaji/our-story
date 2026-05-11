@@ -546,6 +546,22 @@ export const TIMELINE = [
     ],
   },
   {
+    data: '07 de maio de 2026',
+    titulo: 'Seu primeiro aniversário ao meu lado 🎂',
+    icon: '🎂',
+    paras: [
+      'Seu primeiro aniversário sendo meu - e o primeiro que eu vivi sendo seu. Um dia que eu esperei com o coração cheio, querendo que cada minuto te lembrasse o quanto você é amada.',
+      'Tudo começou às 00:00 em ponto. Assim que o relógio virou, eu te mandei um textinho de aniversário escrito do jeitinho que eu sentia naquele momento - e fiz um story só pra você, pro mundo inteiro saber que aquele dia tinha dona. Eu queria ser o primeiro a te dizer parabéns. Eu queria que você dormisse já sabendo o quanto é especial pra mim.',
+      'De manhã, ainda meio sonolento, recebi sua mensagem aflita: você ia perder o ônibus pra escola. Não pensei duas vezes - me arrumei em 5 minutos (literalmente), peguei o carro e te avisei que já estava saindo pra te buscar. Te levei pra escola, ganhamos um tempinho só nosso no caminho, e por mais corrido que tenha sido, foi um dos pedacinhos mais bonitos do dia. Cuidar de você no seu aniversário, mesmo nas coisas pequenas, foi um privilégio que eu não trocaria por nada.',
+      'À noite, antes do culto, chegou o momento que eu vinha guardando. Te entreguei seus presentes, um por um, vendo seu rosto se iluminar em cada caixinha. O primeiro: um colar com a frase "Para minha futura esposa" - porque eu não queria que ele fosse só uma joia, queria que ele fosse uma promessa. Pra você usar perto do peito e lembrar que o meu sim já tá decidido há muito tempo. Em seguida, um par de brincos delicados e um colar menorzinho que combina com o primeiro - dois caminhando juntos, igual a gente. E foi só depois, no caminho pro culto, que eu realmente reparei: você ali do meu lado, com a felicidade ainda fresca no rosto, e aquele olhar que eu já conhecia - os olhos brilhando como se quisesse chorar, do mesmo jeito do dia em que a gente começou a namorar. A mesma alegria daquela noite no João Julhão, agora me devolvida do outro lado do carro - e foi naquele instante que eu entendi: era esse o presente que Deus tinha guardado pra mim no seu aniversário.',
+      'E ainda tinha mais: o presente da minha mãe pra você. Aquele cuidado que vai além de mim - uma família inteira escolhendo te receber, te celebrar, te chamar de nossa. Eu sei o quanto isso te marcou, e me marcou ainda mais ver você sendo amada por quem eu amo.',
+      'Fomos pro culto juntos, e ali, na presença de Deus, eu agradeci por mais um ano da sua vida e pela graça de poder estar do seu lado nesse. Não tem presente material que se compare a isso - poder orar por você no dia em que Deus te trouxe ao mundo é algo que eu vou guardar pra sempre.',
+      'E quando o dia já parecia perfeito, ele ainda nos deu o melhor pra última hora: nossa primeira ligação de vídeo. A primeira de todas. Você foi me mostrando seu quartinho enquanto arrumava as coisas, depois foi comer alguma coisa, trocou de roupa, foi se ajeitando pra dormir...',
+      'A gente acabou dormindo em ligação - eu apaguei primeiro kkkkk, e você desligou depois, com aquele cuidado que só você tem. Foi simples e foi gigante ao mesmo tempo. Porque "boa noite" deixou de ser distância naquele dia: virou presença, virou colo, virou a sensação de que a gente nunca mais ia dormir sozinho de verdade.',
+      'Foi o seu primeiro aniversário comigo, mas no meu coração foi como se já fizesse tempo. E que venham todos os outros - cada 7 de maio, eu quero ser o primeiro a te abraçar, o primeiro a te dizer parabéns, o primeiro a te lembrar do quanto você é amada por mim e por Deus. 🤍',
+    ],
+  },
+  {
     data: '10 de maio de 2026',
     titulo: 'O tipo de dia que eu nunca quero esquecer',
     icon: '🤍',
