@@ -32,7 +32,7 @@ export default function RecadoSlide() {
             </p>
           </MI>
 
-          {/* Quadro de post-its — recarrega com boardKey após novo envio */}
+          {/* Quadro de post-its - recarrega com boardKey após novo envio */}
           <MI v={fadeV} className="w-full">
             <RecadoBoard fetchKey={boardKey} />
           </MI>

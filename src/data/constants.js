@@ -140,7 +140,7 @@ export const FOTOS = [
   // Primeira Santa Ceia
   '/imgs/photos/primeira_santa_ceia/16.jpg',
   // Momentos aleatórios
-  '/imgs/photos/momentos_aleatorios/17.jpg',
+  '/imgs/photos/momentos_aleatorios/17.jpg', '/imgs/photos/momentos_aleatorios/IMG_3026.jpg',
   // Cafeteria Koike
   '/imgs/photos/cafeteria_koike/18.jpg', '/imgs/photos/cafeteria_koike/19.jpg',
   '/imgs/photos/cafeteria_koike/20.jpg', '/imgs/photos/cafeteria_koike/21.jpg', '/imgs/photos/cafeteria_koike/22.jpg',
@@ -180,6 +180,15 @@ export const FOTOS = [
   '/imgs/photos/segundo_mesversario_dia2/IMG_2868.jpg', '/imgs/photos/segundo_mesversario_dia2/IMG_2870.jpg',
   '/imgs/photos/segundo_mesversario_dia2/IMG_2872.jpg', '/imgs/photos/segundo_mesversario_dia2/IMG_2879.jpg',
   '/imgs/photos/segundo_mesversario_dia2/IMG_2882.jpg',
+  // Aniversário Douglas
+  '/imgs/photos/aniversario_douglas/ee025cb9-e25b-437b-b0b8-5636c5fc24e5.jpg',
+  // Conhecendo sua avó paterna
+  '/imgs/photos/conhecendo_sua_avo_paterna/b0e9cd4e-dd7c-41e1-804c-427c4907c2a5.jpg',
+  '/imgs/photos/conhecendo_sua_avo_paterna/e3d2ec46-d34d-45db-b35c-923e05759553.jpg',
+  '/imgs/photos/conhecendo_sua_avo_paterna/f3c89a02-c19a-49e1-a5b3-4b697ea9f17c.jpg',
+  // Carreta Furacão
+  '/imgs/photos/1x_carreta_furacao/IMG_3086.jpg', '/imgs/photos/1x_carreta_furacao/IMG_3089.jpg',
+  '/imgs/photos/1x_carreta_furacao/IMG_3090.jpg',
 ]
 
 /**
@@ -534,6 +543,19 @@ export const TIMELINE = [
       'Depois fomos até a avenida comer tapioca, ainda naquele clima leve de quem acabou de trocar algo tão especial. Eu ainda passei e comprei uns docinhos pra você, porque você merece.',
       'Fechamos o dia na praça, no canteiro central da avenida - só a gente, o fim de tarde e tudo aquilo que a gente já construiu em dois meses.',
       'Dois meses que parecem muito mais pelo que a gente já viveu. E esse anel no seu dedo é só o começo de tudo que ainda vem por aí. 🤍',
+    ],
+  },
+  {
+    data: '10 de maio de 2026',
+    titulo: 'O tipo de dia que eu nunca quero esquecer',
+    icon: '🤍',
+    paras: [
+      'Hoje foi um daqueles dias simples… mas que ficaram gigantes pra mim.',
+      'Cheguei na sua casa às 12:40 e, sem perceber, passamos praticamente 12 horas juntos. Fomos no aniversário do seu bisavô, depois visitamos sua vó por parte de pai, depois sua vó por parte de mãe, e iamos terminar o dia do jeito mais "nós" possível: juntinhos, assistindo Enrolados.',
+      'Mas como sempre, os melhores momentos aparecem do nada.',
+      'Na hora de ir embora, vimos que a Carreta Furacão estava no último dia. Te perguntei se queria ir… e quando sua mãe deixou, aquilo que seria só um programa improvisado acabou virando um dos momentos mais especiais do nosso dia. Nossa primeira vez andando de moto juntos. Sua primeira vez num trenzinho. A última volta do último dia.',
+      'Foi rápido, foi simples… e foi completamente inesquecível. As piadas da carreta, a bagunça, nós dois rindo juntos - parecia uma daquelas memórias bobas que acabam virando favoritas sem a gente nem perceber.',
+      'E eu acho que foi exatamente isso que esse dia foi: uma lembrança simples… mas perfeita do nosso jeitinho. 🤍',
     ],
   },
 ]

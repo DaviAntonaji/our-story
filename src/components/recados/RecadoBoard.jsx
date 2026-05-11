@@ -12,7 +12,7 @@ const COLORS = [
   { bg: '#fdf2f8', text: '#6b21a8', pin: '#9333ea' }, // lavanda
 ]
 
-// Rotações determinísticas pelo id — parecem aleatórias mas são estáveis
+// Rotações determinísticas pelo id - parecem aleatórias mas são estáveis
 const ROTATIONS = [-2.5, 1.5, -1, 2, -1.5, 1, 2.5, -0.5, 1.8, -2.2]
 
 /** Exibe só o primeiro e o último nome. Ex.: "Ana Clara Souza Lima" → "Ana Lima" */

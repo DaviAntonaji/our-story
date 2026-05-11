@@ -7,7 +7,7 @@
  *  - Quebras de linha são normalizadas
  *  - Espaços excessivos em nome/e-mail são colapsados
  *
- * O retorno é sempre texto simples — nunca HTML.
+ * O retorno é sempre texto simples - nunca HTML.
  * Na API (JSON), o cliente é responsável por renderizar com
  * textContent (nunca innerHTML) para garantir segurança end-to-end.
  */

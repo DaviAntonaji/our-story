@@ -117,7 +117,7 @@ export async function getRecados({ limit = 50, offset = 0 } = {}, p = pool) {
 
   // query() em vez de execute() para evitar problema do MySQL 5.7
   // com prepared statements binários no LIMIT/OFFSET.
-  // safeLimit e safeOffset são inteiros garantidos — sem risco de injection.
+  // safeLimit e safeOffset são inteiros garantidos - sem risco de injection.
   const [rows] = await p.query(
     `SELECT id, name, message,
             DATE_FORMAT(created_at, '%Y-%m-%dT%H:%i:%sZ') AS created_at

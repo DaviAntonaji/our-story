@@ -11,7 +11,7 @@ import { sanitizeText, sanitizeLine } from './sanitize.js'
 import { createPool, initDb, saveRecado, approveRecado, getRecados, countRecados } from './db.js'
 
 /**
- * Gera hash do IP para armazenamento — nunca armazena o raw.
+ * Gera hash do IP para armazenamento - nunca armazena o raw.
  * Com IP_HASH_SECRET usa HMAC-SHA256 (irreversível mesmo por rainbow table).
  */
 function hashIp(ip, secret) {
@@ -138,7 +138,7 @@ assertConfigOrExit()
 // -- DB (opcional: graceful degradation se não configurado) --
 const dbPool = createPool(process.env)
 if (!dbPool) {
-  console.warn('[DB] Variáveis DB_HOST / DB_USER / DB_NAME ausentes — persistência desativada.')
+  console.warn('[DB] Variáveis DB_HOST / DB_USER / DB_NAME ausentes - persistência desativada.')
 }
 
 const app = express()
@@ -200,7 +200,7 @@ app.get('/health', (_req, res) => {
   res.status(200).json({ ok: true, ts: Date.now() })
 })
 
-// Diagnóstico temporário — remove após confirmar a causa raiz
+// Diagnóstico temporário - remove após confirmar a causa raiz
 app.get('/health/db', async (_req, res) => {
   if (!dbPool) return res.json({ pool: null })
   try {
@@ -222,7 +222,7 @@ function serverErr(res, status, logMsg) {
   return res.status(status).json({ error: 'service_unavailable' })
 }
 
-// GET /api/recados — lista pública de recados (sem e-mail)
+// GET /api/recados - lista pública de recados (sem e-mail)
 app.get('/api/recados', listLimiter, async (req, res) => {
   // Se o banco não estiver configurado, retorna lista vazia sem revelar o motivo
   if (!dbPool) {
@@ -244,7 +244,7 @@ app.get('/api/recados', listLimiter, async (req, res) => {
   }
 })
 
-// GET /api/recados/approve — aprovação via link do e-mail (retorna HTML, não JSON)
+// GET /api/recados/approve - aprovação via link do e-mail (retorna HTML, não JSON)
 app.get('/api/recados/approve', async (req, res) => {
   const siteOrigin = firstSiteOriginFromEnv(process.env)
   const secret = process.env.APPROVE_SECRET
@@ -279,7 +279,7 @@ app.get('/api/recados/approve', async (req, res) => {
   }
 })
 
-// POST /api/recados — envio de recado (salva no DB → manda e-mail com link de aprovação)
+// POST /api/recados - envio de recado (salva no DB → manda e-mail com link de aprovação)
 app.post('/api/recados', recadosLimiter, async (req, res) => {
   const secret = process.env.TURNSTILE_SECRET_KEY
 
@@ -296,7 +296,7 @@ app.post('/api/recados', recadosLimiter, async (req, res) => {
     return res.status(400).json({ error: v.code })
   }
 
-  // Sanitização anti-XSS — executada após validação de tamanho/formato
+  // Sanitização anti-XSS - executada após validação de tamanho/formato
   const name = sanitizeLine(v.name)
   const email = sanitizeLine(v.email)
   const message = sanitizeText(v.message)
@@ -330,7 +330,7 @@ app.post('/api/recados', recadosLimiter, async (req, res) => {
       insertedId = await saveRecado({ name, email, message, ipHash }, dbPool)
     } catch (e) {
       console.error(`[recados:db] falha ao salvar: ${e instanceof Error ? e.message : 'unknown'}`)
-      // Continua — e-mail é enviado mesmo sem persistência
+      // Continua - e-mail é enviado mesmo sem persistência
     }
   }
 

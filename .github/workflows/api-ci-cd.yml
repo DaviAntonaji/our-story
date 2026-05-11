@@ -85,7 +85,7 @@ jobs:
               printf '%s\n' "MAIL_FROM=$MF"
               printf '%s\n' "MAIL_TO=$MT"
               printf '%s\n' "ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-https://ourstory.antonaji.com.br}"
-              # DB — opcionais: se não configurados, a API só envia e-mail
+              # DB - opcionais: se não configurados, a API só envia e-mail
               [ -n "${DB_HOST:-}" ]     && printf '%s\n' "DB_HOST=$DB_HOST"
               [ -n "${DB_PORT:-}" ]     && printf '%s\n' "DB_PORT=$DB_PORT"
               [ -n "${DB_USER:-}" ]     && printf '%s\n' "DB_USER=$DB_USER"
