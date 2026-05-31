@@ -14,6 +14,39 @@ const notaRodape = { color: 'rgb(233, 213, 255)' }
 const rotulo = { color: 'rgb(199, 210, 254)' }
 
 function PassagemCard({ passagem }) {
+  if (passagem.principal) {
+    return (
+      <div className="relative rounded-2xl overflow-hidden border border-amber-300/50 bg-gradient-to-br from-amber-200/10 via-indigo-900/40 to-transparent px-5 py-5 shadow-[0_0_32px_rgba(212,175,55,0.22)]">
+        <div className="absolute -top-12 left-1/2 h-28 w-28 -translate-x-1/2 rounded-full bg-amber-300/20 blur-3xl" />
+        <div className="relative">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-amber-300/50" />
+            <p className="text-[9px] uppercase tracking-[0.26em] text-amber-200/85 whitespace-nowrap">✦ Nosso versículo ✦</p>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-amber-300/50" />
+          </div>
+          <h3 className="font-display text-xl font-semibold text-center leading-snug mb-4 text-amber-100">
+            {passagem.titulo}
+          </h3>
+          <div className="space-y-3 text-sm sm:text-[15px] leading-[1.85] text-left font-body" style={corpo}>
+            {passagem.versiculos.map(({ n, texto }) => (
+              <p key={n} style={corpo}>
+                <span className="font-bold mr-1.5" style={numVersiculo}>{n}</span>
+                {texto}
+              </p>
+            ))}
+          </div>
+          {passagem.nota && (
+            <div className="mt-4 pt-3 border-t border-amber-300/20">
+              <p className="text-xs italic text-center" style={{ color: 'rgb(253, 230, 180)' }}>
+                {passagem.nota}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+
   if (passagem.tipo === 'destaque') {
     return (
       <div className="rounded-2xl border border-amber-400/22 bg-white/[0.06] px-4 py-4 shadow-sm shadow-indigo-950/30">
@@ -84,7 +117,7 @@ export default function VersiculoSlide() {
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-6 w-full max-w-md mx-auto allow-select pb-14"
+          className="flex flex-col gap-6 w-full max-w-md lg:max-w-2xl mx-auto allow-select pb-14"
         >
           <div className="text-center pt-2">
             <MI v={fadeV} className="chapter-label">Uma palavra pra nós</MI>

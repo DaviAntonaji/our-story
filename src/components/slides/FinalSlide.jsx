@@ -14,7 +14,7 @@ export default function FinalSlide() {
     <Slide id="final" bg="slide-bg-final">
       {(inView) => (
         <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-5 text-center w-full max-w-md mx-auto"
+          className="flex flex-col items-center gap-5 text-center w-full max-w-md lg:max-w-2xl mx-auto"
         >
           <MI v={fadeV} className="chapter-label">Capítulo 1 de muitos</MI>
           <MI v={scaleV} className="flex gap-3 text-4xl sm:text-5xl">

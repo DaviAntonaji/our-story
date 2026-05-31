@@ -71,7 +71,7 @@ export default function CartasLacradasSlide() {
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-6 w-full max-w-md mx-auto allow-select pb-14"
+          className="flex flex-col gap-6 w-full max-w-md lg:max-w-2xl mx-auto allow-select pb-14"
         >
           <div className="text-center pt-2">
             <MI v={fadeV} className="chapter-label">Para o nosso futuro</MI>

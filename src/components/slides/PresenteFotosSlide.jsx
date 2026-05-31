@@ -115,7 +115,7 @@ export default function PresenteFotosSlide() {
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-6 w-full max-w-sm mx-auto allow-select pb-14"
+          className="flex flex-col gap-6 w-full max-w-sm lg:max-w-xl mx-auto allow-select pb-14"
         >
           <div className="text-center pt-2">
             <MI v={fadeV} className="chapter-label">Eu te dei</MI>

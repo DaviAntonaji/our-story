@@ -34,7 +34,7 @@ export default function MusicaSlide() {
     <Slide id="musica" bg="slide-bg-purple">
       {(inView) => (
         <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-5 text-center w-full max-w-sm mx-auto"
+          className="flex flex-col items-center gap-5 text-center w-full max-w-sm lg:max-w-xl mx-auto"
         >
           <MI v={fadeV} className="chapter-label">A nossa trilha sonora</MI>
           <MI v={scaleV} className="text-5xl sm:text-6xl">🎵</MI>

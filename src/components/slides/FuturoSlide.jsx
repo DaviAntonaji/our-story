@@ -9,7 +9,7 @@ export default function FuturoSlide() {
     <Slide id="futuro" bg="slide-bg-blue" center={false}>
       {(inView) => (
         <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-4 w-full max-w-sm mx-auto"
+          className="flex flex-col gap-4 w-full max-w-sm lg:max-w-xl mx-auto"
         >
           <div className="text-center">
             <MI v={fadeV} className="chapter-label">O que está por vir</MI>

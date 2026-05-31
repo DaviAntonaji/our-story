@@ -8,7 +8,7 @@ export default function IntroSlide() {
     <Slide id="intro" bg="slide-bg-rose">
       {(inView) => (
         <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-5 text-center w-full max-w-sm mx-auto"
+          className="flex flex-col items-center gap-5 text-center w-full max-w-sm lg:max-w-xl mx-auto"
         >
           <MI v={fadeV} className="chapter-label">Nossa história</MI>
           <MI v={scaleV} className="flex gap-3 text-4xl">

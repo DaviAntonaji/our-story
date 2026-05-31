@@ -43,6 +43,7 @@ export const PASSAGENS_BIBLICAS = [
   {
     id: '1cor13',
     titulo: '1 Coríntios 13:4–7',
+    principal: true,
     tipo: 'numerados',
     versiculos: [
       { n: '4', texto: 'O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.' },

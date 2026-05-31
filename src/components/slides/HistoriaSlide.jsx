@@ -151,7 +151,7 @@ export default function HistoriaSlide() {
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-6 w-full max-w-sm mx-auto allow-select"
+          className="flex flex-col gap-6 w-full max-w-sm lg:max-w-xl mx-auto allow-select"
         >
           <div className="text-center">
             <MI v={fadeV} className="chapter-label">Nossa história</MI>

@@ -8,7 +8,7 @@ export default function CartaSlide() {
     <Slide id="carta" bg="slide-bg-amber">
       {(inView) => (
         <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-6 text-center w-full max-w-sm mx-auto"
+          className="flex flex-col items-center gap-6 text-center w-full max-w-sm lg:max-w-xl mx-auto"
         >
           <MI v={fadeV} className="chapter-label">Uma carta pra você</MI>
           <MI v={scaleV} className="text-4xl" style={{ animation: 'pulseSoft 3s ease-in-out infinite' }}>💌</MI>

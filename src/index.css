@@ -195,6 +195,21 @@ body {
   letter-spacing: -0.04em;
 }
 
+/* ─── Responsividade: tela grande / TV / projetor ────── */
+@media (min-width: 1024px) {
+  html { font-size: 18px; }
+  .text-jumbo  { font-size: clamp(100px, 16vw, 200px); }
+  .text-hero   { font-size: clamp(36px, 6vw, 72px); }
+  .chapter-label { font-size: 0.75rem; letter-spacing: 0.2em; }
+  .slide-nav { right: 20px; gap: 7px; }
+  .slide-nav-dot { width: 6px; height: 6px; }
+  .slide-nav-dot.active { height: 26px; }
+}
+@media (min-width: 1440px) {
+  html { font-size: 20px; }
+  .text-jumbo { font-size: clamp(120px, 14vw, 220px); }
+}
+
 /* ─── Hero foto ─────────────────────────────────────── */
 .photo-frame {
   border-radius: 20px;

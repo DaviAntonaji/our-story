@@ -8,7 +8,7 @@ export default function TagsSlide() {
     <Slide id="tags" bg="slide-bg-magenta">
       {(inView) => (
         <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-5 w-full max-w-sm mx-auto"
+          className="flex flex-col items-center gap-5 w-full max-w-sm lg:max-w-xl mx-auto"
         >
           <div className="text-center">
             <MI v={fadeV} className="chapter-label">Sobre você</MI>
