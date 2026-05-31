@@ -83,8 +83,8 @@ function PostIt({ recado, index }) {
 
         {/* Mensagem */}
         <div
-          className="text-[13px] leading-relaxed allow-select overflow-hidden"
-          style={{ color: color.text, opacity: 0.84, maxHeight: '9.5rem' }}
+          className="text-[13px] leading-relaxed allow-select"
+          style={{ color: color.text, opacity: 0.84 }}
         >
           {lines.map((line, i) => (
             <p key={i} className={i < lines.length - 1 ? 'mb-0.5' : ''}>
