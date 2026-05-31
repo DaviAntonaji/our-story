@@ -290,7 +290,65 @@ export const SLIDE_IDS = [
   'versiculo', 'momentos',
   'historia',
   'presentefotos',
-  'promessas', 'futuro', 'recado', 'final',
+  'promessas', 'futuro', 'recado', 'cartas', 'final',
+]
+
+/**
+ * Cartas guardadas para datas futuras.
+ * - dataAbertura: Date (quando libera) ou null (sempre lacrada até definir a data).
+ * - ✏️ Edite o conteúdo de cada carta antes da data de abertura chegar.
+ */
+export const CARTAS_LACRADAS = [
+  {
+    id: 'carta-1ano',
+    titulo: 'Nosso 1 ano juntos',
+    icon: '💍',
+    dataAbertura: new Date(2027, 2, 4),
+    dataTexto: '04 de março de 2027',
+    descricao: 'Escrita hoje, guardada para o nosso primeiro aniversário de namoro. Um ano inteiro da nossa história.',
+    // ✏️ edite esse conteúdo antes de 04/03/2027
+    conteudo: [
+      'Amor meu,',
+      'Se você está lendo isso, chegamos ao nosso primeiro ano juntos. E eu não consigo imaginar conquista mais bonita do que essa.',
+      'Quando escrevi esse texto, a gente ainda estava construindo tudo - dia após dia, pós-culto por pós-culto, ligação por ligação. E agora, um ano depois, eu só quero que você saiba: cada segundo valeu a pena.',
+      'Cada momento difícil que a gente enfrentou junto, cada risada boba na praça, cada cuidado trocado em silêncio - tudo isso nos trouxe até aqui.',
+      'Te amo hoje mais do que no dia em que escrevi essas palavras. E tenho certeza que ainda vou te amar muito mais daqui um ano.',
+      'Obrigado por escolher ficar. Por crescer comigo. Por ser exatamente quem você é.',
+      'Feliz 1 ano, meu amor. 💍',
+    ],
+  },
+  {
+    id: 'carta-aniversario',
+    titulo: 'Seu próximo aniversário',
+    icon: '🎂',
+    dataAbertura: new Date(2027, 4, 7),
+    dataTexto: '07 de maio de 2027',
+    descricao: 'Uma carta guardada para o seu aniversário de 2027, para que saiba o quanto é amada.',
+    conteudo: [
+      'Amor meu,',
+      'Mais um ano da sua vida - e eu fico tão grato por poder estar do seu lado em mais um.',
+      'Quando escrevi isso, eu já estava pensando em tudo que queria te dizer nesse dia. Então decidi guardar aqui, pra você encontrar no momento certo.',
+      'Que nesse aniversário você se sinta ainda mais amada. Que você saiba que cada ano da sua vida é uma bênção enorme - não só pra mim, mas pra todos que te cercam.',
+      'Você é uma das coisas mais bonitas que já aconteceram na minha vida. Ver você crescer, florescer e sorrir é o meu presente favorito.',
+      'Feliz aniversário, meu amor. 🎂',
+    ],
+  },
+  {
+    id: 'carta-casamento',
+    titulo: 'Nosso casamento',
+    icon: '💒',
+    dataAbertura: null,
+    dataTexto: 'Data sendo planejada com amor',
+    descricao: 'Essa carta só abre no dia do nosso casamento. Já existe, já foi escrita com amor... e está esperando por você.',
+    conteudo: [
+      'Amor meu,',
+      'Chegamos. Esse foi o dia mais esperado.',
+      'Quando escrevi isso, ainda era só um sonho - um plano, uma promessa guardada no coração e orada em silêncio.',
+      'E hoje, no dia do nosso casamento, eu só quero que você saiba: valeu cada espera, cada detalhe, cada oração, cada passo que nos trouxe até o altar.',
+      'Eu escolho você hoje. E vou escolher você todos os dias que vierem depois disso.',
+      'Para sempre, seu amor. 💒',
+    ],
+  },
 ]
 
 /** Bloco Antes de Você / Depois de Você (slide dedicado). */
@@ -329,10 +387,33 @@ export const SLIDE_AMBIENCE = [
   { emoji: '🌿', glow: 'rgba(52, 211, 153, 0.38)' },
   { emoji: '🌅', glow: 'rgba(59, 130, 246, 0.4)' },
   { emoji: '💬', glow: 'rgba(244, 114, 182, 0.35)' },
+  { emoji: '📜', glow: 'rgba(212, 175, 55, 0.40)' },
   { emoji: '💝', glow: 'rgba(251, 113, 133, 0.45)' },
 ]
 
 export const TIMELINE = [
+  {
+    data: '09 de fevereiro de 2026',
+    titulo: 'A mensagem que mudou tudo',
+    icon: '💬',
+    tipo: 'chat',
+    destaque: true,
+    paras: [
+      'Antes dessa mensagem, houve duas tentativas minhas. Duas.',
+      'A primeira: tentei puxar assunto num story que você postou com um presente para uma amiga - falei sobre CBJR. Bloqueio.',
+      'A segunda: te elogiei num pós-culto. Bloqueio de novo.',
+      'Dois cortes secos. Sem chance, sem dó.',
+      'Mas alguns dias antes do acampamento, eu tentei uma terceira vez - mandei uma mensagem simples perguntando como você estava. Você quis me ignorar. E foi aí que sua mãe entrou em cena, dizendo, com outras palavras: "Responde o coitado por educação pelo menos."',
+      'Aquela resposta salvou tudo. Então, olhando pra hoje, eu só tenho uma coisa a dizer: obrigado, mãe da Maysa. Do fundo do coração. 🤍',
+    ],
+    mensagens: [
+      { de: 'ele', hora: '22:36', texto: 'Oii Maysa, tudo bem?\n\nPassando pra saber se vc tá melhor, vi que vc tinha postado que não tava muito bem esses dias' },
+      { de: 'ela', hora: '23:04', texto: 'Oi Davi, tudo sim e com você? Bom, eu realmente estava bem doente de quinta-feira passada para cá, mas hoje estou me sentindo melhor' },
+      { de: 'ele', hora: '23:07', texto: 'Que bom então 🙂\n\nComigo tudo certo também. Que bom que vc já tá se sentindo melhor.' },
+      { de: 'ele', hora: '23:07', texto: 'Ah, e só pra avisar, tô terminando de editar o vídeo que a gente gravou quarta com a Talita kkkk' },
+      { de: 'ela', hora: '23:08', texto: 'Que bom então 😊' },
+    ],
+  },
   {
     data: '13–15 de fevereiro de 2026',
     titulo: 'Onde tudo começou',
@@ -353,6 +434,7 @@ export const TIMELINE = [
   },
   {
     data: '04 de março de 2026',
+    destaque: true,
     titulo: 'Início do nosso namoro',
     icon: '💍',
     paras: [
@@ -487,6 +569,7 @@ export const TIMELINE = [
   },
   {
     data: '04 de abril de 2026',
+    destaque: true,
     titulo: 'Nosso primeiro mês juntos 🤍',
     icon: '🤍',
     paras: [
@@ -572,7 +655,8 @@ export const TIMELINE = [
   },
   {
     data: '07 de maio de 2026',
-    titulo: 'Seu primeiro aniversário ao meu lado 🎂',
+    destaque: true,
+    titulo: 'Seu primeiro aniversário ao meu lado',
     icon: '🎂',
     paras: [
       'Seu primeiro aniversário sendo meu - e o primeiro que eu vivi sendo seu. Um dia que eu esperei com o coração cheio, querendo que cada minuto te lembrasse o quanto você é amada.',

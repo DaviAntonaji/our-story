@@ -23,6 +23,7 @@ import PresenteFotosSlide from './components/slides/PresenteFotosSlide';
 import PromessasSlide from './components/slides/PromessasSlide';
 import FuturoSlide from './components/slides/FuturoSlide';
 import RecadoSlide from './components/slides/RecadoSlide';
+import CartasLacradasSlide from './components/slides/CartasLacradasSlide';
 import FinalSlide from './components/slides/FinalSlide';
 
 export default function App() {
@@ -73,6 +74,7 @@ export default function App() {
             <PromessasSlide />
             <FuturoSlide />
             <RecadoSlide />
+            <CartasLacradasSlide />
             <FinalSlide />
           </div>
         </>
