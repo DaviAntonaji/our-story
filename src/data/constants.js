@@ -268,6 +268,17 @@ export const SESSAO_FOTOS_PRESENTE = {
         'Eu te dei num dia comum também, sem ocasião especial no calendário.',
       ],
     },
+    {
+      id: 'sf5',
+      imagens: ['/imgs/flowers/Fortuna%201.jpg', '/imgs/flowers/Fortuna%202.jpg'],
+      titulo: 'Flor-da-fortuna vermelha',
+      paras: [
+        'Eu te dei uma flor-da-fortuna vermelha porque ela junta dois significados que eu queria te passar ao mesmo tempo: o vermelho fala de amor intenso, paixão, desejo de estar perto, carinho sincero e a força do que a gente está construindo juntos.',
+        'E a flor-da-fortuna em si carrega prosperidade, boa sorte, alegria dentro de casa e aquela resistência bonita de quem floresce bastante quando é cuidado com constância.',
+        'Juntando os dois, eu quis te dizer algo simples e verdadeiro: quero que nosso amor floresça e dure. Te amo, desejo coisas boas pra nós dois, e quero cuidar de você e ver você feliz por muito tempo.',
+        'Foi num dia comum, sem data especial no calendário, eu te dei só porque eu queria te ver sorrir, e porque você merece flores mesmo quando não tem motivo além do amor.',
+      ],
+    },
   ],
 }
 
