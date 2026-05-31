@@ -1,7 +1,12 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import { staggerV, fadeV, scaleV, PASSAGENS_BIBLICAS } from '../../data/constants'
+
+const VISIVEIS = 2
+const PASSAGENS_PREVIEW = PASSAGENS_BIBLICAS.slice(0, VISIVEIS)
+const PASSAGENS_OCULTAS = PASSAGENS_BIBLICAS.slice(VISIVEIS)
 
 const corpo = { color: 'rgb(255, 232, 234)' }
 const numVersiculo = { color: 'rgb(253, 214, 140)' }
@@ -70,6 +75,8 @@ function PassagemCard({ passagem }) {
 }
 
 export default function VersiculoSlide() {
+  const [expandido, setExpandido] = useState(false)
+
   return (
     <Slide id="versiculo" bg="slide-bg-indigo" center={false}>
       {(inView) => (
@@ -95,7 +102,7 @@ export default function VersiculoSlide() {
           </div>
 
           <div className="flex flex-col gap-4 w-full">
-            {PASSAGENS_BIBLICAS.map((p, idx) => (
+            {PASSAGENS_PREVIEW.map((p, idx) => (
               <MI key={p.id}>
                 <div className="relative">
                   {idx > 0 && (
@@ -108,6 +115,44 @@ export default function VersiculoSlide() {
                 </div>
               </MI>
             ))}
+
+            <AnimatePresence>
+              {expandido && PASSAGENS_OCULTAS.map((p, i) => (
+                <motion.div
+                  key={p.id}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.38, delay: i * 0.07, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <div className="relative">
+                    <div
+                      className="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-px bg-gradient-to-r from-transparent via-amber-400/35 to-transparent"
+                      aria-hidden
+                    />
+                    <PassagemCard passagem={p} />
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+
+            {PASSAGENS_OCULTAS.length > 0 && (
+              <div className="flex justify-center pt-1 pb-4">
+                <button
+                  type="button"
+                  onClick={() => setExpandido(v => !v)}
+                  className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-amber-400/10 border border-amber-400/25 text-amber-200 font-sans text-sm font-medium tracking-wide hover:bg-amber-400/18 active:scale-95 transition-all duration-200"
+                >
+                  <span>✦</span>
+                  <span>{expandido ? 'Mostrar menos' : 'Ver mais'}</span>
+                  <span
+                    className="text-xs transition-transform duration-300"
+                    style={{ transform: expandido ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  >
+                    ▾
+                  </span>
+                </button>
+              </div>
+            )}
           </div>
         </motion.div>
       )}
