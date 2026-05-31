@@ -189,6 +189,17 @@ export const FOTOS = [
   // Carreta Furacão
   '/imgs/photos/1x_carreta_furacao/IMG_3086.jpg', '/imgs/photos/1x_carreta_furacao/IMG_3089.jpg',
   '/imgs/photos/1x_carreta_furacao/IMG_3090.jpg',
+  // Conferência Buscarmeeis
+  '/imgs/photos/conferencia_buscarmeeis/IMG_3435.jpg',
+  // Conhecendo minha família
+  '/imgs/photos/conhecendo_minha_familia/7ffe1b30-aa11-45a8-9ef0-4e1d47df6089.jpg',
+  '/imgs/photos/conhecendo_minha_familia/8f27e0c4-836f-4e58-8e22-c98afda03b13.jpg',
+  '/imgs/photos/conhecendo_minha_familia/dbd499d2-eec7-4132-bf9d-5fbde250aeed.jpg',
+  '/imgs/photos/conhecendo_minha_familia/de6b600e-0f0d-4cb5-b53b-1ba68654aa14.jpg',
+  // Tips - maio 2026
+  '/imgs/photos/tips_maio_2026/IMG_3652.jpg', '/imgs/photos/tips_maio_2026/IMG_3654.jpg',
+  '/imgs/photos/tips_maio_2026/IMG_3655.jpg', '/imgs/photos/tips_maio_2026/IMG_3657.jpg',
+  '/imgs/photos/tips_maio_2026/IMG_3658.jpg',
 ]
 
 /**
@@ -572,6 +583,45 @@ export const TIMELINE = [
       'Na hora de ir embora, vimos que a Carreta Furacão estava no último dia. Te perguntei se queria ir… e quando sua mãe deixou, aquilo que seria só um programa improvisado acabou virando um dos momentos mais especiais do nosso dia. Nossa primeira vez andando de moto juntos. Sua primeira vez num trenzinho. A última volta do último dia.',
       'Foi rápido, foi simples… e foi completamente inesquecível. As piadas da carreta, a bagunça, nós dois rindo juntos - parecia uma daquelas memórias bobas que acabam virando favoritas sem a gente nem perceber.',
       'E eu acho que foi exatamente isso que esse dia foi: uma lembrança simples… mas perfeita do nosso jeitinho. 🤍',
+    ],
+  },
+  {
+    data: '30 de maio de 2026',
+    titulo: 'Você conheceu minha família e foi meu abrigo 🤍',
+    icon: '🤍',
+    paras: [
+      'Hoje foi um dia intenso… daqueles que misturam momentos leves e felizes com um coração apertado no fim. Mas mesmo assim foi um dia muito especial pra guardar aqui 🤍',
+      'Foi o dia em que você conheceu minha família por parte de pai, no aniversário da minha avó. E eu gostei tanto de viver isso com você.',
+      'Você conheceu minhas tias, ficou ali comigo no meio de todo mundo, e tudo aconteceu de um jeito tão leve e tranquilo. Te ver ali com a minha família me trouxe uma sensação tão boa. Parecia uma cena simples, mas pra mim teve muito significado.',
+      'Te ter ali, vivendo esse momento comigo, foi especial demais.',
+      'A noite foi gostosa, cheia dessas coisinhas boas que deixam lembranças tão quentinhas: salgadinhos, bolo, canjica, conversa e um clima leve. Foi tão bom estar com você e dividir mais um pedacinho da minha vida com alguém que é tão importante pra mim.',
+      'Mas a noite acabou ficando mais tensa.',
+      'Minha irmã começou a passar mal… estava com alergia e depois acabou piorando, com febre e taquicardia. Meu coração ficou apertado demais. Eu fiquei muito mal e me culpando muito, com medo e pensando em tudo.',
+      'E no meio disso tudo… você ficou comigo.',
+      'Você esteve ao meu lado quando eu mais precisava. Me ajudou a manter a cabeça no lugar, me trouxe calma quando eu estava me perdendo nos pensamentos e me lembrou de orar quando meu coração estava pesado.',
+      'Você me ajudou a respirar melhor naquele momento.',
+      'Eu sou muito grato por isso.',
+      'Obrigada por ter ficado comigo mesmo num dia difícil. Obrigada por me acalmar, por me lembrar de colocar nas mãos de Deus aquilo que eu não podia controlar e por ser esse abraço que me traz paz até quando tudo dentro de mim fica bagunçado.',
+      'Hoje foi um dia tenso, sim… mas também foi mais um dia em que eu tive a certeza do quanto sou grato por ter você ao meu lado.',
+      'Obrigada por ser meu abrigo 🤍',
+    ],
+  },
+  {
+    data: '31 de maio de 2026',
+    titulo: 'Te ver vencendo o medo 🤍',
+    icon: '🤍',
+    paras: [
+      'Hoje foi um daqueles domingos que aquecem o coração de um jeito tão leve e especial 🤍',
+      'De manhã fomos pro culto e, por mais que culto no domingo tenha sido diferente, foi muito gostoso estar com você ali. Depois ainda teve o pós culto na igreja, com strogonoff, docinhos e um tempinho juntos com a Ana(sua amiga). Foi pouco tempo, mas foi tão bom… eu gosto desses momentos simples com você, de ir vivendo aos poucos e nos acostumando com essas pequenas rotinas lado a lado.',
+      'Depois deixamos a Duda em casa e fomos ficar um tempinho só nós dois. Ficamos na praça da entrada, nos nossos banquinhos de xamego, e eu pude te ajudar com a tarefa do curso técnico. Depois fomos mais pro meio da praça e você começou a cuidar de mim, estourando os cravinhos do meu nariz toda concentrada e feliz, e eu fiquei feliz também por sentir você tão tranquila comigo nesses detalhes tão simples e tão nossos.',
+      'Mas o momento que mais marcou meu coração foi outro.',
+      'Lá na praça, enquanto conversávamos, te expliquei como funciona pra sair com o carro e perguntei se você queria tentar. Mesmo com medo, você quis. E eu achei isso tão lindo.',
+      'Fomos ali perto do fórum, naquele lugar mais vazio, e fui te mostrando aos poucos. E você conseguiu. Você fez o carro sair, colocou ele em movimento e foi virando com todo cuidado. Pode parecer uma coisa simples, mas pra mim foi muito especial te ver enfrentando esse medo e conseguindo.',
+      'Fiquei tão orgulhoso de você.',
+      'Mais do que aprender a sair com o carro, foi ver sua coragem aparecendo mesmo com o coração acelerado. E isso me deixou feliz de um jeito difícil de explicar. Saber que você tá aprendendo algo tão importante, que pode te ajudar em momentos necessários e te dar mais segurança, me trouxe uma paz enorme.',
+      'Hoje eu guardei no coração a imagem de você ali, nervosa e corajosa ao mesmo tempo… e eu pensei no quanto eu amo viver essas primeiras vezes com você.',
+      'Obrigada por esse domingo tão nosso.',
+      'Eu amo estar ao seu lado em cada detalhe 🤍',
     ],
   },
 ]
