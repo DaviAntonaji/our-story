@@ -69,7 +69,7 @@ export default function BucketListSlide() {
             </MI>
             <MI v={fadeV}>
               <p className="text-rose-200/50 text-xs mt-2 max-w-[300px] mx-auto leading-relaxed">
-                Marque enquanto forem realizando — fica salvo aqui pra vocês dois 🤍
+                Marque enquanto forem realizando — fica salvo aqui pra nós dois 🤍
               </p>
             </MI>
           </div>
