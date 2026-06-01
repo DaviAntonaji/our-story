@@ -1,0 +1,201 @@
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import MI from '../ui/MI'
+import Slide from '../ui/Slide'
+import { staggerV, fadeV, scaleV, BUCKET_LIST } from '../../data/constants'
+
+const LS_KEY = 'our-story-bucketlist'
+
+function loadFeitos() {
+  // Itens marcados no constants.js como feito:true sempre prevalecem
+  const defaults = Object.fromEntries(
+    BUCKET_LIST.filter(i => i.feito).map(i => [i.id, true])
+  )
+  try {
+    const raw = localStorage.getItem(LS_KEY)
+    const saved = raw ? JSON.parse(raw) : {}
+    return { ...saved, ...defaults }
+  } catch {
+    return defaults
+  }
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2.5}
+      strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+      <path d="M2.5 8.5l3.5 3.5 7-7" />
+    </svg>
+  )
+}
+
+export default function BucketListSlide() {
+  const [feitos, setFeitos] = useState({})
+  const [celebrando, setCelebrando] = useState(null)
+
+  useEffect(() => {
+    setFeitos(loadFeitos())
+  }, [])
+
+  const total = BUCKET_LIST.length
+  const qtdFeitos = Object.values(feitos).filter(Boolean).length
+
+  const toggle = (id) => {
+    const novoValor = !feitos[id]
+    const novo = { ...feitos, [id]: novoValor }
+    setFeitos(novo)
+    try { localStorage.setItem(LS_KEY, JSON.stringify(novo)) } catch {}
+    if (novoValor) {
+      setCelebrando(id)
+      setTimeout(() => setCelebrando(null), 800)
+    }
+  }
+
+  return (
+    <Slide id="bucketlist" bg="slide-bg-story" center={false}>
+      {(inView) => (
+        <motion.div
+          variants={staggerV}
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          className="flex flex-col gap-6 w-full max-w-md lg:max-w-2xl mx-auto pb-14"
+        >
+          <div className="text-center pt-2">
+            <MI v={fadeV} className="chapter-label">Nossos sonhos</MI>
+            <MI className="mt-2">
+              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">
+                Lista de coisas pra viver juntos 🌿
+              </h2>
+            </MI>
+            <MI v={fadeV}>
+              <p className="text-rose-200/50 text-xs mt-2 max-w-[300px] mx-auto leading-relaxed">
+                Marque enquanto forem realizando — fica salvo aqui pra vocês dois 🤍
+              </p>
+            </MI>
+          </div>
+
+          {/* Barra de progresso */}
+          <MI v={scaleV}>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-rose-200/45">Progresso</p>
+                <p className="text-[11px] text-amber-200/70 tabular-nums">
+                  {qtdFeitos} / {total}
+                </p>
+              </div>
+              <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-amber-400"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${(qtdFeitos / total) * 100}%` }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                />
+              </div>
+            </div>
+          </MI>
+
+          {/* Lista */}
+          <div className="space-y-2.5">
+            {BUCKET_LIST.map((item) => {
+              const feito = !!feitos[item.id]
+              const emProgresso = !!item.progresso && !feito
+              const comemorando = celebrando === item.id
+
+              const bgColor = feito
+                ? 'rgba(52,211,153,0.08)'
+                : emProgresso
+                  ? 'rgba(212,175,55,0.07)'
+                  : 'rgba(255,255,255,0.04)'
+              const borderColor = feito
+                ? 'rgba(52,211,153,0.25)'
+                : emProgresso
+                  ? 'rgba(212,175,55,0.28)'
+                  : 'rgba(255,255,255,0.08)'
+
+              return (
+                <MI key={item.id}>
+                  <motion.button
+                    onClick={() => toggle(item.id)}
+                    className="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-2xl text-left transition-all duration-200 active:scale-[0.98]"
+                    style={{
+                      background: bgColor,
+                      border: `1px solid ${borderColor}`,
+                      boxShadow: comemorando ? '0 0 20px rgba(52,211,153,0.3)' : 'none',
+                    }}
+                    animate={comemorando ? { scale: [1, 1.02, 1] } : {}}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* Checkbox / ícone de estado */}
+                    <div
+                      className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200"
+                      style={{
+                        background: feito
+                          ? 'rgba(52,211,153,0.9)'
+                          : emProgresso
+                            ? 'rgba(212,175,55,0.2)'
+                            : 'transparent',
+                        border: `2px solid ${
+                          feito
+                            ? 'rgba(52,211,153,0.9)'
+                            : emProgresso
+                              ? 'rgba(212,175,55,0.7)'
+                              : 'rgba(255,255,255,0.2)'
+                        }`,
+                      }}
+                    >
+                      {feito && (
+                        <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-white">
+                          <CheckIcon />
+                        </motion.span>
+                      )}
+                      {emProgresso && (
+                        <span className="text-[10px]">⏳</span>
+                      )}
+                    </div>
+
+                    {/* Texto + badge "em progresso" */}
+                    <div className="flex-1 min-w-0">
+                      <span
+                        className="text-sm sm:text-base leading-snug transition-all duration-200"
+                        style={{
+                          color: feito
+                            ? 'rgba(255,255,255,0.45)'
+                            : emProgresso
+                              ? 'rgba(253,230,138,0.85)'
+                              : 'rgba(255,228,230,0.85)',
+                          textDecoration: feito ? 'line-through' : 'none',
+                          textDecorationColor: 'rgba(52,211,153,0.5)',
+                        }}
+                      >
+                        {item.texto}
+                      </span>
+                      {emProgresso && (
+                        <span className="block text-[10px] uppercase tracking-[0.16em] text-amber-300/55 mt-0.5">
+                          em progresso
+                        </span>
+                      )}
+                    </div>
+
+                    {feito && (
+                      <span className="ml-auto flex-shrink-0 text-base">🤍</span>
+                    )}
+                  </motion.button>
+                </MI>
+              )
+            })}
+          </div>
+
+          {qtdFeitos === total && (
+            <MI v={fadeV}>
+              <div className="text-center py-2">
+                <p className="text-emerald-300/80 text-sm font-medium">
+                  Realizaram tudo! Que história linda de contar 🥹
+                </p>
+              </div>
+            </MI>
+          )}
+        </motion.div>
+      )}
+    </Slide>
+  )
+}

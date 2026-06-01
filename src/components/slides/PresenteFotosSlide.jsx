@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import { staggerV, fadeV, SESSAO_FOTOS_PRESENTE } from '../../data/constants'
+import { useLightbox } from '../../context/LightboxContext'
 
 const MOSAICO_ALTURA = 'min(62vh, 520px)'
 
@@ -14,22 +15,36 @@ function urlsDoItem(item) {
   return []
 }
 
-const imgClass = 'w-full h-full min-h-0 object-cover'
+const imgClass = 'w-full h-full min-h-0 object-cover cursor-zoom-in transition-opacity duration-150 hover:opacity-90 active:opacity-75'
 
-function PresenteFotoMosaico({ urls, blockEager, idPrefix }) {
+function ImgClicavel({ src, width, height, loading, className, onClick }) {
+  return (
+    <img
+      src={src}
+      alt=""
+      width={width}
+      height={height}
+      className={className}
+      loading={loading}
+      decoding="async"
+      onClick={onClick}
+    />
+  )
+}
+
+function PresenteFotoMosaico({ urls, blockEager, idPrefix, onImageClick }) {
   const n = urls.length
   if (n === 0) return null
 
   if (n === 1) {
     return (
-      <img
+      <ImgClicavel
         src={urls[0]}
-        alt=""
         width={1200}
         height={1500}
         className={imgClass}
         loading={blockEager ? 'eager' : 'lazy'}
-        decoding="async"
+        onClick={() => onImageClick?.(0)}
       />
     )
   }
@@ -38,15 +53,14 @@ function PresenteFotoMosaico({ urls, blockEager, idPrefix }) {
     return (
       <div className="grid h-full w-full grid-cols-2 gap-1">
         {urls.map((src, i) => (
-          <img
+          <ImgClicavel
             key={`${idPrefix}-${i}`}
             src={src}
-            alt=""
             width={800}
             height={1000}
             className={imgClass}
             loading={blockEager && i === 0 ? 'eager' : 'lazy'}
-            decoding="async"
+            onClick={() => onImageClick?.(i)}
           />
         ))}
       </div>
@@ -56,33 +70,18 @@ function PresenteFotoMosaico({ urls, blockEager, idPrefix }) {
   if (n === 3) {
     return (
       <div className="grid h-full w-full grid-cols-2 grid-rows-2 gap-1">
-        <img
-          src={urls[0]}
-          alt=""
-          width={800}
-          height={600}
+        <ImgClicavel src={urls[0]} width={800} height={600}
           className={`${imgClass} row-start-1 col-start-1`}
           loading={blockEager ? 'eager' : 'lazy'}
-          decoding="async"
-        />
-        <img
-          src={urls[1]}
-          alt=""
-          width={800}
-          height={600}
+          onClick={() => onImageClick?.(0)} />
+        <ImgClicavel src={urls[1]} width={800} height={600}
           className={`${imgClass} row-start-1 col-start-2`}
           loading="lazy"
-          decoding="async"
-        />
-        <img
-          src={urls[2]}
-          alt=""
-          width={1200}
-          height={600}
+          onClick={() => onImageClick?.(1)} />
+        <ImgClicavel src={urls[2]} width={1200} height={600}
           className={`${imgClass} row-start-2 col-span-2`}
           loading="lazy"
-          decoding="async"
-        />
+          onClick={() => onImageClick?.(2)} />
       </div>
     )
   }
@@ -90,15 +89,14 @@ function PresenteFotoMosaico({ urls, blockEager, idPrefix }) {
   return (
     <div className="grid h-full w-full grid-cols-2 grid-rows-2 gap-1">
       {urls.map((src, i) => (
-        <img
+        <ImgClicavel
           key={`${idPrefix}-${i}`}
           src={src}
-          alt=""
           width={800}
           height={800}
           className={imgClass}
           loading={blockEager && i === 0 ? 'eager' : 'lazy'}
-          decoding="async"
+          onClick={() => onImageClick?.(i)}
         />
       ))}
     </div>
@@ -107,6 +105,7 @@ function PresenteFotoMosaico({ urls, blockEager, idPrefix }) {
 
 export default function PresenteFotosSlide() {
   const { titulo, subtitulo, itens } = SESSAO_FOTOS_PRESENTE
+  const { abrir } = useLightbox()
 
   return (
     <Slide id="presentefotos" bg="slide-bg-dark" center={false}>
@@ -148,6 +147,7 @@ export default function PresenteFotosSlide() {
                           urls={urls}
                           blockEager={idx === 0}
                           idPrefix={item.id}
+                          onImageClick={(imgIdx) => abrir(urls, imgIdx)}
                         />
                       </div>
                     </div>

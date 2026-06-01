@@ -3,11 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import { staggerV, fadeV, FOTOS } from '../../data/constants'
+import { useLightbox } from '../../context/LightboxContext'
 
 export default function MomentosSlide() {
   const [fotoAtual, setFotoAtual] = useState(0)
   const touchStartX = useRef(0)
   const timerKeyRef = useRef(0)
+  const touchMoved = useRef(false)
+  const { abrir } = useLightbox()
 
   useEffect(() => {
     const id = setInterval(() => setFotoAtual(i => (i + 1) % FOTOS.length), 7000)
@@ -15,10 +18,16 @@ export default function MomentosSlide() {
   }, [timerKeyRef.current])
 
   const irParaFoto = (i) => { setFotoAtual(i); timerKeyRef.current++ }
-  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX }
+  const onTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+    touchMoved.current = false
+  }
   const onTouchEnd = (e) => {
     const diff = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) >= 50) irParaFoto(diff > 0 ? (fotoAtual + 1) % FOTOS.length : (fotoAtual - 1 + FOTOS.length) % FOTOS.length)
+    if (Math.abs(diff) >= 50) {
+      touchMoved.current = true
+      irParaFoto(diff > 0 ? (fotoAtual + 1) % FOTOS.length : (fotoAtual - 1 + FOTOS.length) % FOTOS.length)
+    }
   }
 
   return (
@@ -41,6 +50,17 @@ export default function MomentosSlide() {
               onTouchEnd={onTouchEnd}
             >
               <div className="carousel-counter">{fotoAtual + 1} / {FOTOS.length}</div>
+              {/* Botão expandir */}
+              <button
+                onClick={() => abrir(FOTOS, fotoAtual)}
+                className="absolute top-2 right-2 z-20 w-8 h-8 rounded-full flex items-center justify-center bg-black/40 border border-white/15 text-white/60 hover:text-white hover:bg-black/60 transition-colors"
+                aria-label="Ver em tela cheia"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M4 8V5a1 1 0 011-1h3M4 16v3a1 1 0 001 1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3" />
+                </svg>
+              </button>
               <button onClick={() => irParaFoto((fotoAtual - 1 + FOTOS.length) % FOTOS.length)}
                 className="absolute left-2 z-10 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/30 border border-white/15"
                 aria-label="Anterior">
@@ -64,13 +84,14 @@ export default function MomentosSlide() {
                     width={1600}
                     height={1200}
                     sizes="(max-width: 768px) 100vw, min(640px, 90vw)"
-                    className="h-auto max-h-full w-auto max-w-full object-contain"
+                    className="h-auto max-h-full w-auto max-w-full object-contain cursor-zoom-in"
                     loading="lazy"
                     decoding="async"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
+                    onClick={() => { if (!touchMoved.current) abrir(FOTOS, fotoAtual) }}
                   />
                 </AnimatePresence>
               </div>

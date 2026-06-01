@@ -8,6 +8,9 @@ import ButterfliesFloating from './components/animations/ButterfliesFloating';
 import SlideThemedAmbience from './components/animations/SlideThemedAmbience';
 import NavDots from './components/ui/NavDots';
 import CookieConsent from './components/ui/CookieConsent';
+import CerimoniaBtn from './components/ui/CerimoniaBtn';
+import Lightbox from './components/ui/Lightbox';
+import { LightboxProvider } from './context/LightboxContext';
 
 import LandingPage from './components/slides/LandingPage';
 import IntroSlide from './components/slides/IntroSlide';
@@ -23,7 +26,9 @@ import PresenteFotosSlide from './components/slides/PresenteFotosSlide';
 import PromessasSlide from './components/slides/PromessasSlide';
 import FuturoSlide from './components/slides/FuturoSlide';
 import RecadoSlide from './components/slides/RecadoSlide';
+import CreditosSlide from './components/slides/CreditosSlide';
 import CartasLacradasSlide from './components/slides/CartasLacradasSlide';
+import BucketListSlide from './components/slides/BucketListSlide';
 import FinalSlide from './components/slides/FinalSlide';
 
 export default function App() {
@@ -50,7 +55,8 @@ export default function App() {
   }, [revelado]);
 
   return (
-    <>
+    <LightboxProvider>
+      <Lightbox />
       <CookieConsent />
       {!revelado ? (
         <LandingPage onReveal={setRevelado} />
@@ -59,6 +65,10 @@ export default function App() {
           {typeof document !== 'undefined' && createPortal(<ButterfliesFloating isMobile={isMobile} />, document.body)}
           {typeof document !== 'undefined' && createPortal(<SlideThemedAmbience activeIndex={activeSlide} isMobile={isMobile} />, document.body)}
           {typeof document !== 'undefined' && createPortal(<NavDots active={activeSlide} />, document.body)}
+          {typeof document !== 'undefined' && createPortal(
+            <CerimoniaBtn activeSlide={activeSlide} setActiveSlide={setActiveSlide} />,
+            document.body
+          )}
 
           <div>
             <IntroSlide />
@@ -74,11 +84,13 @@ export default function App() {
             <PromessasSlide />
             <FuturoSlide />
             <RecadoSlide />
+            <CreditosSlide />
             <CartasLacradasSlide />
+            <BucketListSlide />
             <FinalSlide />
           </div>
         </>
       )}
-    </>
+    </LightboxProvider>
   );
 }
