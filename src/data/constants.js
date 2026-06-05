@@ -120,6 +120,7 @@ export const PASSAGENS_BIBLICAS = [
 ]
 
 export const SPOTIFY_URLS = [
+  'https://open.spotify.com/embed/track/6eDApnV9Jdb1nYahOlbbUh',
   'https://open.spotify.com/embed/track/3pinR9iFoRAZvqirrRm4os',
   'https://open.spotify.com/embed/track/7FOPTUmEJ3ByYW9ag9cZJ3',
   'https://open.spotify.com/embed/track/0uwaiApk6k7k9POyFjTKeR',
