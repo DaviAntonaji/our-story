@@ -313,7 +313,7 @@ export const MOTIVOS_TE_AMO = [
   'Porque você me faz rir até nos dias difíceis.',
   'Porque você me escuta de verdade.',
   'Porque você é forte mesmo quando acha que não é.',
-  'Porque você é uma mãe incrível.',
+  'Porque tenho certeza que você vai ser a mãe mais incrível do mundo.',
   'Porque você ama a Deus acima de tudo.',
   'Porque você me faz sentir amado.',
   'Porque você é carinhosa nos detalhes.',
