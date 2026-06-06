@@ -159,15 +159,23 @@ export default function MapaSlide() {
             </div>
 
             <div className="flex gap-4 px-5 pb-6 pt-1">
-              {/* Foto */}
+              {/* Foto ou placeholder */}
               <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden"
                 style={{ border: '1px solid rgba(255,228,230,0.12)' }}>
-                <img
-                  src={selecionado.foto}
-                  alt={selecionado.nome}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+                {selecionado.foto ? (
+                  <img
+                    src={selecionado.foto}
+                    alt={selecionado.nome}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-1"
+                    style={{ background: 'rgba(255,228,230,0.05)' }}>
+                    <span className="text-2xl opacity-40">{selecionado.icon}</span>
+                    <span className="text-[9px] text-rose-200/30 text-center leading-tight px-1">foto em breve</span>
+                  </div>
+                )}
               </div>
 
               {/* Info */}
