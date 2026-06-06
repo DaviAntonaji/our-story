@@ -734,7 +734,7 @@ export const MAPA_LUGARES = [
     icon: '✝️',
     categoria: 'Onde tudo começou',
     coords: [-22.276429, -51.498121],
-    foto: '/imgs/photos/primeira_santa_ceia/16.jpg',
+    foto: '/imgs/photos/conferencia_buscarmeeis/IMG_3435.jpg',
     data: 'Fevereiro de 2026 em diante',
     descricao: 'Foi no acampamento aqui que a gente se aproximou de verdade. Primeira Santa Ceia juntos, cultos de domingo, conferência Buscarme-eis... o lugar onde Deus plantou essa história.',
   },
