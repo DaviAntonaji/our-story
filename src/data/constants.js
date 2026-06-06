@@ -438,7 +438,7 @@ export const BUCKET_LIST = [
   { id: 'bl01', texto: 'Assistir o nascer do sol juntos' },
   { id: 'bl02', texto: 'Viajar juntos', feito: true },
   { id: 'bl03', texto: 'Assistir filmes no sofá juntos', feito: true },
-  { id: 'bl04', texto: 'Cozinhar um jantar especial juntos' },
+  { id: 'bl04', texto: 'Cozinhar juntos', feito: true },
   { id: 'bl05', texto: 'Fazer um piquenique caprichado, com cestinha e tudo' },
   { id: 'bl06', texto: 'Visitar um lugar que nenhum dos dois conhece' },
   { id: 'bl07', texto: 'Tirar foto juntos em cada lugar que visitarmos', feito: true },
