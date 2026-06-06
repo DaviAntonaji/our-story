@@ -22,8 +22,10 @@ import TagsSlide from './components/slides/TagsSlide';
 import VersiculoSlide from './components/slides/VersiculoSlide';
 import MomentosSlide from './components/slides/MomentosSlide';
 import HistoriaSlide from './components/slides/HistoriaSlide';
+import MapaSlide from './components/slides/MapaSlide';
 import PresenteFotosSlide from './components/slides/PresenteFotosSlide';
 import PromessasSlide from './components/slides/PromessasSlide';
+import MotivosSlide from './components/slides/MotivosSlide';
 import FuturoSlide from './components/slides/FuturoSlide';
 import RecadoSlide from './components/slides/RecadoSlide';
 import CreditosSlide from './components/slides/CreditosSlide';
@@ -80,8 +82,10 @@ export default function App() {
             <VersiculoSlide />
             <MomentosSlide />
             <HistoriaSlide />
+            <MapaSlide />
             <PresenteFotosSlide />
             <PromessasSlide />
+            <MotivosSlide />
             <FuturoSlide />
             <RecadoSlide />
             <CreditosSlide />
