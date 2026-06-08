@@ -22,17 +22,23 @@ Cada seção da página foi pensada com carinho:
 | Seção | Conteúdo |
 |-------|----------|
 | 🌹 **Intro** | A primeira coisa que ela vê ao abrir |
-| 🌗 **Antes & depois** | “Antes de Você” × “Depois de Você” - em duas colunas |
 | ⏳ **Timer** | Contagem em tempo real - dias, horas, minutos e segundos juntos |
-| 🎵 **Músicas** | As trilhas sonoras do nosso amor (via Spotify) |
+| 🌗 **Antes & depois** | "Antes de Você" × "Depois de Você" - em duas colunas |
+| 🎵 **Músicas** | As trilhas sonoras do nosso amor - 11 faixas via Spotify |
 | 💌 **Carta** | Uma carta escrita do coração, pra ser lida com calma |
 | ✨ **Sobre ela** | As coisas que mais amo nela |
 | ✝️ **Versículo** | 1 Coríntios 13 - a base de tudo |
 | 📸 **Momentos** | Um carrossel com nossas fotos juntos |
 | 📖 **Nossa história** | Cada momento marcante desde o começo |
+| 🗺️ **Mapa** | Mapa interativo com os 12 lugares da nossa história - cada ponto abre foto e história |
+| 🌸 **Flores** | As flores que já te dei, cada uma com seu significado |
 | 🤍 **Promessas** | Compromissos reais, feitos pra durar |
+| 💛 **Motivos** | Tudo que me faz amar você |
 | 🌅 **Futuro** | Os sonhos que quero construir ao lado dela |
 | 💬 **Recado** | Formulário para amigos e família deixarem mensagem (Turnstile + API) |
+| 🎬 **Créditos** | Encerramento estilo cinema com os personagens da nossa história |
+| 📩 **Cartas lacradas** | Cartas com data de abertura futura - pra abrir no momento certo |
+| 🌿 **Bucket list** | Lista de coisas pra viver juntos - progresso salvo no navegador |
 | 💝 **Final** | O encerramento - com uma surpresa pra quem chegar até lá |
 
 ---
@@ -86,6 +92,7 @@ Porque até a stack foi escolhida com amor:
 - ⚛️ **React + Vite** - rápido como meu coração quando ela aparece
 - 🎨 **Tailwind CSS** - estiloso como ela
 - 🎞️ **Framer Motion** - com animações tão suaves quanto o jeito dela de ser
+- 🗺️ **Leaflet + react-leaflet** - mapa interativo dos lugares da nossa história
 - 💬 **Cloudflare Turnstile** - captcha no formulário de recados
 - 📧 **Node (Express) + Nodemailer** - API de recados e e-mail formatado
 
@@ -113,21 +120,27 @@ src/
     │   ├── NavDots.jsx
     │   └── CookieConsent.jsx      # Cookies / medição (só se VITE_GA_MEASUREMENT_ID)
     ├── recados/
-    │   └── RecadoForm.jsx    # Formulário + Turnstile
+    │   └── RecadoForm.jsx         # Formulário + Turnstile
     └── slides/
         ├── LandingPage.jsx
         ├── IntroSlide.jsx
-        ├── AntesDepoisSlide.jsx
         ├── TimerSlide.jsx
+        ├── AntesDepoisSlide.jsx
         ├── MusicaSlide.jsx
         ├── CartaSlide.jsx
         ├── TagsSlide.jsx
         ├── VersiculoSlide.jsx
         ├── MomentosSlide.jsx
         ├── HistoriaSlide.jsx
+        ├── MapaSlide.jsx          # Mapa interativo (Leaflet) com 12 lugares
+        ├── PresenteFotosSlide.jsx
         ├── PromessasSlide.jsx
+        ├── MotivosSlide.jsx
         ├── FuturoSlide.jsx
         ├── RecadoSlide.jsx
+        ├── CreditosSlide.jsx
+        ├── CartasLacradasSlide.jsx
+        ├── BucketListSlide.jsx
         └── FinalSlide.jsx
 ```
 
