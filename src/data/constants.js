@@ -829,6 +829,16 @@ export const MAPA_LUGARES = [
     data: '14 de março de 2026',
     descricao: 'Nossa primeira vez numa cafeteria juntos. Cappuccino, pão com manteiga na chapa, panqueca de Nutella com morango — e o ar-condicionado gelado que nos fez ficar bem pertinhos.',
   },
+  {
+    id: 'gaulista-lanches',
+    nome: 'Gaulista Lanches',
+    icon: '🍔',
+    categoria: 'Pós-culto especial',
+    coords: [-22.275697, -51.496619],
+    foto: null,
+    data: 'Culto "Buscarme-eis" de 2026',
+    descricao: 'Depois do culto de jovens do "Buscarme-eis", foi aqui que a gente foi parar — e foi onde experimentamos smash burger juntos pela primeira vez. Um pós-culto simples que ficou guardado com carinho.',
+  },
 ]
 
 export const TIMELINE = [
