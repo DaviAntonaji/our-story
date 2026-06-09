@@ -30,7 +30,7 @@ Cada seção da página foi pensada com carinho:
 | ✝️ **Versículo** | 1 Coríntios 13 - a base de tudo |
 | 📸 **Momentos** | Um carrossel com nossas fotos juntos |
 | 📖 **Nossa história** | Cada momento marcante desde o começo |
-| 🗺️ **Mapa** | Mapa interativo com os 12 lugares da nossa história - cada ponto abre foto e história |
+| 🗺️ **Mapa** | Mapa interativo com os lugares da nossa história - cada ponto abre foto e história |
 | 🌸 **Flores** | As flores que já te dei, cada uma com seu significado |
 | 🤍 **Promessas** | Compromissos reais, feitos pra durar |
 | 💛 **Motivos** | Tudo que me faz amar você |
@@ -132,7 +132,7 @@ src/
         ├── VersiculoSlide.jsx
         ├── MomentosSlide.jsx
         ├── HistoriaSlide.jsx
-        ├── MapaSlide.jsx          # Mapa interativo (Leaflet) com 12 lugares
+        ├── MapaSlide.jsx          # Mapa interativo (Leaflet) com lugares da história
         ├── PresenteFotosSlide.jsx
         ├── PromessasSlide.jsx
         ├── MotivosSlide.jsx

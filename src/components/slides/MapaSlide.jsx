@@ -99,11 +99,11 @@ export default function MapaSlide() {
           Mapa da nossa história 🗺️
         </h2>
         <p className="text-rose-200/50 text-xs mt-1.5">
-          {MAPA_LUGARES.length} lugares especiais — toque num ponto para saber mais
+          {MAPA_LUGARES.length} lugares especiais - toque num ponto para saber mais
         </p>
       </motion.div>
 
-      {/* Legenda de lugares — chips horizontais */}
+      {/* Legenda de lugares - chips horizontais */}
       <AnimatePresence>
         {!selecionado && (
           <motion.div

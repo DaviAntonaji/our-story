@@ -96,7 +96,7 @@ export default function Lightbox() {
           <div className="flex items-center justify-between px-4 pt-3 pb-6 flex-shrink-0" style={{ minHeight: '72px' }}>
             {fotos.length > 1 ? (
               <>
-                {/* Seta esquerda — canto inferior esquerdo */}
+                {/* Seta esquerda - canto inferior esquerdo */}
                 <button
                   onClick={voltar}
                   className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 border border-white/15 text-white/70 hover:bg-white/20 hover:text-white active:scale-95 transition-all"
@@ -107,7 +107,7 @@ export default function Lightbox() {
                   </svg>
                 </button>
 
-                {/* Indicador central — dots se ≤ 8, senão nada (contador já está em cima) */}
+                {/* Indicador central - dots se ≤ 8, senão nada (contador já está em cima) */}
                 {fotos.length <= 8 ? (
                   <div className="flex gap-1.5 items-center">
                     {fotos.map((_, i) => (
@@ -124,7 +124,7 @@ export default function Lightbox() {
                   <div />
                 )}
 
-                {/* Seta direita — canto inferior direito */}
+                {/* Seta direita - canto inferior direito */}
                 <button
                   onClick={avancar}
                   className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 border border-white/15 text-white/70 hover:bg-white/20 hover:text-white active:scale-95 transition-all"

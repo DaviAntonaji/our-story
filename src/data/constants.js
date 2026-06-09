@@ -297,7 +297,7 @@ export const SLIDE_IDS = [
 ]
 
 /**
- * 100 motivos para amar — exibidos no slide "Motivos".
+ * 100 motivos para amar - exibidos no slide "Motivos".
  * ✏️ Edite, adicione ou remova à vontade.
  */
 export const MOTIVOS_TE_AMO = [
@@ -541,7 +541,7 @@ export const CARTAS_LACRADAS = [
     icon: '👶',
     dataAbertura: null,
     dataTexto: 'Para abrir quando chegou nosso primeiro filho',
-    descricao: 'Escrita hoje, guardada para o dia mais transformador das nossas vidas — quando nos tornarmos pai e mãe.',
+    descricao: 'Escrita hoje, guardada para o dia mais transformador das nossas vidas - quando nos tornarmos pai e mãe.',
     conteudo: [
       'Meu amor,',
       'Se você está lendo isso, significa que uma das maiores aventuras das nossas vidas começou.',
@@ -585,7 +585,7 @@ export const CARTAS_LACRADAS = [
 ]
 
 /**
- * Bucket list do casal — coisas que querem viver juntos.
+ * Bucket list do casal - coisas que querem viver juntos.
  * ✏️ Edite à vontade.
  * A marcação feita pelo usuário é salva no localStorage do dispositivo.
  */
@@ -745,7 +745,7 @@ export const MAPA_LUGARES = [
     icon: '🎬',
     categoria: 'Passeios na cidade',
     coords: [-22.116498, -51.406759],
-    foto: '/imgs/photos/shopping_com_meus_pais/14.jpg',
+    foto: '/imgs/photos/shopping_com_meus_pais/15.jpg',
     data: '08/03 e 03/04 de 2026',
     descricao: 'Dois momentos marcantes: quando você conheceu meus pais (batata recheada, livraria, sorvete), e nosso primeiro cinema juntos assistindo Super Mario Galaxy com pipoca e refri.',
   },
@@ -757,7 +757,7 @@ export const MAPA_LUGARES = [
     coords: [-22.275257, -51.498021],
     foto: '/imgs/photos/primeiro-pos-culto/23.jpg',
     data: '15 de março de 2026',
-    descricao: 'Nosso primeiro pós-culto juntos — eu, você e nossa chaveirinho. Foi aqui que começou o que virou uma tradição muito especial nossa.',
+    descricao: 'Nosso primeiro pós-culto juntos - eu, você e nossa chaveirinho. Foi aqui que começou o que virou uma tradição muito especial nossa.',
   },
   {
     id: 'tips-pizzaria',
@@ -767,7 +767,7 @@ export const MAPA_LUGARES = [
     coords: [-22.275925, -51.500398],
     foto: '/imgs/photos/tips_maio_2026/IMG_3654.jpg',
     data: 'Abril e maio de 2026',
-    descricao: 'Nosso primeiro pós-culto com seus pais — pizza de catufrango, sua irmã caçula no pula-pula e um clima leve que aqueceu o coração. E outros momentos de riso e companheirismo depois.',
+    descricao: 'Nosso primeiro pós-culto com seus pais - pizza de catufrango, sua irmã caçula no pula-pula e um clima leve que aqueceu o coração. E outros momentos de riso e companheirismo depois.',
   },
   {
     id: 'ipi',
@@ -787,7 +787,7 @@ export const MAPA_LUGARES = [
     coords: [-22.458277, -51.758335],
     foto: null,
     data: '29 de março de 2026',
-    descricao: 'Nossa primeira viagem juntos, tudo de última hora — você me chamou às 11h e às 12h eu já estava aí. Tarde na represa, vôlei, risadas e os seus giros de princesa na água. O tipo de dia simples que ficou pra sempre.',
+    descricao: 'Nossa primeira viagem juntos, tudo de última hora - você me chamou às 11h e às 12h eu já estava aí. Tarde na represa, vôlei, risadas e os seus giros de princesa na água. O tipo de dia simples que ficou pra sempre.',
   },
   {
     id: 'pastelaria-avenida',
@@ -817,7 +817,7 @@ export const MAPA_LUGARES = [
     coords: [-22.275706, -51.500768],
     foto: '/imgs/photos/pos_culto_com_nossas_irmas/36.jpg',
     data: '22 de março de 2026',
-    descricao: 'Depois do culto e da conversa com o pastor que abençoou o nosso relacionamento, fomos tomar açaí com a Amanda e a Duda. As duas ficaram bem amigas nesse dia — foi tão gostoso ver isso acontecer.',
+    descricao: 'Depois do culto e da conversa com o pastor que abençoou o nosso relacionamento, fomos tomar açaí com a Amanda e a Duda. As duas ficaram bem amigas nesse dia - foi tão gostoso ver isso acontecer.',
   },
   {
     id: 'cafeteria-koike',
@@ -827,7 +827,7 @@ export const MAPA_LUGARES = [
     coords: [-22.273813, -51.494068],
     foto: '/imgs/photos/cafeteria_koike/18.jpg',
     data: '14 de março de 2026',
-    descricao: 'Nossa primeira vez numa cafeteria juntos. Cappuccino, pão com manteiga na chapa, panqueca de Nutella com morango — e o ar-condicionado gelado que nos fez ficar bem pertinhos.',
+    descricao: 'Nossa primeira vez numa cafeteria juntos. Cappuccino, pão com manteiga na chapa, panqueca de Nutella com morango - e o ar-condicionado gelado que nos fez ficar bem pertinhos.',
   },
   {
     id: 'gaulista-lanches',
@@ -837,7 +837,47 @@ export const MAPA_LUGARES = [
     coords: [-22.275697, -51.496619],
     foto: null,
     data: 'Culto "Buscarme-eis" de 2026',
-    descricao: 'Depois do culto de jovens do "Buscarme-eis", foi aqui que a gente foi parar — e foi onde experimentamos smash burger juntos pela primeira vez. Um pós-culto simples que ficou guardado com carinho.',
+    descricao: 'Depois do culto de jovens do "Buscarme-eis", foi aqui que a gente foi parar - e foi onde experimentamos smash burger juntos pela primeira vez. Um pós-culto simples que ficou guardado com carinho.',
+  },
+  {
+    id: 'praca-igreja-catolica',
+    nome: 'Praça da Igreja Católica',
+    icon: '💑',
+    categoria: 'Nosso cantinho',
+    coords: [-22.275575, -51.500484],
+    foto: '/imgs/photos/posculto_combinando_na_praca/57.jpg',
+    data: 'Vários momentos especiais',
+    descricao: 'A gente visita e fica lá algumas vezes - sentados no banquinho conversando, fazendo carinho um no outro, beijinhos... um daqueles lugares simples que virou nosso sem precisar de muito.',
+  },
+  {
+    id: 'caique-lanches',
+    nome: 'Caique Lanches',
+    icon: '🌭',
+    categoria: 'Final de semana',
+    coords: [-22.276625, -51.501683],
+    foto: null,
+    data: 'Final de semana de 2026',
+    descricao: 'Fomos experimentar o lanche lá uma vez, num sábado de saída. Você pediu um cachorro-quente com frango desfiado que veio tão grande que nem dava pra comer direito kkk - mas ficou na memória.',
+  },
+  {
+    id: 'ran-temakeria',
+    nome: 'Ran Temakeria',
+    icon: '🍣',
+    categoria: 'Mesversário',
+    coords: [-22.279492, -51.506468],
+    foto: '/imgs/photos/segundo_mesversario_dia2/IMG_2879.jpg',
+    data: '2º mês - segundo dia (maio de 2026)',
+    descricao: 'Fomos duas vezes, mas o marcante foi no segundo dia do nosso 2º mêsversário — jantar juntos, os dois de vermelho, com aquele clima de quem ainda está celebrando o que a gente construiu.',
+  },
+  {
+    id: 'chacara-orlando-bertasso',
+    nome: 'Chácara do Orlando Bertasso',
+    icon: '✝️',
+    categoria: 'Primeira vigília',
+    coords: [-22.337359, -51.554697],
+    foto: null,
+    data: '2026',
+    descricao: 'Sua primeira vigília na vida. Acabou terminando bem cedo, mas mesmo assim foi divertido — você levou uma palavra, eu tocando cajón. Fomos de Fiesta do meu pai porque meu carro estava com o amortecedor ruim, mas foi muito bom.',
   },
 ]
 
