@@ -81,16 +81,16 @@ function ChatCard({ item, idx, total }) {
             <span className="text-[10px] text-green-300/60 tracking-wide">WhatsApp · 09/02/2026</span>
           </div>
           {item.mensagens.map((msg, i) => (
-            <div key={i} className={`flex ${msg.de === 'ele' ? 'justify-end' : 'justify-start'}`}>
+            <div key={i} className={`flex ${msg.de === 'eu' ? 'justify-end' : 'justify-start'}`}>
               <div
                 className={`max-w-[85%] px-3 py-2 text-xs leading-[1.75] shadow-sm ${
-                  msg.de === 'ele'
+                  msg.de === 'eu'
                     ? 'bg-[#005c4b] text-green-50 rounded-2xl rounded-tr-sm'
                     : 'bg-[#1e2b35] text-rose-50 rounded-2xl rounded-tl-sm'
                 }`}
               >
                 <p className="whitespace-pre-line">{msg.texto}</p>
-                <p className={`text-[10px] mt-1 ${msg.de === 'ele' ? 'text-green-200/45 text-right' : 'text-rose-200/35'}`}>
+                <p className={`text-[10px] mt-1 ${msg.de === 'eu' ? 'text-green-200/45 text-right' : 'text-rose-200/35'}`}>
                   {msg.hora}
                 </p>
               </div>
