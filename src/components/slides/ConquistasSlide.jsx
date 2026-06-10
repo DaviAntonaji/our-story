@@ -54,6 +54,35 @@ const RARITY_CONFIG = {
   },
 }
 
+const MESES_PT = {
+  jan: 0,
+  fev: 1,
+  mar: 2,
+  abr: 3,
+  mai: 4,
+  jun: 5,
+  jul: 6,
+  ago: 7,
+  set: 8,
+  out: 9,
+  nov: 10,
+  dez: 11,
+}
+
+function getConquistaTime(conquista, originalIndex) {
+  if (conquista.dataOrdem) {
+    return new Date(`${conquista.dataOrdem}T00:00:00`).getTime()
+  }
+
+  const match = conquista.data?.match(/(\d{1,2}) de ([a-zç]{3}) de (\d{4})/i)
+  if (match) {
+    const [, dia, mes, ano] = match
+    return new Date(Number(ano), MESES_PT[mes.toLowerCase()], Number(dia)).getTime()
+  }
+
+  return Number.MAX_SAFE_INTEGER + originalIndex
+}
+
 // ── Card de conquista desbloqueada ────────────────────────────────────────────
 function AchievementCard({ conquista, index }) {
   const [expanded, setExpanded] = useState(false)
@@ -259,7 +288,17 @@ function LockedCard({ conquista, index }) {
 
 // ── Slide principal ───────────────────────────────────────────────────────────
 export default function ConquistasSlide() {
-  const desbloqueadas = useMemo(() => CONQUISTAS.filter(c => c.desbloqueada), [])
+  const desbloqueadas = useMemo(
+    () => CONQUISTAS
+      .map((conquista, originalIndex) => ({ conquista, originalIndex }))
+      .filter(({ conquista }) => conquista.desbloqueada)
+      .sort((a, b) => {
+        const diff = getConquistaTime(a.conquista, a.originalIndex) - getConquistaTime(b.conquista, b.originalIndex)
+        return diff || a.originalIndex - b.originalIndex
+      })
+      .map(({ conquista }) => conquista),
+    [],
+  )
   const bloqueadas = useMemo(() => CONQUISTAS.filter(c => !c.desbloqueada), [])
 
   const currentXP = useMemo(
