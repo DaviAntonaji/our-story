@@ -375,3 +375,13 @@ body {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-5px); }
 }
+
+/* ─── Conquistas slide ───────────────────────────────── */
+.slide-bg-conquistas {
+  background:
+    radial-gradient(ellipse 75% 55% at 15% 15%, rgba(124,58,237,0.18) 0%, transparent 52%),
+    radial-gradient(ellipse 65% 50% at 85% 80%, rgba(251,191,36,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(192,132,252,0.06) 0%, transparent 55%),
+    linear-gradient(155deg, #08081a 0%, #0e0e22 45%, #060610 100%);
+}
+

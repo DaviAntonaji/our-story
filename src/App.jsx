@@ -31,6 +31,7 @@ import RecadoSlide from './components/slides/RecadoSlide';
 import CreditosSlide from './components/slides/CreditosSlide';
 import CartasLacradasSlide from './components/slides/CartasLacradasSlide';
 import BucketListSlide from './components/slides/BucketListSlide';
+import ConquistasSlide from './components/slides/ConquistasSlide';
 import FinalSlide from './components/slides/FinalSlide';
 
 export default function App() {
@@ -91,6 +92,7 @@ export default function App() {
             <CreditosSlide />
             <CartasLacradasSlide />
             <BucketListSlide />
+            <ConquistasSlide />
             <FinalSlide />
           </div>
         </>
