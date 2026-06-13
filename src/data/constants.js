@@ -214,6 +214,9 @@ export const FOTOS = [
   '/imgs/photos/tips_maio_2026/IMG_3652.jpg', '/imgs/photos/tips_maio_2026/IMG_3654.jpg',
   '/imgs/photos/tips_maio_2026/IMG_3655.jpg', '/imgs/photos/tips_maio_2026/IMG_3657.jpg',
   '/imgs/photos/tips_maio_2026/IMG_3658.jpg',
+  // Primeiro Dia dos Namorados + 100 dias
+  '/imgs/photos/primeiro_dia_namorados/IMG_3960.jpg', '/imgs/photos/primeiro_dia_namorados/IMG_3971.jpg',
+  '/imgs/photos/primeiro_dia_namorados/IMG_3973.jpg', '/imgs/photos/primeiro_dia_namorados/IMG_3981.jpg',
 ]
 
 /**
@@ -291,6 +294,34 @@ export const SESSAO_FOTOS_PRESENTE = {
         'E a flor-da-fortuna em si carrega prosperidade, boa sorte, alegria dentro de casa e aquela resistência bonita de quem floresce bastante quando é cuidado com constância.',
         'Juntando os dois, eu quis te dizer algo simples e verdadeiro: quero que nosso amor floresça e dure. Te amo, desejo coisas boas pra nós dois, e quero cuidar de você e ver você feliz por muito tempo.',
         'Foi num dia comum, sem data especial no calendário, eu te dei só porque eu queria te ver sorrir, e porque você merece flores mesmo quando não tem motivo além do amor.',
+      ],
+    },
+    {
+      id: 'sf6',
+      data: '11 de junho de 2026',
+      imagem: '/imgs/flowers/hibisco-vermelho-na-rua.jpg',
+      titulo: 'Hibisco vermelho - achado na rua',
+      paras: [
+        'Te buscando da escola, encontrei uma flor vermelha em uma árvore pelo caminho. Achei ela bonita, parei o carro, peguei e te entreguei.',
+        'Naquele momento, eu não sabia o nome dela, nem o significado. Foi apenas um gesto simples, daqueles que acontecem naturalmente quando algo faz a gente lembrar de alguém especial.',
+        'Dias depois, pesquisando para registrar essa foto aqui, descobri que era um hibisco vermelho - uma flor que simboliza amor, paixão, carinho e admiração.',
+        'De todas as flores que poderiam estar ali, era justamente uma com um significado tão parecido com tudo o que eu sinto por você.',
+        'E o mais engraçado é que eu não fazia a menor ideia disso quando te dei. Foi uma coincidência e tanto, não foi? ❤️🌺',
+      ],
+    },
+    {
+      id: 'sf7',
+      data: '12 de junho de 2026',
+      imagens: [
+        '/imgs/flowers/buque-dia-dos-namorados-1.jpg',
+        '/imgs/flowers/buque-dia-dos-namorados-2.jpg',
+      ],
+      titulo: 'Seis rosas vermelhas - nosso primeiro Dia dos Namorados',
+      paras: [
+        'Escolhi um buquê com seis rosas vermelhas no nosso primeiro Dia dos Namorados juntos - e no mesmo dia em que completamos 100 dias de namoro. Vermelho de paixão e admiração, do jeito que eu quero te olhar e te escolher todos os dias.',
+        'Não montei o buquê - comprei pronto -, mas quando vi aquele arranjo já pronto, me encantou: margaridinhas brancas com miolo amarelo e raminhos amarelos delicados entre as rosas, tudo embrulhado em papel vermelho. Pureza, leveza e alegria misturadas ao vermelho intenso do amor, do jeito que o dia pedia.',
+        'Junto levei uma caixinha de bombons Nestlé Especialidades - flores e doce no mesmo gesto: o romântico e o gostoso de dividir, como a gente fez depois no Tips Lanches, com porções, conversa sem pressa e risadas só nossas.',
+        'Foi o primeiro 12 de junho da nossa história. Talvez para outras pessoas tenha sido só um buquê; para mim, foi mais uma forma de dizer que meu lugar favorito é ao seu lado - e que eu quero te dar muitas flores ainda.',
       ],
     },
   ],
@@ -893,9 +924,11 @@ export const CONQUISTAS = [
     id: 'b09',
     titulo: 'Primeiro Dia dos Namorados Juntos',
     subtitulo: '12 de junho - o primeiro dos muitos',
+    descricao: 'Seis rosas vermelhas, uma caixa de bombons e um jantar só nosso no Tips Lanches - porções de batata com cheddar e bacon, tilápia, conversas sem pressa e risadas que só a gente entende. Talvez para outras pessoas tenha sido apenas um jantar; para mim, foi um daqueles dias que a gente nunca esquece.',
     icon: '💘',
     raridade: 'especial',
-    desbloqueada: false,
+    data: '12 de jun de 2026',
+    desbloqueada: true,
   },
 
   // ── Conquistas adicionais ──────────────────────────────────────────────────
@@ -1065,9 +1098,11 @@ export const CONQUISTAS = [
     id: 'x-100-dias',
     titulo: '100 Dias Juntos',
     subtitulo: 'O primeiro grande marco da nossa caminhada',
+    descricao: 'Cem dias de nós - e caiu no mesmo dia do nosso primeiro Dia dos Namorados. Cada sorriso, cada abraço, cada conversa transformando momentos simples em memórias especiais. Não importa onde estejamos, meu lugar favorito sempre será ao seu lado.',
     icon: '🤍',
     raridade: 'especial',
-    desbloqueada: false,
+    data: '12 de jun de 2026',
+    desbloqueada: true,
   },
   {
     id: 'x-borboletas',
@@ -1259,9 +1294,9 @@ export const MAPA_LUGARES = [
     icon: '🍔',
     categoria: 'Pós-cultos',
     coords: [-22.275257, -51.498021],
-    foto: '/imgs/photos/primeiro-pos-culto/23.jpg',
-    data: '15 de março de 2026',
-    descricao: 'Nosso primeiro pós-culto juntos - eu, você e nossa chaveirinho. Foi aqui que começou o que virou uma tradição muito especial nossa.',
+    foto: '/imgs/photos/primeiro_dia_namorados/IMG_3981.jpg',
+    data: 'Vários momentos especiais',
+    descricao: 'Nosso primeiro pós-culto juntos em 15 de março - eu, você e nossa chaveirinho. Foi aqui que começou o que virou uma tradição muito especial nossa. E no 12 de junho, nosso primeiro Dia dos Namorados e 100 dias de namoro: seis rosas vermelhas, caixa de bombons e jantar só nosso - batata com cheddar e bacon, tilápia, conversas sem pressa e risadas que só a gente entende.',
   },
   {
     id: 'tips-pizzaria',
@@ -1728,6 +1763,19 @@ export const TIMELINE = [
       'Foi simples, íntimo, do jeito que a gente gosta: presente, palavra, presença - e depois culto, com mais um mês de história pra agradecer a Deus.',
       'Como o feriado apertou a rotina no dia, a gente esticou a comemoração pro dia seguinte. Na sexta-feira, montamos uma porção juntos do nosso jeito: batata frita, frango, asinha de frango, calabresa, salame, azeitona, refri e pão de alho. Nada fancy - mas completamente nosso.',
       'Três meses que já parecem muito mais pelo que vivemos. Obrigado por mais um capítulo com você. 🤍',
+    ],
+  },
+  {
+    data: '12 de junho de 2026',
+    destaque: true,
+    titulo: 'Primeiro Dia dos Namorados + 100 dias ❤️',
+    icon: '💘',
+    paras: [
+      'Nosso primeiro Dia dos Namorados juntos - e também nossos 100 dias de namoro. Dois marcos num só dia, do jeito que só a gente consegue transformar em algo ainda mais especial.',
+      'Entre seis rosas vermelhas, uma caixa de bombons, um jantar só nosso no Tips Lanches, porções de batata com cheddar e bacon, tilápia, conversas sem pressa e risadas que só a gente entende, construímos mais uma lembrança que vai ficar guardada para sempre.',
+      'Talvez para outras pessoas tenha sido apenas um jantar. Para mim, foi um daqueles dias que a gente nunca esquece.',
+      'Obrigado por cada sorriso, cada abraço, cada conversa e por transformar momentos simples em memórias tão especiais.',
+      '100 dias de nós. Nosso primeiro Dia dos Namorados. E a certeza de que não importa onde estejamos, meu lugar favorito sempre será ao seu lado. ❤️',
     ],
   },
 ]
