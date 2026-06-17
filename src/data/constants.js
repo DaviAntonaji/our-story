@@ -217,6 +217,11 @@ export const FOTOS = [
   // Primeiro Dia dos Namorados + 100 dias
   '/imgs/photos/primeiro_dia_namorados/IMG_3960.jpg', '/imgs/photos/primeiro_dia_namorados/IMG_3971.jpg',
   '/imgs/photos/primeiro_dia_namorados/IMG_3973.jpg', '/imgs/photos/primeiro_dia_namorados/IMG_3981.jpg',
+  // Primeiro culto de casais
+  '/imgs/photos/primeiro_jantar_de_casais/IMG_4023.jpg',
+  '/imgs/photos/primeiro_jantar_de_casais/2CAA734F-5E9C-436E-9013-F165A44F669E.jpg',
+  '/imgs/photos/primeiro_jantar_de_casais/725362f0-0a91-410b-a1da-61d4a6fe24e1.jpg',
+  '/imgs/photos/primeiro_jantar_de_casais/6fbf823f-8850-4ec9-9973-9c4c36b67fad.jpg',
 ]
 
 /**
@@ -1266,7 +1271,7 @@ export const MAPA_LUGARES = [
     coords: [-22.276429, -51.498121],
     foto: '/imgs/photos/conferencia_buscarmeeis/IMG_3435.jpg',
     data: 'Fevereiro de 2026 em diante',
-    descricao: 'Foi no acampamento aqui que a gente se aproximou de verdade. Primeira Santa Ceia juntos, cultos de domingo, conferência Buscarme-eis... o lugar onde Deus plantou essa história.',
+    descricao: 'Foi no acampamento aqui que a gente se aproximou de verdade. Primeira Santa Ceia juntos, cultos de domingo, conferência Buscarme-eis... o lugar onde Deus plantou essa história. E no dia 13 de junho, nosso primeiro culto de casais.',
   },
   {
     id: 'chacara-acampamento-apascentar',
@@ -1776,6 +1781,23 @@ export const TIMELINE = [
       'Talvez para outras pessoas tenha sido apenas um jantar. Para mim, foi um daqueles dias que a gente nunca esquece.',
       'Obrigado por cada sorriso, cada abraço, cada conversa e por transformar momentos simples em memórias tão especiais.',
       '100 dias de nós. Nosso primeiro Dia dos Namorados. E a certeza de que não importa onde estejamos, meu lugar favorito sempre será ao seu lado. ❤️',
+    ],
+  },
+  {
+    data: '13 de junho de 2026',
+    destaque: true,
+    titulo: 'Nosso primeiro culto de casais 🤍',
+    icon: '🤍',
+    paras: [
+      'Busquei você às 19h15 e, poucos minutos depois, já estávamos a caminho da igreja para viver mais um daqueles momentos que ficam guardados para sempre na memória. Chegamos para o culto de casais, que começou às 19h30, e ouvimos uma mensagem muito bonita sobre as fases do casamento.',
+      'O pregador explicou sobre o mel, o sal, a água, o leite e o azeite. O mel representa a fase doce, onde tudo parece perfeito. O sal representa os conflitos e as discussões, que acabam gerando sede da água - que simboliza o amor e a reconciliação. O leite representa a chegada dos filhos, quando tudo muda e novas responsabilidades surgem. E o azeite representa aquilo que purifica, fortalece e mantém o casal firme diante das dificuldades.',
+      'Inclusive, acabaram usando a gente como exemplo quando falaram sobre o sal. Acho que ninguém esperava isso. 😂',
+      'Você estava usando a mesma roupa do dia do pedido de namoro. Eu estava de social. E, como sempre, você estava linda, cheirosa e iluminando qualquer lugar onde estivesse.',
+      'Depois do culto tivemos o jantar. Estava tudo delicioso e, sem dúvidas, valeu cada real investido. Entre conversas, risadas e momentos especiais, uma cena ficou marcada para mim: você já tinha comido seu prato, mas resolveu pegar mais um pouquinho. Só que percebeu que não conseguiria terminar - e, mesmo com vergonha, continuou tentando comer e acabou começando a passar mal.',
+      'Foi aí que meu coração ficou preocupado. Eu só queria cuidar de você. Mesmo não estando muito bem, você não quis ir embora antes de eu comer minha sobremesa. Enquanto isso, fiquei ali ao seu lado, observando você, cuidando de você e esperando que melhorasse.',
+      'Quando fomos embora, passamos um tempo na praça. O ar fresco ajudou e você começou a se sentir melhor. Ficamos ali conversando, aproveitando aqueles minutos juntos, e eu pude perceber mais uma vez o quanto amo cuidar de você e o quanto é especial compartilhar momentos simples ao seu lado.',
+      'Nosso primeiro culto de casais foi muito mais do que uma programação da igreja. Foi mais uma lembrança que guardarei com carinho, porque cada momento ao seu lado se transforma em algo especial.',
+      'Que Deus continue guiando nossa caminhada, nos ensinando a viver cada fase da nossa história e nos preparando para tudo aquilo que ainda vamos construir juntos. 🤍',
     ],
   },
 ]
