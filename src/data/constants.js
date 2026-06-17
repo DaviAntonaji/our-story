@@ -1271,7 +1271,7 @@ export const MAPA_LUGARES = [
     coords: [-22.276429, -51.498121],
     foto: '/imgs/photos/conferencia_buscarmeeis/IMG_3435.jpg',
     data: 'Fevereiro de 2026 em diante',
-    descricao: 'Foi no acampamento aqui que a gente se aproximou de verdade. Primeira Santa Ceia juntos, cultos de domingo, conferência Buscarme-eis... o lugar onde Deus plantou essa história. E no dia 13 de junho, nosso primeiro culto de casais.',
+    descricao: 'Foi no acampamento aqui que a gente se aproximou de verdade. Primeira Santa Ceia juntos, cultos de domingo, conferência Buscarme-eis... o lugar onde Deus plantou essa história. E no dia 13 de junho de 2026, nosso primeiro culto de casais.',
   },
   {
     id: 'chacara-acampamento-apascentar',
