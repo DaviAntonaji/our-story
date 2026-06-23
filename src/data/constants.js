@@ -222,6 +222,9 @@ export const FOTOS = [
   '/imgs/photos/primeiro_jantar_de_casais/2CAA734F-5E9C-436E-9013-F165A44F669E.jpg',
   '/imgs/photos/primeiro_jantar_de_casais/725362f0-0a91-410b-a1da-61d4a6fe24e1.jpg',
   '/imgs/photos/primeiro_jantar_de_casais/6fbf823f-8850-4ec9-9973-9c4c36b67fad.jpg',
+  // Primeiro jogo da Copa juntos
+  '/imgs/photos/primeira_copa/IMG_4167.jpg', '/imgs/photos/primeira_copa/IMG_4170.jpg',
+  '/imgs/photos/primeira_copa/IMG_4172.jpg', '/imgs/photos/primeira_copa/IMG_4176.jpg',
 ]
 
 /**
@@ -1341,7 +1344,7 @@ export const MAPA_LUGARES = [
     coords: [-22.279601, -51.506736],
     foto: '/imgs/photos/segundo_mesversario/IMG_2835.jpg',
     data: '28/03 e 01/05 de 2026',
-    descricao: 'Dois momentos marcantes aqui: depois do culto da IPI, com pastel de frango com queijo (e você queimando a boca e tentando disfarçar kkk). E no nosso 2º mês, tapioca na avenida logo depois da troca de presentes e do anel.',
+    descricao: 'Dois momentos marcantes aqui: depois do culto da IPI, com pastel de frango com queijo (e você queimando a boca e tentando disfarçar kkk). E no nosso 2º mês, tapioca na avenida logo depois da troca de presentes e do anel. E numa sexta de Copa, paramos no Avenida antes do jogo pra comprar o que faltava da receita de pãozinho selado que a gente viu na internet.',
   },
   {
     id: 'pizzadoro',
@@ -1798,6 +1801,21 @@ export const TIMELINE = [
       'Quando fomos embora, passamos um tempo na praça. O ar fresco ajudou e você começou a se sentir melhor. Ficamos ali conversando, aproveitando aqueles minutos juntos, e eu pude perceber mais uma vez o quanto amo cuidar de você e o quanto é especial compartilhar momentos simples ao seu lado.',
       'Nosso primeiro culto de casais foi muito mais do que uma programação da igreja. Foi mais uma lembrança que guardarei com carinho, porque cada momento ao seu lado se transforma em algo especial.',
       'Que Deus continue guiando nossa caminhada, nos ensinando a viver cada fase da nossa história e nos preparando para tudo aquilo que ainda vamos construir juntos. 🤍',
+    ],
+  },
+  {
+    data: '19 de junho de 2026',
+    destaque: true,
+    titulo: 'Nosso primeiro jogo da Copa juntos ⚽',
+    icon: '⚽',
+    paras: [
+      'Eu lembro direitinho daquele nosso primeiro jogo da Copa assistido juntos.',
+      'Cheguei na sua casa naquela sexta-feira por volta das 19h e, antes do jogo, fomos até o Avenida comprar algumas coisas para tentar fazer aquela receita que vimos na internet. Era um pãozinho selado na manteiga com recheio de requeijão, mussarela, presunto e tomate, tudo bem picadinho e misturado. A gente fez tudo junto, entre conversas, bagunça e risadas - e no final ainda deu para todo mundo da sua casa experimentar.',
+      'Depois nos acomodamos para assistir ao jogo. E, para ser sincero, o que eu mais lembro não é nem do placar ou dos lances. O que ficou marcado foi estar ali com você.',
+      'Você estava encostadinha em mim, quase dormindo no meu braço em alguns momentos, e eu percebia que a Copa ainda não estava te empolgando tanto. Mesmo assim, você assistia comigo, comentava algumas coisas, fazia companhia e transformava algo simples em uma lembrança especial.',
+      'Naquele dia eu ainda ganhei mais 30 minutinhos além do horário que normalmente precisava ir embora. Pode parecer pouco para quem vê de fora, mas para mim significou muito. Foi tempo suficiente para assistir o final do jogo ao seu lado e guardar mais uma memória nossa.',
+      'Engraçado como, quando penso naquele dia, eu não lembro da Copa. Eu lembro de você. Lembro da receita que fizemos juntos, do seu jeitinho quase cochilando no meu braço e da sensação boa de estar exatamente onde eu queria estar.',
+      'Foi o nosso primeiro jogo da Copa juntos. E isso fez dele especial. ⚽',
     ],
   },
 ]
