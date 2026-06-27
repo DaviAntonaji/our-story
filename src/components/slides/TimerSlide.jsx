@@ -55,6 +55,12 @@ export default function TimerSlide() {
     }
   }, [saudadeVisivel])
   const mesversariosVividos = MESESVERSARIOS.filter((m) => new Date() >= m.data)
+
+  // Próximo marco em múltiplos de 50 dias
+  const proximoMarcoDias = Math.max(50, Math.ceil((tempo.totalDias + 1) / 50) * 50)
+  const marcoPct = Math.min(100, Math.round((tempo.totalDias / proximoMarcoDias) * 100))
+  const diasParaMarco = Math.max(0, proximoMarcoDias - tempo.totalDias)
+
   const fraseSaudade =
     saudadePct < 30
       ? 'Comecou de leve...'
@@ -104,14 +110,44 @@ export default function TimerSlide() {
             <MI v={fadeV}>
               <span className="badge-pill">🌹 {tempo.meses} {tempo.meses === 1 ? 'mês' : 'meses'} e {tempo.dias} dias</span>
             </MI>
+            {/* Barra de progresso – próximo marco */}
             <MI v={fadeV} className="w-full">
-              <div ref={saudadeRef} className="rounded-2xl border border-rose-300/25 bg-white/[0.06] px-4 py-3.5 space-y-2">
+              <div className="card-glass card-gold-border px-4 py-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-amber-100/70">Próximo marco</p>
+                  <span className="font-mono text-xs tabular-nums text-amber-200/90">{marcoPct}%</span>
+                </div>
+                <div className="progress-track h-3">
+                  <motion.div
+                    className="progress-fill-rose"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${marcoPct}%` }}
+                    transition={{ duration: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  />
+                </div>
+                <div className="flex items-end justify-between gap-4">
+                  <div className="text-left">
+                    <p className="font-display text-xl text-rose-50 tabular-nums">{tempo.totalDias} dias ❤️</p>
+                    <p className="text-xs text-rose-200/55 mt-0.5">
+                      Faltam {diasParaMarco} {diasParaMarco === 1 ? 'dia' : 'dias'} para o próximo marco
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-amber-300/22 bg-amber-200/10 px-3 py-2 text-right shrink-0">
+                    <p className="text-[9px] uppercase tracking-widest text-amber-100/55">Marco</p>
+                    <p className="font-display text-lg text-amber-100 tabular-nums">{proximoMarcoDias} dias</p>
+                  </div>
+                </div>
+              </div>
+            </MI>
+
+            <MI v={fadeV} className="w-full">
+              <div ref={saudadeRef} className="card-glass rounded-2xl border border-rose-300/25 px-4 py-3.5 space-y-2">
                 <p className="text-[10px] uppercase tracking-[0.18em] text-rose-200/65 text-left">
                   Nível de saudade
                 </p>
-                <div className="h-2.5 w-full rounded-full bg-rose-200/12 overflow-hidden">
+                <div className="progress-track h-2.5">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-rose-300 via-pink-300 to-amber-300 transition-[width] duration-500 ease-linear"
+                    className="progress-fill-rose"
                     style={{ width: `${saudadePct}%` }}
                   />
                 </div>
@@ -127,7 +163,7 @@ export default function TimerSlide() {
                 {mesversariosVividos.map((m) => (
                   <div
                     key={m.id}
-                    className="mesversario-memoria rounded-2xl border border-amber-400/22 bg-white/[0.07] px-4 py-3.5 shadow-sm shadow-black/20"
+                    className="mesversario-memoria card-glass rounded-2xl border border-amber-400/22 px-4 py-3.5"
                   >
                     <p className="font-display text-sm text-amber-200 font-medium text-center sm:text-left">
                       {m.titulo}
@@ -155,7 +191,7 @@ export default function TimerSlide() {
                   : `${Math.floor(tempo.meses / 12)} ${Math.floor(tempo.meses / 12) === 1 ? 'ano' : 'anos'} juntos - e seguimos somando capítulos`}
               </p>
               {tempo.mesversarioEhAniversario ? (
-                <div className="rounded-2xl border border-amber-400/25 bg-white/[0.06] px-4 py-4 space-y-1">
+                <div className="card-glass rounded-2xl border border-amber-400/25 px-4 py-4 space-y-1">
                   <p className="text-[10px] uppercase tracking-[0.18em] text-amber-200/75">Próximo marco</p>
                   <p className="font-display text-lg text-rose-50 font-medium">
                     Faltam{' '}
@@ -171,7 +207,7 @@ export default function TimerSlide() {
                 </div>
               ) : (
                 <>
-                  <div className="rounded-2xl border border-rose-400/20 bg-white/[0.05] px-4 py-3.5 space-y-1">
+                  <div className="card-glass rounded-2xl border border-rose-400/20 px-4 py-3.5 space-y-1">
                     <p className="text-[10px] uppercase tracking-[0.18em] text-rose-200/65">Próximo mêsversário</p>
                     <p className="font-display text-base text-rose-50">
                       <span className="tabular-nums font-semibold text-amber-200/95">{tempo.diasAteMesversario}</span>
@@ -184,7 +220,7 @@ export default function TimerSlide() {
                       </span>
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-amber-400/22 bg-white/[0.06] px-4 py-3.5 space-y-1">
+                  <div className="card-glass rounded-2xl border border-amber-400/22 px-4 py-3.5 space-y-1">
                     <p className="text-[10px] uppercase tracking-[0.18em] text-amber-200/70">Próximo aniversário de namoro</p>
                     <p className="font-display text-base text-rose-50">
                       <span className="tabular-nums font-semibold text-amber-200/95">{tempo.diasAteAniversario}</span>

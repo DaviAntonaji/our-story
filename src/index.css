@@ -32,80 +32,174 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* Grain de textura discreta sobre todos os slides */
+.snap-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  mix-blend-mode: overlay;
+}
+
+/* Orb de brilho suave no canto oposto ao gradiente principal */
+.snap-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 38% at 82% 14%, rgba(255,255,255,0.055) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 30% at 14% 86%, rgba(255,255,255,0.038) 0%, transparent 58%);
 }
 
 /* ─── Slide Backgrounds ─────────────────────────────── */
+
+/* Hero / Intro — rosa quente com halo luminoso no topo */
 .slide-bg-rose {
   background:
-    radial-gradient(ellipse 90% 60% at 20% 10%, rgba(251,113,133,0.20) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 70% at 80% 90%, rgba(244,114,182,0.12) 0%, transparent 55%),
-    linear-gradient(155deg, #5c2d42 0%, #7a4460 50%, #4e2840 100%);
+    /* Luz principal: rosa flamejante no topo-esquerdo */
+    radial-gradient(ellipse 60% 55% at 12% 0%,   rgba(251,113,133,0.55) 0%, rgba(244,114,182,0.18) 45%, transparent 70%),
+    /* Preenchimento violeta no canto oposto */
+    radial-gradient(ellipse 55% 50% at 92% 100%, rgba(167,139,250,0.32) 0%, rgba(139,92,246,0.08) 50%, transparent 72%),
+    /* Atmosfera central quente */
+    radial-gradient(ellipse 75% 50% at 50% 50%,  rgba(220,100,120,0.10) 0%, transparent 65%),
+    /* Base: vinho-profundo para bordo-médio */
+    linear-gradient(168deg, #2e0d20 0%, #5c2d42 38%, #6e3652 65%, #3a1a2c 100%);
 }
+
+/* Timer — noite escura com aurora dourada no topo */
 .slide-bg-maroon {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 10%, rgba(212,175,55,0.16) 0%, transparent 55%),
-    linear-gradient(155deg, #2e1020 0%, #401828 50%, #200c18 100%);
+    /* Luz dourada caindo do topo — como uma vela */
+    radial-gradient(ellipse 70% 48% at 50% -5%,  rgba(212,175,55,0.45) 0%, rgba(251,191,36,0.12) 48%, transparent 68%),
+    /* Rosa profundo na lateral esquerda */
+    radial-gradient(ellipse 45% 60% at -5% 65%,  rgba(244,114,182,0.22) 0%, transparent 55%),
+    /* Carvão com reflexo carmesim no fundo */
+    radial-gradient(ellipse 80% 40% at 50% 105%, rgba(180,30,60,0.28) 0%, transparent 60%),
+    /* Base: quase preto vinho */
+    linear-gradient(170deg, #0e0408 0%, #1e0a10 35%, #2e1018 65%, #120608 100%);
 }
+
+/* Música — nebulosa violeta-elétrica */
 .slide-bg-purple {
   background:
-    radial-gradient(ellipse 80% 60% at 30% 20%, rgba(167,139,250,0.18) 0%, transparent 55%),
-    linear-gradient(155deg, #2d1245 0%, #3d186a 50%, #1e0d30 100%);
+    /* Fonte de luz: violeta intenso no topo-esquerdo */
+    radial-gradient(ellipse 58% 52% at 8% 4%,    rgba(167,139,250,0.50) 0%, rgba(139,92,246,0.18) 42%, transparent 65%),
+    /* Rosa-choque no canto direito-baixo */
+    radial-gradient(ellipse 52% 48% at 96% 92%,  rgba(244,114,182,0.38) 0%, rgba(236,72,153,0.10) 45%, transparent 68%),
+    /* Halo índigo central */
+    radial-gradient(ellipse 65% 45% at 55% 52%,  rgba(109,40,217,0.14) 0%, transparent 62%),
+    /* Base: índigo-noite */
+    linear-gradient(162deg, #0d0420 0%, #1e0838 35%, #2c1050 60%, #0a0218 100%);
 }
+
+/* Carta — papel antigo, luz âmbar quente lateral */
 .slide-bg-amber {
   background:
-    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(252,211,77,0.14) 0%, transparent 55%),
-    linear-gradient(155deg, #3e1515 0%, #5a2818 50%, #2d0e10 100%);
+    /* Lanterna lateral direita: dourado-âmbar concentrado */
+    radial-gradient(ellipse 50% 65% at 105% 38%, rgba(212,175,55,0.48) 0%, rgba(251,191,36,0.18) 40%, transparent 65%),
+    /* Chama vermelha no canto inferior-esquerdo */
+    radial-gradient(ellipse 52% 44% at -8% 90%,  rgba(220,60,50,0.30) 0%, rgba(185,50,40,0.10) 44%, transparent 65%),
+    /* Névoa âmbar central */
+    radial-gradient(ellipse 70% 40% at 50% 50%,  rgba(160,100,20,0.10) 0%, transparent 60%),
+    /* Base: siena queimada */
+    linear-gradient(165deg, #1a0806 0%, #320e08 32%, #4a1a0c 60%, #1e0a04 100%);
 }
+
+/* Promessas / Magenta */
 .slide-bg-magenta {
   background:
-    radial-gradient(ellipse 80% 60% at 30% 70%, rgba(244,114,182,0.20) 0%, transparent 55%),
-    linear-gradient(155deg, #3e0e2e 0%, #5c1645 50%, #2a0820 100%);
+    radial-gradient(ellipse 60% 55% at 6% 90%,   rgba(244,114,182,0.50) 0%, rgba(236,72,153,0.16) 42%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 96% 8%,   rgba(251,113,133,0.30) 0%, rgba(244,114,182,0.08) 44%, transparent 65%),
+    radial-gradient(ellipse 65% 40% at 50% 50%,  rgba(180,40,100,0.12) 0%, transparent 62%),
+    linear-gradient(158deg, #140418 0%, #2a0820 35%, #400e30 60%, #180408 100%);
 }
+
+/* Versículo / Indigo */
 .slide-bg-indigo {
   background:
-    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(99,102,241,0.18) 0%, transparent 55%),
-    linear-gradient(155deg, #121838 0%, #1e2258 50%, #0c1028 100%);
+    radial-gradient(ellipse 55% 55% at 94% 6%,   rgba(99,102,241,0.48) 0%, rgba(79,70,229,0.16) 42%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 4% 92%,   rgba(167,139,250,0.28) 0%, rgba(139,92,246,0.08) 44%, transparent 65%),
+    radial-gradient(ellipse 60% 38% at 48% 50%,  rgba(60,40,180,0.12) 0%, transparent 60%),
+    linear-gradient(160deg, #040818 0%, #0c1030 35%, #161848 60%, #060810 100%);
 }
+
+/* Momentos / Dark */
 .slide-bg-dark {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139,92,246,0.12) 0%, transparent 55%),
-    linear-gradient(155deg, #141420 0%, #1c1c30 50%, #0c0c18 100%);
+    radial-gradient(ellipse 55% 52% at 18% 14%,  rgba(139,92,246,0.30) 0%, rgba(109,40,217,0.10) 44%, transparent 65%),
+    radial-gradient(ellipse 48% 44% at 88% 86%,  rgba(251,113,133,0.20) 0%, rgba(244,114,182,0.06) 42%, transparent 62%),
+    radial-gradient(ellipse 70% 42% at 50% 50%,  rgba(80,30,130,0.10) 0%, transparent 60%),
+    linear-gradient(162deg, #060610 0%, #0e0e1e 35%, #161626 60%, #080810 100%);
 }
+
+/* BucketList / Story */
 .slide-bg-story {
   background:
-    radial-gradient(ellipse 80% 60% at 30% 30%, rgba(212,175,55,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 60% at 70% 70%, rgba(244,114,182,0.08) 0%, transparent 55%),
-    linear-gradient(155deg, #1a1020 0%, #281530 50%, #120c18 100%);
+    radial-gradient(ellipse 55% 50% at 8% 8%,    rgba(212,175,55,0.32) 0%, rgba(180,140,40,0.10) 44%, transparent 65%),
+    radial-gradient(ellipse 52% 48% at 92% 90%,  rgba(244,114,182,0.28) 0%, rgba(236,72,153,0.08) 42%, transparent 65%),
+    radial-gradient(ellipse 65% 40% at 50% 52%,  rgba(140,60,100,0.10) 0%, transparent 60%),
+    linear-gradient(162deg, #060408 0%, #100810 35%, #1a1020 60%, #0c0810 100%);
 }
+
+/* Mapa / Teal */
 .slide-bg-teal {
   background:
-    radial-gradient(ellipse 80% 60% at 70% 70%, rgba(52,211,153,0.14) 0%, transparent 55%),
-    linear-gradient(155deg, #0a2218 0%, #153028 50%, #071812 100%);
+    radial-gradient(ellipse 58% 52% at 90% 90%,  rgba(52,211,153,0.38) 0%, rgba(16,185,129,0.12) 44%, transparent 65%),
+    radial-gradient(ellipse 48% 44% at 6% 10%,   rgba(16,185,129,0.24) 0%, rgba(5,150,105,0.08) 42%, transparent 62%),
+    radial-gradient(ellipse 65% 38% at 48% 50%,  rgba(10,100,70,0.12) 0%, transparent 60%),
+    linear-gradient(162deg, #020c06 0%, #041408 35%, #071e10 60%, #030a04 100%);
 }
+
+/* Timeline / Blue */
 .slide-bg-blue {
   background:
-    radial-gradient(ellipse 80% 60% at 30% 30%, rgba(59,130,246,0.16) 0%, transparent 55%),
-    linear-gradient(155deg, #0e1838 0%, #181e52 50%, #0a1028 100%);
+    radial-gradient(ellipse 55% 52% at 10% 10%,  rgba(59,130,246,0.40) 0%, rgba(37,99,235,0.12) 44%, transparent 65%),
+    radial-gradient(ellipse 48% 44% at 92% 88%,  rgba(99,102,241,0.28) 0%, rgba(79,70,229,0.08) 42%, transparent 62%),
+    radial-gradient(ellipse 65% 38% at 50% 50%,  rgba(20,40,120,0.14) 0%, transparent 60%),
+    linear-gradient(160deg, #030610 0%, #08101e 35%, #0e1830 60%, #040810 100%);
 }
+
+/* Antes & Depois / Forest */
 .slide-bg-forest {
   background:
-    radial-gradient(ellipse 85% 55% at 25% 15%, rgba(52,211,153,0.14) 0%, transparent 52%),
-    radial-gradient(ellipse 70% 50% at 85% 85%, rgba(16,185,129,0.10) 0%, transparent 50%),
-    linear-gradient(165deg, #062018 0%, #0f2e22 45%, #041210 100%);
+    /* Luz esmeralda vinda do topo */
+    radial-gradient(ellipse 60% 50% at 20% -4%,  rgba(52,211,153,0.42) 0%, rgba(16,185,129,0.14) 44%, transparent 66%),
+    /* Brilho teal no canto inferior-direito */
+    radial-gradient(ellipse 50% 46% at 96% 96%,  rgba(16,185,129,0.28) 0%, rgba(5,150,105,0.08) 44%, transparent 65%),
+    /* Névoa verde central */
+    radial-gradient(ellipse 65% 40% at 50% 55%,  rgba(8,60,30,0.18) 0%, transparent 60%),
+    /* Base: floresta noturna */
+    linear-gradient(168deg, #010a04 0%, #041408 35%, #071e10 60%, #020c04 100%);
 }
+
+/* Final */
 .slide-bg-final {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(251,113,133,0.24) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 60% at 50% 90%, rgba(212,175,55,0.12) 0%, transparent 55%),
-    linear-gradient(155deg, #4a1f30 0%, #5c2a3c 50%, #38152a 100%);
+    /* Luz rosa intensa no topo — clímax emocional */
+    radial-gradient(ellipse 65% 52% at 50% -2%,  rgba(251,113,133,0.52) 0%, rgba(244,114,182,0.18) 44%, transparent 68%),
+    /* Dourado suave no fundo — calor e esperança */
+    radial-gradient(ellipse 60% 45% at 50% 106%, rgba(212,175,55,0.36) 0%, rgba(180,140,30,0.10) 44%, transparent 65%),
+    /* Lavanda no canto lateral — sonho */
+    radial-gradient(ellipse 45% 50% at 96% 46%,  rgba(167,139,250,0.22) 0%, transparent 60%),
+    /* Base: carmesim profundo */
+    linear-gradient(168deg, #1a0410 0%, #380e20 35%, #4e1a2c 60%, #240a16 100%);
 }
 
 /* Landing page bg */
 .page-bg-landing {
   background:
-    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(251,113,133,0.16) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 90% 80%, rgba(244,114,182,0.10) 0%, transparent 50%),
-    linear-gradient(160deg, #5c2d42 0%, #7a4460 50%, #5a3248 100%);
+    radial-gradient(ellipse 65% 55% at 50% -4%,  rgba(251,113,133,0.55) 0%, rgba(244,114,182,0.20) 40%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 96% 92%,  rgba(167,139,250,0.30) 0%, rgba(139,92,246,0.08) 44%, transparent 65%),
+    radial-gradient(ellipse 70% 38% at 50% 55%,  rgba(180,60,90,0.12) 0%, transparent 60%),
+    linear-gradient(168deg, #240a18 0%, #4a1e34 35%, #6a2e4a 60%, #38142a 100%);
 }
 
 /* ─── Nav Dots ───────────────────────────────────────── */
@@ -147,19 +241,41 @@ body {
 
 /* ─── Cards ─────────────────────────────────────────── */
 .card-surface {
-  background: rgba(55, 25, 42, 0.80);
-  border: 1px solid rgba(251, 113, 133, 0.13);
-  border-radius: 20px;
-  box-shadow: 0 2px 16px -4px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.05);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.02) 100%),
+    rgba(55, 25, 42, 0.72);
+  border: 1px solid rgba(255,228,230,0.12);
+  border-radius: 22px;
+  box-shadow:
+    0 16px 48px -28px rgba(0,0,0,0.75),
+    0 4px 16px -8px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.07);
+  transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
 }
 .card-glass {
-  background: rgba(90, 50, 72, 0.38);
-  border: 1px solid rgba(251,113,133,0.13);
-  border-radius: 20px;
-  box-shadow: 0 4px 24px -4px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.05);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 100%),
+    rgba(90, 50, 72, 0.32);
+  border: 1px solid rgba(255,228,230,0.13);
+  border-radius: 22px;
+  box-shadow:
+    0 16px 48px -28px rgba(0,0,0,0.68),
+    0 0 32px -22px rgba(251,113,133,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.07);
+  transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
 }
 @media (hover: hover) {
-  .card-glass { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .card-glass,
+  .card-surface { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+  .card-glass:hover,
+  .card-surface:hover {
+    transform: translateY(-3px);
+    border-color: rgba(253,230,138,0.24);
+    box-shadow:
+      0 22px 58px -30px rgba(0,0,0,0.80),
+      0 0 36px -20px rgba(212,175,55,0.36),
+      inset 0 1px 0 rgba(255,255,255,0.10);
+  }
 }
 .card-gold-border { border-color: rgba(212,175,55,0.28); }
 
@@ -215,6 +331,113 @@ body {
   border: 2px solid rgba(212,175,55,0.30);
   box-shadow: 0 8px 40px -8px rgba(0,0,0,0.40), inset 0 0 0 1px rgba(255,255,255,0.04);
   overflow: hidden;
+}
+
+/* Polaroid – envolve a foto com aparência de foto revelada */
+.polaroid {
+  background: rgba(255,248,240,0.97);
+  padding: 10px 10px 36px;
+  border-radius: 3px;
+  box-shadow:
+    0 24px 60px -18px rgba(0,0,0,0.85),
+    0 0  48px -20px rgba(251,113,133,0.55),
+    0 0  80px -40px rgba(212,175,55,0.40);
+  transform-origin: center bottom;
+}
+.polaroid-img {
+  border-radius: 1px;
+  overflow: hidden;
+  display: block;
+}
+.polaroid-caption {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(70,30,40,0.62);
+  text-align: center;
+  margin-top: 8px;
+  letter-spacing: 0.02em;
+}
+
+/* Carta com aparência de papel */
+.paper-card {
+  position: relative;
+  background:
+    linear-gradient(160deg, rgba(255,248,228,0.14) 0%, rgba(255,228,210,0.06) 100%),
+    rgba(62, 22, 14, 0.62);
+  border: 1px solid rgba(253,230,138,0.20);
+  border-radius: 24px;
+  box-shadow:
+    0 24px 64px -32px rgba(0,0,0,0.82),
+    inset 0 1px 0 rgba(253,230,138,0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+/* Borda interna fina, estilo envelope */
+.paper-card::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(253,230,138,0.09);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+/* Barra de progresso com glow */
+.progress-track {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+}
+.progress-fill-rose {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fb7185, #f472b6, #fbbf24);
+  box-shadow: 0 0 20px -6px rgba(251,191,36,0.7);
+  position: relative;
+  overflow: hidden;
+  transition: width 0.55s cubic-bezier(0.25,0.1,0.25,1);
+}
+.progress-fill-rose::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%);
+  animation: shimmer 2.4s ease-in-out infinite;
+}
+.progress-fill-green {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #34d399, #6ee7b7, #fbbf24);
+  box-shadow: 0 0 18px -6px rgba(52,211,153,0.65);
+  position: relative;
+  overflow: hidden;
+  transition: width 0.55s cubic-bezier(0.25,0.1,0.25,1);
+}
+.progress-fill-green::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%);
+  animation: shimmer 2.4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { transform: translateX(-110%); }
+  100% { transform: translateX(210%); }
+}
+
+/* Orb de glow – para o hero */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(0);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill-rose::after,
+  .progress-fill-green::after { animation: none; }
 }
 
 /* ─── Timer ──────────────────────────────────────────── */
@@ -378,9 +601,12 @@ body {
 /* ─── Conquistas slide ───────────────────────────────── */
 .slide-bg-conquistas {
   background:
-    radial-gradient(ellipse 75% 55% at 15% 15%, rgba(124,58,237,0.18) 0%, transparent 52%),
-    radial-gradient(ellipse 65% 50% at 85% 80%, rgba(251,191,36,0.10) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(192,132,252,0.06) 0%, transparent 55%),
-    linear-gradient(155deg, #08081a 0%, #0e0e22 45%, #060610 100%);
+    /* Luz dourada lateral — troféu */
+    radial-gradient(ellipse 55% 52% at 94% 8%,   rgba(251,191,36,0.42) 0%, rgba(212,175,55,0.12) 42%, transparent 65%),
+    /* Violeta épico no canto oposto */
+    radial-gradient(ellipse 52% 48% at 4% 94%,   rgba(124,58,237,0.36) 0%, rgba(109,40,217,0.10) 42%, transparent 65%),
+    /* Névoa roxa central */
+    radial-gradient(ellipse 65% 40% at 50% 50%,  rgba(60,20,120,0.14) 0%, transparent 60%),
+    linear-gradient(162deg, #02020e 0%, #06061a 35%, #0a0a22 60%, #040410 100%);
 }
 

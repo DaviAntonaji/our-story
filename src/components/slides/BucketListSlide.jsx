@@ -76,20 +76,30 @@ export default function BucketListSlide() {
 
           {/* Barra de progresso */}
           <MI v={scaleV}>
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-rose-200/45">Progresso</p>
-                <p className="text-[11px] text-amber-200/70 tabular-nums">
-                  {qtdFeitos} / {total}
-                </p>
+            <div className="card-glass card-gold-border px-4 py-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-rose-200/55">Progresso dos sonhos</p>
+                <span className="font-mono text-xs tabular-nums text-amber-200/85">
+                  {qtdFeitos}/{total}
+                </span>
               </div>
-              <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div className="progress-track h-3">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-amber-400"
+                  className="progress-fill-green"
                   initial={{ width: 0 }}
                   animate={{ width: `${(qtdFeitos / total) * 100}%` }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  transition={{ duration: 0.7, ease: 'easeOut' }}
                 />
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-rose-200/55">
+                  {Math.round((qtdFeitos / total) * 100)}% realizados
+                </span>
+                <span className="text-amber-100/65">
+                  {total - qtdFeitos > 0
+                    ? `${total - qtdFeitos} ainda por viver ✨`
+                    : 'Tudo realizado! 🥹'}
+                </span>
               </div>
             </div>
           </MI>
