@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 
 import { SLIDE_IDS } from './data/constants';
@@ -21,8 +21,6 @@ import CartaSlide from './components/slides/CartaSlide';
 import TagsSlide from './components/slides/TagsSlide';
 import VersiculoSlide from './components/slides/VersiculoSlide';
 import MomentosSlide from './components/slides/MomentosSlide';
-import HistoriaSlide from './components/slides/HistoriaSlide';
-import MapaSlide from './components/slides/MapaSlide';
 import PresenteFotosSlide from './components/slides/PresenteFotosSlide';
 import PromessasSlide from './components/slides/PromessasSlide';
 import MotivosSlide from './components/slides/MotivosSlide';
@@ -31,8 +29,11 @@ import RecadoSlide from './components/slides/RecadoSlide';
 import CreditosSlide from './components/slides/CreditosSlide';
 import CartasLacradasSlide from './components/slides/CartasLacradasSlide';
 import BucketListSlide from './components/slides/BucketListSlide';
-import ConquistasSlide from './components/slides/ConquistasSlide';
 import FinalSlide from './components/slides/FinalSlide';
+
+const HistoriaSlide = lazy(() => import('./components/slides/HistoriaSlide'));
+const MapaSlide = lazy(() => import('./components/slides/MapaSlide'));
+const ConquistasSlide = lazy(() => import('./components/slides/ConquistasSlide'));
 
 export default function App() {
   const [revelado, setRevelado] = useState(false);
@@ -82,8 +83,12 @@ export default function App() {
             <TagsSlide />
             <VersiculoSlide />
             <MomentosSlide />
-            <HistoriaSlide />
-            <MapaSlide />
+            <Suspense fallback={null}>
+              <HistoriaSlide />
+            </Suspense>
+            <Suspense fallback={null}>
+              <MapaSlide />
+            </Suspense>
             <PresenteFotosSlide />
             <PromessasSlide />
             <MotivosSlide />
@@ -92,7 +97,9 @@ export default function App() {
             <CreditosSlide />
             <CartasLacradasSlide />
             <BucketListSlide />
-            <ConquistasSlide />
+            <Suspense fallback={null}>
+              <ConquistasSlide />
+            </Suspense>
             <FinalSlide />
           </div>
         </>
