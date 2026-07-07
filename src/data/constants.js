@@ -44,6 +44,15 @@ export const MESESVERSARIOS = [
       'Quinta-feira de Corpus Christi: troca de presentes no carro, na praça da entrada, antes do culto - perfume, cartinha com desenho a mão e uma cartinha linda sua. Na sexta, porção completa juntos: batata frita, frango, asinha, calabresa, salame, azeitona, refri e pão de alho.',
     ],
   },
+  {
+    id: 4,
+    data: new Date(2026, 6, 4, 0, 0, 0, 0),
+    titulo: '4º mês 🤍',
+    resumo: [
+      'Na véspera, sexta-feira dia 3, a gente foi tomar açaí e comer pastel - jeito simples e gostoso de começar a comemoração.',
+      'No sábado, dia 4, a primeira vez que fomos pra Presidente Prudente só nós dois. Fomos ao PrudenShopping, e como nós estavamos de jejum de carne, a pedida foi batata recheada: você escolheu brócolis, eu fui de creme de milho. Depois um sorvete, passeio pelas lojas, eu acabei comprando uma camiseta, e o melhor achado do dia: um livro que você queria muito, numa liquidação onde todos custavam só R$ 10.',
+    ],
+  },
 ]
 
 /** Passagens exibidas no slide “Versículo” - `tipo`: numerados | destaque */

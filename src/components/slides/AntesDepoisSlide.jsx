@@ -73,7 +73,7 @@ export default function AntesDepoisSlide() {
             </MI>
             <MI v={fadeV}>
               <p className="text-rose-200/55 text-sm mt-2 max-w-md mx-auto leading-relaxed">
-                Do automático ao propósito — com você no caminho
+                Do automático ao propósito - com você no caminho
               </p>
             </MI>
           </div>

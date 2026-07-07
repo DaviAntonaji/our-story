@@ -61,7 +61,7 @@ body {
 
 /* ─── Slide Backgrounds ─────────────────────────────── */
 
-/* Hero / Intro — rosa quente com halo luminoso no topo */
+/* Hero / Intro - rosa quente com halo luminoso no topo */
 .slide-bg-rose {
   background:
     /* Luz principal: rosa flamejante no topo-esquerdo */
@@ -74,10 +74,10 @@ body {
     linear-gradient(168deg, #2e0d20 0%, #5c2d42 38%, #6e3652 65%, #3a1a2c 100%);
 }
 
-/* Timer — noite escura com aurora dourada no topo */
+/* Timer - noite escura com aurora dourada no topo */
 .slide-bg-maroon {
   background:
-    /* Luz dourada caindo do topo — como uma vela */
+    /* Luz dourada caindo do topo - como uma vela */
     radial-gradient(ellipse 70% 48% at 50% -5%,  rgba(212,175,55,0.45) 0%, rgba(251,191,36,0.12) 48%, transparent 68%),
     /* Rosa profundo na lateral esquerda */
     radial-gradient(ellipse 45% 60% at -5% 65%,  rgba(244,114,182,0.22) 0%, transparent 55%),
@@ -87,7 +87,7 @@ body {
     linear-gradient(170deg, #0e0408 0%, #1e0a10 35%, #2e1018 65%, #120608 100%);
 }
 
-/* Música — nebulosa violeta-elétrica */
+/* Música - nebulosa violeta-elétrica */
 .slide-bg-purple {
   background:
     /* Fonte de luz: violeta intenso no topo-esquerdo */
@@ -100,7 +100,7 @@ body {
     linear-gradient(162deg, #0d0420 0%, #1e0838 35%, #2c1050 60%, #0a0218 100%);
 }
 
-/* Carta — papel antigo, luz âmbar quente lateral */
+/* Carta - papel antigo, luz âmbar quente lateral */
 .slide-bg-amber {
   background:
     /* Lanterna lateral direita: dourado-âmbar concentrado */
@@ -183,11 +183,11 @@ body {
 /* Final */
 .slide-bg-final {
   background:
-    /* Luz rosa intensa no topo — clímax emocional */
+    /* Luz rosa intensa no topo - clímax emocional */
     radial-gradient(ellipse 65% 52% at 50% -2%,  rgba(251,113,133,0.52) 0%, rgba(244,114,182,0.18) 44%, transparent 68%),
-    /* Dourado suave no fundo — calor e esperança */
+    /* Dourado suave no fundo - calor e esperança */
     radial-gradient(ellipse 60% 45% at 50% 106%, rgba(212,175,55,0.36) 0%, rgba(180,140,30,0.10) 44%, transparent 65%),
-    /* Lavanda no canto lateral — sonho */
+    /* Lavanda no canto lateral - sonho */
     radial-gradient(ellipse 45% 50% at 96% 46%,  rgba(167,139,250,0.22) 0%, transparent 60%),
     /* Base: carmesim profundo */
     linear-gradient(168deg, #1a0410 0%, #380e20 35%, #4e1a2c 60%, #240a16 100%);
@@ -601,7 +601,7 @@ body {
 /* ─── Conquistas slide ───────────────────────────────── */
 .slide-bg-conquistas {
   background:
-    /* Luz dourada lateral — troféu */
+    /* Luz dourada lateral - troféu */
     radial-gradient(ellipse 55% 52% at 94% 8%,   rgba(251,191,36,0.42) 0%, rgba(212,175,55,0.12) 42%, transparent 65%),
     /* Violeta épico no canto oposto */
     radial-gradient(ellipse 52% 48% at 4% 94%,   rgba(124,58,237,0.36) 0%, rgba(109,40,217,0.10) 42%, transparent 65%),
