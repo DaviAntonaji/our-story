@@ -1,110 +1,107 @@
-import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useMemo } from 'react'
+import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
 import { staggerV, fadeV, FOTOS } from '../../data/constants'
 import { useLightbox } from '../../context/LightboxContext'
 
+const INITIAL = 16
+
+function seedRot(i) {
+  const v = Math.sin(i * 7.13 + 3.33) * 43758.5453
+  return ((v - Math.floor(v)) - 0.5) * 8 // -4° a +4°
+}
+
+// Converte nome de pasta em legenda legível: "pedido_namoro" → "Pedido de namoro"
+function folderLabel(src) {
+  const folder = src.split('/').at(-2) ?? ''
+  return folder
+    .replace(/^\d+x?[_-]?/, '')   // remove prefixos "1x_", "2_"
+    .replace(/[_-]/g, ' ')
+    .trim()
+    .replace(/^\w/, c => c.toUpperCase())
+}
+
 export default function MomentosSlide() {
-  const [fotoAtual, setFotoAtual] = useState(0)
-  const touchStartX = useRef(0)
-  const timerKeyRef = useRef(0)
-  const touchMoved = useRef(false)
   const { abrir } = useLightbox()
+  const [verTudo, setVerTudo] = useState(false)
 
-  useEffect(() => {
-    const id = setInterval(() => setFotoAtual(i => (i + 1) % FOTOS.length), 7000)
-    return () => clearInterval(id)
-  }, [timerKeyRef.current])
+  const items = useMemo(
+    () => FOTOS.map((src, idx) => ({ src, idx, r: seedRot(idx), label: folderLabel(src) })),
+    [],
+  )
 
-  const irParaFoto = (i) => { setFotoAtual(i); timerKeyRef.current++ }
-  const onTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX
-    touchMoved.current = false
-  }
-  const onTouchEnd = (e) => {
-    const diff = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) >= 50) {
-      touchMoved.current = true
-      irParaFoto(diff > 0 ? (fotoAtual + 1) % FOTOS.length : (fotoAtual - 1 + FOTOS.length) % FOTOS.length)
-    }
-  }
+  const visiveis = verTudo ? items : items.slice(0, INITIAL)
+  const restantes = FOTOS.length - INITIAL
 
   return (
-    <Slide id="momentos" bg="slide-bg-dark">
+    <Slide id="momentos" bg="slide-bg-dark" center={false}>
       {(inView) => (
-        <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-4 w-full mx-auto"
+        <motion.div
+          variants={staggerV}
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          className="flex flex-col items-center gap-5 w-full"
         >
-          <div className="text-center">
+          {/* Cabeçalho */}
+          <div className="text-center w-full">
             <MI v={fadeV} className="chapter-label">Nossas memórias</MI>
             <MI className="mt-2">
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">Momentos 📸</h2>
+              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">
+                Momentos 📸
+              </h2>
+            </MI>
+            <MI v={fadeV}>
+              <p className="text-rose-300/50 text-xs mt-1">
+                {FOTOS.length} fotos em ordem cronológica · toque para ampliar
+              </p>
             </MI>
           </div>
-          <MI className="w-full">
-            <div
-              className="relative rounded-[16px] overflow-hidden card-surface w-full"
-              style={{ height: 'min(55vh, 420px)' }}
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-            >
-              <div className="carousel-counter">{fotoAtual + 1} / {FOTOS.length}</div>
-              {/* Botão expandir */}
-              <button
-                onClick={() => abrir(FOTOS, fotoAtual)}
-                className="absolute top-2 right-2 z-20 w-8 h-8 rounded-full flex items-center justify-center bg-black/40 border border-white/15 text-white/60 hover:text-white hover:bg-black/60 transition-colors"
-                aria-label="Ver em tela cheia"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M4 8V5a1 1 0 011-1h3M4 16v3a1 1 0 001 1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3" />
-                </svg>
-              </button>
-              <button onClick={() => irParaFoto((fotoAtual - 1 + FOTOS.length) % FOTOS.length)}
-                className="absolute left-2 z-10 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/30 border border-white/15"
-                aria-label="Anterior">
-                <svg className="w-4 h-4 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button onClick={() => irParaFoto((fotoAtual + 1) % FOTOS.length)}
-                className="absolute right-2 z-10 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/30 border border-white/15"
-                aria-label="Próxima">
-                <svg className="w-4 h-4 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={fotoAtual}
-                    src={FOTOS[fotoAtual]}
-                    alt={`Momento ${fotoAtual + 1}`}
-                    width={1600}
-                    height={1200}
-                    sizes="(max-width: 768px) 100vw, min(640px, 90vw)"
-                    className="h-auto max-h-full w-auto max-w-full object-contain cursor-zoom-in"
-                    loading="lazy"
-                    decoding="async"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    onClick={() => { if (!touchMoved.current) abrir(FOTOS, fotoAtual) }}
-                  />
-                </AnimatePresence>
-              </div>
-              <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
-                {FOTOS.map((_, i) => (
-                  <button key={i} onClick={() => irParaFoto(i)}
-                    className={`rounded-full transition-all duration-200 ${i === fotoAtual ? 'bg-amber-400 w-4 h-1.5' : 'bg-white/30 w-1.5 h-1.5'}`}
-                  />
-                ))}
-              </div>
+
+          {/* Mural de polaroids */}
+          <MI v={fadeV} className="w-full">
+            {/*
+              Sem height constraint no container — CSS columns + overflow:auto = brancos e layout quebrado.
+              O "Ver mais" já controla o tamanho inicial; expandido, o slide cresce naturalmente.
+            */}
+            <div className="columns-2 sm:columns-3 lg:columns-5 xl:columns-6 gap-2.5 px-1 pb-4">
+              {visiveis.map(({ src, idx, r, label }) => (
+                <div
+                  key={src}
+                  className={`polaroid-wall-item break-inside-avoid mb-3 ${verTudo && idx >= INITIAL ? 'polaroid-new' : ''}`}
+                  style={{ '--r': `${r}deg`, '--delay': `${Math.min((idx - INITIAL) * 0.03, 0.7)}s` }}
+                  onClick={() => abrir(FOTOS, idx)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && abrir(FOTOS, idx)}
+                  aria-label={`${label} – foto ${idx + 1}`}
+                >
+                  <div className="polaroid-wall-frame">
+                    <img
+                      src={src}
+                      alt={label}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto block"
+                    />
+                    <p className="polaroid-wall-caption">{label}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </MI>
-          <MI v={fadeV} className="text-rose-300/55 text-xs text-center">← deslize para navegar →</MI>
+
+          {/* Botão Ver mais */}
+          {!verTudo && (
+            <MI v={fadeV}>
+              <button
+                onClick={() => setVerTudo(true)}
+                className="btn-primary rounded-full px-7 py-3 text-sm font-medium tracking-wide"
+              >
+                📷 Ver mais {restantes} fotos
+              </button>
+            </MI>
+          )}
         </motion.div>
       )}
     </Slide>
