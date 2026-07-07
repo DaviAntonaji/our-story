@@ -173,7 +173,7 @@ export default function BucketListSlide() {
                             : emProgresso
                               ? 'rgba(253,230,138,0.85)'
                               : 'rgba(255,228,230,0.85)',
-                          textDecoration: feito ? 'line-through' : 'none',
+                          textDecorationLine: feito ? 'line-through' : 'none',
                           textDecorationColor: 'rgba(52,211,153,0.5)',
                         }}
                       >

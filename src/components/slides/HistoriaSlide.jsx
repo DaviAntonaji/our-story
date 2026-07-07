@@ -2,12 +2,10 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
-import { staggerV, fadeV, TIMELINE } from '../../data/constants'
+import { staggerV, fadeV, TIMELINE, HISTORIA_DATA_CORTE } from '../../data/constants'
 
 /** Data até onde os cards aparecem sem interação (inclusive). */
-const DATA_CORTE = '08 de março de 2026'
-
-const idxCorte = TIMELINE.findIndex(i => i.data === DATA_CORTE)
+const idxCorte = TIMELINE.findIndex(i => i.data === HISTORIA_DATA_CORTE)
 const TIMELINE_VISIVEL = idxCorte >= 0 ? TIMELINE.slice(0, idxCorte + 1) : TIMELINE
 const TIMELINE_OCULTA  = idxCorte >= 0 ? TIMELINE.slice(idxCorte + 1)   : []
 

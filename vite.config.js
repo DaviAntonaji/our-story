@@ -47,13 +47,16 @@ export default defineConfig({
       workbox: {
         navigateFallback: 'index.html',
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2,woff}'],
+        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4 MB (padrão é 2 MB)
         runtimeCaching: [
           {
+            // CacheFirst: fotos raramente mudam → serve do cache sem consultar a rede
             urlPattern: ({ url }) => url.pathname.startsWith('/imgs/'),
-            handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
               cacheName: 'our-story-media',
-              expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
             },
           },
         ],

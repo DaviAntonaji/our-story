@@ -133,8 +133,23 @@ export function useTempoJuntos() {
       })
     }
     tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
+    let id = setInterval(tick, 1000)
+
+    // Pausa o intervalo quando a aba está em background — economiza CPU e bateria
+    const onVisibility = () => {
+      if (document.hidden) {
+        clearInterval(id)
+      } else {
+        tick()
+        id = setInterval(tick, 1000)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+
+    return () => {
+      clearInterval(id)
+      document.removeEventListener('visibilitychange', onVisibility)
+    }
   }, [])
   return t
 }

@@ -15,7 +15,8 @@ function easeSaudade(t) {
 
 export default function TimerSlide() {
   const tempo = useTempoJuntos()
-  const [timerInView, setTimerInView] = useState(false)
+  const countRef = useRef(null)
+  const timerInView = useInView(countRef, { once: true, amount: 'some' })
   const totalDiasAnimado = useCountUp(tempo.totalDias, 900, timerInView)
   const saudadeRef = useRef(null)
   const saudadeVisivel = useInView(saudadeRef, { once: true, amount: 0.55 })
@@ -74,12 +75,10 @@ export default function TimerSlide() {
 
   return (
     <Slide id="timer" bg="slide-bg-maroon">
-      {(inView) => {
-        if (inView && !timerInView) setTimerInView(true)
-        return (
-          <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-            className="flex flex-col items-center gap-5 text-center w-full max-w-sm lg:max-w-xl mx-auto"
-          >
+      {(inView) => (
+        <motion.div ref={countRef} variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
+          className="flex flex-col items-center gap-5 text-center w-full max-w-sm lg:max-w-xl mx-auto"
+        >
             <MI v={fadeV} className="chapter-label">Já se passou</MI>
             <MI v={scaleV}>
               <p className="text-jumbo font-display font-bold text-rose-50 tabular-nums">{totalDiasAnimado}</p>
@@ -237,8 +236,7 @@ export default function TimerSlide() {
               )}
             </MI>
           </motion.div>
-        )
-      }}
+      )}
     </Slide>
   )
 }
