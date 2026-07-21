@@ -184,4 +184,14 @@ export const MAPA_LUGARES = [
     data: '2026',
     descricao: 'Sua primeira vigília na vida. Acabou terminando bem cedo, mas mesmo assim foi divertido - você levou uma palavra, eu tocando cajón. Fomos de Fiesta do meu pai porque meu carro estava com o amortecedor ruim, mas foi muito bom.',
   },
+  {
+    id: 'academia-elite',
+    nome: 'Academia Elite',
+    icon: '🏋️',
+    categoria: 'Nossa rotina',
+    coords: [-22.282060, -51.495868],
+    foto: '/imgs/photos/primeiro_treino/IMG_4828.jpg',
+    data: '20 de julho de 2026',
+    descricao: 'Nosso primeiro treino juntos. Saímos da sua casa caminhando até aqui, você toda tímida descobrindo os aparelhos - e aos poucos aquilo virou uma das nossas rotinas favoritas: caminhada, conversa, treino e a volta pra casa lado a lado.',
+  },
 ]
