@@ -20,6 +20,7 @@ const LABELS = {
   creditos:      '🎬 Créditos',
   cartas:        '📜 Cartas guardadas',
   bucketlist:    '✅ Lista de sonhos',
+  conquistas:    '🏆 Conquistas',
   final:         '💝 Capítulo I',
 }
 
