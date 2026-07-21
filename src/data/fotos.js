@@ -84,6 +84,8 @@ export const FOTOS = [
   '/imgs/photos/primeira_copa/IMG_4172.jpg', '/imgs/photos/primeira_copa/IMG_4176.jpg',
   // FEJUPI 2026
   '/imgs/photos/fejupi_2026/IMG_4194.png',
+  // Nosso primeiro treino juntos
+  '/imgs/photos/primeiro_treino/IMG_4828.jpg', '/imgs/photos/primeiro_treino/IMG_4833.jpg',
 ]
 
 /**
@@ -189,6 +191,21 @@ export const SESSAO_FOTOS_PRESENTE = {
         'Não montei o buquê - comprei pronto -, mas quando vi aquele arranjo já pronto, me encantou: margaridinhas brancas com miolo amarelo e raminhos amarelos delicados entre as rosas, tudo embrulhado em papel vermelho. Pureza, leveza e alegria misturadas ao vermelho intenso do amor, do jeito que o dia pedia.',
         'Junto levei uma caixinha de bombons Nestlé Especialidades - flores e doce no mesmo gesto: o romântico e o gostoso de dividir, como a gente fez depois no Tips Lanches, com porções, conversa sem pressa e risadas só nossas.',
         'Foi o primeiro 12 de junho da nossa história. Talvez para outras pessoas tenha sido só um buquê; para mim, foi mais uma forma de dizer que meu lugar favorito é ao seu lado - e que eu quero te dar muitas flores ainda.',
+      ],
+    },
+    {
+      id: 'sf8',
+      data: '18 de julho de 2026',
+      imagens: [
+        '/imgs/flowers/rosa_artificial_1.jpg',
+        '/imgs/flowers/rosa_artificial_2.jpg',
+        '/imgs/flowers/rosa_artificial_3.jpg',
+      ],
+      titulo: 'Rosa vermelha artificial',
+      paras: [
+        'Foi um sábado. Te levei pra trabalhar na casa da minha tia, e você gostou pra caramba do dia. Quando fui te buscar, te dei essa rosa - artificial, pra durar, do jeitinho que eu quero com a gente.',
+        'Rosa vermelha continua sendo "eu te amo": paixão, carinho, admiração. Mesmo sendo de tecido, o gesto era real - eu queria te entregar algo bonito no fim de um dia que a gente viveu juntos.',
+        'À noite ainda rolou nosso primeiro filme de comédia romântica: Esposa de Mentirinha. Depois disso a gente viciou - comédia romântica virou programa nosso.',
       ],
     },
   ],

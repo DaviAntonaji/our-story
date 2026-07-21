@@ -434,4 +434,19 @@ export const TIMELINE = [
       'Foi o nosso primeiro jogo da Copa juntos. E isso fez dele especial. ⚽',
     ],
   },
+  {
+    data: '20 de julho de 2026',
+    destaque: true,
+    titulo: 'Nosso primeiro treino juntos 🤍',
+    icon: '🏋️',
+    paras: [
+      'Tem coisa que parece pequena na hora… e só depois a gente vê que virou uma das melhores lembranças.',
+      'Hoje foi o nosso primeiro treino juntos. Consegui o Gympass pra nós dois e finalmente a gente começou isso lado a lado. Você tava toda tímida, falando que nunca tinha ido numa academia, sem saber direito como funcionavam os aparelhos, até um pouco envergonhada. Eu achava a coisa mais fofa do mundo.',
+      'Saímos da sua casa caminhando até a Academia Elite. No caminho a gente conversou, riu e ficou naquela expectativa de como ia ser. Chegando lá, fomos descobrindo tudo juntos - te mostrei uns aparelhos, fizemos o treino no nosso ritmo, e aos poucos a timidez foi virando sorriso.',
+      'Não foi o treino mais pesado do mundo, nem o mais perfeito. Mas foi especial porque era nosso.',
+      'Na volta, caminhando pra casa, a gente foi conversando e rindo de como tinha sido. Parecia que o caminho passava mais rápido com você do lado.',
+      'O que eu não imaginava é que aquele dia ia virar o começo de uma das nossas rotinas favoritas. Treinar deixou de ser só exercício. Virou nosso momento: a caminhada, as conversas no caminho, os incentivos, as brincadeiras entre uma série e outra, o cansaço junto e a alegria de voltar pra casa sabendo que a gente tinha vencido mais um dia.',
+      'Não foi viagem, nem festa grande. Foi uma caminhada até a Elite, um treino e a volta pra casa. Mas com você, o "só isso" nunca existia. 🤍',
+    ],
+  },
 ]
