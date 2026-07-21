@@ -381,9 +381,11 @@ export const CONQUISTAS = [
     id: 'x-caminhada',
     titulo: 'Primeira Caminhada Sem Destino',
     subtitulo: 'Quando o lugar não importava, só a companhia',
+    descricao: 'Sem destino, sem pressa - só andando juntos porque estar um do lado do outro já era o plano.',
     icon: '🚶',
     raridade: 'comum',
-    desbloqueada: false,
+    data: '17 de jul de 2026',
+    desbloqueada: true,
   },
   {
     id: 'x-refeicao',
