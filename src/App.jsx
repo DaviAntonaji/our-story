@@ -33,6 +33,7 @@ import CreditosSlide from './components/slides/CreditosSlide';
 import CartasLacradasSlide from './components/slides/CartasLacradasSlide';
 import BucketListSlide from './components/slides/BucketListSlide';
 import FinalSlide from './components/slides/FinalSlide';
+import SlideSkeleton from './components/ui/SlideSkeleton';
 
 const HistoriaSlide   = lazy(() => import('./components/slides/HistoriaSlide'));
 const MapaSlide       = lazy(() => import('./components/slides/MapaSlide'));
@@ -124,11 +125,11 @@ export default function App() {
               <TagsSlide />
               <VersiculoSlide />
               <MomentosSlide />
-              <Suspense fallback={null}>
+              <Suspense fallback={<SlideSkeleton bg="slide-bg-story" />}>
                 <HistoriaSlide />
               </Suspense>
               <ErrorBoundary fallback={<MapaFallback />}>
-                <Suspense fallback={null}>
+                <Suspense fallback={<SlideSkeleton bg="slide-bg-teal" />}>
                   <MapaSlide />
                 </Suspense>
               </ErrorBoundary>
@@ -140,7 +141,7 @@ export default function App() {
               <CreditosSlide />
               <CartasLacradasSlide />
               <BucketListSlide />
-              <Suspense fallback={null}>
+              <Suspense fallback={<SlideSkeleton bg="slide-bg-conquistas" />}>
                 <ConquistasSlide />
               </Suspense>
               <FinalSlide />

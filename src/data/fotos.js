@@ -203,7 +203,7 @@ export const SESSAO_FOTOS_PRESENTE = {
       ],
       titulo: 'Rosa vermelha artificial',
       paras: [
-        'Foi um sábado. Te levei pra trabalhar na casa da minha tia, e você gostou pra caramba do dia. Quando fui te buscar, te dei essa rosa - artificial, pra durar, do jeitinho que eu quero com a gente.',
+        'Foi um sábado. Te levei pra trabalhar no salão da minha tia, e você gostou pra caramba do dia. Quando fui te buscar, te dei essa rosa - artificial, pra durar, do jeitinho que eu quero com a gente.',
         'Rosa vermelha continua sendo "eu te amo": paixão, carinho, admiração. Mesmo sendo de tecido, o gesto era real - eu queria te entregar algo bonito no fim de um dia que a gente viveu juntos.',
         'À noite ainda rolou nosso primeiro filme de comédia romântica: Esposa de Mentirinha. Depois disso a gente viciou - comédia romântica virou programa nosso.',
       ],

@@ -5,52 +5,52 @@ import Slide from '../ui/Slide'
 import { staggerV, fadeV, scaleV, CONQUISTAS } from '../../data/constants'
 import { getNivelInfo, getTituloNivel } from '../../utils/niveisXp'
 
-// ── Configuração de raridade ──────────────────────────────────────────────────
+// Raridades na paleta ouro-rosa do site (mantém XP e hierarquia)
 const RARITY_CONFIG = {
   comum: {
     label: 'Comum',
-    color: '#a1a1aa',
-    glow: 'rgba(161,161,170,0.18)',
-    border: 'rgba(161,161,170,0.28)',
-    bg: 'rgba(161,161,170,0.07)',
+    color: '#e8b4bc',
+    glow: 'rgba(232,180,188,0.20)',
+    border: 'rgba(232,180,188,0.28)',
+    bg: 'rgba(232,180,188,0.07)',
     xp: 100,
-    ring: 'rgba(161,161,170,0.15)',
+    ring: 'rgba(232,180,188,0.14)',
   },
   especial: {
     label: 'Especial',
-    color: '#60a5fa',
-    glow: 'rgba(96,165,250,0.22)',
-    border: 'rgba(96,165,250,0.38)',
-    bg: 'rgba(96,165,250,0.08)',
+    color: '#f0a8b8',
+    glow: 'rgba(240,168,184,0.24)',
+    border: 'rgba(240,168,184,0.36)',
+    bg: 'rgba(240,168,184,0.08)',
     xp: 250,
-    ring: 'rgba(96,165,250,0.18)',
+    ring: 'rgba(240,168,184,0.16)',
   },
   raro: {
     label: 'Raro',
-    color: '#34d399',
-    glow: 'rgba(52,211,153,0.22)',
-    border: 'rgba(52,211,153,0.38)',
-    bg: 'rgba(52,211,153,0.08)',
+    color: '#e8c4a0',
+    glow: 'rgba(232,196,160,0.24)',
+    border: 'rgba(232,196,160,0.36)',
+    bg: 'rgba(232,196,160,0.08)',
     xp: 300,
-    ring: 'rgba(52,211,153,0.18)',
+    ring: 'rgba(232,196,160,0.16)',
   },
   epico: {
     label: 'Épico',
-    color: '#c084fc',
-    glow: 'rgba(192,132,252,0.26)',
-    border: 'rgba(192,132,252,0.44)',
-    bg: 'rgba(192,132,252,0.09)',
+    color: '#d4a574',
+    glow: 'rgba(212,165,116,0.28)',
+    border: 'rgba(212,165,116,0.42)',
+    bg: 'rgba(212,165,116,0.09)',
     xp: 500,
-    ring: 'rgba(192,132,252,0.20)',
+    ring: 'rgba(212,165,116,0.18)',
   },
   lendario: {
     label: 'Lendário',
-    color: '#fbbf24',
-    glow: 'rgba(251,191,36,0.34)',
-    border: 'rgba(251,191,36,0.55)',
-    bg: 'rgba(251,191,36,0.10)',
+    color: '#d4af37',
+    glow: 'rgba(212,175,55,0.34)',
+    border: 'rgba(212,175,55,0.50)',
+    bg: 'rgba(212,175,55,0.10)',
     xp: 1000,
-    ring: 'rgba(251,191,36,0.28)',
+    ring: 'rgba(212,175,55,0.26)',
   },
 }
 
@@ -83,7 +83,6 @@ function getConquistaTime(conquista, originalIndex) {
   return Number.MAX_SAFE_INTEGER + originalIndex
 }
 
-// ── Card de conquista desbloqueada ────────────────────────────────────────────
 function AchievementCard({ conquista, index }) {
   const [expanded, setExpanded] = useState(false)
   const r = RARITY_CONFIG[conquista.raridade]
@@ -125,13 +124,12 @@ function AchievementCard({ conquista, index }) {
         transition={isLendario ? { duration: 2.6, repeat: Infinity, ease: 'easeInOut' } : {}}
         whileHover={{ scale: 1.012 }}
       >
-        {/* Shine sweep para lendário */}
         {isLendario && (
           <motion.div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                'linear-gradient(105deg, transparent 30%, rgba(251,191,36,0.18) 50%, transparent 70%)',
+                'linear-gradient(105deg, transparent 30%, rgba(212,175,55,0.16) 50%, transparent 70%)',
               zIndex: 1,
             }}
             animate={{ x: ['-120%', '220%'] }}
@@ -140,7 +138,6 @@ function AchievementCard({ conquista, index }) {
         )}
 
         <div className="relative z-10 flex items-center gap-3 px-3.5 py-3">
-          {/* Ícone */}
           <div
             className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
             style={{
@@ -152,15 +149,13 @@ function AchievementCard({ conquista, index }) {
             {conquista.icon}
           </div>
 
-          {/* Texto */}
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
-              <p className="text-sm sm:text-base font-bold text-white/90 leading-tight">
+              <p className="font-display text-sm sm:text-base font-semibold text-rose-50 leading-tight">
                 {conquista.titulo}
               </p>
-              {/* Badge raridade */}
               <span
-                className="flex-shrink-0 text-[9px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full"
+                className="flex-shrink-0 text-[9px] font-semibold uppercase tracking-[0.16em] px-2 py-0.5 rounded-full"
                 style={{
                   color: r.color,
                   background: r.bg,
@@ -170,22 +165,21 @@ function AchievementCard({ conquista, index }) {
                 {r.label}
               </span>
             </div>
-            <p className="text-xs text-white/45 leading-snug mt-0.5 pr-1">
+            <p className="text-xs text-rose-200/50 leading-snug mt-0.5 pr-1">
               {conquista.subtitulo}
             </p>
             <div className="flex items-center gap-3 mt-1.5">
               {conquista.data && (
-                <span className="text-[10px] text-white/25 font-medium">{conquista.data}</span>
+                <span className="text-[10px] text-rose-200/30 font-medium">{conquista.data}</span>
               )}
-              <span className="text-[10px] font-black tabular-nums" style={{ color: r.color }}>
+              <span className="text-[10px] font-semibold tabular-nums" style={{ color: r.color }}>
                 +{r.xp.toLocaleString('pt-BR')} XP
               </span>
             </div>
           </div>
 
-          {/* Chevron */}
           <motion.span
-            className="flex-shrink-0 text-[10px] text-white/20 ml-0.5"
+            className="flex-shrink-0 text-[10px] text-rose-200/25 ml-0.5"
             animate={{ rotate: expanded ? 180 : 0 }}
             transition={{ duration: 0.22 }}
           >
@@ -193,7 +187,6 @@ function AchievementCard({ conquista, index }) {
           </motion.span>
         </div>
 
-        {/* Descrição expandida */}
         <AnimatePresence initial={false}>
           {expanded && conquista.descricao && (
             <motion.div
@@ -207,7 +200,7 @@ function AchievementCard({ conquista, index }) {
                 className="px-4 pb-4 pt-0"
                 style={{ borderTop: `1px solid ${r.border}` }}
               >
-                <p className="text-xs sm:text-sm text-white/60 leading-relaxed pt-3 font-body italic">
+                <p className="text-xs sm:text-sm text-rose-100/65 leading-relaxed pt-3 font-body italic">
                   {conquista.descricao}
                 </p>
               </div>
@@ -219,7 +212,6 @@ function AchievementCard({ conquista, index }) {
   )
 }
 
-// ── Card de conquista bloqueada ───────────────────────────────────────────────
 function LockedCard({ conquista, index }) {
   const r = RARITY_CONFIG[conquista.raridade]
 
@@ -241,19 +233,17 @@ function LockedCard({ conquista, index }) {
           border: '1px solid rgba(255,255,255,0.07)',
         }}
       >
-        {/* Ícone bloqueado */}
         <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center bg-white/[0.03] border border-white/[0.06]">
           <span className="text-2xl grayscale opacity-25">{conquista.icon}</span>
         </div>
 
-        {/* Texto muted */}
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
-            <p className="text-sm font-bold leading-tight" style={{ color: 'rgba(255,255,255,0.42)' }}>
+            <p className="font-display text-sm font-semibold leading-tight text-rose-100/40">
               {conquista.titulo}
             </p>
             <span
-              className="flex-shrink-0 text-[9px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full opacity-25"
+              className="flex-shrink-0 text-[9px] font-semibold uppercase tracking-[0.16em] px-2 py-0.5 rounded-full opacity-30"
               style={{
                 color: r.color,
                 background: r.bg,
@@ -263,22 +253,19 @@ function LockedCard({ conquista, index }) {
               {r.label}
             </span>
           </div>
-          <p
-            className="text-xs mt-1 flex items-center gap-1.5"
-            style={{ color: 'rgba(255,228,230,0.55)' }}
-          >
+          <p className="text-xs mt-1 flex items-center gap-1.5 text-rose-200/45">
             <span aria-hidden className="text-[11px] opacity-80">🔒</span>
             <span>Ainda não desbloqueada</span>
           </p>
           <p
-            className="text-[10px] font-black mt-1.5 tabular-nums"
+            className="text-[10px] font-semibold mt-1.5 tabular-nums"
             style={{ color: r.color, opacity: 0.45 }}
           >
             +{r.xp.toLocaleString('pt-BR')} XP
           </p>
         </div>
 
-        <span className="text-base flex-shrink-0" style={{ color: 'rgba(255,228,230,0.35)' }} aria-hidden>
+        <span className="text-base flex-shrink-0 text-rose-200/30" aria-hidden>
           🔒
         </span>
       </div>
@@ -286,7 +273,6 @@ function LockedCard({ conquista, index }) {
   )
 }
 
-// ── Slide principal ───────────────────────────────────────────────────────────
 export default function ConquistasSlide() {
   const desbloqueadas = useMemo(
     () => CONQUISTAS
@@ -314,7 +300,6 @@ export default function ConquistasSlide() {
     [currentXP, totalXP],
   )
 
-  // contagem por raridade
   const raridadesCount = useMemo(() => {
     const counts = { lendario: 0, epico: 0, raro: 0, especial: 0, comum: 0 }
     desbloqueadas.forEach(c => { counts[c.raridade]++ })
@@ -330,102 +315,72 @@ export default function ConquistasSlide() {
           animate={inView ? 'show' : 'hidden'}
           className="flex flex-col gap-5 w-full max-w-md lg:max-w-2xl mx-auto pb-14"
         >
-          {/* ── Header ─────────────────────────────────────── */}
           <div className="text-center pt-2">
-            <MI v={fadeV} className="chapter-label">Sistema de conquistas</MI>
-            <MI
-              v={scaleV}
-              className="text-5xl sm:text-6xl mt-3 block"
-              style={{ animation: 'pulseSoft 3s ease-in-out infinite' }}
-            >
-              🏆
-            </MI>
-            <MI className="mt-3">
-              <h2
-                className="font-display text-3xl sm:text-4xl font-black tracking-tight"
-                style={{
-                  background: 'linear-gradient(135deg, #fde68a 0%, #fbbf24 45%, #f59e0b 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
+            <MI v={fadeV} className="chapter-label">Marcos do nosso amor</MI>
+            <MI className="mt-2 flex items-center justify-center gap-2">
+              <span className="text-2xl" style={{ animation: 'softFloat 5s ease-in-out infinite' }}>🏆</span>
+              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">
                 Conquistas
               </h2>
+              <span className="text-2xl" style={{ animation: 'softFloat 5s ease-in-out infinite 0.5s' }}>🤍</span>
             </MI>
             <MI v={fadeV}>
-              <p className="text-white/35 text-sm mt-1">
-                {desbloqueadas.length} de {CONQUISTAS.length} desbloqueadas
+              <p className="text-rose-200/55 text-xs mt-1">
+                {desbloqueadas.length} de {CONQUISTAS.length} momentos desbloqueados
               </p>
             </MI>
 
-            {/* badges de raridade */}
             <MI v={fadeV} className="flex items-center justify-center gap-2 flex-wrap mt-3">
-              {[
-                { key: 'lendario', emoji: '🏆' },
-                { key: 'epico',    emoji: '💜' },
-                { key: 'raro',     emoji: '💚' },
-                { key: 'especial', emoji: '💙' },
-                { key: 'comum',    emoji: '🩶' },
-              ].map(({ key, emoji }) => (
+              {['lendario', 'epico', 'raro', 'especial', 'comum'].map((key) => (
                 <span
                   key={key}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-medium uppercase tracking-[0.14em]"
                   style={{
                     color: RARITY_CONFIG[key].color,
                     background: RARITY_CONFIG[key].bg,
                     border: `1px solid ${RARITY_CONFIG[key].border}`,
                   }}
                 >
-                  {emoji} {raridadesCount[key]}× {RARITY_CONFIG[key].label}
+                  ✦ {raridadesCount[key]}× {RARITY_CONFIG[key].label}
                 </span>
               ))}
             </MI>
           </div>
 
-          {/* ── Nível & XP ─────────────────────────────────── */}
           <MI v={scaleV}>
-            <div
-              className="rounded-2xl px-4 py-4"
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
-              }}
-            >
+            <div className="card-glass card-gold-border rounded-2xl px-4 py-4">
               <div className="flex items-center justify-between gap-3 mb-3">
                 <div className="flex items-center gap-3">
                   <div
-                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-black text-lg tabular-nums"
+                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-display font-semibold text-lg tabular-nums text-amber-100"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(124,58,237,0.35), rgba(251,191,36,0.25))',
-                      border: '1px solid rgba(251,191,36,0.45)',
-                      color: '#fde68a',
-                      boxShadow: '0 0 16px rgba(251,191,36,0.25)',
+                      background: 'linear-gradient(135deg, rgba(212,175,55,0.28), rgba(244,114,182,0.16))',
+                      border: '1px solid rgba(212,175,55,0.42)',
+                      boxShadow: '0 0 16px rgba(212,175,55,0.22)',
                     }}
                   >
                     {nivelInfo.nivel}
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-semibold">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-amber-100/45 font-medium">
                       Nível {nivelInfo.nivel}
                       {!nivelInfo.noMaximo && (
-                        <span className="text-white/20"> / {nivelInfo.maxNivel}</span>
+                        <span className="text-rose-200/30"> / {nivelInfo.maxNivel}</span>
                       )}
                     </p>
-                    <p className="text-sm font-bold text-amber-200/85 leading-tight mt-0.5">
+                    <p className="font-display text-sm font-semibold text-rose-50 leading-tight mt-0.5">
                       {getTituloNivel(nivelInfo.nivel)}
                     </p>
                   </div>
                 </div>
-                <span className="text-[10px] font-bold text-white/25 tabular-nums text-right">
+                <span className="text-[10px] font-medium text-amber-200/50 tabular-nums text-right">
                   {currentXP.toLocaleString('pt-BR')} XP
                 </span>
               </div>
 
               {nivelInfo.noMaximo ? (
-                <p className="text-xs text-center text-amber-300/70 font-semibold py-1">
-                  Nível máximo alcançado - história completa 🏆
+                <p className="text-xs text-center text-amber-200/70 font-medium py-1">
+                  Nível máximo — história completa 🤍
                 </p>
               ) : (
                 <>
@@ -436,8 +391,8 @@ export default function ConquistasSlide() {
                     <motion.div
                       className="h-full rounded-full"
                       style={{
-                        background: 'linear-gradient(90deg, #7c3aed 0%, #c084fc 40%, #fbbf24 100%)',
-                        boxShadow: '0 0 14px rgba(251,191,36,0.45)',
+                        background: 'linear-gradient(90deg, rgba(244,114,182,0.75) 0%, #d4af37 55%, #f0d78c 100%)',
+                        boxShadow: '0 0 14px rgba(212,175,55,0.40)',
                       }}
                       initial={{ width: 0 }}
                       animate={inView ? { width: `${nivelInfo.pct.toFixed(1)}%` } : { width: 0 }}
@@ -445,10 +400,10 @@ export default function ConquistasSlide() {
                     />
                   </div>
                   <div className="flex justify-between items-center mt-2">
-                    <span className="text-[9px] text-white/25 font-medium tabular-nums">
+                    <span className="text-[9px] text-rose-200/30 font-medium tabular-nums">
                       {nivelInfo.xpNoNivel.toLocaleString('pt-BR')} / {nivelInfo.xpSpan.toLocaleString('pt-BR')} XP
                     </span>
-                    <span className="text-[9px] text-amber-300/55 font-bold tabular-nums">
+                    <span className="text-[9px] text-amber-200/55 font-medium tabular-nums">
                       faltam {nivelInfo.xpProximoNivel.toLocaleString('pt-BR')} XP p/ nv. {nivelInfo.nivel + 1}
                     </span>
                   </div>
@@ -457,25 +412,22 @@ export default function ConquistasSlide() {
             </div>
           </MI>
 
-          {/* ── Desbloqueadas ──────────────────────────────── */}
           <div>
             <MI v={fadeV}>
               <div className="flex items-center gap-2 mb-3">
                 <div
                   className="h-px flex-1"
                   style={{
-                    background:
-                      'linear-gradient(90deg, transparent, rgba(52,211,153,0.45))',
+                    background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.40))',
                   }}
                 />
-                <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-emerald-400/65">
-                  ✓ Desbloqueadas · {desbloqueadas.length}
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-amber-200/65">
+                  ✦ Desbloqueadas · {desbloqueadas.length}
                 </span>
                 <div
                   className="h-px flex-1"
                   style={{
-                    background:
-                      'linear-gradient(90deg, rgba(52,211,153,0.45), transparent)',
+                    background: 'linear-gradient(90deg, rgba(212,175,55,0.40), transparent)',
                   }}
                 />
               </div>
@@ -492,25 +444,22 @@ export default function ConquistasSlide() {
             </motion.div>
           </div>
 
-          {/* ── Bloqueadas ─────────────────────────────────── */}
           <div>
             <MI v={fadeV}>
               <div className="flex items-center gap-2 mb-3">
                 <div
                   className="h-px flex-1"
                   style={{
-                    background:
-                      'linear-gradient(90deg, transparent, rgba(255,255,255,0.10))',
+                    background: 'linear-gradient(90deg, transparent, rgba(244,114,182,0.22))',
                   }}
                 />
-                <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/25">
-                  🔒 Em breve · {bloqueadas.length}
+                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-rose-200/35">
+                  Em breve · {bloqueadas.length}
                 </span>
                 <div
                   className="h-px flex-1"
                   style={{
-                    background:
-                      'linear-gradient(90deg, rgba(255,255,255,0.10), transparent)',
+                    background: 'linear-gradient(90deg, rgba(244,114,182,0.22), transparent)',
                   }}
                 />
               </div>
@@ -527,13 +476,9 @@ export default function ConquistasSlide() {
             </motion.div>
           </div>
 
-          {/* Hint */}
           <MI v={fadeV}>
-            <p
-              className="text-center text-[11px] italic"
-              style={{ color: 'rgba(255,228,230,0.52)' }}
-            >
-              Toque em uma conquista para ver a história 🎮
+            <p className="text-center text-[11px] italic text-rose-200/45">
+              Toque em uma conquista para ver a história 🤍
             </p>
           </MI>
         </motion.div>

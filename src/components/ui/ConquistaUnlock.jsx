@@ -2,9 +2,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNovasConquistas } from '../../hooks/useNovasConquistas'
 
 const RARIDADE_META = {
-  comum:    { label: 'Comum',    cor: '#94a3b8', glow: 'rgba(148,163,184,0.55)' },
-  especial: { label: 'Especial', cor: '#60a5fa', glow: 'rgba(96,165,250,0.55)'  },
-  epico:    { label: 'Épico',    cor: '#a78bfa', glow: 'rgba(167,139,250,0.60)' },
+  comum:    { label: 'Comum',    cor: '#e8b4bc', glow: 'rgba(232,180,188,0.50)' },
+  especial: { label: 'Especial', cor: '#f0a8b8', glow: 'rgba(240,168,184,0.55)' },
+  raro:     { label: 'Raro',     cor: '#e8c4a0', glow: 'rgba(232,196,160,0.55)' },
+  epico:    { label: 'Épico',    cor: '#d4a574', glow: 'rgba(212,165,116,0.60)' },
   lendario: { label: 'Lendário', cor: '#d4af37', glow: 'rgba(212,175,55,0.70)'  },
 }
 
