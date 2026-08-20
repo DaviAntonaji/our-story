@@ -42,6 +42,14 @@ export const MESESVERSARIOS = [
       'No sábado, dia 4, a primeira vez que fomos pra Presidente Prudente só nós dois. Fomos ao PrudenShopping, e como nós estavamos de jejum de carne, a pedida foi batata recheada: você escolheu brócolis, eu fui de creme de milho. Depois um sorvete, passeio pelas lojas, eu acabei comprando uma camiseta, e o melhor achado do dia: um livro que você queria muito, numa liquidação onde todos custavam só R$ 10.',
     ],
   },
+  {
+    id: 5,
+    data: new Date(2026, 7, 4, 0, 0, 0, 0),
+    titulo: '5º mês 🤍',
+    resumo: [
+      'Na minha casa: duas pizzas, o live action do He-Man e nossas irmãs se divertindo juntas. Um 5º mês simples, aconchegante e completamente nosso.',
+    ],
+  },
 ]
 
 export const TIMELINE = [
@@ -447,6 +455,18 @@ export const TIMELINE = [
       'Na volta, caminhando pra casa, a gente foi conversando e rindo de como tinha sido. Parecia que o caminho passava mais rápido com você do lado.',
       'O que eu não imaginava é que aquele dia ia virar o começo de uma das nossas rotinas favoritas. Treinar deixou de ser só exercício. Virou nosso momento: a caminhada, as conversas no caminho, os incentivos, as brincadeiras entre uma série e outra, o cansaço junto e a alegria de voltar pra casa sabendo que a gente tinha vencido mais um dia.',
       'Não foi viagem, nem festa grande. Foi uma caminhada até a Elite, um treino e a volta pra casa. Mas com você, o "só isso" nunca existia. 🤍',
+    ],
+  },
+  {
+    data: '04 de agosto de 2026',
+    titulo: 'Nosso 5º mêsversário 🤍',
+    icon: '🍕',
+    paras: [
+      'Cinco meses. E a gente comemorou do jeitinho mais nosso possível: em casa, sem pressa, sem roteiro — só o que importa.',
+      'Foi na minha casa. Pedimos duas pizzas, nos acomodamos, e o resto do mundo ficou lá fora. Eu e você, no sofá, assistindo o live action do He-Man. Nossas irmãs, cada uma no seu mundo, se divertindo juntas — rindo, bagunçando, ocupando o espaço como se aquela casa já fosse um pouco delas também.',
+      'Não teve palco, não teve surpresa grande. Teve pizza, filme, o som das duas se divertindo no fundo… e você do meu lado. E talvez seja exatamente isso que cinco meses ensinaram pra gente: que o amor mais bonito não precisa de cenário. Precisa de presença.',
+      'Ver você ali, em casa, no meu espaço, como se já fizesse parte dele — isso aquece de um jeito que nenhum passeio consegue. É o tipo de noite que eu quero viver mil vezes: simples, quentinha, nossa.',
+      'Cinco meses que parecem muito mais pelo que a gente já construiu. E se o começo foi um pedido no João Julhão, esse mês foi o lembrete de que o melhor da nossa história também cabe num sofá, com pizza e filme — desde que seja com você. 🤍',
     ],
   },
 ]
