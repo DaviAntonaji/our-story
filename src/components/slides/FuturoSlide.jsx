@@ -1,78 +1,121 @@
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
-import Divider from '../ui/Divider'
+import Icon from '../ui/Icon'
+import ChapterPlate from '../ui/ChapterPlate'
+import { LeafRule } from '../ui/Ornament'
 import { staggerV, fadeV, scaleV, NOME_ELA_FUTURO } from '../../data/constants'
+
+const NOSSOS_SONHOS = [
+  { icon: '💍', text: 'Casar com você' },
+  { icon: '👨‍👩‍👧', text: 'Construir uma família firmada em Cristo' },
+  { icon: '✝️', text: 'Servir a Deus juntos, sempre' },
+  { icon: '🏠', text: 'Um lar seguro, alinhado e cheio de amor' },
+  { icon: '🌍', text: 'Viver muitas histórias ainda' },
+]
+
+const SEUS_SONHOS = [
+  {
+    icon: '👩‍🏫',
+    text: 'Dar palestras em público',
+    note: 'Você tem muito a dizer. O mundo precisa te ouvir.',
+  },
+  {
+    icon: '✝️',
+    text: 'Dar palavras na igreja',
+    note: 'Deus vai te preparar. Eu estarei na primeira fila.',
+  },
+  {
+    icon: '🧠',
+    text: 'Psicologia',
+    note: 'Sua sensibilidade e inteligência emocional já são presentes natos pra isso.',
+  },
+]
 
 export default function FuturoSlide() {
   return (
-    <Slide id="futuro" bg="slide-bg-blue" center={false}>
+    <Slide id="futuro" scene="scene-golden" center={false}>
       {(inView) => (
-        <motion.div variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-4 w-full max-w-sm lg:max-w-xl mx-auto"
+        <motion.div
+          variants={staggerV}
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          className="w-full max-w-3xl mx-auto flex flex-col gap-9 pb-10"
         >
-          <div className="text-center">
-            <MI v={fadeV} className="chapter-label">O que está por vir</MI>
-            <MI v={scaleV} className="text-4xl mt-2" style={{ animation: 'softFloat 5s ease-in-out infinite' }}>🌅</MI>
-            <MI className="mt-2">
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">O futuro que sonho com você</h2>
-            </MI>
-          </div>
-          <div className="space-y-2 w-full">
-            {[
-              { icon: '💍', text: 'Casar com você' },
-              { icon: '👨‍👩‍👧', text: 'Construir uma família firmada em Cristo' },
-              { icon: '✝️', text: 'Servir a Deus juntos, sempre' },
-              { icon: '🏠', text: 'Um lar seguro, alinhado e cheio de amor' },
-              { icon: '🌍', text: 'Viver muitas histórias ainda' },
-            ].map(({ icon, text }) => (
+          <ChapterPlate
+            id="futuro"
+            icon="sunrise"
+            kicker="O que está por vir"
+            title="O futuro que sonho com você"
+            lede="Nada disso é pressa. É direção."
+          />
+
+          <div className="space-y-3 w-full">
+            {NOSSOS_SONHOS.map(({ icon, text }) => (
               <MI key={text}>
-                <div className="future-item">
-                  <span className="text-2xl shrink-0">{icon}</span>
-                  <span className="text-rose-100/90 text-sm sm:text-base font-medium">{text}</span>
+                <div className="row-item">
+                  <span className="row-glyph text-lg" aria-hidden>{icon}</span>
+                  <span className="font-body text-[0.9375rem] t-body">{text}</span>
                 </div>
               </MI>
             ))}
           </div>
-          <MI v={fadeV}>
-            <div className="mt-1 px-4 py-5 rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-amber-200/20 shadow-lg shadow-rose-950/25 ring-1 ring-white/[0.04]">
-              <p className="text-center text-xs sm:text-sm text-amber-200/90 mb-2 font-medium leading-snug px-1">
-                A gente já combinou brincando - e fechou nesse nome kkk
-              </p>
-              <p className="text-center text-[11px] sm:text-xs text-rose-200/80 mb-3 leading-relaxed px-1">
-                a brincadeira era um nome gigante - desse tamanho{' '}
-                <span className="inline-flex items-center gap-10 whitespace-nowrap" aria-hidden>
+
+          {/* A placa gravada com o nome combinado */}
+          <MI v={scaleV}>
+            <div className="sheet sheet-feature px-6 py-8 sm:px-10 text-center">
+              <p className="kicker">O combinado</p>
+              <p className="font-body italic text-sm t-muted mt-3 max-w-[40ch] mx-auto leading-relaxed">
+                A gente já combinou brincando — a brincadeira era um nome gigante, desse tamanho{' '}
+                <span className="inline-flex items-center gap-8 whitespace-nowrap align-middle" aria-hidden>
                   <span>🫸🏻</span>
                   <span>🫷🏻</span>
                 </span>
               </p>
+
+              <div className="my-5">
+                <LeafRule />
+              </div>
+
               <p
-                className="font-display text-center font-medium text-rose-50 leading-snug px-1"
-                style={{ fontSize: 'clamp(15px, 3.9vw, 20px)' }}
+                className="font-display font-semibold t-ink leading-[1.15]"
+                style={{ fontSize: 'clamp(20px, 4.6vw, 34px)', letterSpacing: '-0.015em' }}
               >
                 {NOME_ELA_FUTURO}
               </p>
-              <p className="text-center text-rose-300/55 text-xs mt-3 italic">foi brincando, mas foi sério - o combinado vale 💍</p>
+
+              <p className="font-hand text-xl t-accent mt-5">
+                foi brincando, mas foi sério — o combinado vale
+              </p>
+              <Icon name="ring" size={22} strokeWidth={1.3} className="t-accent mx-auto mt-2" />
             </div>
           </MI>
-          <MI v={fadeV}>
-            <p className="text-center text-rose-200/70 text-xs sm:text-sm italic">Quando formos construir nossa casa, ela terá um ipê branco na frente. 🌸</p>
+
+          <MI v={fadeV} className="text-center">
+            <p className="font-body italic text-sm t-body max-w-[46ch] mx-auto leading-relaxed">
+              E quando formos construir a nossa casa, ela terá um ipê branco na frente. 🌸
+            </p>
           </MI>
-          <MI v={fadeV}><Divider char="✦ ✧ ✦" /></MI>
-          <MI v={fadeV}><p className="text-center text-rose-200/80 text-sm font-medium">E os seus sonhos - que acredito com você 💪</p></MI>
-          <div className="space-y-2 w-full">
-            {[
-              { icon: '👩‍🏫', text: 'Dar palestras em público', note: 'Você tem muito a dizer. O mundo precisa te ouvir.' },
-              { icon: '✝️', text: 'Dar palavras na igreja', note: 'Deus vai te preparar. Eu estarei na primeira fila.' },
-              { icon: '🧠', text: 'Psicologia', note: 'Sua sensibilidade e inteligência emocional já são presentes natos pra isso.' },
-            ].map(({ icon, text, note }) => (
+
+          {/* Os sonhos dela */}
+          <MI v={fadeV} className="pt-2">
+            <div className="text-center">
+              <p className="kicker">E os seus sonhos</p>
+              <p className="font-display text-xl italic t-ink mt-1.5">
+                que eu acredito junto com você
+              </p>
+            </div>
+          </MI>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 w-full">
+            {SEUS_SONHOS.map(({ icon, text, note }) => (
               <MI key={text}>
-                <div className="flex items-start gap-3 px-3 py-3 rounded-2xl bg-white/[0.05] border border-blue-400/12">
-                  <span className="text-xl shrink-0 mt-0.5">{icon}</span>
-                  <div>
-                    <p className="text-rose-100/90 text-sm font-medium leading-snug">{text}</p>
-                    <p className="text-amber-300/55 text-xs italic mt-0.5">{note}</p>
-                  </div>
+                <div className="sheet sheet-lift h-full px-5 py-5">
+                  <span className="row-glyph text-lg" aria-hidden>{icon}</span>
+                  <p className="title-sm mt-3">{text}</p>
+                  <p className="font-body italic text-[0.8125rem] leading-relaxed t-muted mt-2">
+                    {note}
+                  </p>
                 </div>
               </MI>
             ))}

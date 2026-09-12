@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
+import ChapterPlate from '../ui/ChapterPlate'
 import { staggerV, fadeV, SESSAO_FOTOS_PRESENTE } from '../../data/constants'
 import { useLightbox } from '../../context/LightboxContext'
 
-const MOSAICO_ALTURA = 'min(62vh, 520px)'
+const MOSAICO_ALTURA = 'min(58vh, 480px)'
 
 /** Resolve uma ou várias URLs por item (`imagens` sobrescreve `imagem`). No máximo 4 no mosaico. */
 function urlsDoItem(item) {
@@ -15,7 +16,8 @@ function urlsDoItem(item) {
   return []
 }
 
-const imgClass = 'w-full h-full min-h-0 object-cover cursor-zoom-in transition-opacity duration-150 hover:opacity-90 active:opacity-75'
+const imgClass =
+  'w-full h-full min-h-0 object-cover cursor-zoom-in transition-transform duration-300 hover:scale-[1.03]'
 
 function ImgClicavel({ src, width, height, loading, className, onClick }) {
   return (
@@ -108,63 +110,67 @@ export default function PresenteFotosSlide() {
   const { abrir } = useLightbox()
 
   return (
-    <Slide id="presentefotos" bg="slide-bg-dark" center={false}>
+    <Slide id="presentefotos" scene="scene-blush" center={false}>
       {(inView) => (
         <motion.div
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-6 w-full max-w-sm lg:max-w-xl mx-auto allow-select pb-14"
+          className="w-full max-w-5xl mx-auto flex flex-col gap-10 allow-select pb-10"
         >
-          <div className="text-center pt-2">
-            <MI v={fadeV} className="chapter-label">Eu te dei</MI>
-            <MI className="mt-2 flex items-center justify-center gap-2">
-              <span className="text-2xl" style={{ animation: 'softFloat 5s ease-in-out infinite' }}>💐</span>
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">{titulo}</h2>
-            </MI>
-            <MI v={fadeV}>
-              <p className="text-rose-200/55 text-xs mt-1.5 max-w-[300px] mx-auto leading-relaxed">{subtitulo}</p>
-            </MI>
-          </div>
+          <ChapterPlate
+            id="presentefotos"
+            icon="flower"
+            kicker="Eu te dei"
+            title={titulo}
+            lede={subtitulo}
+          />
 
-          <div className="space-y-6 w-full">
+          <div className="flex flex-col gap-10 w-full">
             {itens.map((item, idx) => {
               const urls = urlsDoItem(item)
               const multi = urls.length > 1
+              const inverso = idx % 2 === 1
+
               return (
                 <MI key={item.id}>
-                  <article className="rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] shadow-sm shadow-black/20">
-                    <div
-                      className="relative w-full overflow-hidden bg-black/20"
-                      style={
-                        multi
-                          ? { height: MOSAICO_ALTURA }
-                          : { aspectRatio: '4 / 5', maxHeight: MOSAICO_ALTURA }
-                      }
-                    >
-                      <div className="absolute inset-0">
-                        <PresenteFotoMosaico
-                          urls={urls}
-                          blockEager={idx === 0}
-                          idPrefix={item.id}
-                          onImageClick={(imgIdx) => abrir(urls, imgIdx)}
-                        />
+                  <article
+                    className={`grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-10 ${
+                      inverso ? 'lg:[&>*:first-child]:order-2' : ''
+                    }`}
+                  >
+                    {/* Fotografia montada */}
+                    <div className="photo-mount">
+                      <span className="photo-mount__corner" aria-hidden />
+                      <span className="photo-mount__corner" aria-hidden />
+                      <span className="photo-mount__corner" aria-hidden />
+                      <span className="photo-mount__corner" aria-hidden />
+                      <div
+                        className="relative w-full overflow-hidden"
+                        style={
+                          multi
+                            ? { height: MOSAICO_ALTURA }
+                            : { aspectRatio: '4 / 5', maxHeight: MOSAICO_ALTURA }
+                        }
+                      >
+                        <div className="absolute inset-0">
+                          <PresenteFotoMosaico
+                            urls={urls}
+                            blockEager={idx === 0}
+                            idPrefix={item.id}
+                            onImageClick={(imgIdx) => abrir(urls, imgIdx)}
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div className="p-4 border-t border-white/8">
-                      {item.data && (
-                        <span className="timeline-date-pill">{item.data}</span>
-                      )}
-                      <h3
-                        className={`font-display text-lg font-semibold text-rose-100 leading-snug ${item.data ? 'mt-2' : ''}`}
-                      >
-                        {item.titulo}
-                      </h3>
-                      <div className="mt-2 space-y-2">
+
+                    {/* Legenda editorial */}
+                    <div className="px-1">
+                      {item.data && <span className="date-tag">{item.data}</span>}
+                      <h3 className={`title-md ${item.data ? 'mt-3' : ''}`}>{item.titulo}</h3>
+                      <div className="mt-3.5 space-y-3">
                         {item.paras.map((p, j) => (
-                          <p key={j} className="text-rose-200/80 text-sm leading-[1.75]">
-                            {p}
-                          </p>
+                          <p key={j} className="prose-soft">{p}</p>
                         ))}
                       </div>
                     </div>
@@ -173,6 +179,10 @@ export default function PresenteFotosSlide() {
               )
             })}
           </div>
+
+          <MI v={fadeV} className="text-center">
+            <p className="font-hand text-xl t-accent">flor nenhuma chega perto de você</p>
+          </MI>
         </motion.div>
       )}
     </Slide>

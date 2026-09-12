@@ -62,25 +62,28 @@ export default function CookieConsent() {
       aria-labelledby="cookie-consent-title"
       aria-live="polite"
     >
-      <div className="pointer-events-auto mx-auto max-w-lg rounded-2xl border border-white/15 bg-[#2a1520]/95 px-4 py-3 shadow-lg shadow-black/40 backdrop-blur-md">
-        <p id="cookie-consent-title" className="text-[13px] leading-snug text-rose-100/90">
-          Usamos cookies de terceiros para medir visitas de forma agregada e melhorar o site. Ao aceitar, você
-          concorda com esse uso.{' '}
+      <div
+        className="pointer-events-auto mx-auto max-w-lg rounded-2xl px-5 py-4 backdrop-blur-md"
+        style={{
+          background: 'var(--surface-solid)',
+          border: '1px solid var(--line)',
+          boxShadow: '0 18px 48px -18px rgba(43,26,36,0.45), var(--shadow-1)',
+        }}
+      >
+        <p id="cookie-consent-title" className="text-[0.8125rem] leading-relaxed t-body">
+          Usamos cookies de terceiros para medir visitas de forma agregada e melhorar o site. Ao
+          aceitar, você concorda com esse uso.{' '}
           <a
             href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-amber-300/90 underline underline-offset-2 hover:text-amber-200"
+            className="t-accent underline underline-offset-2"
           >
             Privacidade
           </a>
         </p>
-        <div className="mt-3 flex justify-end">
-          <button
-            type="button"
-            onClick={accept}
-            className="rounded-xl bg-rose-500/90 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-rose-400/90 focus:outline-none focus:ring-2 focus:ring-amber-400/60"
-          >
+        <div className="mt-3.5 flex justify-end">
+          <button type="button" onClick={accept} className="btn btn-solid !min-h-0 !py-2 !px-5 !text-[0.8125rem]">
             Aceitar
           </button>
         </div>

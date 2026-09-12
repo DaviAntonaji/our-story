@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Turnstile } from '@marsidev/react-turnstile'
+import Icon from '../ui/Icon'
 
 const apiUrl = import.meta.env.VITE_RECADOS_API_URL
 const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY
@@ -76,52 +77,60 @@ export default function RecadoForm({ onSuccess }) {
 
   if (!configured) {
     return (
-      <p className="text-rose-200/70 text-sm text-center max-w-md mx-auto">
+      <p className="t-muted text-sm text-center max-w-md mx-auto leading-relaxed">
         O formulário de recados será ativado em breve. (Configure{' '}
-        <code className="text-rose-300/90 text-xs">VITE_RECADOS_API_URL</code> e{' '}
-        <code className="text-rose-300/90 text-xs">VITE_TURNSTILE_SITE_KEY</code> no ambiente de build.)
+        <code className="t-accent text-xs">VITE_RECADOS_API_URL</code> e{' '}
+        <code className="t-accent text-xs">VITE_TURNSTILE_SITE_KEY</code> no ambiente de build.)
       </p>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto space-y-4 text-left">
-      <div>
-        <label htmlFor="recado-nome" className="block text-rose-200/90 text-sm font-medium mb-1">
-          Nome
-        </label>
-        <input
-          id="recado-nome"
-          name="name"
-          type="text"
-          autoComplete="name"
-          maxLength={120}
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-lg border border-rose-400/25 bg-rose-950/40 px-3 py-2 text-rose-50 placeholder:text-rose-400/40 focus:outline-none focus:ring-2 focus:ring-amber-400/40"
-          placeholder="Como podemos te chamar?"
-        />
+    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto space-y-5 text-left">
+      <div className="text-center">
+        <p className="kicker">Escreva pra nós</p>
+        <p className="font-display text-xl italic t-ink mt-1">Deixe um recadinho</p>
       </div>
-      <div>
-        <label htmlFor="recado-email" className="block text-rose-200/90 text-sm font-medium mb-1">
-          E-mail
-        </label>
-        <input
-          id="recado-email"
-          name="email"
-          type="email"
-          autoComplete="email"
-          maxLength={254}
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-rose-400/25 bg-rose-950/40 px-3 py-2 text-rose-50 placeholder:text-rose-400/40 focus:outline-none focus:ring-2 focus:ring-amber-400/40"
-          placeholder="para eventualmente respondermos"
-        />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="recado-nome" className="field-label">
+            Nome
+          </label>
+          <input
+            id="recado-nome"
+            name="name"
+            type="text"
+            autoComplete="name"
+            maxLength={120}
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="field"
+            placeholder="Como podemos te chamar?"
+          />
+        </div>
+        <div>
+          <label htmlFor="recado-email" className="field-label">
+            E-mail
+          </label>
+          <input
+            id="recado-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            maxLength={254}
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="field"
+            placeholder="pra gente poder responder"
+          />
+        </div>
       </div>
+
       <div>
-        <label htmlFor="recado-msg" className="block text-rose-200/90 text-sm font-medium mb-1">
+        <label htmlFor="recado-msg" className="field-label">
           Mensagem
         </label>
         <textarea
@@ -132,7 +141,7 @@ export default function RecadoForm({ onSuccess }) {
           maxLength={4000}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full rounded-lg border border-rose-400/25 bg-rose-950/40 px-3 py-2 text-rose-50 placeholder:text-rose-400/40 focus:outline-none focus:ring-2 focus:ring-amber-400/40 resize-y min-h-[120px]"
+          className="field resize-y min-h-[120px]"
           placeholder="Um recado, um votinho de felicidades…"
         />
       </div>
@@ -144,33 +153,27 @@ export default function RecadoForm({ onSuccess }) {
           onSuccess={setToken}
           onExpire={() => setToken(null)}
           onError={() => setToken(null)}
-          options={{ theme: 'dark' }}
+          options={{ theme: 'light' }}
         />
       </div>
 
       {feedback && (
         <p
           role="alert"
-          className={
-            feedback.type === 'ok'
-              ? 'text-emerald-300/90 text-sm text-center'
-              : 'text-amber-200 text-sm text-center'
-          }
+          className={`text-sm text-center ${feedback.type === 'ok' ? 't-accent2' : 't-accent'}`}
         >
           {feedback.text}
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className="w-full rounded-xl bg-gradient-to-r from-rose-600/90 to-amber-700/80 text-rose-50 font-semibold py-3 px-4 shadow-lg shadow-rose-900/30 hover:from-rose-500/90 hover:to-amber-600/80 disabled:opacity-50 disabled:pointer-events-none transition-all"
-      >
+      <button type="submit" disabled={status === 'sending'} className="btn btn-solid w-full">
+        <Icon name="feather" size={15} />
         {status === 'sending' ? 'Enviando…' : 'Enviar recado'}
       </button>
 
-      <p className="text-rose-400/50 text-[11px] text-center leading-relaxed">
-        Seu nome e mensagem ficam visíveis no quadrinho acima. O e-mail é privado e nunca é exibido. Protegido por Cloudflare Turnstile.
+      <p className="text-[0.6875rem] text-center leading-relaxed t-faint">
+        Seu nome e mensagem ficam visíveis no quadrinho acima. O e-mail é privado e nunca é exibido.
+        Protegido por Cloudflare Turnstile.
       </p>
     </form>
   )

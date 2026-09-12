@@ -3,15 +3,28 @@ import { useInView, motion, AnimatePresence } from 'framer-motion'
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import Icon from '../ui/Icon'
 import { MAPA_LUGARES } from '../../data/constants'
+import { numeralDoSlide } from '../ui/ChapterPlate'
+
+const COR_ATIVO = '#e6b465'
+const COR_PONTO = '#d4697f'
+
+// Basemap do CARTO. A chave (quando definida) é anexada ao tile URL — num site
+// estático ela é sempre visível no bundle, então a proteção real é a restrição
+// de domínio no painel do CARTO, não o segredo em si.
+const CARTO_KEY = import.meta.env.VITE_CARTO_API_KEY
+const TILE_URL =
+  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' +
+  (CARTO_KEY ? `?api_key=${encodeURIComponent(CARTO_KEY)}` : '')
 
 function criarIcone(selecionado) {
-  const cor = selecionado ? '#fbbf24' : '#fb7185'
-  const size = selecionado ? 20 : 14
-  const border = selecionado ? '3px solid rgba(255,255,255,0.95)' : '2px solid rgba(255,255,255,0.75)'
+  const cor = selecionado ? COR_ATIVO : COR_PONTO
+  const size = selecionado ? 20 : 13
+  const border = selecionado ? '3px solid rgba(255,252,248,0.96)' : '2px solid rgba(255,252,248,0.8)'
   const shadow = selecionado
-    ? '0 0 0 4px rgba(251,191,36,0.3), 0 3px 10px rgba(0,0,0,0.5)'
-    : '0 2px 6px rgba(0,0,0,0.45)'
+    ? '0 0 0 5px rgba(230,180,101,0.28), 0 3px 10px rgba(0,0,0,0.6)'
+    : '0 2px 6px rgba(0,0,0,0.5)'
   return L.divIcon({
     html: `<div style="
       width:${size}px;height:${size}px;
@@ -30,7 +43,7 @@ function FitAll({ places }) {
   useEffect(() => {
     if (!places.length) return
     const bounds = L.latLngBounds(places.map(p => p.coords))
-    map.fitBounds(bounds, { padding: [48, 48], maxZoom: 15 })
+    map.fitBounds(bounds, { padding: [56, 56], maxZoom: 15 })
   }, []) // eslint-disable-line
   return null
 }
@@ -49,8 +62,15 @@ export default function MapaSlide() {
   const inView = useInView(ref, { once: true, amount: 'some' })
 
   return (
-    <section id="mapa" ref={ref} className="snap-slide slide-bg-story relative overflow-hidden">
-      {/* Mapa ocupa tudo */}
+    <section
+      id="mapa"
+      data-slide
+      ref={ref}
+      className="snap-slide scene-dark scene-deep relative overflow-hidden"
+    >
+      <span className="sheet-seam" aria-hidden />
+
+      {/* O mapa ocupa a folha inteira */}
       <div className="absolute inset-0">
         <MapContainer
           center={[-22.274, -51.495]}
@@ -58,10 +78,10 @@ export default function MapaSlide() {
           zoomControl={false}
           attributionControl={false}
           className="w-full h-full"
-          style={{ background: '#0f0a14' }}
+          style={{ background: '#0b0710' }}
         >
           <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            url={TILE_URL}
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
           />
           <FitAll places={MAPA_LUGARES} />
@@ -80,30 +100,37 @@ export default function MapaSlide() {
         </MapContainer>
       </div>
 
-      {/* Gradiente topo */}
+      {/* Véu no topo, para o título respirar */}
       <div
         className="absolute top-0 left-0 right-0 z-[800] pointer-events-none"
-        style={{ height: '180px', background: 'linear-gradient(to bottom, rgba(8,2,12,0.92) 0%, rgba(8,2,12,0) 100%)' }}
+        style={{ height: 210, background: 'linear-gradient(to bottom, rgba(9,6,13,0.94) 0%, rgba(9,6,13,0) 100%)' }}
+        aria-hidden
       />
 
-      {/* Header flutuante */}
+      {/* Cabeçalho do capítulo, flutuando */}
       <motion.div
         initial={{ opacity: 0, y: -16 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -16 }}
         transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute top-0 left-0 right-0 z-[900] px-5 sm:px-8"
-        style={{ paddingTop: 'max(2.5rem, env(safe-area-inset-top, 2.5rem))' }}
+        className="absolute top-0 left-0 right-0 z-[900] px-5 sm:px-8 lg:px-14"
+        style={{ paddingTop: 'max(3rem, env(safe-area-inset-top, 3rem))' }}
       >
-        <p className="chapter-label">Nossa história</p>
-        <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50 mt-1">
-          Mapa da nossa história 🗺️
-        </h2>
-        <p className="text-rose-200/50 text-xs mt-1.5">
-          {MAPA_LUGARES.length} lugares especiais - toque num ponto para saber mais
+        <div className="flex items-center gap-3">
+          <span className="chapter-numeral" aria-hidden>
+            <Icon name="pin" size={17} strokeWidth={1.3} />
+          </span>
+          <span className="flex flex-col">
+            <span className="kicker">Capítulo {numeralDoSlide('mapa')}</span>
+            <span className="font-display italic text-sm t-muted">os nossos lugares</span>
+          </span>
+        </div>
+        <h2 className="title-lg mt-3">Mapa da nossa história</h2>
+        <p className="lede mt-1.5">
+          {MAPA_LUGARES.length} lugares especiais — toque num ponto para lembrar.
         </p>
       </motion.div>
 
-      {/* Legenda de lugares - chips horizontais */}
+      {/* Legenda de lugares */}
       <AnimatePresence>
         {!selecionado && (
           <motion.div
@@ -111,23 +138,21 @@ export default function MapaSlide() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
             transition={{ duration: 0.3 }}
-            className="absolute bottom-6 left-0 right-0 z-[900] px-4"
+            className="absolute bottom-7 left-0 right-0 z-[900] px-4 sm:px-8"
           >
-            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide"
-              style={{ scrollbarWidth: 'none' }}>
+            <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
               {MAPA_LUGARES.map(lugar => (
                 <button
                   key={lugar.id}
                   onClick={() => setSelecionado(lugar)}
-                  className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150 active:scale-95"
+                  className="shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium transition-all duration-150 active:scale-95 t-body"
                   style={{
-                    background: 'rgba(8,2,12,0.82)',
-                    border: '1px solid rgba(255,228,230,0.15)',
-                    color: 'rgba(255,228,230,0.80)',
-                    backdropFilter: 'blur(8px)',
+                    background: 'rgba(12,8,16,0.86)',
+                    border: '1px solid var(--line)',
+                    backdropFilter: 'blur(10px)',
                   }}
                 >
-                  <span>{lugar.icon}</span>
+                  <span aria-hidden>{lugar.icon}</span>
                   <span>{lugar.nome}</span>
                 </button>
               ))}
@@ -136,7 +161,7 @@ export default function MapaSlide() {
         )}
       </AnimatePresence>
 
-      {/* Painel deslizante do lugar selecionado */}
+      {/* Ficha do lugar selecionado */}
       <AnimatePresence>
         {selecionado && (
           <motion.div
@@ -147,21 +172,20 @@ export default function MapaSlide() {
             transition={{ type: 'spring', damping: 28, stiffness: 320 }}
             className="absolute bottom-0 left-0 right-0 z-[900] overflow-hidden"
             style={{
-              background: 'rgba(8,2,12,0.97)',
-              borderTop: '1px solid rgba(255,228,230,0.12)',
-              borderRadius: '20px 20px 0 0',
-              boxShadow: '0 -8px 48px rgba(0,0,0,0.65)',
+              background: 'rgba(12,8,16,0.97)',
+              borderTop: '1px solid var(--line)',
+              borderRadius: '22px 22px 0 0',
+              boxShadow: '0 -10px 52px rgba(0,0,0,0.7)',
+              backdropFilter: 'blur(18px)',
             }}
           >
-            {/* Handle + fechar */}
-            <div className="flex items-center justify-between px-5 pt-3 pb-1">
-              <div className="w-10 h-1 rounded-full bg-white/20 mx-auto" />
+            <div className="flex justify-center pt-3 pb-1">
+              <span className="w-10 h-1 rounded-full" style={{ background: 'var(--line)' }} aria-hidden />
             </div>
 
-            <div className="flex gap-4 px-5 pb-6 pt-1">
-              {/* Foto ou placeholder */}
-              <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden"
-                style={{ border: '1px solid rgba(255,228,230,0.12)' }}>
+            <div className="mx-auto max-w-2xl flex gap-4 px-5 pb-7 pt-1">
+              {/* Foto ou espera */}
+              <div className="photo-mount shrink-0 !p-1.5 !rounded-[4px] w-24 h-24 sm:w-28 sm:h-28">
                 {selecionado.foto ? (
                   <img
                     src={selecionado.foto}
@@ -170,39 +194,37 @@ export default function MapaSlide() {
                     loading="lazy"
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center gap-1"
-                    style={{ background: 'rgba(255,228,230,0.05)' }}>
-                    <span className="text-2xl opacity-40">{selecionado.icon}</span>
-                    <span className="text-[9px] text-rose-200/30 text-center leading-tight px-1">foto em breve</span>
+                  <div
+                    className="w-full h-full flex flex-col items-center justify-center gap-1"
+                    style={{ background: 'var(--surface-2)' }}
+                  >
+                    <span className="text-2xl opacity-40" aria-hidden>{selecionado.icon}</span>
+                    <span className="font-hand text-xs t-faint text-center leading-tight px-1">
+                      foto em breve
+                    </span>
                   </div>
                 )}
               </div>
 
-              {/* Info */}
-              <div className="flex-1 min-w-0 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <p className="text-[9px] uppercase tracking-[0.22em] text-rose-300/50 mb-0.5">
-                        {selecionado.categoria}
-                      </p>
-                      <h3 className="font-display text-lg font-semibold text-rose-50 leading-tight">
-                        {selecionado.icon} {selecionado.nome}
-                      </h3>
-                    </div>
-                    <button
-                      onClick={() => setSelecionado(null)}
-                      className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-rose-200/40 hover:text-rose-200/80 transition-colors mt-0.5"
-                      style={{ background: 'rgba(255,255,255,0.06)' }}
-                    >
-                      ✕
-                    </button>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <p className="kicker">{selecionado.categoria}</p>
+                    <h3 className="title-sm mt-1">
+                      <span className="mr-1.5" aria-hidden>{selecionado.icon}</span>
+                      {selecionado.nome}
+                    </h3>
                   </div>
-                  <p className="text-[10px] text-amber-200/60 mt-1 mb-2">{selecionado.data}</p>
-                  <p className="text-rose-100/80 text-xs leading-relaxed line-clamp-3">
-                    {selecionado.descricao}
-                  </p>
+                  <button
+                    onClick={() => setSelecionado(null)}
+                    className="lb-btn shrink-0 w-7 h-7"
+                    aria-label="Fechar"
+                  >
+                    <Icon name="close" size={13} strokeWidth={1.6} />
+                  </button>
                 </div>
+                <span className="date-tag mt-1.5">{selecionado.data}</span>
+                <p className="prose-soft text-[0.8125rem] mt-2.5">{selecionado.descricao}</p>
               </div>
             </div>
           </motion.div>

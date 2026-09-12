@@ -26,8 +26,8 @@ export default defineConfig({
         short_name: 'Nossa História',
         description:
           'Nossa história: momentos, promessas, versículo e tudo que constrói o nosso amor.',
-        theme_color: '#5c2d42',
-        background_color: '#5c2d42',
+        theme_color: '#f8f1e8',
+        background_color: '#f8f1e8',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',

@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 
 const API_URL = import.meta.env.VITE_RECADOS_API_URL
 
-// Paleta de tons quentes para combinar com o tema escuro romântico do site
+// Papéis de post-it na paleta quente do álbum
 const COLORS = [
-  { bg: '#fef9c3', text: '#78350f', pin: '#b45309' }, // amarelo-mel
-  { bg: '#fce7f3', text: '#831843', pin: '#be185d' }, // rosa-suave
-  { bg: '#fff1f2', text: '#881337', pin: '#be123c' }, // rose-claro
-  { bg: '#fef3c7', text: '#92400e', pin: '#d97706' }, // âmbar
-  { bg: '#fdf2f8', text: '#6b21a8', pin: '#9333ea' }, // lavanda
+  { bg: '#fdf2c4', text: '#6b4a1f', pin: '#b0654a' }, // amarelo-mel
+  { bg: '#fbe3e6', text: '#7d2e40', pin: '#b23a56' }, // rosa-suave
+  { bg: '#fdeee4', text: '#7a3d26', pin: '#a95c3c' }, // pêssego
+  { bg: '#eef3e6', text: '#42553c', pin: '#6f8570' }, // sálvia
+  { bg: '#f2ecfa', text: '#4c3a63', pin: '#7d62a8' }, // lavanda
 ]
 
 // Rotações determinísticas pelo id - parecem aleatórias mas são estáveis
@@ -48,43 +48,24 @@ function PostIt({ recado, index }) {
         delay: Math.min(index * 0.07, 0.55),
       }}
       whileHover={{ scale: 1.03, rotate: 0, zIndex: 10, transition: { duration: 0.2 } }}
-      className="relative break-inside-avoid mb-3 cursor-default"
-      style={{
-        backgroundColor: color.bg,
-        borderRadius: '2px',
-        boxShadow: '4px 5px 16px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.25)',
-        transformOrigin: 'top center',
-      }}
+      className="postit break-inside-avoid mb-4 cursor-default"
+      style={{ backgroundColor: color.bg }}
     >
-      {/* Pino */}
-      <div
-        className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full border-[1.5px] border-white/50 shadow-md z-10"
-        style={{ backgroundColor: color.pin }}
-      />
+      <span className="postit__pin" style={{ backgroundColor: color.pin }} aria-hidden />
 
-      {/* Faixa superior (efeito papel) */}
-      <div
-        className="absolute top-0 left-0 right-0 h-[3px] rounded-t-[2px]"
-        style={{ backgroundColor: `${color.text}12` }}
-      />
-
-      <div className="px-4 pt-5 pb-5">
-        {/* Nome */}
+      <div className="px-4 pt-6 pb-5">
         <p
-          className="font-semibold text-[13px] mb-1.5 font-sans allow-select leading-snug"
-          style={{ color: color.text }}
+          className="font-sans text-[0.6875rem] font-semibold uppercase tracking-[0.12em] allow-select"
+          style={{ color: color.pin }}
         >
           {shortName(recado.name)}
-          <span className="ml-1 text-[11px] opacity-70">💕</span>
         </p>
 
-        {/* Divisória */}
-        <div className="mb-2 h-px" style={{ background: `${color.text}18` }} />
+        <div className="my-2 h-px" style={{ background: `${color.text}22` }} />
 
-        {/* Mensagem */}
         <div
-          className="text-[13px] leading-relaxed allow-select"
-          style={{ color: color.text, opacity: 0.84 }}
+          className="font-hand text-[1.0625rem] leading-[1.4] allow-select"
+          style={{ color: color.text }}
         >
           {lines.map((line, i) => (
             <p key={i} className={i < lines.length - 1 ? 'mb-0.5' : ''}>
@@ -93,22 +74,15 @@ function PostIt({ recado, index }) {
           ))}
         </div>
 
-        {/* Data */}
         <p
-          className="text-[11px] mt-2.5 text-right select-none"
-          style={{ color: color.text, opacity: 0.4 }}
+          className="font-sans text-[0.625rem] mt-3 text-right select-none"
+          style={{ color: color.text, opacity: 0.45 }}
         >
           {formatDate(recado.created_at)}
         </p>
       </div>
 
-      {/* Canto dobrado (efeito post-it) */}
-      <div
-        className="absolute bottom-0 right-0 w-7 h-7"
-        style={{
-          background: 'linear-gradient(225deg, rgba(0,0,0,0.1) 50%, transparent 50%)',
-        }}
-      />
+      <span className="postit__fold" aria-hidden />
     </motion.article>
   )
 }
@@ -116,11 +90,11 @@ function PostIt({ recado, index }) {
 function SkeletonNote({ index }) {
   return (
     <div
-      className="relative break-inside-avoid mb-3 rounded-sm animate-pulse"
+      className="break-inside-avoid mb-4 rounded-sm animate-pulse"
       style={{
-        backgroundColor: 'rgba(254,249,195,0.06)',
+        background: 'var(--surface)',
+        border: '1px solid var(--line-soft)',
         height: [130, 100, 150, 110][index % 4],
-        boxShadow: '2px 4px 10px rgba(0,0,0,0.2)',
       }}
     />
   )
@@ -168,7 +142,7 @@ export default function RecadoBoard({ fetchKey = 0 }) {
   // Erro de rede/CORS/servidor: aviso sutil, não some em silêncio
   if (!loading && fetchError) {
     return (
-      <p className="text-rose-400/40 text-xs text-center py-2 select-none">
+      <p className="t-faint text-xs text-center py-2 select-none">
         Não foi possível carregar os recados agora.
       </p>
     )
@@ -179,28 +153,17 @@ export default function RecadoBoard({ fetchKey = 0 }) {
 
   return (
     <div className="w-full">
-      {/* Cabeçalho do quadro */}
       <div className="flex items-center gap-3 mb-4">
-        <span className="h-px flex-1 bg-rose-400/15" />
-        <p className="text-rose-300/45 text-[10px] tracking-[0.18em] uppercase select-none whitespace-nowrap">
-          {loading
-            ? 'carregando recadinhos…'
-            : `${total} recadinho${total !== 1 ? 's' : ''} com carinho`}
+        <span className="h-px flex-1" style={{ background: 'var(--line)' }} />
+        <p className="kicker whitespace-nowrap select-none">
+          {loading ? 'carregando recadinhos…' : `${total} recadinho${total !== 1 ? 's' : ''} com carinho`}
         </p>
-        <span className="h-px flex-1 bg-rose-400/15" />
+        <span className="h-px flex-1" style={{ background: 'var(--line)' }} />
       </div>
 
-      {/* O quadro ("cortiça") */}
-      <div
-        className="rounded-2xl p-4 sm:p-5"
-        style={{
-          background: 'rgba(20, 8, 16, 0.6)',
-          border: '1px solid rgba(251,113,133,0.10)',
-          boxShadow: 'inset 0 2px 16px rgba(0,0,0,0.3)',
-        }}
-      >
+      <div className="corkboard">
         {/* Layout masonry via CSS columns */}
-        <div className="columns-1 sm:columns-2 gap-3">
+        <div className="columns-1 sm:columns-2 gap-4">
           {loading
             ? Array.from({ length: 4 }).map((_, i) => <SkeletonNote key={i} index={i} />)
             : recados.map((r, i) => <PostIt key={r.id} recado={r} index={i} />)}

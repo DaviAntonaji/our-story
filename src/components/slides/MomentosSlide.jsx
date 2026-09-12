@@ -2,6 +2,8 @@ import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
+import Icon from '../ui/Icon'
+import ChapterPlate from '../ui/ChapterPlate'
 import { staggerV, fadeV, FOTOS } from '../../data/constants'
 import { useLightbox } from '../../context/LightboxContext'
 
@@ -35,28 +37,21 @@ export default function MomentosSlide() {
   const restantes = FOTOS.length - INITIAL
 
   return (
-    <Slide id="momentos" bg="slide-bg-dark" center={false}>
+    <Slide id="momentos" scene="scene-dark scene-night" center={false} sprigs={false}>
       {(inView) => (
         <motion.div
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-5 w-full"
+          className="w-full flex flex-col items-center gap-9 pb-10"
         >
-          {/* Cabeçalho */}
-          <div className="text-center w-full">
-            <MI v={fadeV} className="chapter-label">Nossas memórias</MI>
-            <MI className="mt-2">
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">
-                Momentos 📸
-              </h2>
-            </MI>
-            <MI v={fadeV}>
-              <p className="text-rose-300/50 text-xs mt-1">
-                {FOTOS.length} fotos em ordem cronológica · toque para ampliar
-              </p>
-            </MI>
-          </div>
+          <ChapterPlate
+            id="momentos"
+            icon="camera"
+            kicker="Nossas memórias"
+            title="Momentos"
+            lede={`${FOTOS.length} fotos em ordem cronológica — toque em qualquer uma para ampliar.`}
+          />
 
           {/* Mural de polaroids */}
           <MI v={fadeV} className="w-full">
@@ -64,11 +59,11 @@ export default function MomentosSlide() {
               Sem height constraint no container — CSS columns + overflow:auto = brancos e layout quebrado.
               O "Ver mais" já controla o tamanho inicial; expandido, o slide cresce naturalmente.
             */}
-            <div className="columns-2 sm:columns-3 lg:columns-5 xl:columns-6 gap-2.5 px-1 pb-4">
+            <div className="columns-2 sm:columns-3 lg:columns-5 xl:columns-6 gap-3 px-1 pb-4">
               {visiveis.map(({ src, idx, r, label }) => (
                 <div
                   key={src}
-                  className={`polaroid-wall-item break-inside-avoid mb-3 ${verTudo && idx >= INITIAL ? 'polaroid-new' : ''}`}
+                  className={`polaroid-wall-item break-inside-avoid mb-3.5 ${verTudo && idx >= INITIAL ? 'polaroid-new' : ''}`}
                   style={{ '--r': `${r}deg`, '--delay': `${Math.min((idx - INITIAL) * 0.03, 0.7)}s` }}
                   onClick={() => abrir(FOTOS, idx)}
                   role="button"
@@ -91,14 +86,11 @@ export default function MomentosSlide() {
             </div>
           </MI>
 
-          {/* Botão Ver mais */}
           {!verTudo && (
             <MI v={fadeV}>
-              <button
-                onClick={() => setVerTudo(true)}
-                className="btn-primary rounded-full px-7 py-3 text-sm font-medium tracking-wide"
-              >
-                📷 Ver mais {restantes} fotos
+              <button onClick={() => setVerTudo(true)} className="btn">
+                <Icon name="camera" size={15} />
+                Ver mais {restantes} fotos
               </button>
             </MI>
           )}

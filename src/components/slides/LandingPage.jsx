@@ -1,56 +1,141 @@
 import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import HeartsRain from '../animations/HeartsRain'
+import { Sprig, WaxSeal } from '../ui/Ornament'
+import Icon from '../ui/Icon'
 
+/** A capa do álbum. Romper o selo abre a história. */
 export default function LandingPage({ onReveal }) {
   return (
     <>
       {typeof document !== 'undefined' && createPortal(<HeartsRain />, document.body)}
-      <div className="min-h-screen min-h-[100dvh] flex flex-col items-center justify-center page-bg-landing text-rose-100 px-6 relative overflow-hidden">
-        <div className="w-full max-w-xs flex flex-col items-center gap-6 relative z-10">
-          <motion.div
-            className="text-6xl"
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-          >💕</motion.div>
-          <motion.div
-            className="text-center space-y-1"
-            initial={{ opacity: 0, y: 16 }}
+
+      <div className="scene-veil relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center px-6 overflow-hidden">
+        {/* Grão de papel */}
+        <span
+          className="absolute inset-0 pointer-events-none mix-blend-overlay"
+          style={{ backgroundImage: "url('/grain.svg')", backgroundSize: '280px 280px' }}
+          aria-hidden
+        />
+
+        {/* Ramos nos cantos */}
+        <Sprig
+          className="sprig hidden sm:block"
+          rotate={-8}
+          style={{ bottom: '-1rem', left: '-1.5rem', width: '11rem', opacity: 0.2 }}
+        />
+        <Sprig
+          className="sprig hidden sm:block"
+          rotate={180}
+          style={{ top: '-1rem', right: '-1.5rem', width: '11rem', opacity: 0.2 }}
+        />
+
+        {/* Moldura de capa encadernada */}
+        <motion.span
+          className="pointer-events-none absolute rounded-[4px]"
+          style={{
+            inset: 'clamp(0.9rem, 3vw, 2rem)',
+            border: '1px solid rgba(230, 180, 101, 0.28)',
+            boxShadow: 'inset 0 0 0 4px rgba(230, 180, 101, 0.09)',
+          }}
+          initial={{ opacity: 0, scale: 1.03 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          aria-hidden
+        />
+
+        <div className="relative z-10 w-full max-w-sm flex flex-col items-center text-center">
+          <motion.p
+            className="kicker"
+            style={{ color: 'rgba(230, 180, 101, 0.8)' }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
           >
-            <p className="font-display text-2xl font-light tracking-wide text-rose-100/95">Uma surpresa especial</p>
-            <p className="font-display text-2xl font-light tracking-wide text-rose-100/95">
-              te espera <span className="float-emoji inline-block text-xl" style={{ animationDelay: '0.5s' }}>🦋</span>
-            </p>
-          </motion.div>
+            Davi &amp; Maysa
+          </motion.p>
+
+          <motion.h1
+            className="font-display mt-4 leading-[0.95]"
+            style={{
+              fontSize: 'clamp(42px, 13vw, 64px)',
+              color: 'var(--moon-900)',
+              letterSpacing: '-0.03em',
+              fontWeight: 600,
+            }}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.28, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            Nossa
+            <br />
+            <span className="italic font-normal">História</span>
+          </motion.h1>
+
           <motion.div
-            className="flex items-center gap-3 w-full"
+            className="flex items-center gap-3 w-full max-w-[15rem] mt-6"
+            initial={{ opacity: 0, scaleX: 0.7 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ delay: 0.45, duration: 0.6 }}
+            aria-hidden
+          >
+            <span
+              className="flex-1 h-px"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(230,180,101,0.45))' }}
+            />
+            <Icon name="heart" size={13} className="shrink-0" style={{ color: 'rgba(240,162,176,0.9)' }} />
+            <span
+              className="flex-1 h-px"
+              style={{ background: 'linear-gradient(90deg, rgba(230,180,101,0.45), transparent)' }}
+            />
+          </motion.div>
+
+          <motion.p
+            className="font-body italic mt-6 text-[0.9375rem] leading-relaxed"
+            style={{ color: 'rgba(251, 243, 238, 0.72)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.35, duration: 0.5 }}
+            transition={{ delay: 0.58, duration: 0.7 }}
           >
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-300/40 to-transparent" />
-            <span className="text-amber-300/60 text-xs tracking-widest">❀ ❀ ❀</span>
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-300/40 to-transparent" />
-          </motion.div>
+            Uma surpresa especial te espera,
+            <br />
+            meu bem.
+          </motion.p>
+
+          {/* O selo — romper para abrir */}
           <motion.button
             onClick={() => onReveal(true)}
-            className="btn-primary w-full rounded-2xl font-sans text-base font-medium flex items-center justify-center gap-2 px-6"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.5 }}
+            className="group mt-10 flex flex-col items-center gap-4 outline-none"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.72, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.94 }}
+            aria-label="Romper o selo e abrir a nossa história"
           >
-            <span>💕</span> Clique aqui, meu bem <span>💕</span>
+            <motion.span
+              animate={{ rotate: [-2.5, 2.5, -2.5] }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+              className="block"
+            >
+              <WaxSeal />
+            </motion.span>
+            <span
+              className="font-sans text-[0.6875rem] font-semibold uppercase tracking-[0.22em] transition-colors"
+              style={{ color: 'rgba(230, 180, 101, 0.85)' }}
+            >
+              Romper o selo
+            </span>
           </motion.button>
+
           <motion.p
-            className="text-sm text-rose-300/50 flex items-center gap-1.5"
+            className="font-hand mt-6 text-lg"
+            style={{ color: 'rgba(240, 162, 176, 0.7)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.95, duration: 0.8 }}
           >
-            <span>✨</span> Toque para revelar <span>✨</span>
+            toque para abrir o álbum
           </motion.p>
         </div>
       </div>

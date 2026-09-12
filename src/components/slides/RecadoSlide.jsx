@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
+import ChapterPlate from '../ui/ChapterPlate'
 import RecadoForm from '../recados/RecadoForm'
 import RecadoBoard from '../recados/RecadoBoard'
 import { fadeV, staggerV, upV } from '../../data/constants'
@@ -10,36 +11,32 @@ export default function RecadoSlide() {
   const [boardKey, setBoardKey] = useState(0)
 
   return (
-    <Slide id="recado" bg="slide-bg-magenta">
+    <Slide id="recado" scene="scene-cork" center={false}>
       {(inView) => (
         <motion.div
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-6 text-center w-full max-w-2xl mx-auto"
+          className="w-full max-w-3xl mx-auto flex flex-col gap-9 pb-10"
         >
-          {/* Cabeçalho */}
-          <MI v={fadeV} className="chapter-label">
-            Um recadinho
-          </MI>
-          <MI v={upV} className="space-y-2">
-            <h2 className="font-display text-2xl sm:text-3xl text-rose-50 leading-tight">
-              Quer deixar um recado pra gente?
-            </h2>
-            <p className="text-rose-200/75 text-sm sm:text-base max-w-md mx-auto">
-              Se você chegou até aqui como amigo, família ou visitante: fique à vontade. Conto essa
-              história do meu jeito, e adoramos saber que passaram por aqui.
-            </p>
-          </MI>
+          <ChapterPlate
+            id="recado"
+            icon="chat"
+            kicker="Um recadinho"
+            title="Quer deixar um recado pra gente?"
+            lede="Se você chegou até aqui como amigo, família ou visitante: fique à vontade. Adoramos saber que passaram por aqui."
+          />
 
-          {/* Quadro de post-its - recarrega com boardKey após novo envio */}
+          {/* Quadro de recados — recarrega com boardKey após novo envio */}
           <MI v={fadeV} className="w-full">
             <RecadoBoard fetchKey={boardKey} />
           </MI>
 
           {/* Formulário */}
-          <MI v={upV} className="w-full card-surface p-5 sm:p-6 card-gold-border">
-            <RecadoForm onSuccess={() => setBoardKey((k) => k + 1)} />
+          <MI v={upV} className="w-full">
+            <div className="sheet sheet-feature px-5 py-6 sm:px-8 sm:py-8">
+              <RecadoForm onSuccess={() => setBoardKey((k) => k + 1)} />
+            </div>
           </MI>
         </motion.div>
       )}

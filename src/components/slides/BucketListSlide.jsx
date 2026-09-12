@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
+import Icon from '../ui/Icon'
+import ChapterPlate from '../ui/ChapterPlate'
 import { staggerV, fadeV, scaleV, BUCKET_LIST } from '../../data/constants'
 
 const LS_KEY = 'our-story-bucketlist'
@@ -20,15 +22,6 @@ function loadFeitos() {
   }
 }
 
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2.5}
-      strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
-      <path d="M2.5 8.5l3.5 3.5 7-7" />
-    </svg>
-  )
-}
-
 export default function BucketListSlide() {
   const [feitos, setFeitos] = useState({})
   const [celebrando, setCelebrando] = useState(null)
@@ -39,6 +32,7 @@ export default function BucketListSlide() {
 
   const total = BUCKET_LIST.length
   const qtdFeitos = Object.values(feitos).filter(Boolean).length
+  const pct = total > 0 ? (qtdFeitos / total) * 100 : 0
 
   const toggle = (id) => {
     const novoValor = !feitos[id]
@@ -52,53 +46,45 @@ export default function BucketListSlide() {
   }
 
   return (
-    <Slide id="bucketlist" bg="slide-bg-story" center={false}>
+    <Slide id="bucketlist" scene="scene-mint" center={false}>
       {(inView) => (
         <motion.div
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-6 w-full max-w-md lg:max-w-2xl mx-auto pb-14"
+          className="w-full max-w-3xl mx-auto flex flex-col gap-9 pb-10"
         >
-          <div className="text-center pt-2">
-            <MI v={fadeV} className="chapter-label">Nossos sonhos</MI>
-            <MI className="mt-2">
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">
-                Lista de coisas pra viver juntos 🌿
-              </h2>
-            </MI>
-            <MI v={fadeV}>
-              <p className="text-rose-200/50 text-xs mt-2 max-w-[300px] mx-auto leading-relaxed">
-                Marque enquanto forem realizando - fica salvo aqui pra nós dois 🤍
-              </p>
-            </MI>
-          </div>
+          <ChapterPlate
+            id="bucketlist"
+            icon="check"
+            kicker="Nossos sonhos"
+            title="Coisas pra viver juntos"
+            lede="Marque enquanto forem realizando — fica salvo aqui, só pra nós dois."
+          />
 
-          {/* Barra de progresso */}
+          {/* Progresso dos sonhos */}
           <MI v={scaleV}>
-            <div className="card-glass card-gold-border px-4 py-4 space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-rose-200/55">Progresso dos sonhos</p>
-                <span className="font-mono text-xs tabular-nums text-amber-200/85">
+            <div className="sheet sheet-feature px-5 py-5 sm:px-6">
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <p className="kicker">Progresso dos sonhos</p>
+                <span className="font-display text-sm font-semibold tabular-nums t-accent">
                   {qtdFeitos}/{total}
                 </span>
               </div>
-              <div className="progress-track h-3">
+              <div className="progress-track h-2.5">
                 <motion.div
-                  className="progress-fill-green"
+                  className="progress-fill"
                   initial={{ width: 0 }}
-                  animate={{ width: `${(qtdFeitos / total) * 100}%` }}
-                  transition={{ duration: 0.7, ease: 'easeOut' }}
+                  animate={{ width: `${pct}%` }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
                 />
               </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-rose-200/55">
-                  {Math.round((qtdFeitos / total) * 100)}% realizados
-                </span>
-                <span className="text-amber-100/65">
+              <div className="flex items-center justify-between text-xs mt-2.5">
+                <span className="t-muted tabular-nums">{Math.round(pct)}% realizados</span>
+                <span className="t-accent2">
                   {total - qtdFeitos > 0
-                    ? `${total - qtdFeitos} ainda por viver ✨`
-                    : 'Tudo realizado! 🥹'}
+                    ? `${total - qtdFeitos} ainda por viver`
+                    : 'Tudo realizado!'}
                 </span>
               </div>
             </div>
@@ -111,83 +97,72 @@ export default function BucketListSlide() {
               const emProgresso = !!item.progresso && !feito
               const comemorando = celebrando === item.id
 
-              const bgColor = feito
-                ? 'rgba(52,211,153,0.08)'
+              const corEstado = feito
+                ? 'var(--sage)'
                 : emProgresso
-                  ? 'rgba(212,175,55,0.07)'
-                  : 'rgba(255,255,255,0.04)'
-              const borderColor = feito
-                ? 'rgba(52,211,153,0.25)'
-                : emProgresso
-                  ? 'rgba(212,175,55,0.28)'
-                  : 'rgba(255,255,255,0.08)'
+                  ? 'var(--ochre)'
+                  : 'var(--ink-4)'
 
               return (
                 <MI key={item.id}>
                   <motion.button
                     onClick={() => toggle(item.id)}
-                    className="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-2xl text-left transition-all duration-200 active:scale-[0.98]"
+                    className="sheet w-full flex items-center gap-4 px-4 py-3.5 text-left active:scale-[0.99]"
                     style={{
-                      background: bgColor,
-                      border: `1px solid ${borderColor}`,
-                      boxShadow: comemorando ? '0 0 20px rgba(52,211,153,0.3)' : 'none',
+                      borderColor: feito || emProgresso
+                        ? `color-mix(in srgb, ${corEstado} 40%, transparent)`
+                        : 'var(--line-soft)',
+                      background: feito
+                        ? 'color-mix(in srgb, var(--sage) 8%, transparent)'
+                        : emProgresso
+                          ? 'color-mix(in srgb, var(--ochre) 7%, transparent)'
+                          : 'var(--surface-2)',
+                      boxShadow: comemorando
+                        ? '0 0 24px -6px color-mix(in srgb, var(--sage) 70%, transparent)'
+                        : undefined,
                     }}
-                    animate={comemorando ? { scale: [1, 1.02, 1] } : {}}
+                    animate={comemorando ? { scale: [1, 1.015, 1] } : {}}
                     transition={{ duration: 0.3 }}
+                    aria-pressed={feito}
                   >
-                    {/* Checkbox / ícone de estado */}
-                    <div
-                      className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200"
+                    {/* Caixa de marcação */}
+                    <span
+                      className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200"
                       style={{
-                        background: feito
-                          ? 'rgba(52,211,153,0.9)'
-                          : emProgresso
-                            ? 'rgba(212,175,55,0.2)'
-                            : 'transparent',
-                        border: `2px solid ${
-                          feito
-                            ? 'rgba(52,211,153,0.9)'
-                            : emProgresso
-                              ? 'rgba(212,175,55,0.7)'
-                              : 'rgba(255,255,255,0.2)'
-                        }`,
+                        background: feito ? 'var(--sage)' : 'transparent',
+                        border: `1.5px solid ${feito ? 'var(--sage)' : emProgresso ? 'var(--ochre)' : 'var(--line)'}`,
+                        color: feito ? '#fff' : 'var(--ochre)',
                       }}
+                      aria-hidden
                     >
                       {feito && (
-                        <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-white">
-                          <CheckIcon />
+                        <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="flex">
+                          <Icon name="check" size={13} strokeWidth={2.4} />
                         </motion.span>
                       )}
-                      {emProgresso && (
-                        <span className="text-[10px]">⏳</span>
-                      )}
-                    </div>
+                      {emProgresso && <Icon name="hourglass" size={12} strokeWidth={1.6} />}
+                    </span>
 
-                    {/* Texto + badge "em progresso" */}
-                    <div className="flex-1 min-w-0">
+                    <span className="flex-1 min-w-0">
                       <span
-                        className="text-sm sm:text-base leading-snug transition-all duration-200"
+                        className="font-body text-[0.9375rem] leading-snug transition-all duration-200"
                         style={{
-                          color: feito
-                            ? 'rgba(255,255,255,0.45)'
-                            : emProgresso
-                              ? 'rgba(253,230,138,0.85)'
-                              : 'rgba(255,228,230,0.85)',
+                          color: feito ? 'var(--ink-4)' : emProgresso ? 'var(--ink-2)' : 'var(--ink-2)',
                           textDecorationLine: feito ? 'line-through' : 'none',
-                          textDecorationColor: 'rgba(52,211,153,0.5)',
+                          textDecorationColor: 'color-mix(in srgb, var(--sage) 60%, transparent)',
                         }}
                       >
                         {item.texto}
                       </span>
                       {emProgresso && (
-                        <span className="block text-[10px] uppercase tracking-[0.16em] text-amber-300/55 mt-0.5">
+                        <span className="block font-sans text-[0.5625rem] uppercase tracking-[0.16em] t-accent2 mt-1">
                           em progresso
                         </span>
                       )}
-                    </div>
+                    </span>
 
                     {feito && (
-                      <span className="ml-auto flex-shrink-0 text-base">🤍</span>
+                      <Icon name="heart" size={14} className="shrink-0" style={{ color: 'var(--sage)' }} />
                     )}
                   </motion.button>
                 </MI>
@@ -196,12 +171,10 @@ export default function BucketListSlide() {
           </div>
 
           {qtdFeitos === total && (
-            <MI v={fadeV}>
-              <div className="text-center py-2">
-                <p className="text-emerald-300/80 text-sm font-medium">
-                  Realizaram tudo! Que história linda de contar 🥹
-                </p>
-              </div>
+            <MI v={fadeV} className="text-center">
+              <p className="font-hand text-2xl t-accent">
+                realizaram tudo! que história linda de contar 🥹
+              </p>
             </MI>
           )}
         </motion.div>

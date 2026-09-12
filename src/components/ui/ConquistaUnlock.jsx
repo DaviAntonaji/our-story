@@ -1,13 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNovasConquistas } from '../../hooks/useNovasConquistas'
-
-const RARIDADE_META = {
-  comum:    { label: 'Comum',    cor: '#e8b4bc', glow: 'rgba(232,180,188,0.50)' },
-  especial: { label: 'Especial', cor: '#f0a8b8', glow: 'rgba(240,168,184,0.55)' },
-  raro:     { label: 'Raro',     cor: '#e8c4a0', glow: 'rgba(232,196,160,0.55)' },
-  epico:    { label: 'Épico',    cor: '#d4a574', glow: 'rgba(212,165,116,0.60)' },
-  lendario: { label: 'Lendário', cor: '#d4af37', glow: 'rgba(212,175,55,0.70)'  },
-}
+import { RARIDADES } from '../../data/constants'
 
 const PARTICULAS = Array.from({ length: 8 }, (_, i) => i)
 
@@ -16,7 +9,7 @@ export default function ConquistaUnlock() {
 
   if (!proxima) return null
 
-  const meta = RARIDADE_META[proxima.raridade] ?? RARIDADE_META.comum
+  const meta = RARIDADES[proxima.raridade] ?? RARIDADES.comum
 
   return (
     <AnimatePresence mode="wait">
@@ -33,60 +26,42 @@ export default function ConquistaUnlock() {
           className="conquista-modal"
           style={{ '--rarity-cor': meta.cor, '--rarity-glow': meta.glow }}
           initial={{ opacity: 0, y: 52, scale: 0.88 }}
-          animate={{ opacity: 1, y: 0,  scale: 1    }}
-          exit={{    opacity: 0, y: 28, scale: 0.94  }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 28, scale: 0.94 }}
           transition={{ type: 'spring', stiffness: 240, damping: 22, delay: 0.06 }}
         >
-          {/* Topo */}
-          <p className="conquista-modal__topo">✦ Conquista Desbloqueada ✦</p>
+          <p className="conquista-modal__topo">✦ Conquista desbloqueada ✦</p>
 
-          {/* Ícone com partículas */}
           <div className="conquista-modal__icon-wrap">
-            {PARTICULAS.map(i => (
-              <span
-                key={i}
-                className="conquista-modal__particula"
-                style={{ '--i': i }}
-              />
+            {PARTICULAS.map((i) => (
+              <span key={i} className="conquista-modal__particula" style={{ '--i': i }} aria-hidden />
             ))}
             <motion.span
               className="conquista-modal__icon"
               initial={{ scale: 0.4, rotate: -15 }}
-              animate={{ scale: 1,   rotate: 0   }}
+              animate={{ scale: 1, rotate: 0 }}
               transition={{ type: 'spring', stiffness: 320, damping: 16, delay: 0.22 }}
             >
               {proxima.icon}
             </motion.span>
           </div>
 
-          {/* Raridade */}
-          <span className="conquista-modal__raridade">
-            ✦ {meta.label} ✦
-          </span>
+          <span className="conquista-modal__raridade">{meta.label}</span>
 
-          {/* Título */}
           <h2 className="conquista-modal__titulo">{proxima.titulo}</h2>
 
-          {/* Subtítulo */}
-          {proxima.subtitulo && (
-            <p className="conquista-modal__subtitulo">{proxima.subtitulo}</p>
-          )}
+          {proxima.subtitulo && <p className="conquista-modal__subtitulo">{proxima.subtitulo}</p>}
 
-          {/* Data */}
-          {proxima.data && (
-            <p className="conquista-modal__data">{proxima.data}</p>
-          )}
+          {proxima.data && <p className="conquista-modal__data">{proxima.data}</p>}
 
-          {/* Botão */}
           <motion.button
             className="conquista-modal__btn"
             onClick={() => marcarVista(proxima.id)}
             whileTap={{ scale: 0.96 }}
           >
-            🏆 Incrível!
+            Incrível!
           </motion.button>
 
-          {/* Contador se houver fila */}
           {restantes > 0 && (
             <p className="conquista-modal__fila">
               +{restantes} nova{restantes > 1 ? 's' : ''} conquista{restantes > 1 ? 's' : ''} te esperando

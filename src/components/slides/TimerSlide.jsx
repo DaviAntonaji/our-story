@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
+import Icon from '../ui/Icon'
+import ChapterPlate from '../ui/ChapterPlate'
 import { staggerV, fadeV, scaleV, MESESVERSARIOS } from '../../data/constants'
 import { useTempoJuntos, useCountUp } from '../../hooks'
 
@@ -11,6 +13,32 @@ const SAUDADE_PAUSA_NO_100_MS = 5000
 function easeSaudade(t) {
   const p = Math.min(Math.max(t, 0), 1)
   return p < 0.7 ? p * 1.2 : 0.84 + (p - 0.7) * (0.16 / 0.3)
+}
+
+/** Marcador de tempo vivo — hora : minuto : segundo desde o primeiro dia. */
+function RelogioVivo({ tempo }) {
+  const casas = [
+    { val: tempo.horas, label: 'horas' },
+    { val: tempo.minutos, label: 'min' },
+    { val: tempo.segundos, label: 'seg' },
+  ]
+  return (
+    <div className="flex items-end justify-center lg:justify-start gap-4">
+      {casas.map(({ val, label }, i) => (
+        <div key={label} className="flex items-end gap-4">
+          {i > 0 && <span className="t-faint text-lg font-light pb-4">:</span>}
+          <div className="flex flex-col items-center">
+            <span className="font-display text-2xl sm:text-3xl font-semibold tabular-nums t-ink">
+              {val}
+            </span>
+            <span className="mt-1 font-sans text-[0.5625rem] uppercase tracking-[0.18em] t-faint">
+              {label}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default function TimerSlide() {
@@ -58,6 +86,7 @@ export default function TimerSlide() {
       clearTimeout(timeoutId)
     }
   }, [maisAberto])
+
   const mesversariosVividos = MESESVERSARIOS.filter((m) => new Date() >= m.data)
 
   const proximoMarcoDias = Math.max(50, Math.ceil((tempo.totalDias + 1) / 50) * 50)
@@ -66,210 +95,210 @@ export default function TimerSlide() {
 
   const fraseSaudade =
     saudadePct < 30
-      ? 'Comecou de leve...'
+      ? 'Começou de leve…'
       : saudadePct < 60
-        ? 'Ja ta batendo forte 💗'
+        ? 'Já tá batendo forte 💗'
         : saudadePct < 90
-          ? 'Quase no limite...'
+          ? 'Quase no limite…'
           : saudadePct < 100
-            ? 'Socorro, que saudade de voce 😭'
-            : '100%: Te ver é obrigatório ❤️'
+            ? 'Socorro, que saudade de você 😭'
+            : '100%: te ver é obrigatório ❤️'
 
   return (
-    <Slide id="timer" bg="slide-bg-maroon">
+    <Slide id="timer" scene="scene-paper" center={false}>
       {(inView) => (
-        <motion.div ref={countRef} variants={staggerV} initial="hidden" animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col items-center gap-5 text-center w-full max-w-sm lg:max-w-xl mx-auto"
+        <motion.div
+          ref={countRef}
+          variants={staggerV}
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          className="w-full max-w-4xl mx-auto flex flex-col gap-9 pb-10"
         >
-            <MI v={fadeV} className="chapter-label">Já se passou</MI>
-            <MI v={scaleV}>
-              <p className="text-jumbo font-display font-bold text-rose-50 tabular-nums">{totalDiasAnimado}</p>
-            </MI>
-            <MI className="space-y-1">
-              <p className="font-display text-2xl sm:text-3xl font-light text-rose-200/90">dias juntos</p>
-              <p className="text-rose-300/60 text-sm italic">e cada um deles valeu muito ❤️</p>
-            </MI>
-            <MI>
-              <div className="flex items-center justify-center gap-3">
-                {[
-                  { val: tempo.horas, label: 'horas' },
-                  { val: tempo.minutos, label: 'min' },
-                  { val: tempo.segundos, label: 'seg', gold: true },
-                ].map(({ val, label, gold }, i) => (
-                  <div key={label} className="flex items-center gap-3">
-                    {i > 0 && <span className="text-rose-300/30 text-lg font-light">:</span>}
-                    <div className="flex flex-col items-center">
-                      <span className={`font-mono tabular-nums text-xl font-semibold ${gold ? 'text-amber-300' : 'text-rose-200/80'}`}>
-                        {val}
-                      </span>
-                      <span className="text-rose-300/45 text-[10px] tracking-widest uppercase mt-0.5">{label}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </MI>
-            <MI v={fadeV}>
-              <span className="badge-pill">🌹 {tempo.meses} {tempo.meses === 1 ? 'mês' : 'meses'} e {tempo.dias} dias</span>
-            </MI>
+          <ChapterPlate
+            id="timer"
+            icon="hourglass"
+            kicker="Já se passou"
+            title="Dias juntos"
+            lede="O contador que eu olho mais do que devia."
+          />
 
-            <MI v={fadeV} className="w-full">
-              <div className="card-glass card-gold-border px-4 py-4 space-y-3">
-                <div className="flex items-center justify-between">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-amber-100/70">Próximo marco</p>
-                  <span className="font-mono text-xs tabular-nums text-amber-200/90">{marcoPct}%</span>
-                </div>
-                <div className="progress-track h-3">
-                  <motion.div
-                    className="progress-fill-rose"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${marcoPct}%` }}
-                    transition={{ duration: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
-                  />
-                </div>
-                <div className="flex items-end justify-between gap-4">
-                  <div className="text-left">
-                    <p className="font-display text-xl text-rose-50 tabular-nums">{tempo.totalDias} dias ❤️</p>
-                    <p className="text-xs text-rose-200/55 mt-0.5">
-                      Faltam {diasParaMarco} {diasParaMarco === 1 ? 'dia' : 'dias'} para o próximo marco
-                    </p>
-                  </div>
-                  <div className="rounded-xl border border-amber-300/22 bg-amber-200/10 px-3 py-2 text-right shrink-0">
-                    <p className="text-[9px] uppercase tracking-widest text-amber-100/55">Marco</p>
-                    <p className="font-display text-lg text-amber-100 tabular-nums">{proximoMarcoDias} dias</p>
-                  </div>
-                </div>
+          {/* ── Numeral gigante + relógio ─────────────────────────── */}
+          <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] items-center gap-6 lg:gap-12">
+            <MI v={scaleV} className="flex items-end justify-center lg:justify-start gap-4">
+              <p className="text-jumbo">{totalDiasAnimado}</p>
+              <div className="pb-3 sm:pb-5 text-left">
+                <p className="font-display text-2xl sm:text-3xl italic t-body leading-none">dias</p>
+                <p className="font-hand text-xl t-accent mt-1">e contando</p>
               </div>
             </MI>
 
-            <MI v={fadeV}>
-              <button
-                type="button"
-                onClick={() => setMaisAberto(v => !v)}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-amber-400/10 border border-amber-400/25 text-amber-200 font-sans text-sm font-medium tracking-wide hover:bg-amber-400/18 active:scale-95 transition-all duration-200"
-              >
-                <span>✦</span>
-                <span>{maisAberto ? 'Mostrar menos' : 'Ver mais'}</span>
-                <span
-                  className="text-xs transition-transform duration-300"
-                  style={{ transform: maisAberto ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                >
-                  ▾
+            <MI v={fadeV} className="flex flex-col items-center lg:items-start gap-4">
+              <RelogioVivo tempo={tempo} />
+              <span className="pill">
+                <Icon name="flower" size={13} />
+                {tempo.meses} {tempo.meses === 1 ? 'mês' : 'meses'} e {tempo.dias}{' '}
+                {tempo.dias === 1 ? 'dia' : 'dias'}
+              </span>
+              <p className="font-body italic text-sm t-muted text-center lg:text-left max-w-[30ch]">
+                E cada um deles valeu muito.
+              </p>
+            </MI>
+          </div>
+
+          {/* ── Próximo marco ─────────────────────────────────────── */}
+          <MI v={fadeV}>
+            <div className="sheet sheet-feature px-5 py-5 sm:px-6 sm:py-6">
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <p className="kicker">Próximo marco</p>
+                <span className="font-display text-sm font-semibold tabular-nums t-accent">
+                  {marcoPct}%
                 </span>
-              </button>
-            </MI>
-
-            <AnimatePresence initial={false}>
-              {maisAberto && (
+              </div>
+              <div className="progress-track h-2.5">
                 <motion.div
-                  key="timer-extra"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.32, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="w-full overflow-hidden"
-                >
-                  <div className="flex flex-col items-center gap-5 w-full pt-1">
-                    <div className="card-glass rounded-2xl border border-rose-300/25 px-4 py-3.5 space-y-2 w-full">
-                      <p className="text-[10px] uppercase tracking-[0.18em] text-rose-200/65 text-left">
-                        Nível de saudade
-                      </p>
-                      <div className="progress-track h-2.5">
-                        <div
-                          className="progress-fill-rose"
-                          style={{ width: `${saudadePct}%` }}
-                        />
-                      </div>
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-xs text-rose-100/90 text-left">{fraseSaudade}</p>
-                        <span className="font-mono text-sm tabular-nums text-amber-200">{saudadePct}%</span>
-                      </div>
-                    </div>
+                  className="progress-fill"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${marcoPct}%` }}
+                  transition={{ duration: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+              </div>
+              <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="font-display text-xl t-ink tabular-nums">
+                    {tempo.totalDias} dias vividos
+                  </p>
+                  <p className="text-xs t-muted mt-0.5">
+                    Faltam {diasParaMarco} {diasParaMarco === 1 ? 'dia' : 'dias'} para o próximo.
+                  </p>
+                </div>
+                <div className="sheet-quiet px-3.5 py-2 text-right shrink-0">
+                  <p className="font-sans text-[0.5625rem] uppercase tracking-[0.18em] t-faint">
+                    Marco
+                  </p>
+                  <p className="font-display text-lg t-accent tabular-nums">{proximoMarcoDias} dias</p>
+                </div>
+              </div>
+            </div>
+          </MI>
 
-                    {mesversariosVividos.length > 0 && (
-                      <div className="w-full space-y-3 text-left">
-                        <p className="text-center text-[10px] uppercase tracking-[0.18em] text-rose-200/50">Já rolou nos mêsversários</p>
+          <MI v={fadeV} className="flex justify-center">
+            <button type="button" onClick={() => setMaisAberto((v) => !v)} className="btn">
+              <Icon name="sparkle" size={15} />
+              {maisAberto ? 'Mostrar menos' : 'Ver mais'}
+              <Icon name="chevronDown" size={14} className="chev" data-open={maisAberto} />
+            </button>
+          </MI>
+
+          <AnimatePresence initial={false}>
+            {maisAberto && (
+              <motion.div
+                key="timer-extra"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.34, ease: [0.25, 0.1, 0.25, 1] }}
+                className="w-full overflow-hidden"
+              >
+                <div className="flex flex-col gap-6 w-full pt-1">
+                  {/* Medidor de saudade */}
+                  <div className="sheet px-5 py-4">
+                    <p className="kicker mb-2.5">Nível de saudade</p>
+                    <div className="progress-track h-2">
+                      <div className="progress-fill" style={{ width: `${saudadePct}%` }} />
+                    </div>
+                    <div className="mt-2.5 flex items-center justify-between gap-3">
+                      <p className="text-sm t-body">{fraseSaudade}</p>
+                      <span className="font-display text-base font-semibold tabular-nums t-accent">
+                        {saudadePct}%
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Mêsversários já vividos */}
+                  {mesversariosVividos.length > 0 && (
+                    <div className="space-y-3">
+                      <p className="kicker text-center">Já rolou nos mêsversários</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {mesversariosVividos.map((m) => (
-                          <div
-                            key={m.id}
-                            className="mesversario-memoria card-glass rounded-2xl border border-amber-400/22 px-4 py-3.5"
-                          >
-                            <p className="font-display text-sm text-amber-200 font-medium text-center sm:text-left">
-                              {m.titulo}
-                            </p>
-                            <p className="text-[11px] text-amber-100/55 text-center sm:text-left mt-0.5 mb-2">
-                              {m.data.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}
-                            </p>
+                          <div key={m.id} className="sheet sheet-lift px-5 py-4 allow-select">
+                            <span className="date-tag">
+                              {m.data.toLocaleDateString('pt-BR', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                              })}
+                            </span>
+                            <h3 className="title-sm mt-2.5 mb-2">{m.titulo}</h3>
                             {m.resumo.map((par, i) => (
-                              <p
-                                key={i}
-                                className="font-body text-[13px] sm:text-sm leading-relaxed text-left mt-2 first:mt-0 allow-select"
-                                style={{ color: 'rgb(255, 232, 234)' }}
-                              >
+                              <p key={i} className="prose-soft text-sm mt-2 first:mt-0">
                                 {par}
                               </p>
                             ))}
                           </div>
                         ))}
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                    <div className="w-full space-y-3 text-left">
-                      <p className="text-center text-rose-300/55 text-xs">
-                        {tempo.meses < 12
-                          ? 'Primeiro ano - cada mêsversário no mesmo ritmo dos stories ✨'
-                          : `${Math.floor(tempo.meses / 12)} ${Math.floor(tempo.meses / 12) === 1 ? 'ano' : 'anos'} juntos - e seguimos somando capítulos`}
-                      </p>
-                      {tempo.mesversarioEhAniversario ? (
-                        <div className="card-glass rounded-2xl border border-amber-400/25 px-4 py-4 space-y-1">
-                          <p className="text-[10px] uppercase tracking-[0.18em] text-amber-200/75">Próximo marco</p>
-                          <p className="font-display text-lg text-rose-50 font-medium">
-                            Faltam{' '}
-                            <span className="tabular-nums text-amber-200">{tempo.diasAteMesversario}</span>{' '}
-                            {tempo.diasAteMesversario === 1 ? 'dia' : 'dias'}
+                  {/* Próximas datas */}
+                  <div className="space-y-3">
+                    <p className="text-center text-xs t-muted">
+                      {tempo.meses < 12
+                        ? 'Primeiro ano — cada mêsversário virando capítulo.'
+                        : `${Math.floor(tempo.meses / 12)} ${
+                            Math.floor(tempo.meses / 12) === 1 ? 'ano' : 'anos'
+                          } juntos — e seguimos somando capítulos.`}
+                    </p>
+
+                    {tempo.mesversarioEhAniversario ? (
+                      <div className="sheet sheet-feature px-5 py-4">
+                        <p className="kicker">Mêsversário e aniversário no mesmo dia</p>
+                        <p className="font-display text-xl t-ink mt-1.5">
+                          Faltam{' '}
+                          <span className="tabular-nums t-accent">{tempo.diasAteMesversario}</span>{' '}
+                          {tempo.diasAteMesversario === 1 ? 'dia' : 'dias'}
+                          {tempo.diasAteMesversario === 0 && tempo.horasAteMesversario > 0 && (
+                            <span className="text-base t-body"> e {tempo.horasAteMesversario}h</span>
+                          )}
+                        </p>
+                        <p className="text-sm t-muted mt-1">{tempo.dataMesversarioFmt}</p>
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="sheet px-5 py-4">
+                          <p className="kicker">Próximo mêsversário</p>
+                          <p className="font-display text-xl t-ink mt-1.5">
+                            <span className="tabular-nums font-semibold t-accent">
+                              {tempo.diasAteMesversario}
+                            </span>
+                            {tempo.diasAteMesversario === 1 ? ' dia' : ' dias'}
                             {tempo.diasAteMesversario === 0 && tempo.horasAteMesversario > 0 && (
-                              <span className="text-base font-normal text-rose-200/90">
-                                {' '}e {tempo.horasAteMesversario}h
-                              </span>
+                              <span className="t-body font-normal"> e {tempo.horasAteMesversario}h</span>
                             )}
                           </p>
-                          <p className="text-rose-300/70 text-sm">Mêsversário e aniversário de namoro · {tempo.dataMesversarioFmt}</p>
+                          <p className="text-sm t-muted mt-1">até {tempo.dataMesversarioFmt}</p>
                         </div>
-                      ) : (
-                        <>
-                          <div className="card-glass rounded-2xl border border-rose-400/20 px-4 py-3.5 space-y-1">
-                            <p className="text-[10px] uppercase tracking-[0.18em] text-rose-200/65">Próximo mêsversário</p>
-                            <p className="font-display text-base text-rose-50">
-                              <span className="tabular-nums font-semibold text-amber-200/95">{tempo.diasAteMesversario}</span>
-                              {tempo.diasAteMesversario === 1 ? ' dia' : ' dias'}
-                              {tempo.diasAteMesversario === 0 && tempo.horasAteMesversario > 0 && (
-                                <span className="text-rose-200/85 font-normal"> e {tempo.horasAteMesversario}h</span>
-                              )}
-                              <span className="text-rose-300/75 font-normal text-sm block sm:inline sm:ml-1">
-                                até {tempo.dataMesversarioFmt}
-                              </span>
-                            </p>
-                          </div>
-                          <div className="card-glass rounded-2xl border border-amber-400/22 px-4 py-3.5 space-y-1">
-                            <p className="text-[10px] uppercase tracking-[0.18em] text-amber-200/70">Próximo aniversário de namoro</p>
-                            <p className="font-display text-base text-rose-50">
-                              <span className="tabular-nums font-semibold text-amber-200/95">{tempo.diasAteAniversario}</span>
-                              {tempo.diasAteAniversario === 1 ? ' dia' : ' dias'}
-                              {tempo.diasAteAniversario === 0 && tempo.horasAteAniversario > 0 && (
-                                <span className="text-rose-200/85 font-normal"> e {tempo.horasAteAniversario}h</span>
-                              )}
-                              <span className="text-rose-300/75 font-normal text-sm block sm:inline sm:ml-1">
-                                até {tempo.dataAniversarioFmt}
-                              </span>
-                            </p>
-                          </div>
-                        </>
-                      )}
-                    </div>
+                        <div className="sheet px-5 py-4">
+                          <p className="kicker">Próximo aniversário de namoro</p>
+                          <p className="font-display text-xl t-ink mt-1.5">
+                            <span className="tabular-nums font-semibold t-accent">
+                              {tempo.diasAteAniversario}
+                            </span>
+                            {tempo.diasAteAniversario === 1 ? ' dia' : ' dias'}
+                            {tempo.diasAteAniversario === 0 && tempo.horasAteAniversario > 0 && (
+                              <span className="t-body font-normal"> e {tempo.horasAteAniversario}h</span>
+                            )}
+                          </p>
+                          <p className="text-sm t-muted mt-1">até {tempo.dataAniversarioFmt}</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       )}
     </Slide>
   )

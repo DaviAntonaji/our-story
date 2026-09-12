@@ -5,6 +5,8 @@ export * from './fotos.js'
 export * from './cartas.js'
 export * from './conquistas.js'
 export * from './mapa.js'
+export * from './capitulos.js'
+export * from './raridades.js'
 
 // src/data/constants.js
 
@@ -92,6 +94,15 @@ export const PASSAGENS_BIBLICAS = [
       'Honra e cuidado não são opcionais - são o jeito de amar que abre espaço pra Deus no meio da gente. Quero ser esse marido: presente, respeitoso e grato por caminhar contigo na mesma herança.',
   },
   {
+    id: 'ct87',
+    titulo: 'Cânticos 8:7',
+    tipo: 'destaque',
+    citacao:
+      'As muitas águas não poderiam apagar este amor, nem os rios afogá-lo.',
+    reflexao:
+      'Nada que vier vai ser forte o suficiente pra apagar o que Deus acendeu entre nós. Eu te escolho na água calma e te escolho na tempestade.',
+  },
+  {
     id: 'sl128',
     titulo: 'Salmos 128:1–4',
     tipo: 'numerados',
@@ -117,6 +128,9 @@ export const SPOTIFY_URLS = [
   'https://open.spotify.com/embed/track/1og6YRY01JKaIDjSGVM8FZ',
   'https://open.spotify.com/embed/track/3PlKQNlbL4767rND3HnqSI',
   'https://open.spotify.com/embed/track/6eDApnV9Jdb1nYahOlbbUh',
+  'https://open.spotify.com/embed/track/5FbcIkgUDNt6mZdDVFwVyE',
+  'https://open.spotify.com/embed/track/3kNT9msV6JCFz6NnmDcyp2',
+  'https://open.spotify.com/embed/track/01Z18LIRXx7QHzWp2QpDaE',
 ]
 
 
@@ -308,28 +322,31 @@ export const ANTES_DEPOIS = {
   ],
 }
 
-/** Emoji de ambiente por slide (mesma ordem que SLIDE_IDS). glow = bruma na cor do gradiente do fundo. */
+/**
+ * Ambiência que cai em cada capítulo (mesma ordem de SLIDE_IDS).
+ * `shape` vem de components/animations/Shapes.jsx; `tint` é a cor da forma.
+ */
 export const SLIDE_AMBIENCE = [
-  { emoji: '🌹', glow: 'rgba(251, 113, 133, 0.42)' },
-  { emoji: '⏳', glow: 'rgba(212, 175, 55, 0.38)' },
-  { emoji: '🌗', glow: 'rgba(52, 211, 153, 0.42)' },
-  { emoji: '🎵', glow: 'rgba(167, 139, 250, 0.4)' },
-  { emoji: '💌', glow: 'rgba(252, 211, 77, 0.38)' },
-  { emoji: '✨', glow: 'rgba(244, 114, 182, 0.4)' },
-  { emoji: '✝️', glow: 'rgba(129, 140, 248, 0.42)' },
-  { emoji: '📸', glow: 'rgba(167, 139, 250, 0.28)' },
-  { emoji: '📖', glow: 'rgba(212, 175, 55, 0.36)' },
-  { emoji: '🗺️', glow: 'rgba(99, 102, 241, 0.38)' },
-  { emoji: '💐', glow: 'rgba(251, 182, 193, 0.36)' },
-  { emoji: '🌿', glow: 'rgba(52, 211, 153, 0.38)' },
-  { emoji: '🦋', glow: 'rgba(244, 114, 182, 0.40)' },
-  { emoji: '🌅', glow: 'rgba(59, 130, 246, 0.4)' },
-  { emoji: '💬', glow: 'rgba(244, 114, 182, 0.35)' },
-  { emoji: '🎬', glow: 'rgba(212, 175, 55, 0.38)' },
-  { emoji: '📜', glow: 'rgba(212, 175, 55, 0.40)' },
-  { emoji: '✅', glow: 'rgba(52, 211, 153, 0.38)' },
-  { emoji: '🏆', glow: 'rgba(251, 191, 36, 0.44)' },
-  { emoji: '💝', glow: 'rgba(251, 113, 133, 0.45)' },
+  { shape: 'petal', tint: 'rgba(196, 96, 118, 0.55)' },  // intro
+  { shape: 'seed',  tint: 'rgba(156, 111, 56, 0.42)' },  // timer
+  { shape: 'leaf',  tint: 'rgba(111, 133, 112, 0.50)' }, // antes & depois
+  { shape: 'note',  tint: 'rgba(196, 162, 240, 0.60)' }, // musica
+  { shape: 'petal', tint: 'rgba(176, 101, 74, 0.42)' },  // carta
+  { shape: 'star',  tint: 'rgba(212, 105, 127, 0.48)' }, // tags
+  { shape: 'drop',  tint: 'rgba(156, 111, 56, 0.45)' },  // versiculo
+  { shape: 'petal', tint: 'rgba(240, 162, 176, 0.45)' }, // momentos (escuro)
+  { shape: 'seed',  tint: 'rgba(176, 101, 74, 0.40)' },  // historia
+  { shape: 'star',  tint: 'rgba(230, 180, 101, 0.42)' }, // mapa (escuro)
+  { shape: 'petal', tint: 'rgba(212, 105, 127, 0.50)' }, // flores
+  { shape: 'leaf',  tint: 'rgba(111, 133, 112, 0.52)' }, // promessas
+  { shape: 'heart', tint: 'rgba(196, 96, 118, 0.42)' },  // motivos
+  { shape: 'drop',  tint: 'rgba(198, 130, 74, 0.48)' },  // futuro
+  { shape: 'petal', tint: 'rgba(176, 101, 74, 0.40)' },  // recado
+  { shape: 'star',  tint: 'rgba(230, 180, 101, 0.38)' }, // creditos (escuro)
+  { shape: 'seed',  tint: 'rgba(224, 176, 106, 0.42)' }, // cartas (escuro)
+  { shape: 'leaf',  tint: 'rgba(111, 133, 112, 0.50)' }, // bucketlist
+  { shape: 'star',  tint: 'rgba(240, 199, 106, 0.48)' }, // conquistas (escuro)
+  { shape: 'heart', tint: 'rgba(196, 96, 118, 0.50)' },  // final
 ]
 
 /**

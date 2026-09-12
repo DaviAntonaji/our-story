@@ -1,75 +1,82 @@
 import { motion } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
-import { staggerV, fadeV, scaleV, CREDITOS } from '../../data/constants'
+import ChapterPlate from '../ui/ChapterPlate'
+import { staggerV, fadeV, CREDITOS } from '../../data/constants'
 
 export default function CreditosSlide() {
   return (
-    <Slide id="creditos" bg="slide-bg-dark" center={false}>
+    <Slide id="creditos" scene="scene-dark scene-night" center={false} sprigs={false}>
       {(inView) => (
         <motion.div
           variants={staggerV}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="flex flex-col gap-8 w-full max-w-md lg:max-w-2xl mx-auto allow-select pb-14"
+          className="w-full max-w-2xl mx-auto flex flex-col gap-11 allow-select pb-10"
         >
-          <div className="text-center pt-2">
-            <MI v={fadeV} className="chapter-label">Nossa história</MI>
-            <MI v={scaleV} className="text-4xl mt-2" style={{ animation: 'pulseSoft 3s ease-in-out infinite' }}>
-              🎬
-            </MI>
-            <MI className="mt-2">
-              <h2 className="font-display text-2xl sm:text-3xl font-semibold text-rose-50">Créditos</h2>
-            </MI>
-            <MI v={fadeV}>
-              <p className="text-rose-200/45 text-xs mt-1.5 max-w-[280px] mx-auto italic">
-                Toda boa história tem pessoas que fizeram parte dela
-              </p>
-            </MI>
-          </div>
+          <ChapterPlate
+            id="creditos"
+            icon="film"
+            kicker="Nossa história"
+            title="Créditos"
+            lede="Toda boa história tem gente que fez parte dela."
+          />
 
-          <div className="flex flex-col gap-6 w-full">
+          <div className="flex flex-col gap-10 w-full">
             {CREDITOS.map((secao, si) => (
               <MI key={si}>
-                <div className="space-y-4">
+                <section className="space-y-5">
                   <div className="flex items-center gap-3">
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-amber-400/30" />
-                    <p className="text-[9px] uppercase tracking-[0.26em] text-amber-200/55 whitespace-nowrap">
-                      {secao.categoria}
-                    </p>
-                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-amber-400/30" />
+                    <span
+                      className="h-px flex-1"
+                      style={{ background: 'linear-gradient(90deg, transparent, var(--line))' }}
+                    />
+                    <p className="kicker whitespace-nowrap text-center">{secao.categoria}</p>
+                    <span
+                      className="h-px flex-1"
+                      style={{ background: 'linear-gradient(90deg, var(--line), transparent)' }}
+                    />
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-6">
                     {secao.itens.map((item, ii) => (
-                      <div
-                        key={ii}
-                        className="rounded-2xl border border-white/[0.06] bg-white/[0.03] px-5 py-4 text-center space-y-1"
-                      >
-                        <p className="text-[10px] uppercase tracking-[0.18em] text-rose-200/45">
+                      <div key={ii} className="text-center">
+                        <p className="font-sans text-[0.625rem] uppercase tracking-[0.2em] t-faint">
                           {item.papel}
                         </p>
-                        <p className="font-display text-xl sm:text-2xl font-semibold text-rose-50 leading-snug">
+                        <p
+                          className="font-display font-semibold t-ink leading-tight mt-1.5"
+                          style={{ fontSize: 'clamp(22px, 4.6vw, 32px)', letterSpacing: '-0.015em' }}
+                        >
                           {item.nome}
                         </p>
                         {item.nota && (
-                          <p className="text-rose-200/60 text-xs sm:text-sm leading-relaxed italic mt-1">
-                            "{item.nota}"
+                          <p className="font-body italic text-[0.875rem] leading-relaxed t-muted mt-2.5 max-w-[46ch] mx-auto">
+                            “{item.nota}”
                           </p>
                         )}
                       </div>
                     ))}
                   </div>
-                </div>
+                </section>
               </MI>
             ))}
 
             <MI v={fadeV}>
-              <div className="flex items-center gap-3 pt-2">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-rose-400/20" />
-                <p className="text-rose-300/30 text-[10px] uppercase tracking-widest whitespace-nowrap">fim</p>
-                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-rose-400/20" />
+              <div className="flex items-center gap-4 pt-4">
+                <span
+                  className="h-px flex-1"
+                  style={{ background: 'linear-gradient(90deg, transparent, var(--line))' }}
+                />
+                <p className="font-display text-lg tracking-[0.42em] t-faint select-none">FIM</p>
+                <span
+                  className="h-px flex-1"
+                  style={{ background: 'linear-gradient(90deg, var(--line), transparent)' }}
+                />
               </div>
+              <p className="font-hand text-center text-lg t-accent mt-4">
+                …mas só desse capítulo
+              </p>
             </MI>
           </div>
         </motion.div>

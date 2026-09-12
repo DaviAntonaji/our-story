@@ -2,7 +2,12 @@ import { useCallback, useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import MI from '../ui/MI'
 import Slide from '../ui/Slide'
-import { staggerV, fadeV, scaleV } from '../../data/constants'
+import Icon from '../ui/Icon'
+import { Monogram } from '../ui/Ornament'
+import { staggerV, fadeV, scaleV, upV } from '../../data/constants'
+
+const FOTO_PRINCIPAL = '/imgs/photos/shopping_com_meus_pais/15.jpg'
+const FOTO_FUNDO = '/imgs/photos/shopping_com_meus_pais/14.jpg'
 
 export default function IntroSlide() {
   const containerRef = useRef(null)
@@ -13,23 +18,22 @@ export default function IntroSlide() {
   const mx = useSpring(rawX, { stiffness: 40, damping: 20, mass: 0.6 })
   const my = useSpring(rawY, { stiffness: 40, damping: 20, mass: 0.6 })
 
-  // Camada da foto se move levemente contra o mouse (parallax)
-  const photoX = useTransform(mx, [-1, 1], [5, -5])
-  const photoY = useTransform(my, [-1, 1], [4, -4])
+  // Camadas de foto se movem em profundidades diferentes (parallax)
+  const frenteX = useTransform(mx, [-1, 1], [7, -7])
+  const frenteY = useTransform(my, [-1, 1], [5, -5])
+  const fundoX = useTransform(mx, [-1, 1], [-11, 11])
+  const fundoY = useTransform(my, [-1, 1], [-8, 8])
 
-  // Orbs se movem junto com o mouse
-  const orb1X = useTransform(mx, [-1, 1], [-14, 14])
-  const orb1Y = useTransform(my, [-1, 1], [-10, 10])
-  const orb2X = useTransform(mx, [-1, 1], [10, -10])
-  const orb2Y = useTransform(my, [-1, 1], [8, -8])
-
-  const handlePointerMove = useCallback((e) => {
-    const el = containerRef.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    rawX.set(((e.clientX - rect.left) / rect.width  - 0.5) * 2)
-    rawY.set(((e.clientY - rect.top)  / rect.height - 0.5) * 2)
-  }, [rawX, rawY])
+  const handlePointerMove = useCallback(
+    (e) => {
+      const el = containerRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      rawX.set(((e.clientX - rect.left) / rect.width - 0.5) * 2)
+      rawY.set(((e.clientY - rect.top) / rect.height - 0.5) * 2)
+    },
+    [rawX, rawY],
+  )
 
   const handlePointerLeave = useCallback(() => {
     rawX.set(0)
@@ -37,7 +41,7 @@ export default function IntroSlide() {
   }, [rawX, rawY])
 
   return (
-    <Slide id="intro" bg="slide-bg-rose">
+    <Slide id="intro" scene="scene-dawn" seam={false}>
       {(inView) => (
         <motion.div
           ref={containerRef}
@@ -46,76 +50,108 @@ export default function IntroSlide() {
           animate={inView ? 'show' : 'hidden'}
           onPointerMove={handlePointerMove}
           onPointerLeave={handlePointerLeave}
-          className="relative flex flex-col items-center gap-5 text-center w-full max-w-sm lg:max-w-xl mx-auto"
+          className="w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] items-center gap-10 lg:gap-16"
         >
-          {/* Orbs de profundidade – ficam atrás de tudo */}
-          <motion.div
-            className="glow-orb w-48 h-48 bg-rose-300/18 blur-3xl -z-10"
-            style={{ x: orb1X, y: orb1Y, top: '-5%', left: '-18%' }}
-          />
-          <motion.div
-            className="glow-orb w-36 h-36 bg-amber-200/14 blur-2xl -z-10"
-            style={{ x: orb2X, y: orb2Y, top: '30%', right: '-12%' }}
-          />
-          <motion.div
-            className="glow-orb w-28 h-28 bg-purple-300/12 blur-2xl -z-10"
-            style={{ x: orb1X, bottom: '10%', left: '5%' }}
-          />
+          {/* ── Fotografias montadas ─────────────────────────────── */}
+          <MI v={scaleV} className="relative order-1 lg:order-2 flex justify-center">
+            <div className="relative" style={{ perspective: 900 }}>
+              {/* Foto de trás, espiando */}
+              <motion.div
+                className="polaroid absolute -left-8 -top-5 sm:-left-14 sm:-top-6 hidden sm:block"
+                style={{ x: fundoX, y: fundoY, rotate: -9, zIndex: 1 }}
+                aria-hidden
+              >
+                <div className="polaroid-img w-[130px] sm:w-[150px] aspect-[3/4]">
+                  <img
+                    src={FOTO_FUNDO}
+                    alt=""
+                    width={480}
+                    height={640}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </motion.div>
 
-          <MI v={fadeV} className="chapter-label">Nossa história</MI>
-
-          <MI v={scaleV} className="flex gap-3 text-4xl">
-            <span style={{ animation: 'heartBeat 1.5s ease-in-out infinite' }}>❤️</span>
-            <span style={{ animation: 'heartBeat 1.5s ease-in-out infinite 0.3s' }}>❤️</span>
-            <span style={{ animation: 'heartBeat 1.5s ease-in-out infinite 0.6s' }}>❤️</span>
+              {/* Foto principal */}
+              <motion.div
+                className="polaroid relative"
+                style={{ x: frenteX, y: frenteY, rotate: 2.5, zIndex: 2 }}
+                whileHover={{ rotate: 0, scale: 1.025 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 22 }}
+              >
+                <div className="polaroid-img w-[210px] sm:w-[248px] lg:w-[270px] aspect-[3/4]">
+                  <img
+                    src={FOTO_PRINCIPAL}
+                    alt="Davi e Maysa"
+                    width={600}
+                    height={800}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                  />
+                </div>
+                <p className="polaroid-caption">nós dois &#10084;</p>
+              </motion.div>
+            </div>
           </MI>
 
-          {/* Foto no estilo Polaroid com parallax */}
-          <MI className="relative">
-            {/* Glow atrás da foto */}
-            <motion.div
-              className="absolute inset-0 rounded-full bg-rose-300/28 blur-3xl scale-110 -z-10"
-              style={{ x: orb2X, y: orb2Y }}
-            />
-            <motion.div
-              className="polaroid"
-              style={{ x: photoX, y: photoY, rotate: -2 }}
-              whileHover={{ rotate: -1, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 200, damping: 22 }}
-            >
-              <div className="polaroid-img w-[180px] sm:w-[210px] aspect-[3/4]">
-                <img
-                  src="/imgs/photos/shopping_com_meus_pais/15.jpg"
-                  alt="Nós dois"
-                  width={600}
-                  height={800}
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
+          {/* ── Bloco tipográfico ────────────────────────────────── */}
+          <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-5">
+            <MI v={fadeV} className="flex items-center gap-3">
+              <Monogram size={46} />
+              <span className="flex flex-col items-start leading-tight">
+                <span className="kicker">Capítulo I</span>
+                <span className="font-display italic text-base t-muted">a abertura</span>
+              </span>
+            </MI>
+
+            <MI v={upV}>
+              <h1 className="text-hero">
+                Para você,
+                <br />
+                <span className="hand-underline italic font-normal">Maysa</span>
+                <Icon
+                  name="heart"
+                  size={30}
+                  strokeWidth={1.5}
+                  className="inline-block ml-3 -mt-2 align-middle t-accent"
+                  style={{ animation: 'heartBeatSoft 2.6s ease-in-out infinite' }}
                 />
-              </div>
-              <p className="polaroid-caption">nós dois ❤️</p>
-            </motion.div>
-          </MI>
+              </h1>
+            </MI>
 
-          <MI className="space-y-1">
-            <h1 className="text-hero font-display font-semibold text-rose-50">
-              Para você, Maysa <span className="inline-block animate-heartBeat">❤️</span>
-            </h1>
-            <p className="font-display text-xl text-rose-200/85">Amor da minha vida</p>
-          </MI>
+            <MI v={fadeV}>
+              <p className="font-display text-xl sm:text-2xl italic t-body">Amor da minha vida.</p>
+            </MI>
 
-          <MI>
-            <span className="badge-pill">🌹 Juntos desde 04 de março de 2026</span>
-          </MI>
+            <MI v={fadeV}>
+              <p className="lede max-w-[38ch]">
+                Isso aqui é um álbum. Cada capítulo é um pedaço de nós — o que já
+                vivemos, o que eu te prometo e o que ainda vamos construir.
+              </p>
+            </MI>
 
-          <MI v={fadeV} className="flex items-center gap-2 text-xl mt-1">
-            <span className="float-emoji opacity-80" style={{ animationDelay: '0s' }}>✨</span>
-            <span className="float-emoji opacity-70" style={{ animationDelay: '0.5s' }}>🦋</span>
-            <span className="float-emoji opacity-90" style={{ animationDelay: '0.2s' }}>🌹</span>
-            <span className="float-emoji opacity-80" style={{ animationDelay: '0.7s' }}>✨</span>
-          </MI>
+            <MI v={fadeV} className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1">
+              <span className="pill">
+                <Icon name="flower" size={13} />
+                Juntos desde 04 de março de 2026
+              </span>
+              <span className="pill-quiet">
+                <Icon name="feather" size={12} />
+                escrito por Davi
+              </span>
+            </MI>
+
+            <MI v={fadeV} className="pt-2">
+              <p className="font-hand text-lg t-accent2 flex items-center gap-2">
+                comece rolando a página
+                <Icon name="chevronDown" size={16} className="animate-softFloat" />
+              </p>
+            </MI>
+          </div>
         </motion.div>
       )}
     </Slide>

@@ -3,12 +3,13 @@ import { createPortal } from 'react-dom';
 import { MotionConfig } from 'framer-motion';
 
 import { useIsMobile } from './hooks';
+import { SLIDE_IDS } from './data/constants';
 
 import ButterfliesFloating from './components/animations/ButterfliesFloating';
 import SlideThemedAmbience from './components/animations/SlideThemedAmbience';
-import NavDots from './components/ui/NavDots';
+import ChapterRibbon from './components/ui/ChapterRibbon';
 import CookieConsent from './components/ui/CookieConsent';
-import CerimoniaBtn from './components/ui/CerimoniaBtn';
+import ChapterIndex from './components/ui/ChapterIndex';
 import Lightbox from './components/ui/Lightbox';
 import TodayPill from './components/ui/TodayPill';
 import ConquistaUnlock from './components/ui/ConquistaUnlock';
@@ -49,8 +50,8 @@ const DynamicPortals = memo(function DynamicPortals({ activeSlide, setActiveSlid
   return createPortal(
     <>
       <SlideThemedAmbience activeIndex={activeSlide} isMobile={isMobile} />
-      <NavDots active={activeSlide} />
-      <CerimoniaBtn activeSlide={activeSlide} setActiveSlide={setActiveSlide} />
+      <ChapterRibbon active={activeSlide} />
+      <ChapterIndex activeSlide={activeSlide} setActiveSlide={setActiveSlide} />
     </>,
     document.body,
   );
@@ -59,8 +60,8 @@ const DynamicPortals = memo(function DynamicPortals({ activeSlide, setActiveSlid
 // Fallback exibido se o MapaSlide lançar um erro (Leaflet, tile layer, etc.)
 function MapaFallback() {
   return (
-    <section className="snap-slide slide-bg-teal flex items-center justify-center">
-      <p className="text-rose-200/50 text-sm">O mapa não pôde ser carregado.</p>
+    <section className="snap-slide scene-dark scene-deep flex items-center justify-center">
+      <p className="t-muted text-sm">O mapa não pôde ser carregado.</p>
     </section>
   );
 }
@@ -70,30 +71,47 @@ export default function App() {
   const [activeSlide, setActiveSlide] = useState(0);
   const isMobile = useIsMobile();
 
-  // ─── Rastreamento do slide ativo ────────────────────────────────────────
-  // Usa querySelectorAll('[data-slide]') para detectar slides automaticamente
-  // a partir do DOM — não precisa manter SLIDE_IDS em sincronia manualmente.
-  // threshold múltiplo + cobertura de viewport: compensa slides mais altos
-  // que a tela (ConquistasSlide, HistoriaSlide) que nunca atingiriam 20%.
+  // ─── Rastreamento do capítulo ativo ─────────────────────────────────────
+  // O índice vem do id do <section> via SLIDE_IDS, não da posição no DOM:
+  // assim os capítulos lazy (História, Mapa, Conquistas) não desalinham a
+  // fita de navegação enquanto carregam.
+  // threshold múltiplo + cobertura de viewport: compensa capítulos mais altos
+  // que a tela, que nunca atingiriam 20% de si mesmos.
   useEffect(() => {
     if (!revelado) return;
-    const slides = Array.from(document.querySelectorAll('[data-slide]'));
+
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach(e => {
           if (!e.isIntersecting) return;
-          // Slide alto: verifica cobertura do viewport em vez da razão do elemento
           const viewportCoverage = e.intersectionRect.height / window.innerHeight;
           if (e.intersectionRatio >= 0.2 || viewportCoverage >= 0.5) {
-            const idx = slides.indexOf(e.target);
+            const idx = SLIDE_IDS.indexOf(e.target.id);
             if (idx !== -1) setActiveSlide(idx);
           }
         });
       },
       { threshold: [0.1, 0.2, 0.3, 0.5] },
     );
-    slides.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
+
+    const observados = new WeakSet();
+    const observarNovos = () => {
+      document.querySelectorAll('[data-slide]').forEach(el => {
+        if (observados.has(el)) return;
+        observados.add(el);
+        obs.observe(el);
+      });
+    };
+    observarNovos();
+
+    // Capítulos lazy entram no DOM depois: observa os que aparecerem.
+    const mo = new MutationObserver(observarNovos);
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      mo.disconnect();
+      obs.disconnect();
+    };
   }, [revelado]);
 
   // setActiveSlide é referência estável do useState; memoizamos para deixar explícito
@@ -125,11 +143,11 @@ export default function App() {
               <TagsSlide />
               <VersiculoSlide />
               <MomentosSlide />
-              <Suspense fallback={<SlideSkeleton bg="slide-bg-story" />}>
+              <Suspense fallback={<SlideSkeleton scene="scene-cream" />}>
                 <HistoriaSlide />
               </Suspense>
               <ErrorBoundary fallback={<MapaFallback />}>
-                <Suspense fallback={<SlideSkeleton bg="slide-bg-teal" />}>
+                <Suspense fallback={<SlideSkeleton scene="scene-dark scene-deep" />}>
                   <MapaSlide />
                 </Suspense>
               </ErrorBoundary>
@@ -141,7 +159,7 @@ export default function App() {
               <CreditosSlide />
               <CartasLacradasSlide />
               <BucketListSlide />
-              <Suspense fallback={<SlideSkeleton bg="slide-bg-conquistas" />}>
+              <Suspense fallback={<SlideSkeleton scene="scene-dark scene-cosmos" />}>
                 <ConquistasSlide />
               </Suspense>
               <FinalSlide />
