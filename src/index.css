@@ -1554,6 +1554,17 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   to   { opacity: 1; letter-spacing: inherit; }
 }
 
+/* ═══ MAPA ═══════════════════════════════════════════════════════
+   Os tiles do OSM são claros; este filtro os traz para a noite do álbum.
+   Aplicado via `className` do TileLayer, portanto só na camada de tiles —
+   marcadores, chips e a ficha do lugar ficam intactos.
+   ═══════════════════════════════════════════════════════════════ */
+.map-tiles-night {
+  filter: invert(1) hue-rotate(192deg) saturate(0.38) brightness(0.76) contrast(1.1)
+    sepia(0.18);
+}
+.leaflet-container { background: #0b0710 !important; }
+
 /* ═══ LIGHTBOX ═══════════════════════════════════════════════════ */
 .lb-surface { background: rgba(10, 7, 12, 0.97); }
 .lb-btn {

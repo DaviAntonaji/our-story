@@ -10,13 +10,11 @@ import { numeralDoSlide } from '../ui/ChapterPlate'
 const COR_ATIVO = '#e6b465'
 const COR_PONTO = '#d4697f'
 
-// Basemap do CARTO. A chave (quando definida) é anexada ao tile URL — num site
-// estático ela é sempre visível no bundle, então a proteção real é a restrição
-// de domínio no painel do CARTO, não o segredo em si.
-const CARTO_KEY = import.meta.env.VITE_CARTO_API_KEY
-const TILE_URL =
-  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' +
-  (CARTO_KEY ? `?api_key=${encodeURIComponent(CARTO_KEY)}` : '')
+// Basemap: OpenStreetMap padrão — livre, sem chave de API e sem cota paga.
+// O estilo original é claro; a classe `map-tiles-night` (index.css) reescurece
+// só a camada de tiles via filtro CSS, então os marcadores não são afetados.
+// A atribuição ao OSM é obrigatória pela política de uso e aparece no rodapé.
+const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
 
 function criarIcone(selecionado) {
   const cor = selecionado ? COR_ATIVO : COR_PONTO
@@ -82,7 +80,9 @@ export default function MapaSlide() {
         >
           <TileLayer
             url={TILE_URL}
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            className="map-tiles-night"
+            maxZoom={19}
+            attribution='&copy; OpenStreetMap'
           />
           <FitAll places={MAPA_LUGARES} />
           {selecionado && <PanTo coords={selecionado.coords} />}
@@ -140,6 +140,17 @@ export default function MapaSlide() {
             transition={{ duration: 0.3 }}
             className="absolute bottom-7 left-0 right-0 z-[900] px-4 sm:px-8"
           >
+            <p className="mb-2 font-sans text-[0.5625rem] tracking-[0.1em] t-faint">
+              mapa ©{' '}
+              <a
+                href="https://www.openstreetmap.org/copyright"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2"
+              >
+                OpenStreetMap
+              </a>
+            </p>
             <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
               {MAPA_LUGARES.map(lugar => (
                 <button
