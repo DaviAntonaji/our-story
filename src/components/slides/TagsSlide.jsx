@@ -19,7 +19,7 @@ const COISAS = [
   ['🙏', 'Suas orações por mim'],
 ]
 
-/** Rotação determinística — parece espalhado à mão, mas é estável. */
+/** Rotação determinística - parece espalhado à mão, mas é estável. */
 function giro(i) {
   const v = Math.sin(i * 5.77 + 1.13) * 43758.5453
   return ((v - Math.floor(v)) - 0.5) * 4.4

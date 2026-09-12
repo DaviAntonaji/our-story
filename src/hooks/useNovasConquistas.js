@@ -17,7 +17,7 @@ export function useNovasConquistas() {
       const raw = localStorage.getItem(LS_KEY)
 
       // Primeira visita: marca todas as conquistas desbloqueadas como já vistas
-      // silenciosamente — notificações só aparecem para conquistas adicionadas depois.
+      // silenciosamente - notificações só aparecem para conquistas adicionadas depois.
       if (raw === null) {
         const todas = CONQUISTAS.filter(c => c.desbloqueada).map(c => c.id)
         localStorage.setItem(LS_KEY, JSON.stringify(todas))

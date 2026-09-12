@@ -59,7 +59,7 @@ export default function BucketListSlide() {
             icon="check"
             kicker="Nossos sonhos"
             title="Coisas pra viver juntos"
-            lede="Marque enquanto forem realizando — fica salvo aqui, só pra nós dois."
+            lede="Marque enquanto forem realizando - fica salvo aqui, só pra nós dois."
           />
 
           {/* Progresso dos sonhos */}

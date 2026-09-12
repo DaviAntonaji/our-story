@@ -218,10 +218,10 @@ export const SESSAO_FOTOS_PRESENTE = {
       ],
       titulo: 'Lírio amarelo',
       paras: [
-        'Eu te dei lírio amarelo porque ele é a cor da minha alegria quando eu penso em você. Aquela cor viva, que lembra o sol, carrega otimismo, calor e energia boa — exatamente o que você despertou em mim desde o começo. Você é a minha luz. O lugar onde o meu coração aquece. O começo novo que eu agradeço a Deus todos os dias.',
+        'Eu te dei lírio amarelo porque ele é a cor da minha alegria quando eu penso em você. Aquela cor viva, que lembra o sol, carrega otimismo, calor e energia boa - exatamente o que você despertou em mim desde o começo. Você é a minha luz. O lugar onde o meu coração aquece. O começo novo que eu agradeço a Deus todos os dias.',
         'O lírio amarelo é a flor da amizade verdadeira e do afeto leve. É o presente de quem quer dizer: "você é querida pra mim, e eu sou grato por você existir". Mas ele também guarda um significado que é a nossa história inteira: o desejo de transformar uma amizade forte em romance. Foi assim que a gente nasceu. Primeiro o cuidado, o conversar, o se aproximar… e depois o amor, inteiro, sem volta.',
-        'Eu quis te entregar alegria e vitalidade. Quis te lembrar que o nosso amor tem sol — tem riso, tem leveza, tem o entusiasmo de quem escolhe o outro de novo a cada manhã. E quis te desejar prosperidade: não só de coisas, mas de paz, de casa quente, de um futuro que floresce porque a gente cuida dele juntos.',
-        'Esse lírio é o meu "eu te amo" em amarelo. Um afeto que chegou leve e ficou pra sempre. Você é a minha alegria, o meu sol, a amizade que virou o amor da minha vida — e eu quero continuar te dando flores que digam isso, mesmo quando as palavras não derem conta.',
+        'Eu quis te entregar alegria e vitalidade. Quis te lembrar que o nosso amor tem sol - tem riso, tem leveza, tem o entusiasmo de quem escolhe o outro de novo a cada manhã. E quis te desejar prosperidade: não só de coisas, mas de paz, de casa quente, de um futuro que floresce porque a gente cuida dele juntos.',
+        'Esse lírio é o meu "eu te amo" em amarelo. Um afeto que chegou leve e ficou pra sempre. Você é a minha alegria, o meu sol, a amizade que virou o amor da minha vida - e eu quero continuar te dando flores que digam isso, mesmo quando as palavras não derem conta.',
       ],
     },
   ],

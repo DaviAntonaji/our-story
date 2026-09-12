@@ -1,5 +1,5 @@
 /**
- * Formas usadas na ambiência que cai pela tela — pétalas, folhas, notas.
+ * Formas usadas na ambiência que cai pela tela - pétalas, folhas, notas.
  * Substituem os emojis: herdam a cor da cena e ficam elegantes tanto no
  * papel claro quanto nas folhas escuras.
  */

@@ -15,7 +15,7 @@ function easeSaudade(t) {
   return p < 0.7 ? p * 1.2 : 0.84 + (p - 0.7) * (0.16 / 0.3)
 }
 
-/** Marcador de tempo vivo — hora : minuto : segundo desde o primeiro dia. */
+/** Marcador de tempo vivo - hora : minuto : segundo desde o primeiro dia. */
 function RelogioVivo({ tempo }) {
   const casas = [
     { val: tempo.horas, label: 'horas' },
@@ -49,7 +49,7 @@ export default function TimerSlide() {
   const [saudadePct, setSaudadePct] = useState(0)
   const [maisAberto, setMaisAberto] = useState(false)
 
-  // Dispara ao abrir "Ver mais" — useInView quebrava com overflow:hidden do painel
+  // Dispara ao abrir "Ver mais" - useInView quebrava com overflow:hidden do painel
   useEffect(() => {
     if (!maisAberto) {
       setSaudadePct(0)
@@ -244,10 +244,10 @@ export default function TimerSlide() {
                   <div className="space-y-3">
                     <p className="text-center text-xs t-muted">
                       {tempo.meses < 12
-                        ? 'Primeiro ano — cada mêsversário virando capítulo.'
+                        ? 'Primeiro ano - cada mêsversário virando capítulo.'
                         : `${Math.floor(tempo.meses / 12)} ${
                             Math.floor(tempo.meses / 12) === 1 ? 'ano' : 'anos'
-                          } juntos — e seguimos somando capítulos.`}
+                          } juntos - e seguimos somando capítulos.`}
                     </p>
 
                     {tempo.mesversarioEhAniversario ? (

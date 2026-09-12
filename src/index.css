@@ -2,9 +2,9 @@
 @config '../tailwind.config.js';
 
 /* ═══════════════════════════════════════════════════════════════════════
-   NOSSA HISTÓRIA — Design System
-   Conceito: um álbum de papel. A história atravessa as horas do dia —
-   amanhecer, manhã de papel, tarde dourada, noite — e cada capítulo é
+   NOSSA HISTÓRIA - Design System
+   Conceito: um álbum de papel. A história atravessa as horas do dia -
+   amanhecer, manhã de papel, tarde dourada, noite - e cada capítulo é
    uma folha costurada no livro. Tudo é controlado por tokens de "cena":
    trocar a classe .scene-* de um slide troca fundo, tinta e acentos.
    ══════════════════════════════════════════════════════════════════════ */
@@ -49,7 +49,7 @@
   --font-meta:    'Outfit', system-ui, sans-serif;
   --font-hand:    'Caveat', 'Segoe Script', cursive;
 
-  /* Defaults de cena (claro) — cada .scene-* sobrescreve */
+  /* Defaults de cena (claro) - cada .scene-* sobrescreve */
   --ink:      var(--ink-900);
   --ink-2:    var(--ink-700);
   --ink-3:    var(--ink-500);
@@ -122,7 +122,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   opacity: var(--grain-opacity);
 }
 
-/* Bloom de luz — a "hora do dia" de cada cena */
+/* Bloom de luz - a "hora do dia" de cada cena */
 .snap-slide::after {
   content: '';
   position: absolute;
@@ -169,7 +169,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 /* ─── Cenas claras ─────────────────────────────────────────────────── */
 
 /* Amanhecer — abertura */
-.scene-dawn {
+.scene-dawn {-
   --accent: var(--rose);
   --accent-2: var(--clay);
   --seam-dot: #fdf6f2;
@@ -182,7 +182,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Papel de carta — cru, tinta, contador */
-.scene-paper {
+.scene-paper {-
   --accent: var(--ochre);
   --accent-2: var(--rose);
   --seam-dot: #fbf5ec;
@@ -193,7 +193,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Papel de carta à luz de vela — a carta */
-.scene-letter {
+.scene-letter {-
   --accent: var(--clay);
   --accent-2: var(--ochre);
   --seam-dot: #fdf6ea;
@@ -206,7 +206,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Sálvia — jardim, promessas */
-.scene-sage {
+.scene-sag- {
   --accent: var(--sage);
   --accent-2: var(--ochre);
   --seam-dot: #f5f7f1;
@@ -217,7 +217,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Blush — coisas que amo, presentes */
-.scene-blush {
+.scene-bl-sh {
   --accent: var(--rose);
   --accent-2: var(--clay);
   --seam-dot: #fdf4f4;
@@ -228,7 +228,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Linho — versículos, reverência */
-.scene-linen {
+.scene-li-en {
   --accent: var(--ochre);
   --accent-2: var(--sage);
   --seam-dot: #f8f3e9;
@@ -239,7 +239,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Creme — timeline */
-.scene-cream {
+.scene-cr-am {
   --accent: var(--clay);
   --accent-2: var(--ochre);
   --seam-dot: #fcf7f1;
@@ -250,7 +250,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Hora dourada — o futuro */
-.scene-golden {
+.scene-golden {-
   --accent: var(--clay);
   --accent-2: var(--ochre);
   --seam-dot: #fdf4e9;
@@ -263,7 +263,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Aurora — o final, luz plena */
-.scene-aurora {
+.scene-aur-ra {
   --accent: var(--rose);
   --accent-2: var(--ochre);
   --seam-dot: #fdf3ef;
@@ -276,7 +276,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Ar da manhã — lista de sonhos */
-.scene-mint {
+.scene-mint {-
   --accent: var(--sage);
   --accent-2: var(--rose);
   --seam-dot: #f2f7f4;
@@ -287,7 +287,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Cortiça — quadro de recados */
-.scene-cork {
+.scene-cork-{
   --accent: var(--clay);
   --accent-2: var(--rose);
   --seam-dot: #f9f0e4;
@@ -318,7 +318,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Violeta — trilha sonora */
-.scene-violet {
+.scene-viol-t {
   --accent-2: #c4a2f0;
   --bloom:
     radial-gradient(ellipse 60% 48% at 10% 4%, rgba(148, 108, 220, 0.30) 0%, transparent 62%),
@@ -327,7 +327,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Noite — mural de fotos, créditos */
-.scene-night {
+.scene-ni-ht {
   --bloom:
     radial-gradient(ellipse 56% 46% at 16% 8%, rgba(134, 100, 180, 0.18) 0%, transparent 60%),
     radial-gradient(ellipse 50% 42% at 88% 92%, rgba(216, 128, 148, 0.13) 0%, transparent 58%);
@@ -335,13 +335,13 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Profundo — mapa */
-.scene-deep {
+.scene-deep -
   --bloom: none;
   background: linear-gradient(170deg, #0b0710 0%, #100b16 50%, #0a0710 100%);
 }
 
 /* Veludo — cartas lacradas */
-.scene-velvet {
+.scene-vel-et {
   --accent: #e0b06a;
   --accent-2: #eda2b2;
   --bloom:
@@ -351,7 +351,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Cosmos — conquistas */
-.scene-cosmos {
+.scene-cos-os {
   --accent: #f0c76a;
   --accent-2: #b79af0;
   --bloom:
@@ -395,7 +395,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 }
 
 /* Título de seção — a voz do livro */
-.title-lg {
+.title-lg {-
   font-family: var(--font-display);
   font-weight: 600;
   color: var(--ink);
@@ -517,7 +517,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 /* ═══ SUPERFÍCIES ════════════════════════════════════════════════ */
 
 /* Folha — o card padrão. Papel, não vidro. */
-.sheet {
+.sheet {-
   position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -532,7 +532,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   border-radius: 16px;
 }
 /* Folha em destaque — filete de acento no topo */
-.sheet-feature {
+.sheet-feature {-
   position: relative;
   background: var(--surface);
   border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
@@ -653,7 +653,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   font-weight: 500;
   color: var(--ink-3);
 }
-/* Etiqueta de data — como uma tarja datilografada */
+/* Etiqueta de data - como uma tarja datilografada */
 .date-tag {
   display: inline-flex;
   align-items: center;
@@ -749,7 +749,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 .photo-mount__corner:nth-child(3) { bottom: 0; left: 0; clip-path: polygon(0 0, 0 100%, 100% 100%); }
 .photo-mount__corner:nth-child(4) { bottom: 0; right: 0; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
 
-/* Polaroid — foto revelada */
+/* Polaroid - foto revelada */
 .polaroid {
   background: #fffdf7;
   padding: 11px 11px 40px;
@@ -871,7 +871,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-/* Monograma em anel — assinatura visual do casal */
+/* Monograma em anel - assinatura visual do casal */
 .monogram {
   display: inline-flex;
   align-items: center;
@@ -1071,7 +1071,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   background: linear-gradient(225deg, rgba(0, 0, 0, 0.1) 50%, transparent 50%);
 }
 
-/* ═══ NAVEGAÇÃO — fita marcadora ═════════════════════════════════ */
+/* ═══ NAVEGAÇÃO - fita marcadora ═════════════════════════════════ */
 .ribbon-nav {
   position: fixed;
   right: 0;
@@ -1569,7 +1569,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 .lb-surface { background: rgba(10, 7, 12, 0.97); }
 .lb-btn {
   display: flex;
-  align-items: center;
+  align-items: cen-er;
   justify-content: center;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);

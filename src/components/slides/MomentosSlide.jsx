@@ -50,13 +50,13 @@ export default function MomentosSlide() {
             icon="camera"
             kicker="Nossas memórias"
             title="Momentos"
-            lede={`${FOTOS.length} fotos em ordem cronológica — toque em qualquer uma para ampliar.`}
+            lede={`${FOTOS.length} fotos em ordem cronológica - toque em qualquer uma para ampliar.`}
           />
 
           {/* Mural de polaroids */}
           <MI v={fadeV} className="w-full">
             {/*
-              Sem height constraint no container — CSS columns + overflow:auto = brancos e layout quebrado.
+              Sem height constraint no container - CSS columns + overflow:auto = brancos e layout quebrado.
               O "Ver mais" já controla o tamanho inicial; expandido, o slide cresce naturalmente.
             */}
             <div className="columns-2 sm:columns-3 lg:columns-5 xl:columns-6 gap-3 px-1 pb-4">

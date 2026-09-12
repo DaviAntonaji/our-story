@@ -27,7 +27,7 @@ export default function RecadoSlide() {
             lede="Se você chegou até aqui como amigo, família ou visitante: fique à vontade. Adoramos saber que passaram por aqui."
           />
 
-          {/* Quadro de recados — recarrega com boardKey após novo envio */}
+          {/* Quadro de recados - recarrega com boardKey após novo envio */}
           <MI v={fadeV} className="w-full">
             <RecadoBoard fetchKey={boardKey} />
           </MI>

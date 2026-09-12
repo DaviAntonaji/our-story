@@ -1,4 +1,4 @@
-// src/data/constants.js — hub central. Dados pesados ficam nos sub-módulos abaixo.
+// src/data/constants.js - hub central. Dados pesados ficam nos sub-módulos abaixo.
 export * from './animations.js'
 export * from './timeline.js'
 export * from './fotos.js'

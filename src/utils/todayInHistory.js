@@ -37,8 +37,8 @@ function tempoAtras(data) {
 }
 
 /**
- * @param {Array} timeline     — array TIMELINE de constants.js
- * @param {Array} mesesversarios — array MESESVERSARIOS de timeline.js
+ * @param {Array} timeline     - array TIMELINE de constants.js
+ * @param {Array} mesesversarios - array MESESVERSARIOS de timeline.js
  * @returns {{ tipo, icon, label, titulo, resumo, tempo } | null}
  */
 export function buscarHojeNaHistoria(timeline, mesesversarios) {

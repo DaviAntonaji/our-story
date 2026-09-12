@@ -1,5 +1,5 @@
 /**
- * Índice do álbum — um capítulo por slide, na mesma ordem de SLIDE_IDS.
+ * Índice do álbum - um capítulo por slide, na mesma ordem de SLIDE_IDS.
  * Usado pela fita de navegação e pelo painel de índice.
  * `icon` é um nome do conjunto em components/ui/Icon.jsx.
  */

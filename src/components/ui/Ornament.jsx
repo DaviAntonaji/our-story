@@ -3,7 +3,7 @@
  * antigos "orbs" de brilho), monograma do casal e selo de cera.
  */
 
-/** Ramo com folhas — ornamento de canto. A haste nasce no canto inferior esquerdo. */
+/** Ramo com folhas - ornamento de canto. A haste nasce no canto inferior esquerdo. */
 export function Sprig({ className = '', flip = false, rotate = 0, style, strokeWidth = 1.1 }) {
   const transform = `${flip ? 'scaleX(-1) ' : ''}rotate(${rotate}deg)`
   return (
@@ -35,7 +35,7 @@ export function Sprig({ className = '', flip = false, rotate = 0, style, strokeW
   )
 }
 
-/** Folhinha dupla — divisor discreto entre blocos. */
+/** Folhinha dupla - divisor discreto entre blocos. */
 export function LeafRule({ className = '' }) {
   return (
     <div className={`flex items-center gap-3 w-full ${className}`} aria-hidden>

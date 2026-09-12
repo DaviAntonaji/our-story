@@ -71,7 +71,7 @@ export default function AntesDepoisSlide() {
             icon="moon"
             kicker="Eu & nós"
             title="Antes & depois"
-            lede="Do automático ao propósito — com você no caminho."
+            lede="Do automático ao propósito - com você no caminho."
           />
 
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 w-full">
@@ -110,7 +110,7 @@ export default function AntesDepoisSlide() {
 
           <MI v={fadeV} className="text-center">
             <p className="font-hand text-xl t-accent">
-              você não mudou a minha vida — você deu sentido a ela
+              você não mudou a minha vida - você deu sentido a ela
             </p>
           </MI>
         </motion.div>

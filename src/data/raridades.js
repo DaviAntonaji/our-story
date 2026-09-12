@@ -1,5 +1,5 @@
 /**
- * Escada de raridade das conquistas — fonte única para o slide de Conquistas
+ * Escada de raridade das conquistas - fonte única para o slide de Conquistas
  * e para o modal de desbloqueio. Do frio e discreto ao ouro.
  */
 export const RARIDADES = {

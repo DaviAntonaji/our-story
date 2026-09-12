@@ -1,4 +1,4 @@
-/** Esqueleto leve enquanto um capítulo lazy carrega — mesma cena do alvo. */
+/** Esqueleto leve enquanto um capítulo lazy carrega - mesma cena do alvo. */
 export default function SlideSkeleton({ scene = 'scene-cream' }) {
   return (
     <section className={`snap-slide ${scene}`} aria-hidden>

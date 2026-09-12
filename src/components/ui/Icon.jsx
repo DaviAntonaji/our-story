@@ -1,5 +1,5 @@
 /**
- * Conjunto de ícones em traço fino — substitui emoji na "moldura" do site
+ * Conjunto de ícones em traço fino - substitui emoji na "moldura" do site
  * (cabeçalhos, navegação, ornamentos). Os emojis continuam nos textos,
  * onde são conteúdo escrito à mão, não interface.
  *

@@ -304,7 +304,7 @@ export default function ConquistasSlide() {
 
               {nivelInfo.noMaximo ? (
                 <p className="font-hand text-lg text-center t-accent py-1">
-                  nível máximo — história completa
+                  nível máximo - história completa
                 </p>
               ) : (
                 <>

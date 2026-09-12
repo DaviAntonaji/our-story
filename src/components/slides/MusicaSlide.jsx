@@ -35,7 +35,7 @@ function Faixa({ url, idx }) {
   )
 }
 
-/** Disco de vinil desenhado — o convite para tocar. */
+/** Disco de vinil desenhado - o convite para tocar. */
 function Vinil() {
   return (
     <svg viewBox="0 0 120 120" width="88" height="88" aria-hidden focusable="false">

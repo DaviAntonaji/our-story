@@ -18,7 +18,7 @@ function NumVerso({ n }) {
   )
 }
 
-/** O versículo da aliança — tratado como epígrafe do capítulo. */
+/** O versículo da aliança - tratado como epígrafe do capítulo. */
 function PassagemPrincipal({ passagem }) {
   return (
     <div className="sheet sheet-feature relative px-6 py-8 sm:px-10 sm:py-11">
@@ -117,7 +117,7 @@ export default function VersiculoSlide() {
             icon="cross"
             kicker="Uma palavra pra nós"
             title="Versículos"
-            lede="Os trechos que sustentam a nossa história — fé e amor no mesmo lugar."
+            lede="Os trechos que sustentam a nossa história - fé e amor no mesmo lugar."
           />
 
           <MI>

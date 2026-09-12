@@ -135,7 +135,7 @@ export function useTempoJuntos() {
     tick()
     let id = setInterval(tick, 1000)
 
-    // Pausa o intervalo quando a aba está em background — economiza CPU e bateria
+    // Pausa o intervalo quando a aba está em background - economiza CPU e bateria
     const onVisibility = () => {
       if (document.hidden) {
         clearInterval(id)

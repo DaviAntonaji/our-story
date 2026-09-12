@@ -68,7 +68,7 @@ export default function FinalSlide() {
 
               <div className="mt-5 flex items-center justify-center gap-2.5 t-accent2">
                 <Icon name="ring" size={18} strokeWidth={1.3} />
-                <span className="font-hand text-lg">a data vem — a escolha já está feita</span>
+                <span className="font-hand text-lg">a data vem - a escolha já está feita</span>
               </div>
             </div>
           </MI>

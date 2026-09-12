@@ -462,11 +462,11 @@ export const TIMELINE = [
     titulo: 'Nosso 5º mêsversário 🤍',
     icon: '🍕',
     paras: [
-      'Cinco meses. E a gente comemorou do jeitinho mais nosso possível: em casa, sem pressa, sem roteiro — só o que importa.',
-      'Foi na minha casa. Pedimos duas pizzas, nos acomodamos, e o resto do mundo ficou lá fora. Eu e você, no sofá, assistindo o live action do He-Man. Nossas irmãs, cada uma no seu mundo, se divertindo juntas — rindo, bagunçando, ocupando o espaço como se aquela casa já fosse um pouco delas também.',
+      'Cinco meses. E a gente comemorou do jeitinho mais nosso possível: em casa, sem pressa, sem roteiro - só o que importa.',
+      'Foi na minha casa. Pedimos duas pizzas, nos acomodamos, e o resto do mundo ficou lá fora. Eu e você, no sofá, assistindo o live action do He-Man. Nossas irmãs, cada uma no seu mundo, se divertindo juntas - rindo, bagunçando, ocupando o espaço como se aquela casa já fosse um pouco delas também.',
       'Não teve palco, não teve surpresa grande. Teve pizza, filme, o som das duas se divertindo no fundo… e você do meu lado. E talvez seja exatamente isso que cinco meses ensinaram pra gente: que o amor mais bonito não precisa de cenário. Precisa de presença.',
-      'Ver você ali, em casa, no meu espaço, como se já fizesse parte dele — isso aquece de um jeito que nenhum passeio consegue. É o tipo de noite que eu quero viver mil vezes: simples, quentinha, nossa.',
-      'Cinco meses que parecem muito mais pelo que a gente já construiu. E se o começo foi um pedido no João Julhão, esse mês foi o lembrete de que o melhor da nossa história também cabe num sofá, com pizza e filme — desde que seja com você. 🤍',
+      'Ver você ali, em casa, no meu espaço, como se já fizesse parte dele - isso aquece de um jeito que nenhum passeio consegue. É o tipo de noite que eu quero viver mil vezes: simples, quentinha, nossa.',
+      'Cinco meses que parecem muito mais pelo que a gente já construiu. E se o começo foi um pedido no João Julhão, esse mês foi o lembrete de que o melhor da nossa história também cabe num sofá, com pizza e filme - desde que seja com você. 🤍',
     ],
   },
 ]

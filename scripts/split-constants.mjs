@@ -59,7 +59,7 @@ writeFileSync(
 
 // ─── constants.js reescrito ─────────────────────────────────────────────────
 const newConstants = [
-  '// src/data/constants.js — hub central. Dados pesados ficam nos sub-módulos abaixo.',
+  '// src/data/constants.js - hub central. Dados pesados ficam nos sub-módulos abaixo.',
   "export * from './animations'",
   "export * from './timeline'",
   "export * from './fotos'",

@@ -102,7 +102,7 @@ export default function LandingPage({ onReveal }) {
             meu bem.
           </motion.p>
 
-          {/* O selo — romper para abrir */}
+          {/* O selo - romper para abrir */}
           <motion.button
             onClick={() => onReveal(true)}
             className="group mt-10 flex flex-col items-center gap-4 outline-none"

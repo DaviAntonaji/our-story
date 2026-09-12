@@ -138,7 +138,7 @@ export default function CartasLacradasSlide() {
 
           <MI v={fadeV} className="text-center">
             <p className="font-hand text-xl t-accent2">
-              cada uma tem uma data — e nenhuma vai se perder
+              cada uma tem uma data - e nenhuma vai se perder
             </p>
           </MI>
         </motion.div>

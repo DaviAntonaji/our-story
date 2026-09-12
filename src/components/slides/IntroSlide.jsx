@@ -129,7 +129,7 @@ export default function IntroSlide() {
 
             <MI v={fadeV}>
               <p className="lede max-w-[38ch]">
-                Isso aqui é um álbum. Cada capítulo é um pedaço de nós — o que já
+                Isso aqui é um álbum. Cada capítulo é um pedaço de nós - o que já
                 vivemos, o que eu te prometo e o que ainda vamos construir.
               </p>
             </MI>

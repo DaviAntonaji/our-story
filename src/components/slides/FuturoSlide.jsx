@@ -66,7 +66,7 @@ export default function FuturoSlide() {
             <div className="sheet sheet-feature px-6 py-8 sm:px-10 text-center">
               <p className="kicker">O combinado</p>
               <p className="font-body italic text-sm t-muted mt-3 max-w-[40ch] mx-auto leading-relaxed">
-                A gente já combinou brincando — a brincadeira era um nome gigante, desse tamanho{' '}
+                A gente já combinou brincando - a brincadeira era um nome gigante, desse tamanho{' '}
                 <span className="inline-flex items-center gap-8 whitespace-nowrap align-middle" aria-hidden>
                   <span>🫸🏻</span>
                   <span>🫷🏻</span>
@@ -85,7 +85,7 @@ export default function FuturoSlide() {
               </p>
 
               <p className="font-hand text-xl t-accent mt-5">
-                foi brincando, mas foi sério — o combinado vale
+                foi brincando, mas foi sério - o combinado vale
               </p>
               <Icon name="ring" size={22} strokeWidth={1.3} className="t-accent mx-auto mt-2" />
             </div>

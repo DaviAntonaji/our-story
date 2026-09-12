@@ -15,7 +15,7 @@ export function numeralDoSlide(id) {
 }
 
 /**
- * Abertura de capítulo — o mesmo gesto tipográfico em todo o álbum:
+ * Abertura de capítulo - o mesmo gesto tipográfico em todo o álbum:
  * selo com ícone · numeral · rótulo · título · filete · linha de apoio.
  */
 export default function ChapterPlate({

@@ -1,7 +1,7 @@
 import { SLIDE_IDS, CAPITULOS, ROMANOS } from '../../data/constants'
 
 /**
- * Fita marcadora lateral — uma marca por capítulo. No hover, revela
+ * Fita marcadora lateral - uma marca por capítulo. No hover, revela
  * o numeral romano e o nome do capítulo.
  */
 export default function ChapterRibbon({ active }) {
@@ -16,7 +16,7 @@ export default function ChapterRibbon({ active }) {
             key={id}
             onClick={() => navigate(id)}
             className={`ribbon-nav__tick ${active === i ? 'active' : ''}`}
-            aria-label={`Capítulo ${ROMANOS[i + 1]} — ${cap?.label ?? id}`}
+            aria-label={`Capítulo ${ROMANOS[i + 1]} - ${cap?.label ?? id}`}
             aria-current={active === i ? 'true' : undefined}
           >
             <span className="ribbon-nav__label" aria-hidden>
