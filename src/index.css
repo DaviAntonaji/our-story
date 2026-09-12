@@ -168,8 +168,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 
 /* ─── Cenas claras ─────────────────────────────────────────────────── */
 
-/* Amanhecer — abertura */
-.scene-dawn {-
+/* Amanhecer - abertura */
+.scene-dawn {
   --accent: var(--rose);
   --accent-2: var(--clay);
   --seam-dot: #fdf6f2;
@@ -181,8 +181,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(170deg, #fdf7f3 0%, #f8ece6 42%, #f4e4dc 72%, #f7ebe3 100%);
 }
 
-/* Papel de carta — cru, tinta, contador */
-.scene-paper {-
+/* Papel de carta - cru, tinta, contador */
+.scene-paper {
   --accent: var(--ochre);
   --accent-2: var(--rose);
   --seam-dot: #fbf5ec;
@@ -192,8 +192,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(168deg, #fbf6ee 0%, #f5ece0 45%, #f1e5d6 100%);
 }
 
-/* Papel de carta à luz de vela — a carta */
-.scene-letter {-
+/* Papel de carta à luz de vela - a carta */
+.scene-letter {
   --accent: var(--clay);
   --accent-2: var(--ochre);
   --seam-dot: #fdf6ea;
@@ -205,8 +205,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(166deg, #fdf8ec 0%, #f8efdd 46%, #f3e6d1 100%);
 }
 
-/* Sálvia — jardim, promessas */
-.scene-sag- {
+/* Sálvia - jardim, promessas */
+.scene-sage {
   --accent: var(--sage);
   --accent-2: var(--ochre);
   --seam-dot: #f5f7f1;
@@ -216,8 +216,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(168deg, #f7f8f2 0%, #eff3e9 45%, #f4f2e8 100%);
 }
 
-/* Blush — coisas que amo, presentes */
-.scene-bl-sh {
+/* Blush - coisas que amo, presentes */
+.scene-blush {
   --accent: var(--rose);
   --accent-2: var(--clay);
   --seam-dot: #fdf4f4;
@@ -227,8 +227,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(172deg, #fdf6f4 0%, #fbebe9 46%, #f8e3e2 100%);
 }
 
-/* Linho — versículos, reverência */
-.scene-li-en {
+/* Linho - versículos, reverência */
+.scene-linen {
   --accent: var(--ochre);
   --accent-2: var(--sage);
   --seam-dot: #f8f3e9;
@@ -238,8 +238,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(170deg, #f9f4ea 0%, #f2ebdb 48%, #ece3d0 100%);
 }
 
-/* Creme — timeline */
-.scene-cr-am {
+/* Creme - timeline */
+.scene-cream {
   --accent: var(--clay);
   --accent-2: var(--ochre);
   --seam-dot: #fcf7f1;
@@ -249,8 +249,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(168deg, #fcf8f2 0%, #f6eee4 46%, #f2e8dc 100%);
 }
 
-/* Hora dourada — o futuro */
-.scene-golden {-
+/* Hora dourada - o futuro */
+.scene-golden {
   --accent: var(--clay);
   --accent-2: var(--ochre);
   --seam-dot: #fdf4e9;
@@ -262,8 +262,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(170deg, #fdf5e8 0%, #fbe9d6 44%, #f7dcc6 76%, #f9e6d6 100%);
 }
 
-/* Aurora — o final, luz plena */
-.scene-aur-ra {
+/* Aurora - o final, luz plena */
+.scene-aurora {
   --accent: var(--rose);
   --accent-2: var(--ochre);
   --seam-dot: #fdf3ef;
@@ -275,8 +275,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(172deg, #fdf6f2 0%, #fbe8e2 40%, #f8dfd4 72%, #fcefe2 100%);
 }
 
-/* Ar da manhã — lista de sonhos */
-.scene-mint {-
+/* Ar da manhã - lista de sonhos */
+.scene-mint {
   --accent: var(--sage);
   --accent-2: var(--rose);
   --seam-dot: #f2f7f4;
@@ -286,8 +286,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
     linear-gradient(170deg, #f5faf7 0%, #eaf4ee 46%, #f3f4e9 100%);
 }
 
-/* Cortiça — quadro de recados */
-.scene-cork-{
+/* Cortiça - quadro de recados */
+.scene-cork {
   --accent: var(--clay);
   --accent-2: var(--rose);
   --seam-dot: #f9f0e4;
@@ -317,8 +317,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   --seam-dot: #191122;
 }
 
-/* Violeta — trilha sonora */
-.scene-viol-t {
+/* Violeta - trilha sonora */
+.scene-violet {
   --accent-2: #c4a2f0;
   --bloom:
     radial-gradient(ellipse 60% 48% at 10% 4%, rgba(148, 108, 220, 0.30) 0%, transparent 62%),
@@ -326,22 +326,22 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   background: linear-gradient(164deg, #130c1c 0%, #1d1230 40%, #241640 66%, #140d1e 100%);
 }
 
-/* Noite — mural de fotos, créditos */
-.scene-ni-ht {
+/* Noite - mural de fotos, créditos */
+.scene-night {
   --bloom:
     radial-gradient(ellipse 56% 46% at 16% 8%, rgba(134, 100, 180, 0.18) 0%, transparent 60%),
     radial-gradient(ellipse 50% 42% at 88% 92%, rgba(216, 128, 148, 0.13) 0%, transparent 58%);
   background: linear-gradient(166deg, #100b14 0%, #17111d 42%, #1d1524 68%, #110c16 100%);
 }
 
-/* Profundo — mapa */
-.scene-deep -
+/* Profundo - mapa */
+.scene-deep {
   --bloom: none;
   background: linear-gradient(170deg, #0b0710 0%, #100b16 50%, #0a0710 100%);
 }
 
-/* Veludo — cartas lacradas */
-.scene-vel-et {
+/* Veludo - cartas lacradas */
+.scene-velvet {
   --accent: #e0b06a;
   --accent-2: #eda2b2;
   --bloom:
@@ -350,8 +350,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   background: linear-gradient(168deg, #1a0c15 0%, #2c1220 42%, #371828 68%, #1c0d16 100%);
 }
 
-/* Cosmos — conquistas */
-.scene-cos-os {
+/* Cosmos - conquistas */
+.scene-cosmos {
   --accent: #f0c76a;
   --accent-2: #b79af0;
   --bloom:
@@ -394,8 +394,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   color: var(--accent);
 }
 
-/* Título de seção — a voz do livro */
-.title-lg {-
+/* Título de seção - a voz do livro */
+.title-lg {
   font-family: var(--font-display);
   font-weight: 600;
   color: var(--ink);
@@ -516,8 +516,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 
 /* ═══ SUPERFÍCIES ════════════════════════════════════════════════ */
 
-/* Folha — o card padrão. Papel, não vidro. */
-.sheet {-
+/* Folha - o card padrão. Papel, não vidro. */
+.sheet {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -531,8 +531,8 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
   border: 1px solid var(--line-soft);
   border-radius: 16px;
 }
-/* Folha em destaque — filete de acento no topo */
-.sheet-feature {-
+/* Folha em destaque - filete de acento no topo */
+.sheet-feature {
   position: relative;
   background: var(--surface);
   border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
@@ -1556,7 +1556,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 
 /* ═══ MAPA ═══════════════════════════════════════════════════════
    Os tiles do OSM são claros; este filtro os traz para a noite do álbum.
-   Aplicado via `className` do TileLayer, portanto só na camada de tiles —
+   Aplicado via `className` do TileLayer, portanto só na camada de tiles -
    marcadores, chips e a ficha do lugar ficam intactos.
    ═══════════════════════════════════════════════════════════════ */
 .map-tiles-night {
@@ -1569,7 +1569,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 .lb-surface { background: rgba(10, 7, 12, 0.97); }
 .lb-btn {
   display: flex;
-  align-items: cen-er;
+  align-items: center;
   justify-content: center;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
@@ -1580,7 +1580,7 @@ button, [role="button"], a, label[for], select { cursor: pointer; }
 .lb-btn:hover { background: rgba(255, 255, 255, 0.18); color: #fff; }
 .lb-btn:active { transform: scale(0.95); }
 
-/* ═══ RESPONSIVO — TV / projetor ═════════════════════════════════ */
+/* ═══ RESPONSIVO - TV / projetor ═════════════════════════════════ */
 @media (min-width: 1024px) {
   html { font-size: 17px; }
   .kicker { font-size: 0.6875rem; letter-spacing: 0.26em; }

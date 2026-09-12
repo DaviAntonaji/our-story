@@ -48,8 +48,8 @@ export default function PromessasSlide() {
             id="promessas"
             icon="leaf"
             kicker="Meu compromisso"
-            title="Minhas promessas para você"-
-            lede="Com Cristo no centro, e uma por uma — te prometo:"
+            title="Minhas promessas para você"
+            lede="Com Cristo no centro, e uma por uma - te prometo:"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
@@ -73,8 +73,8 @@ export default function PromessasSlide() {
           <MI v={fadeV}>
             <div className="sheet sheet-feature px-6 py-6 text-center">
               <Icon name="ring" size={26} strokeWidth={1.3} className="t-accent mx-auto mb-3" />
-              <p className="font-display text-x- sm:text-2xl italic t-ink leading-snug max-w-[36ch] mx-auto">
-                Cada uma dessas vem do coração — e eu assino embaixo.
+              <p className="font-display text-xl sm:text-2xl italic t-ink leading-snug max-w-[36ch] mx-auto">
+                Cada uma dessas vem do coração - e eu assino embaixo.
               </p>
               <p className="font-hand text-2xl t-accent mt-4">Davi</p>
             </div>

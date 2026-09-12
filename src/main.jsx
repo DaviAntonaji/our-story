@@ -24,13 +24,13 @@ import App from './App.jsx'
 
 /**
  * Depois de um deploy, o service worker novo assume o controle desta aba, mas
- * os chunks JS já baixados continuam em memória — foi assim que o mapa antigo
+ * os chunks JS já baixados continuam em memória - foi assim que o mapa antigo
  * sobreviveu a um deploy inteiro. Recarrega uma única vez quando a troca
  * acontece, para que o visitante nunca fique preso numa versão velha.
  */
 if ('serviceWorker' in navigator) {
   // Na primeira instalação o `controllerchange` também dispara, e aí não há
-  // versão anterior para substituir — recarregar ali seria um flash inútil.
+  // versão anterior para substituir - recarregar ali seria um flash inútil.
   const tinhaControlador = Boolean(navigator.serviceWorker.controller)
   let recarregando = false
 

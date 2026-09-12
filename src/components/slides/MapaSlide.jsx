@@ -10,7 +10,7 @@ import { numeralDoSlide } from '../ui/ChapterPlate'
 const COR_ATIVO = '#e6b465'
 const COR_PONTO = '#d4697f'
 
-// Basemap: OpenStreetMap padrão — livre, sem chave de API e sem cota-paga.
+// Basemap: OpenStreetMap padrão - livre, sem chave de API e sem cota paga.
 // O estilo original é claro; a classe `map-tiles-night` (index.css) reescurece
 // só a camada de tiles via filtro CSS, então os marcadores não são afetados.
 // A atribuição ao OSM é obrigatória pela política de uso e aparece no rodapé.
