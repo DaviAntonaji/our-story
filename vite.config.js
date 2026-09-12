@@ -46,6 +46,8 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: 'index.html',
+        // Descarta os precaches das revisões anteriores em vez de acumulá-los.
+        cleanupOutdatedCaches: true,
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2,woff}'],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4 MB (padrão é 2 MB)
         runtimeCaching: [
