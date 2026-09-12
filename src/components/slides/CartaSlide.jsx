@@ -44,7 +44,7 @@ export default function CartaSlide() {
               {/* Cabeçalho da carta */}
               <header className="relative mb-6">
                 <p className="font-sans text-[0.5625rem] uppercase tracking-[0.22em] text-right" style={{ color: 'rgba(124, 90, 60, 0.6)' }}>
-                  Presidente Prudente, 2026
+                  Pirapozinho, 2026
                 </p>
                 <p className="font-display text-3xl sm:text-4xl italic mt-3" style={{ color: '#7d2e40' }}>
                   Maysa,
