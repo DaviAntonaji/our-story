@@ -50,6 +50,15 @@ export const MESESVERSARIOS = [
       'Na minha casa: duas pizzas, o live action do He-Man e nossas irmãs se divertindo juntas. Um 5º mês simples, aconchegante e completamente nosso.',
     ],
   },
+  {
+    id: 6,
+    data: new Date(2026, 8, 4, 0, 0, 0, 0),
+    titulo: '6º mês 🤍',
+    resumo: [
+      'Meio ano. Voltamos pra praça da entrada - a mesma do 1º, do 2º e do 3º mês - e eu te entreguei uma cestinha: flores artificiais pra durar, um desenho nosso feito a mão, cartinha manuscrita, cookie da Cuki, docinhos e o livro "Nada É Por Acaso", da Lynn Painter, que você estava lendo. Depois, Tips: um prato de parmegiana pra dividir e coquinha.',
+      'E o presente não acabou ali. Na manhã seguinte te dei um kit de produtos pra cachos, porque você andava achando que os cachinhos não estavam tão bonitos depois do cabelo vermelho.',
+    ],
+  },
 ]
 
 export const TIMELINE = [
@@ -467,6 +476,19 @@ export const TIMELINE = [
       'Não teve palco, não teve surpresa grande. Teve pizza, filme, o som das duas se divertindo no fundo… e você do meu lado. E talvez seja exatamente isso que cinco meses ensinaram pra gente: que o amor mais bonito não precisa de cenário. Precisa de presença.',
       'Ver você ali, em casa, no meu espaço, como se já fizesse parte dele - isso aquece de um jeito que nenhum passeio consegue. É o tipo de noite que eu quero viver mil vezes: simples, quentinha, nossa.',
       'Cinco meses que parecem muito mais pelo que a gente já construiu. E se o começo foi um pedido no João Julhão, esse mês foi o lembrete de que o melhor da nossa história também cabe num sofá, com pizza e filme - desde que seja com você. 🤍',
+    ],
+  },
+  {
+    data: '04 de setembro de 2026',
+    titulo: 'Nosso 6º mêsversário 🤍',
+    icon: '🧺',
+    paras: [
+      'Meio ano. E pra comemorar meio ano eu não quis inventar lugar nenhum: voltamos pra praça da entrada. A mesma do piquenique do 1º mês, a mesma da troca de presentes do 2º, a mesma do carro antes do culto no 3º. Tem lugar que a gente escolhe uma vez; esse aqui já escolheu a gente.',
+      'Te entreguei uma cestinha - e eu confesso que passei mais tempo olhando o seu rosto do que o presente. Dentro tinha flores artificiais, dessas que não murcham, porque é assim que eu quero a gente. Um desenho que eu fiz a mão, nós dois. Uma cartinha manuscrita, porque com você eu prefiro escrever do que só falar. Um cookie gourmet da Cuki e uns docinhos. E o livro que você estava lendo: "Nada É Por Acaso", da Lynn Painter.',
+      'Você amou. E o melhor não foi o presente: foi te ver amar. Aquele sorriso de quem percebe que alguém prestou atenção de verdade. É esse sorriso que me faz querer acertar sempre.',
+      'Depois fomos no Tips. Um prato de parmegiana pra dividir, coquinha e conversa sem pressa. Nada sofisticado, nada planejado demais - só a gente na mesma mesa, comendo do mesmo prato, do jeito que já virou nosso.',
+      'E o presente não terminou naquele dia. Na manhã seguinte eu te dei um kit de produtos pra cachos. Não era sobre cabelo. Era porque eu tinha te ouvido dizer que depois do vermelho os cachinhos não estavam tão bonitos - e eu não quero que você se olhe no espelho e não veja o que eu vejo. Se dá pra cuidar, eu cuido.',
+      'Seis meses. Metade de um ano te escolhendo, e a conta não pesa nada - só aumenta a vontade. 🤍',
     ],
   },
 ]
